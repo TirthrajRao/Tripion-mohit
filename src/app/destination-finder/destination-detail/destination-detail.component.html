@@ -1,7 +1,7 @@
 <ion-header>
   <app-header [cname]="'Details'"></app-header>
 </ion-header>
-<ion-content>
+<!-- <ion-content>
   <div class="plan_option_content">
     <div *ngIf="details">
       <div class="card plan_option_heading plan-detail-content w-100 ">
@@ -9,7 +9,7 @@
         <div class="plan_images" *ngIf="images.length">
           <div class="plan_images_slide" *ngFor="let img of images">
             <img [src]="img.image_url" onError="src = 'assets/images/placeholder.png'"
-              *ngIf="img.mime_type.includes('image')">
+            *ngIf="img.mime_type.includes('image')">
           </div>
         </div>
         <p [innerHtml]="details.form_response.destination_data"></p>
@@ -18,16 +18,61 @@
         <p class="text-white ml-2 mb-2">Attachments</p>
         <div *ngFor="let doc of documents" class="holds-the-iframe">
           <iframe style="height:230px;cursor: pointer;padding: 5px;" class="w-100"
-            [src]="'https://docs.google.com/viewerng/viewer?url=' + doc.image_url +'&embedded=true' | safe:'resourceUrl'"
-            frameborder="0">
-          </iframe>
-        </div>
-      </div>
-      <div class="next_btn" routerLink="/home/destination-other-detail/{{destinationId}}">
-        <button>Next<i class="fas fa-arrow-right"></i></button>
+          [src]="'https://docs.google.com/viewerng/viewer?url=' + doc.image_url +'&embedded=true' | safe:'resourceUrl'"
+          frameborder="0">
+        </iframe>
       </div>
     </div>
+    <div class="product-detail-content">
+      <div class="image-slider">
+        <div class="image-slide">
+          <img src="../../assets/images/feature.jpg" alt="img">
+        </div>
+        <div class="image-slide">
+          <img src="../../assets/images/feature.png" alt="img">
+        </div>
+      </div>
+      <div class="product-detail">
+        <h2>Title</h2>
+        <h5>Total Days : <span>10</span></h5>
+        <p>Junagadh is a city in the western Indian state of Gujarat. Mahabat Maqbara is the huge 19th-century mausoleum
+        of a local ruler, which showcases intricate Indo-Islamic architectural details. Uparkot Fort, founded around 300.</p>
+        <a href="#">Destination Inquiry</a>
+      </div>
+    </div>
+    <div class="next_btn" routerLink="/home/destination-other-detail/{{destinationId}}">
+      <button>Next<i class="fas fa-arrow-right"></i></button>
+    </div>
   </div>
+</div>
+<div *ngIf="loading">
+  <div id="loader-wrapper">
+    <div class="heartbeatloader">
+      <ion-img class="svgdraw" src="assets/images/loader.gif"></ion-img>
+    </div>
+  </div>
+</div>
+<div *ngIf="!loading && !details" class="no_folder">
+  <span class="text-white text-center no-request">We will Working,<br>Will revert soon!!</span>
+</div>
+</ion-content> -->
+
+<ion-content padding="ion-padding">
+  <div class="product-detail-content">
+    <div class="image-slider">
+      <div class="image-slide" *ngFor="let img of images;">
+        <img [src]="img.image_url" alt="img">
+      </div>
+    </div>
+    <div class="product-detail" *ngFor="let detail of Destinationdetails; let i = index;">
+      <h2>{{detail.name}}</h2>
+      <h5>Days : <span class="mr-3">{{detail.days}}</span> Nights : <span>{{detail.nights}}</span></h5>
+      <div [innerHtml]="[detail.content]"></div>
+      <a routerLink="/home/premium-account">Send us Inquiry</a>
+    </div>
+  </div>
+  
+
   <div *ngIf="loading">
     <div id="loader-wrapper">
       <div class="heartbeatloader">
@@ -39,3 +84,5 @@
     <span class="text-white text-center no-request">We will Working,<br>Will revert soon!!</span>
   </div>
 </ion-content>
+
+

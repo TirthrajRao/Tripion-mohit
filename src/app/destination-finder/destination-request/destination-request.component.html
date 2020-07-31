@@ -1,25 +1,71 @@
 <ion-header>
   <app-header [cname]="'Destination Finder'"></app-header>
 </ion-header>
-<ion-content>
-  <div class="all_content">
-    <div *ngIf="destinationReq.length">
-      <div *ngFor="let destination of destinationReq">
-        <div class="country_name" (click)="getDetails(destination)" *ngIf="destination.is_plan_selected == 0">
-          <p class="des-title">{{destination.name}}</p>
-          <p class="des-status mt-2">{{destination.status}}</p>
-          <i *ngIf="destination.status != 'Here is your Answer'" class="fa fa-ellipsis-h status-icon" ></i>
-          <img class="status-icon" *ngIf="destination.status == 'Here is your Answer'" src="assets/images/success.png">
+
+<ion-content class="bg-image">
+  <div class="product-content">
+    <div class="top-sec">
+      <div class="tab-list">
+        <ul class="nav nav-tabs country-slider">
+          <li class="nav-item">
+            <a class="nav-link active" id="feture" aria-controls="feture" (click)="selectTab($event)" aria-selected="true">Feature</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="africa" aria-controls="home" (click)="selectTab($event)" aria-selected="true">Africa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="antarctica"   aria-controls="one" (click)="selectTab($event)" aria-selected="false">Antarctica</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="asia"   aria-controls="second" (click)="selectTab($event)" aria-selected="false">Asia</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="australia"   aria-controls="third" (click)="selectTab($event)" aria-selected="false">Australia</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="europe"   aria-controls="four" (click)="selectTab($event)" aria-selected="false">Europe</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="north-america"   aria-controls="five" (click)="selectTab($event)" aria-selected="false">North-America</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="south-america"   aria-controls="six" (click)="selectTab($event)" aria-selected="false">South-America</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class=" content-slider" *ngIf="destinationReq.length">
+      <div class="content-slide" *ngFor="let destination of details" (click)="productDetail(destination)">
+        <img src={{destination.images}} alt="img">
+        <p>{{destination.name}}</p>
+        <h5>Days : <span class="mr-3">{{destination.days}}</span> Nights : <span>{{destination.nights}}</span></h5>
+      </div>
+    </div>
+    <div class="bottom-sec">
+      <div class="filter-sec">
+        <h5>All Products</h5>
+        <p>
+          <a id="forgot-psw"><i class="fa fa-filter"></i></a>
+        </p>
+      </div>
+      <div *ngIf="destinationReq.length">
+        <div *ngFor="let destination of destinationReq">
+          <div class="single-post" (click)="productDetail(destination)">
+            <div class="single-post-img">
+              <img src={{destination.images}} alt="image">
+            </div>
+            <div class="single-post-text">
+              <h4>{{destination.name}}</h4>
+              <h5>Days : <span class="mr-3">{{destination.days}}</span> Nights : <span>{{destination.nights}}</span></h5>
+              <!-- <p>{{destination.content}}</p> -->
+              <p class="des-status mt-2">{{destination.status}}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="add_button">
-      <a href="javascript:void(0);" routerLink='/home/occian-vacation'>
-        <img src="assets/images/plus.png">
-      </a>
-    </div>
-  </div>
 
+  </div>
   <div class="success_alert_box1" style="display: none;">
     <div class="alert_box_content">
       <div class="alert_box_text">
@@ -33,7 +79,6 @@
       </div>
     </div>
   </div>
-
   <div *ngIf="loading">
     <div id="loader-wrapper">
       <div class="heartbeatloader">
@@ -43,5 +88,45 @@
   </div>
   <div *ngIf="!loading && !destinationReq.length" class="no_folder">
     <span class="text-white text-center no-request">No Inquiry</span>
+  </div>
+
+  <div class="modal_content_with_overlay" id="forgot-password" style="display: none; z-index: 1111">
+    <div class="modal_body">
+      <div class="filter-content">
+        <h4 class="filter-head">Filter by</h4>
+
+        <div class="buttons">
+          <a href="#">Cancel</a>
+          <a href="#">Apply</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-content">
+    <h4 class="filter-head">Filter by</h4>
+    <div class="filter-list">
+      <div id="accordion" *ngFor="let place of placeTags">
+
+        <div class="accordion-group">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" [href]="'#collapse'+place.id" aria-expanded="true" [attr.aria-controls]="'collapse'+place.id" class="collapsed" (click)="placeTag(place.id, place.slug)">{{place.name}}</a>
+          <div [id]="'collapse'+place.id" class="collapse" role="tabpanel" [attr.aria-labelledby]="'heading'+place.id" data-parent="#accordion">
+            <div class="accordion-content">
+              <div class="single-list" *ngFor="let subplace of subPlaces" (click)="selectPlace(subplace.id, subplace)">
+                <div>
+                  <ion-checkbox checked='false'>
+                  </ion-checkbox>
+                  <ion-label>{{subplace.name}}</ion-label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="buttons">
+      <a href="#">Cancel</a>
+      <a (click)="placeFilter()">Apply</a>
+    </div>
   </div>
 </ion-content>

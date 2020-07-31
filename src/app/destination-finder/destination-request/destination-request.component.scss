@@ -85,3 +85,263 @@
 .alert_box_text p span {
     text-transform: uppercase;
 }
+
+
+
+
+.accordion .card-header:after {
+    font-family: 'FontAwesome';  
+    content: "\f068";
+    float: right; 
+}
+.accordion .card-header.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\f067"; 
+}
+
+
+
+
+
+
+
+
+
+
+.bg-image {
+    --background: #ffffff;
+    &:after {
+        content: "";
+        /*background-image: url("../../assets/images/illustration.png");*/
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        background-size: contain;
+        background-attachment: fixed;
+        padding-right: 100%;
+        padding-bottom: calc(100vh - 56px);
+        z-index: 1;
+        position: absolute;
+    }
+}
+.product-content {
+    height: 100%;
+    z-index: 1111;
+    position: relative;
+}
+
+
+ul.nav.nav-tabs {
+    padding: 15px 10px;
+}
+.content-slide{
+    height: 250px;
+    width: 100%;
+    margin: 15px 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+.content-slide img{
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+.content-slide:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(#aa55ff00, #584bddd1);
+    opacity: 0.6;
+}
+.content-slide p{
+    position: absolute;
+    z-index: 1111;
+    bottom: 35px;
+    left: 25px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.content-slide h5{
+    position: absolute;
+    z-index: 1111;
+    bottom: 14px;
+    left: 25px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 15px;   
+}
+
+
+.bottom-sec {
+    padding: 15px;
+}
+.single-post {
+    border-radius: 8px;
+    box-shadow: 1px 1px 8px rgba($color: #584bdd, $alpha: 0.2);
+    display: flex;
+    position: relative;
+    margin-bottom: 15px;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+.single-post-img {
+    height: 100%;
+    width: 38%;
+    overflow: hidden;
+    border-radius: 8px;
+    position: absolute;
+}
+.single-post-img img {
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+.single-post-text {
+    padding: 15px 10px;
+    margin-left: 40%;
+    width: 62%;
+}
+.single-post-text h4 {
+    font-size: 16px;
+    color: #aa55ff;
+    font-weight: bold;
+}
+.single-post-text h5 {
+    font-size: 14px;
+    color: #000;
+    margin: 8px 0;
+}
+.single-post-text h5 span {
+    color: #aa55ff;
+}
+
+.single-post-text p {
+    font-size: 12px;
+    color: #7f8dab;
+}
+.filter-sec{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.filter-sec h5{
+    color: #584bdd;
+    font-size: 15px;
+    font-weight: bold;
+}
+.filter-sec p{
+    color: #000;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+
+.filter-content {
+    height: 100%;
+    z-index: 1111;
+    position: relative;
+}
+.filter-list {
+    padding: 10px 20px;
+}
+.single-list {
+    margin-bottom: 12px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.filter-head {
+    margin: 25px 25px 15px;
+    font-size: 26px;
+    font-weight: bold;
+    color: #584bdd;
+}
+ion-checkbox {
+    --size: 22px;
+    --border-color: #000;
+    --background-checked: #584bdd;
+    --border-color-checked: #584bdd;
+    --checkmark-width: 10px;
+}
+ion-label {
+    margin-left: 15px;
+    color: #000;
+    font-weight: 600;
+    font-size: 14px;
+}
+.buttons {
+    margin: 10px 25px;
+       margin: auto;
+    text-align: center;
+    padding-top: 5px;
+}
+.buttons a:last-child {
+    background: linear-gradient(to right, #584bdd, #aa55ff);
+    color: #ffffff;
+}
+.buttons a {
+    width: 120px;
+    display: inline-block;
+    text-align: center;
+    margin: 5px;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 15px;
+    box-shadow: 1px 1px 10px rgba($color: #000000, $alpha: 0.2);
+    text-decoration: none;
+}
+.buttons a:first-child {
+    background-color: #ffffff;
+    color: #584bdd;
+}
+
+// accordion css start
+.accordion-group a {
+    width: 100%;
+    background: linear-gradient(to right, #584bdd, #aa55ff);
+    color: #fff;
+    padding: 12px;
+    position: relative;
+    font-size: 15px;
+    display: inline-block;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+.accordion-group .accordion-content {
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    padding: 20px 20px 8px;
+    border-radius: 5px;
+    margin-top: -6px;
+}
+.accordion-group .show .accordion-content {
+    border-radius: 0 0 5px 5px;
+}
+.accordion-group a.collapsed:after,
+.accordion-group a:after {
+    position: absolute;
+    right: 15px;
+    top: 10px;   
+    margin: auto;
+    color: #fff;
+    font-size: 15px;
+}
+.accordion-group a:after {
+    content: "\f078";
+    font-family: 'FontAwesome';
+}
+.accordion-group a[aria-expanded="true"]:after {
+    content: "\f077";
+}

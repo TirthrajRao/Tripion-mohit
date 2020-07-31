@@ -223,4 +223,53 @@ export class TripService {
   getGeneralQuotation(data){
     return this.http.post(config.baseApiUrl + 'get-all-quotation', data);
   }
+
+  /**
+  *Destination Finder Product Page
+  * @param {object} data
+  */
+  getDestinationReqProduct(data){
+    return this.http.post('https://tripion-demo.mylionsgroup.com/wp-json/api/v2/get-places', data);
+  } 
+
+  /**
+  *Destination Finder Product Page
+  * @param {object} data
+  */
+  getDestinationReqFetureImg(data){
+    return this.http.post('https://tripion-demo.mylionsgroup.com/wp-json/api/v2/get-featured-places', data);
+  } 
+
+  /**
+  *Destination Finder Detail Page
+  * @param {object} data 
+  */
+  getDestinationDetail(data){
+    console.log("the data is -------------------->", data);
+    return this.http.post('https://tripion-demo.mylionsgroup.com/wp-json/api/v2/single-places', data);
+  }
+
+  /**
+  *Destination Finder Fetured Functionality Page
+  * @param {object} data
+  */
+  getDestinationReqFeture(data){
+    return this.http.post('https://tripion-demo.mylionsgroup.com/wp-json/api/v2/filter-places', data);
+  }
+
+  /**
+  *Destination Finder Fetured Functionality Page
+  * @param {object} data
+  */
+  getDestinationReqPlaceTages(data){
+    return this.http.post('https://tripion-demo.mylionsgroup.com/wp-json/api/v2/place-tags', data);
+  }
+
+  /**
+  *Destination Finder Fetured Functionality Page
+  * @param {object} data
+  */
+  getDestinationReqPlaceSubTages(data){
+    return this.http.post('https://tripion-demo.mylionsgroup.com/wp-json/api/v2/place-subtags', data);
+  }
 }
