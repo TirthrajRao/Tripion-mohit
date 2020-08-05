@@ -87,25 +87,28 @@
 }
 
 
-
-
-.accordion .card-header:after {
-    font-family: 'FontAwesome';  
-    content: "\f068";
-    float: right; 
-}
-.accordion .card-header.collapsed:after {
-    /* symbol for "collapsed" panels */
-    content: "\f067"; 
+.nav-item.active .nav-link,
+.nav-item .nav-link:active,
+.nav-item .nav-link:focus,
+.nav-item:hover .nav-link {
+    color: #584bdd;
+    font-weight: bold;
 }
 
+.nav-item a {
+    outline: none;
+    color: #7f8dab;
+}
 
 
+.nav-link{
+    padding: .5rem 0rem;
+}
 
-
-
-
-
+.nav-link.active{
+    color: #584bdd;
+    font-weight: bold;   
+}
 
 
 .bg-image {
@@ -140,6 +143,7 @@ ul.nav.nav-tabs {
     border-radius: 20px;
     overflow: hidden;
     position: relative;
+    outline: none;
 }
 .content-slide img{
     max-width: 100%;
@@ -205,7 +209,7 @@ ul.nav.nav-tabs {
     object-fit: cover;
 }
 .single-post-text {
-    padding: 15px 10px;
+    padding: 27px 10px;
     margin-left: 40%;
     width: 62%;
 }
@@ -345,3 +349,15 @@ ion-label {
 .accordion-group a[aria-expanded="true"]:after {
     content: "\f077";
 }
+
+
+.segment-card {
+    display: flex;
+    overflow-x: scroll;
+    .segment-item {
+        display: inline-block !important;
+        min-width: 100px !important;
+        width: auto !important;
+    }
+}
+

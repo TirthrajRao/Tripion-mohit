@@ -134,8 +134,14 @@ ion-content {
     color: #000;
     margin: 10px 0;
 }
-.single-post-text h5 span {
+.product-detail h5 span {
     color: #aa55ff;
+}
+.product-detail h6 {
+    font-size: 16px;
+    color: #6055ff;
+    padding-right: 5px;
+    margin: 10px 0;
 }
 .product-detail a{
     background: linear-gradient(to right, #584bdd, #aa55ff);

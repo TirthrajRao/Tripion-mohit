@@ -272,4 +272,13 @@ export class TripService {
   getDestinationReqPlaceSubTages(data){
     return this.http.post('https://tripion-demo.mylionsgroup.com/wp-json/api/v2/place-subtags', data);
   }
+
+  /**
+  *Destination Finder Fetured Functionality Page
+  * @param {object} data
+  */
+  addDestination(data){
+    console.log("the data of an service of ====>", data);
+    return this.http.post('https://tripion-demo.mylionsgroup.com/wp-json/api/v2/add-destination', data);
+  }
 }

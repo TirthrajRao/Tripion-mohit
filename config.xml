@@ -132,4 +132,5 @@
     <plugin name="cordova-plugin-geolocation" spec="^4.0.2" />
     <allow-navigation href="http://192.168.1.118:8100" sessionid="58f8fa30" />
     <allow-navigation href="http://192.168.1.32:8101" sessionid="09d23063" />
+    <allow-navigation href="http://localhost:8101" sessionid="1f340dc2" />
 </widget>

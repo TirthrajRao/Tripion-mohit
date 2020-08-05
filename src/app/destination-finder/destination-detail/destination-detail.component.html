@@ -66,9 +66,9 @@
     </div>
     <div class="product-detail" *ngFor="let detail of Destinationdetails; let i = index;">
       <h2>{{detail.name}}</h2>
-      <h5>Days : <span class="mr-3">{{detail.days}}</span> Nights : <span>{{detail.nights}}</span></h5>
+      <h6> {{detail.tags}} </h6>
       <div [innerHtml]="[detail.content]"></div>
-      <a routerLink="/home/premium-account">Send us Inquiry</a>
+      <a (click)="sendUsInquiry()">Send us Inquiry</a>
     </div>
   </div>
   

@@ -115,6 +115,7 @@
     <allow-navigation href="http://192.168.1.88:8100" sessionid="9faa115d" />
     <allow-navigation href="http://192.168.1.118:8100" sessionid="58f8fa30" />
     <allow-navigation href="http://192.168.1.32:8101" sessionid="09d23063" />
+    <allow-navigation href="http://localhost:8101" sessionid="1f340dc2" />
     <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
         <application android:networkSecurityConfig="@xml/network_security_config" />
     </edit-config>

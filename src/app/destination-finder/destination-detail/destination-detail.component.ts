@@ -49,6 +49,7 @@ export class DestinationDetailComponent implements OnInit {
     this._tripService.getDestinationDetail(obj).subscribe((res : any) => {
       this.Destinationdetails[0] = res.data;
       this.images = res.data.slider_img;
+      localStorage.setItem('place_name', JSON.stringify(res.data.name));
       $(document).ready(function () {
         if ($('.image-slider').hasClass('slick-initialized'))
           $('.image-slider').slick('unslick');
@@ -69,6 +70,7 @@ export class DestinationDetailComponent implements OnInit {
       this.loading = false;
       console.log("the err of the data correct is ---------->", err);
     })
+
 
     // this._tripService.getDestinationDetail(obj).subscribe((res: any) => {
       //   console.log("res===>", res);
@@ -92,7 +94,13 @@ export class DestinationDetailComponent implements OnInit {
                 // })
               }
 
+              sendUsInquiry(){
+                var id = this.curruntUser.id;
+                this._router.navigate(['/home/destination-other-detail/' + id]);
+                localStorage.setItem('form_data', JSON.stringify(this.Destinationdetails[0].name))
+              }
 
+              
   /**
    * Create Slider
    */
