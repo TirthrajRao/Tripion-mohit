@@ -13,11 +13,9 @@ export class DestinationDetailComponent implements OnInit {
   destinationId: any;
   loading: Boolean = false;
   curruntUser = JSON.parse(localStorage.getItem('currentUser'));
-  details: any;
   images: any = [];
-  documents: any = [];
   Destinationdetails: any = [];
-  slideOpts:any;
+  
   constructor(
     public route: ActivatedRoute,
     public _tripService: TripService,
@@ -26,16 +24,12 @@ export class DestinationDetailComponent implements OnInit {
     ) {
     this.route.params.subscribe((param) => {
       this.destinationId = param.id
-    });
-
-
-    
+    }); 
   }
 
   ngOnInit() {
     this.getDestinationDetail();
   }
-
   
   getDestinationDetail() {
     this.loading = true;
@@ -44,73 +38,43 @@ export class DestinationDetailComponent implements OnInit {
       place_id: this.destinationId
     }
     console.log("obj", obj);
-
-    //my_function
     this._tripService.getDestinationDetail(obj).subscribe((res : any) => {
       this.Destinationdetails[0] = res.data;
       this.images = res.data.slider_img;
+      this.createSlider();
       localStorage.setItem('place_name', JSON.stringify(res.data.name));
-      $(document).ready(function () {
-        if ($('.image-slider').hasClass('slick-initialized'))
-          $('.image-slider').slick('unslick');
-        setTimeout(() => {
-          $('.image-slider').not('.slick-initialized').slick({
-            infinite: true,
-            dots: true,
-            slidesToShow: 1,
-            arrows: false,
-          });
-        }, 200);
-
-      });
       this.loading = false;
-
       console.log("the res of the data correct is ---------->", res);
     }, (err) => {
       this.loading = false;
       console.log("the err of the data correct is ---------->", err);
     })
+  }
 
+  /**
+  * Send Us Inquiry
+  */
+  sendUsInquiry(){
+    var id = this.curruntUser.id;
+    this._router.navigate(['/home/destination-other-detail/' + id]);
+    localStorage.setItem('form_data', JSON.stringify(this.Destinationdetails[0].name))
+  }
 
-    // this._tripService.getDestinationDetail(obj).subscribe((res: any) => {
-      //   console.log("res===>", res);
-      //   this.details = res.data;
-      //   this.details.form_response.destination_pdf.map((image) => {
-        //     if (image.mime_type.includes('image')) {
-          //       this.images.push(image)
-          //     } else {
-            //       this.documents.push(image)
-            //     }
-            //   })
-            //   console.log(this.images)
-            //   setTimeout(() => {
-              //     this.createSlider();
-              //   }, 1)
-              //   this.loading = false;
-              // }, err => {
-                //   console.log("err", err);
-                //   this.loading = false;
-                //   this.appComponent.errorAlert(err.error.message)
-                // })
-              }
-
-              sendUsInquiry(){
-                var id = this.curruntUser.id;
-                this._router.navigate(['/home/destination-other-detail/' + id]);
-                localStorage.setItem('form_data', JSON.stringify(this.Destinationdetails[0].name))
-              }
-
-              
   /**
    * Create Slider
    */
-   // createSlider() {
-     //   $('.plan_images').slick({
-       //     infinite: true,
-       //     slidesToShow: 1,
-       //     slidesToScroll: 1,
-       //     dots: true,
-       //     speed: 100
-       //   });
-       // }
-     }
+   createSlider() {
+     $(document).ready(function () {
+       if ($('.image-slider').hasClass('slick-initialized'))
+         $('.image-slider').slick('unslick');
+       setTimeout(() => {
+         $('.image-slider').not('.slick-initialized').slick({
+           infinite: true,
+           dots: true,
+           slidesToShow: 1,
+           arrows: false,
+         });
+       }, 200);
+     });
+   }
+ }

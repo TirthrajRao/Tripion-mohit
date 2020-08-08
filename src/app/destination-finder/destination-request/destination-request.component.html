@@ -4,12 +4,11 @@
 
 <ion-content class="bg-image">
   <ion-card no-padding no-margin class="no-border-radius segment-card">
-    <ion-tab-button class="segment-item" tab="account">
+    <ion-tab-button class="segment-item">
       <ion-label class="nav-item"><a class="nav-link" id="feture" aria-controls="feture" (click)="selectTab($event)" aria-selected="true">Feature</a></ion-label>
     </ion-tab-button>
     <ion-tab-button class="segment-item">
-      <ion-label class="nav-item"><a class="nav-link" id="africa" aria-controls="feture" (click)="selectTab($event)" aria-selected="true">Africa</a>
-      </ion-label>
+      <ion-label class="nav-item"><a class="nav-link" id="africa" aria-controls="feture" (click)="selectTab($event)" aria-selected="true">Africa</a></ion-label>
     </ion-tab-button>
     <ion-tab-button class="segment-item">
       <ion-label class="nav-item"><a class="nav-link" id="antarctica" aria-controls="feture" (click)="selectTab($event)" aria-selected="true">Antartica</a></ion-label>
@@ -30,13 +29,15 @@
       <ion-label class="nav-item"><a class="nav-link" id="south-america" aria-controls="feture" (click)="selectTab($event)" aria-selected="true">South-America</a></ion-label>
     </ion-tab-button>
   </ion-card>
+
   <div class="product-content">
-    <div class="content-slider" *ngIf="isDisplay && destinationReq.length">
-      <div class="content-slide" *ngFor="let destination of details" (click)="productDetail(destination)">
-        <img src={{destination.images}} alt="img">
+    <ion-slides pager="true" class="feture-slider" *ngIf="isDisplay && details.length">
+      <ion-slide class="content-slide" *ngFor="let destination of details" (click)="productDetail(destination)">
+        <img src={{destination.images}} onerror="this.src = 'assets/images/fallback.png'" alt="img" class="img-fluid">
         <p>{{destination.name}}</p>
-      </div>
-    </div>
+      </ion-slide>
+    </ion-slides>
+
     <div class="bottom-sec">
       <div class="filter-sec">
         <h5>All Products</h5>
@@ -90,26 +91,24 @@
         <div class="filter-list">
           <div id="accordion" *ngFor="let place of placeTags">
             <div class="accordion-group">
-              <a role="button" class="collapsed accordion"  (click)="placeTag(place.id, place.slug)">{{place.name}}</a>
-              <div [id]="'collapse'+place.id" class="collapse panel" role="tabpanel" [attr.aria-labelledby]="'heading'+place.id"
-              data-parent="#accordion">
-              <div class="accordion-content" *ngIf="place.subPlaces && place.subPlaces.length">
-                <div class="single-list" *ngFor="let subplace of place.subPlaces" (click)="selectPlace(subplace.id, subplace)">
-                  <ion-checkbox checked='false'>
-                  </ion-checkbox>
-                  <ion-label>{{subplace.name}}</ion-label>
+              <a role="button" class="collapsed accordion"  >{{place.name}}</a>
+              <div [id]="'collapse'+place.id" class="collapse panel" role="tabpanel" [attr.aria-labelledby]="'heading'+place.id" data-parent="#accordion">
+                <div class="accordion-content">
+                  <div class="single-list" *ngFor="let subplace of place.sub_cat" (click)="selectPlace(subplace.id, subplace)">
+                    <ion-checkbox checked='false'></ion-checkbox>
+                    <ion-label>{{subplace.name}}</ion-label>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="buttons">
-        <a (click)="closeModal()">Cancel</a>
-        <a (click)="placeFilter()">Apply</a>
+        <div class="buttons">
+          <a (click)="closeModal()">Cancel</a>
+          <a (click)="placeFilter()">Apply</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
+  
 </ion-content>

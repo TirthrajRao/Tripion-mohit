@@ -56,6 +56,7 @@ import { DestinationOtherDetailComponent } from '../destination-finder/destinati
 import { ClimateComponent } from '../destination-finder/climate/climate.component';
 import { PopularityOfDestinationComponent } from '../destination-finder/popularity-of-destination/popularity-of-destination.component';
 import { GeneralQuatationComponent } from '../general-quatation/general-quatation.component';
+import { GeneralQuatationDetailComponent } from '../general-quatation-detail/general-quatation-detail.component';
 
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { File } from '@ionic-native/file/ngx';
@@ -327,6 +328,10 @@ export class IonicGestureConfig extends HammerGestureConfig {
           {
             path:'general-quatation',
             component:GeneralQuatationComponent
+          },
+          {
+            path:'general-quatation-detail/:id',
+            component:GeneralQuatationDetailComponent
           }
         ]
       },
@@ -394,7 +399,8 @@ export class IonicGestureConfig extends HammerGestureConfig {
     DestinationOtherDetailComponent,
     ClimateComponent,
     PopularityOfDestinationComponent,
-    GeneralQuatationComponent
+    GeneralQuatationComponent,
+    GeneralQuatationDetailComponent
   ],
   providers: [
     FileTransfer,

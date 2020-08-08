@@ -958,7 +958,7 @@ span.select2-selection__placeholder {
 .image-slider ul.slick-dots li.slick-active {
     height: 10px;
     width: 10px;
-    background-color: #584bdd;
+    background-color: #0575e6;
 }
 .image-slider ul.slick-dots li {
     display: inline-block;
@@ -1000,7 +1000,7 @@ span.select2-selection__placeholder {
     border: none;
 }
 .content-slider ul.slick-dots li.slick-active {
-    background-color: #584bdd;
+    background: linear-gradient(#0575e6, #021b79);
     height: 8px;
     width: 8px;
 }
@@ -1014,7 +1014,7 @@ span.select2-selection__placeholder {
 }
 .content-slider ul.slick-dots {
     text-align: center;
-    margin-top: -10px;
+    bottom: 15px;
 }
 .content-slider ul.slick-dots li button {
     display: none;

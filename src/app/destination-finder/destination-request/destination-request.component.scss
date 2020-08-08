@@ -91,7 +91,7 @@
 .nav-item .nav-link:active,
 .nav-item .nav-link:focus,
 .nav-item:hover .nav-link {
-    color: #584bdd;
+    color: #0575e6;
     font-weight: bold;
 }
 
@@ -132,18 +132,21 @@
     position: relative;
 }
 
+.feture-slider{
+    margin: 15px 20px;
+    border-radius: 20px;
+    overflow: hidden;
+}
 
 ul.nav.nav-tabs {
     padding: 15px 10px;
 }
 .content-slide{
-    height: 250px;
-    width: 100%;
-    margin: 15px 20px;
-    border-radius: 20px;
     overflow: hidden;
     position: relative;
     outline: none;
+    padding-top: calc(100vw * (9/16));
+
 }
 .content-slide img{
     max-width: 100%;
@@ -151,6 +154,11 @@ ul.nav.nav-tabs {
     max-height: 100%;
     min-height: 100%;
     object-fit: cover;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 .content-slide:before {
     content: "";
@@ -159,8 +167,10 @@ ul.nav.nav-tabs {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(#aa55ff00, #584bddd1);
+    background: linear-gradient(#0575e682, #021b799e);
     opacity: 0.6;
+    z-index: 1;
+
 }
 .content-slide p{
     position: absolute;
@@ -215,7 +225,6 @@ ul.nav.nav-tabs {
 }
 .single-post-text h4 {
     font-size: 16px;
-    color: #aa55ff;
     font-weight: bold;
 }
 .single-post-text h5 {
@@ -237,7 +246,6 @@ ul.nav.nav-tabs {
     margin-bottom: 10px;
 }
 .filter-sec h5{
-    color: #584bdd;
     font-size: 15px;
     font-weight: bold;
 }
@@ -267,13 +275,12 @@ ul.nav.nav-tabs {
     margin: 25px 25px 15px;
     font-size: 26px;
     font-weight: bold;
-    color: #584bdd;
 }
 ion-checkbox {
     --size: 22px;
     --border-color: #000;
-    --background-checked: #584bdd;
-    --border-color-checked: #584bdd;
+    --background-checked: #0575e6;
+    --border-color-checked: #0575e6;
     --checkmark-width: 10px;
 }
 ion-label {
@@ -289,7 +296,7 @@ ion-label {
     padding-top: 5px;
 }
 .buttons a:last-child {
-    background: linear-gradient(to right, #584bdd, #aa55ff);
+    background: linear-gradient(#0575e6, #021b79);
     color: #ffffff;
 }
 .buttons a {
@@ -306,13 +313,12 @@ ion-label {
 }
 .buttons a:first-child {
     background-color: #ffffff;
-    color: #584bdd;
 }
 
 // accordion css start
 .accordion-group a {
     width: 100%;
-    background: linear-gradient(to right, #584bdd, #aa55ff);
+    background: linear-gradient(#0575e6, #021b79);
     color: #fff;
     padding: 12px;
     position: relative;
@@ -360,4 +366,3 @@ ion-label {
         width: auto !important;
     }
 }
-

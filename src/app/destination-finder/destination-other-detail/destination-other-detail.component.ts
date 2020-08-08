@@ -13,11 +13,11 @@ export class DestinationOtherDetailComponent implements OnInit {
   paymentModeArray: any = [];
   communicationModeArray: any = [];
   destinationId: any;
+  
   constructor(
     public router: Router,
     public route: ActivatedRoute
   ) {
-
     this.otherDetailsForm = new FormGroup({
       communication_mode: new FormControl(''),
       budget_preference: new FormControl(''),

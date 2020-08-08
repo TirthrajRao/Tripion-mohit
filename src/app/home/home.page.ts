@@ -43,7 +43,7 @@ export class HomePage {
         iconSrc: 'assets/images/3.png'
       },
       {
-        title: 'Supports',
+        title: 'Support',
         url: '/home/amendments',
         iconSrc: 'assets/images/4.png'
       },

@@ -225,11 +225,19 @@ export class TripService {
   }
 
   /**
+   * Get General quotation
+   * @param {object} data 
+   */
+  getSingleQuotation(data){
+    return this.http.post(config.baseApiUrl + 'get-single-quotation/', data);
+  }
+
+  /**
   *Destination Finder Product Page
   * @param {object} data
   */
   getDestinationReqProduct(data){
-    return this.http.post('https://tripion-demo.mylionsgroup.com/wp-json/api/v2/get-places', data);
+    return this.http.post( config.baseApiUrl + 'get-places', data);
   } 
 
   /**
@@ -237,7 +245,7 @@ export class TripService {
   * @param {object} data
   */
   getDestinationReqFetureImg(data){
-    return this.http.post('https://tripion-demo.mylionsgroup.com/wp-json/api/v2/get-featured-places', data);
+    return this.http.post( config.baseApiUrl + 'get-featured-places', data);
   } 
 
   /**
@@ -246,7 +254,7 @@ export class TripService {
   */
   getDestinationDetail(data){
     console.log("the data is -------------------->", data);
-    return this.http.post('https://tripion-demo.mylionsgroup.com/wp-json/api/v2/single-places', data);
+    return this.http.post( config.baseApiUrl + 'single-places', data);
   }
 
   /**
@@ -254,7 +262,7 @@ export class TripService {
   * @param {object} data
   */
   getDestinationReqFeture(data){
-    return this.http.post('https://tripion-demo.mylionsgroup.com/wp-json/api/v2/filter-places', data);
+    return this.http.post( config.baseApiUrl + 'filter-places', data);
   }
 
   /**
@@ -262,7 +270,7 @@ export class TripService {
   * @param {object} data
   */
   getDestinationReqPlaceTages(data){
-    return this.http.post('https://tripion-demo.mylionsgroup.com/wp-json/api/v2/place-tags', data);
+    return this.http.post( config.baseApiUrl + 'place-tags', data);
   }
 
   /**
@@ -270,7 +278,7 @@ export class TripService {
   * @param {object} data
   */
   getDestinationReqPlaceSubTages(data){
-    return this.http.post('https://tripion-demo.mylionsgroup.com/wp-json/api/v2/place-subtags', data);
+    return this.http.post( config.baseApiUrl + 'place-subtags', data);
   }
 
   /**
@@ -279,6 +287,6 @@ export class TripService {
   */
   addDestination(data){
     console.log("the data of an service of ====>", data);
-    return this.http.post('https://tripion-demo.mylionsgroup.com/wp-json/api/v2/add-destination', data);
+    return this.http.post( config.baseApiUrl + 'add-destination', data);
   }
 }
