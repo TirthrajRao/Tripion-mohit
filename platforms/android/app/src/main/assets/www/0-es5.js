@@ -78,8 +78,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var iosTransitionAnimation = function () { return __webpack_require__.e(/*! import() | ios-transition-071bd421-js */ "ios-transition-071bd421-js").then(__webpack_require__.bind(null, /*! ./ios.transition-071bd421.js */ "./node_modules/@ionic/core/dist/esm-es5/ios.transition-071bd421.js")); };
-var mdTransitionAnimation = function () { return __webpack_require__.e(/*! import() | md-transition-15a81b08-js */ "md-transition-15a81b08-js").then(__webpack_require__.bind(null, /*! ./md.transition-15a81b08.js */ "./node_modules/@ionic/core/dist/esm-es5/md.transition-15a81b08.js")); };
+var iosTransitionAnimation = function () { return __webpack_require__.e(/*! import() */ 96).then(__webpack_require__.bind(null, /*! ./ios.transition-071bd421.js */ "./node_modules/@ionic/core/dist/esm-es5/ios.transition-071bd421.js")); };
+var mdTransitionAnimation = function () { return __webpack_require__.e(/*! import() */ 97).then(__webpack_require__.bind(null, /*! ./md.transition-15a81b08.js */ "./node_modules/@ionic/core/dist/esm-es5/md.transition-15a81b08.js")); };
 var transition = function (opts) {
     return new Promise(function (resolve, reject) {
         Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () {
@@ -170,7 +170,7 @@ var animation = function (animationBuilder, opts) { return Object(tslib__WEBPACK
                 _a.label = 2;
             case 2:
                 _a.trys.push([2, 5, , 6]);
-                return [4 /*yield*/, __webpack_require__.e(/*! import() | index-69c37885-js */ "index-69c37885-js").then(__webpack_require__.bind(null, /*! ./index-69c37885.js */ "./node_modules/@ionic/core/dist/esm-es5/index-69c37885.js"))];
+                return [4 /*yield*/, __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ./index-69c37885.js */ "./node_modules/@ionic/core/dist/esm-es5/index-69c37885.js"))];
             case 3:
                 mod = _a.sent();
                 return [4 /*yield*/, mod.create(animationBuilder, opts.baseEl, opts)];

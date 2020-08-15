@@ -53,28 +53,34 @@ export class PremiumAccountPaymentComponent implements OnInit {
       console.log(obj);
       this.isDisable = true;
       this.loading = true;
-      this._tripService.addInquiry(obj).subscribe((res: any) => {
-        this.isDisable = false;
-        this.loading = false;
-        console.log("inquiry form res", res);
-        localStorage.removeItem('form_data');
-        localStorage.removeItem('selectedFormCategory');
-        this.appComponent.sucessAlert("We got your money!!", "WoW")
-        this.router.navigate(['/home']);
-      }, (err) => {
-        this.appComponent.errorAlert(err.error.message);
-        this.isDisable = false;
-        this.loading = false;
-        console.log(err);
-        localStorage.removeItem('form_data');
-        localStorage.removeItem('selectedFormCategory');
-      })
+      // this._tripService.addInquiry(obj).subscribe((res: any) => {
+      //   this.isDisable = false;
+      //   this.loading = false;
+      //   console.log("inquiry form res", res);
+      //   localStorage.removeItem('form_data');
+      //   localStorage.removeItem('selectedFormCategory');
+      //   this.appComponent.sucessAlert("We got your money!!", "WoW")
+      //   this.router.navigate(['/home']);
+      // }, (err) => {
+      //   this.appComponent.errorAlert(err.error.message);
+      //   this.isDisable = false;
+      //   this.loading = false;
+      //   console.log(err);
+      //   localStorage.removeItem('form_data');
+      //   localStorage.removeItem('selectedFormCategory');
+      // })
     } else {
       const data = {
         'other-details': this.destinationFormData
       }
       const array = [];
-      array.push(this.destinationFormData)
+      array.push(this.destinationFormData);
+
+      const formData = new FormData();
+      formData.append('id', this.currentUser.id);
+      formData.append('place_name', JSON.parse(localStorage.getItem('place_name')));
+      formData.append('form_data', JSON.stringify(array));
+
       obj = {
         id: this.currentUser.id,
         destination_id: this.destinationId,
@@ -83,7 +89,7 @@ export class PremiumAccountPaymentComponent implements OnInit {
       console.log(obj);
       this.loading = true;
       this.isDisable = true;
-      this._tripService.addDestinationOtherFormData(obj).subscribe((res: any) => {
+      this._tripService.addDestinationInquiry(formData).subscribe((res: any) => {
         console.log("res", res);
         this.loading = false;
         this.isDisable = false;
@@ -95,6 +101,22 @@ export class PremiumAccountPaymentComponent implements OnInit {
         this.loading = false;
         console.log(err);
       })
+
+
+
+
+      // this._tripService.addDestinationOtherFormData(obj).subscribe((res: any) => {
+      //   console.log("res", res);
+      //   this.loading = false;
+      //   this.isDisable = false;
+      //   this.appComponent.sucessAlert("We got your money!!", "WoW")
+      //   this.router.navigate(['/home']);
+      // }, (err) => {
+      //   this.appComponent.errorAlert(err.error.message);
+      //   this.isDisable = false;
+      //   this.loading = false;
+      //   console.log(err);
+      // })
     }
 
   }

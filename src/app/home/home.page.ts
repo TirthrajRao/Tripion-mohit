@@ -43,12 +43,12 @@ export class HomePage {
         iconSrc: 'assets/images/3.png'
       },
       {
-        title: 'Amendments',
+        title: 'Support',
         url: '/home/amendments',
         iconSrc: 'assets/images/4.png'
       },
       {
-        title:'General Quotation',
+        title:'Quotations',
         url: '/home/general-quatation',
         iconSrc: 'assets/images/quote.png'
       },

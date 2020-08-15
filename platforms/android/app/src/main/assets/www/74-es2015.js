@@ -1,150 +1,211 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[74],{
 
-/***/ "./node_modules/@ionic/core/dist/esm/ion-textarea-ios.entry.js":
+/***/ "./node_modules/@ionic/core/dist/esm/ion-searchbar-md.entry.js":
 /*!*********************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/ion-textarea-ios.entry.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm/ion-searchbar-md.entry.js ***!
   \*********************************************************************/
-/*! exports provided: ion_textarea */
+/*! exports provided: ion_searchbar */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_textarea", function() { return Textarea; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_searchbar", function() { return Searchbar; });
 /* harmony import */ var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-ca0488fc.js */ "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
 /* harmony import */ var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config-3c7f3790.js */ "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
 /* harmony import */ var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers-46f4a262.js */ "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
 /* harmony import */ var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./theme-18cbe2cc.js */ "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
+/* harmony import */ var _index_3476b023_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./index-3476b023.js */ "./node_modules/@ionic/core/dist/esm/index-3476b023.js");
 
 
 
 
 
-const Textarea = class {
+
+const Searchbar = class {
     constructor(hostRef) {
         Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        this.inputId = `ion-input-${textareaIds++}`;
-        this.didBlurAfterEdit = false;
-        this.hasFocus = false;
+        this.isCancelVisible = false;
+        this.shouldAlignLeft = true;
+        this.focused = false;
+        this.noAnimate = true;
         /**
-         * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+         * If `true`, enable searchbar animation.
          */
-        this.autocapitalize = 'none';
+        this.animated = false;
         /**
-         * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         * Set the input's autocomplete property.
          */
-        this.autofocus = false;
+        this.autocomplete = 'off';
         /**
-         * If `true`, the value will be cleared after focus upon edit. Defaults to `true` when `type` is `"password"`, `false` for all other types.
+         * Set the input's autocorrect property.
          */
-        this.clearOnEdit = false;
+        this.autocorrect = 'off';
+        /**
+         * Set the cancel button icon. Only applies to `md` mode.
+         */
+        this.cancelButtonIcon = 'md-arrow-back';
+        /**
+         * Set the the cancel button text. Only applies to `ios` mode.
+         */
+        this.cancelButtonText = 'Cancel';
         /**
          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke.
          */
-        this.debounce = 0;
+        this.debounce = 250;
         /**
-         * If `true`, the user cannot interact with the textarea.
+         * If `true`, the user cannot interact with the input.
          */
         this.disabled = false;
         /**
-         * The name of the control, which is submitted with the form data.
+         * A hint to the browser for which keyboard to display.
+         * Possible values: `"none"`, `"text"`, `"tel"`, `"url"`,
+         * `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
-        this.name = this.inputId;
+        this.inputmode = 'search';
         /**
-         * If `true`, the user cannot modify the value.
+         * Set the input's placeholder.
+         * `placeholder` can accept either plaintext or HTML as a string.
+         * To display characters normally reserved for HTML, they
+         * must be escaped. For example `<Ionic>` would become
+         * `&lt;Ionic&gt;`
+         *
+         * For more information: [Security Documentation](https://ionicframework.com/docs/faq/security)
          */
-        this.readonly = false;
+        this.placeholder = 'Search';
         /**
-         * If `true`, the user must fill in a value before submitting a form.
+         * The icon to use as the search icon.
          */
-        this.required = false;
+        this.searchIcon = 'search';
         /**
-         * If `true`, the element will have its spelling and grammar checked.
+         * Sets the behavior for the cancel button. Defaults to `"never"`.
+         * Setting to `"focus"` shows the cancel button on focus.
+         * Setting to `"never"` hides the cancel button.
+         * Setting to `"always"` shows the cancel button regardless
+         * of focus state.
+         */
+        this.showCancelButton = 'never';
+        /**
+         * If `true`, enable spellcheck on the input.
          */
         this.spellcheck = false;
         /**
-         * If `true`, the element height will increase based on the value.
+         * Set the type of the input.
          */
-        this.autoGrow = false;
+        this.type = 'search';
         /**
-         * The value of the textarea.
+         * the value of the searchbar.
          */
         this.value = '';
-        this.onInput = (ev) => {
-            if (this.nativeInput) {
-                this.value = this.nativeInput.value;
+        /**
+         * Clears the input field and triggers the control change.
+         */
+        this.onClearInput = (ev) => {
+            this.ionClear.emit();
+            if (ev) {
+                ev.preventDefault();
+                ev.stopPropagation();
             }
-            this.emitStyle();
+            // setTimeout() fixes https://github.com/ionic-team/ionic/issues/7527
+            // wait for 4 frames
+            setTimeout(() => {
+                const value = this.getValue();
+                if (value !== '') {
+                    this.value = '';
+                    this.ionInput.emit();
+                }
+            }, 16 * 4);
+        };
+        /**
+         * Clears the input field and tells the input to blur since
+         * the clearInput function doesn't want the input to blur
+         * then calls the custom cancel function if the user passed one in.
+         */
+        this.onCancelSearchbar = (ev) => {
+            if (ev) {
+                ev.preventDefault();
+                ev.stopPropagation();
+            }
+            this.ionCancel.emit();
+            this.onClearInput();
+            if (this.nativeInput) {
+                this.nativeInput.blur();
+            }
+        };
+        /**
+         * Update the Searchbar input value when the input changes
+         */
+        this.onInput = (ev) => {
+            const input = ev.target;
+            if (input) {
+                this.value = input.value;
+            }
             this.ionInput.emit(ev);
         };
-        this.onFocus = () => {
-            this.hasFocus = true;
-            this.focusChange();
-            this.ionFocus.emit();
-        };
+        /**
+         * Sets the Searchbar to not focused and checks if it should align left
+         * based on whether there is a value in the searchbar or not.
+         */
         this.onBlur = () => {
-            this.hasFocus = false;
-            this.focusChange();
+            this.focused = false;
             this.ionBlur.emit();
+            this.positionElements();
         };
-        this.onKeyDown = () => {
-            this.checkClearOnEdit();
+        /**
+         * Sets the Searchbar to focused and active on input focus.
+         */
+        this.onFocus = () => {
+            this.focused = true;
+            this.ionFocus.emit();
+            this.positionElements();
         };
-        this.ionChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionChange", 7);
         this.ionInput = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionInput", 7);
-        this.ionStyle = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionStyle", 7);
+        this.ionChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionChange", 7);
+        this.ionCancel = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionCancel", 7);
+        this.ionClear = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionClear", 7);
         this.ionBlur = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
         this.ionFocus = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
+        this.ionStyle = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionStyle", 7);
     }
     debounceChanged() {
         this.ionChange = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["d"])(this.ionChange, this.debounce);
     }
-    disabledChanged() {
-        this.emitStyle();
-    }
-    /**
-     * Update the native input element when the value changes
-     */
     valueChanged() {
-        const nativeInput = this.nativeInput;
+        const inputEl = this.nativeInput;
         const value = this.getValue();
-        if (nativeInput && nativeInput.value !== value) {
-            nativeInput.value = value;
+        if (inputEl && inputEl.value !== value) {
+            inputEl.value = value;
         }
-        this.runAutoGrow();
-        this.emitStyle();
         this.ionChange.emit({ value });
+    }
+    showCancelButtonChanged() {
+        requestAnimationFrame(() => {
+            this.positionElements();
+            this.el.forceUpdate();
+        });
     }
     connectedCallback() {
         this.emitStyle();
-        this.debounceChanged();
-        {
-            this.el.dispatchEvent(new CustomEvent('ionInputDidLoad', {
-                detail: this.el
-            }));
-        }
-    }
-    disconnectedCallback() {
-        {
-            document.dispatchEvent(new CustomEvent('ionInputDidUnload', {
-                detail: this.el
-            }));
-        }
     }
     componentDidLoad() {
-        this.runAutoGrow();
-    }
-    // TODO: performance hit, this cause layout thrashing
-    runAutoGrow() {
-        const nativeInput = this.nativeInput;
-        if (nativeInput && this.autoGrow) {
-            Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["f"])(() => {
-                nativeInput.style.height = 'inherit';
-                nativeInput.style.height = nativeInput.scrollHeight + 'px';
-            });
+        if (this.showCancelButton === 'false' || this.showCancelButton === false) {
+            console.warn('The boolean values of showCancelButton are deprecated. Please use "never" instead of "false".');
         }
+        if (this.showCancelButton === '' || this.showCancelButton === 'true' || this.showCancelButton === true) {
+            console.warn('The boolean values of showCancelButton are deprecated. Please use "focus" instead of "true".');
+        }
+        this.positionElements();
+        this.debounceChanged();
+        setTimeout(() => {
+            this.noAnimate = false;
+        }, 300);
+    }
+    emitStyle() {
+        this.ionStyle.emit({
+            'searchbar': true
+        });
     }
     /**
-     * Sets focus on the specified `ion-textarea`. Use this method instead of the global
+     * Sets focus on the specified `ion-searchbar`. Use this method instead of the global
      * `input.focus()`.
      */
     async setFocus() {
@@ -153,69 +214,160 @@ const Textarea = class {
         }
     }
     /**
-     * Returns the native `<textarea>` element used under the hood.
+     * Returns the native `<input>` element used under the hood.
      */
     getInputElement() {
         return Promise.resolve(this.nativeInput);
     }
-    emitStyle() {
-        this.ionStyle.emit({
-            'interactive': true,
-            'textarea': true,
-            'input': true,
-            'interactive-disabled': this.disabled,
-            'has-placeholder': this.placeholder != null,
-            'has-value': this.hasValue(),
-            'has-focus': this.hasFocus
-        });
-    }
     /**
-     * Check if we need to clear the text input if clearOnEdit is enabled
+     * Positions the input search icon, placeholder, and the cancel button
+     * based on the input value and if it is focused. (ios only)
      */
-    checkClearOnEdit() {
-        if (!this.clearOnEdit) {
+    positionElements() {
+        const value = this.getValue();
+        const prevAlignLeft = this.shouldAlignLeft;
+        const mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+        const shouldAlignLeft = (!this.animated || value.trim() !== '' || !!this.focused);
+        this.shouldAlignLeft = shouldAlignLeft;
+        if (mode !== 'ios') {
             return;
         }
-        // Did the input value change after it was blurred and edited?
-        if (this.didBlurAfterEdit && this.hasValue()) {
-            // Clear the input
-            this.value = '';
+        if (prevAlignLeft !== shouldAlignLeft) {
+            this.positionPlaceholder();
         }
-        // Reset the flag
-        this.didBlurAfterEdit = false;
-    }
-    focusChange() {
-        // If clearOnEdit is enabled and the input blurred but has a value, set a flag
-        if (this.clearOnEdit && !this.hasFocus && this.hasValue()) {
-            this.didBlurAfterEdit = true;
+        if (this.animated) {
+            this.positionCancelButton();
         }
-        this.emitStyle();
     }
-    hasValue() {
-        return this.getValue() !== '';
+    /**
+     * Positions the input placeholder
+     */
+    positionPlaceholder() {
+        const inputEl = this.nativeInput;
+        if (!inputEl) {
+            return;
+        }
+        const isRTL = document.dir === 'rtl';
+        const iconEl = (this.el.shadowRoot || this.el).querySelector('.searchbar-search-icon');
+        if (this.shouldAlignLeft) {
+            inputEl.removeAttribute('style');
+            iconEl.removeAttribute('style');
+        }
+        else {
+            // Create a dummy span to get the placeholder width
+            const doc = document;
+            const tempSpan = doc.createElement('span');
+            tempSpan.innerHTML = Object(_index_3476b023_js__WEBPACK_IMPORTED_MODULE_4__["s"])(this.placeholder) || '';
+            doc.body.appendChild(tempSpan);
+            // Get the width of the span then remove it
+            const textWidth = tempSpan.offsetWidth;
+            tempSpan.remove();
+            // Calculate the input padding
+            const inputLeft = 'calc(50% - ' + (textWidth / 2) + 'px)';
+            // Calculate the icon margin
+            const iconLeft = 'calc(50% - ' + ((textWidth / 2) + 30) + 'px)';
+            // Set the input padding start and icon margin start
+            if (isRTL) {
+                inputEl.style.paddingRight = inputLeft;
+                iconEl.style.marginRight = iconLeft;
+            }
+            else {
+                inputEl.style.paddingLeft = inputLeft;
+                iconEl.style.marginLeft = iconLeft;
+            }
+        }
+    }
+    /**
+     * Show the iOS Cancel button on focus, hide it offscreen otherwise
+     */
+    positionCancelButton() {
+        const isRTL = document.dir === 'rtl';
+        const cancelButton = (this.el.shadowRoot || this.el).querySelector('.searchbar-cancel-button');
+        const shouldShowCancel = this.shouldShowCancelButton();
+        if (cancelButton && shouldShowCancel !== this.isCancelVisible) {
+            const cancelStyle = cancelButton.style;
+            this.isCancelVisible = shouldShowCancel;
+            if (shouldShowCancel) {
+                if (isRTL) {
+                    cancelStyle.marginLeft = '0';
+                }
+                else {
+                    cancelStyle.marginRight = '0';
+                }
+            }
+            else {
+                const offset = cancelButton.offsetWidth;
+                if (offset > 0) {
+                    if (isRTL) {
+                        cancelStyle.marginLeft = -offset + 'px';
+                    }
+                    else {
+                        cancelStyle.marginRight = -offset + 'px';
+                    }
+                }
+            }
+        }
     }
     getValue() {
         return this.value || '';
     }
-    render() {
-        const mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
-        const value = this.getValue();
-        const labelId = this.inputId + '-lbl';
-        const label = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["f"])(this.el);
-        if (label) {
-            label.id = labelId;
+    hasValue() {
+        return this.getValue() !== '';
+    }
+    /**
+     * Determines whether or not the cancel button should be visible onscreen.
+     * Cancel button should be shown if one of two conditions applies:
+     * 1. `showCancelButton` is set to `always`.
+     * 2. `showCancelButton` is set to `focus`, and the searchbar has been focused.
+     */
+    shouldShowCancelButton() {
+        if (isCancelButtonSetToNever(this.showCancelButton) ||
+            (isCancelButtonSetToFocus(this.showCancelButton) && !this.focused)) {
+            return false;
         }
-        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], { "aria-disabled": this.disabled ? 'true' : null, class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color)), { [mode]: true }) }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("textarea", { class: "native-textarea", ref: el => this.nativeInput = el, autoCapitalize: this.autocapitalize, autoFocus: this.autofocus, disabled: this.disabled, maxLength: this.maxlength, minLength: this.minlength, name: this.name, placeholder: this.placeholder || '', readOnly: this.readonly, required: this.required, spellCheck: this.spellcheck, cols: this.cols, rows: this.rows, wrap: this.wrap, onInput: this.onInput, onBlur: this.onBlur, onFocus: this.onFocus, onKeyDown: this.onKeyDown }, value)));
+        return true;
+    }
+    render() {
+        const animated = this.animated && _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].getBoolean('animated', true);
+        const mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+        const clearIcon = this.clearIcon || (mode === 'ios' ? 'ios-close-circle' : 'md-close');
+        const searchIcon = this.searchIcon;
+        const cancelButton = !isCancelButtonSetToNever(this.showCancelButton) && (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", { "aria-label": "cancel", type: "button", tabIndex: mode === 'ios' && !this.shouldShowCancelButton() ? -1 : undefined, onMouseDown: this.onCancelSearchbar, onTouchStart: this.onCancelSearchbar, class: "searchbar-cancel-button" }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", null, mode === 'md'
+            ? Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", { "aria-hidden": "true", mode: mode, icon: this.cancelButtonIcon, lazy: false })
+            : this.cancelButtonText)));
+        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], { role: "search", "aria-disabled": this.disabled ? 'true' : null, class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color)), { [mode]: true, 'searchbar-animated': animated, 'searchbar-disabled': this.disabled, 'searchbar-no-animate': animated && this.noAnimate, 'searchbar-has-value': this.hasValue(), 'searchbar-left-aligned': this.shouldAlignLeft, 'searchbar-has-focus': this.focused, 'searchbar-should-show-cancel': this.shouldShowCancelButton() }) }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "searchbar-input-container" }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("input", { "aria-label": "search text", disabled: this.disabled, ref: el => this.nativeInput = el, class: "searchbar-input", inputMode: this.inputmode, onInput: this.onInput, onBlur: this.onBlur, onFocus: this.onFocus, placeholder: this.placeholder, type: this.type, value: this.getValue(), autoComplete: this.autocomplete, autoCorrect: this.autocorrect, spellCheck: this.spellcheck }), mode === 'md' && cancelButton, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", { mode: mode, icon: searchIcon, lazy: false, class: "searchbar-search-icon" }), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", { "aria-label": "reset", type: "button", "no-blur": true, class: "searchbar-clear-button", onMouseDown: this.onClearInput, onTouchStart: this.onClearInput }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", { "aria-hidden": "true", mode: mode, icon: clearIcon, lazy: false, class: "searchbar-clear-icon" }))), mode === 'ios' && cancelButton));
     }
     get el() { return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); }
     static get watchers() { return {
         "debounce": ["debounceChanged"],
-        "disabled": ["disabledChanged"],
-        "value": ["valueChanged"]
+        "value": ["valueChanged"],
+        "showCancelButton": ["showCancelButtonChanged"]
     }; }
-    static get style() { return ".sc-ion-textarea-ios-h{--background:initial;--color:initial;--placeholder-color:initial;--placeholder-font-style:initial;--placeholder-font-weight:initial;--placeholder-opacity:.5;--padding-top:0;--padding-end:0;--padding-bottom:0;--border-radius:0;display:block;position:relative;-ms-flex:1;flex:1;width:100%;-webkit-box-sizing:border-box;box-sizing:border-box;background:var(--background);color:var(--color);font-family:var(--ion-font-family,inherit);white-space:pre-wrap;z-index:2}.ion-color.sc-ion-textarea-ios-h{background:initial;color:var(--ion-color-base)}ion-item.sc-ion-textarea-ios-h, ion-item .sc-ion-textarea-ios-h{-ms-flex-item-align:baseline;align-self:baseline}ion-item.sc-ion-textarea-ios-h:not(.item-label), ion-item:not(.item-label) .sc-ion-textarea-ios-h{--padding-start:0}.native-textarea.sc-ion-textarea-ios{border-radius:var(--border-radius);margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:var(--padding-start);padding-right:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;display:block;width:100%;max-width:100%;max-height:100%;border:0;outline:none;background:transparent;-webkit-box-sizing:border-box;box-sizing:border-box;resize:none;-webkit-appearance:none;-moz-appearance:none;appearance:none}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.native-textarea.sc-ion-textarea-ios{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end)}}.native-textarea.sc-ion-textarea-ios::-webkit-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-ios::-moz-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-ios:-ms-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-ios::-ms-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-ios::placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea[disabled].sc-ion-textarea-ios{opacity:.4}.cloned-input.sc-ion-textarea-ios{left:0;top:0;position:absolute;pointer-events:none}[dir=rtl].sc-ion-textarea-ios-h .cloned-input.sc-ion-textarea-ios, [dir=rtl] .sc-ion-textarea-ios-h .cloned-input.sc-ion-textarea-ios, [dir=rtl].sc-ion-textarea-ios .cloned-input.sc-ion-textarea-ios{left:unset;right:unset;right:0}.sc-ion-textarea-ios-h{--padding-top:10px;--padding-end:8px;--padding-bottom:10px;--padding-start:0;font-size:inherit}.item-label-floating.sc-ion-textarea-ios-h, .item-label-floating .sc-ion-textarea-ios-h, .item-label-stacked.sc-ion-textarea-ios-h, .item-label-stacked .sc-ion-textarea-ios-h{--padding-top:8px;--padding-bottom:8px;--padding-start:0px}"; }
+    static get style() { return ".sc-ion-searchbar-md-h{--placeholder-color:initial;--placeholder-font-style:initial;--placeholder-font-weight:initial;--placeholder-opacity:.5;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:-ms-flexbox;display:flex;position:relative;-ms-flex-align:center;align-items:center;width:100%;color:var(--color);font-family:var(--ion-font-family,inherit);-webkit-box-sizing:border-box;box-sizing:border-box}.ion-color.sc-ion-searchbar-md-h{color:var(--ion-color-contrast)}.ion-color.sc-ion-searchbar-md-h .searchbar-input.sc-ion-searchbar-md{background:var(--ion-color-base)}.ion-color.sc-ion-searchbar-md-h .searchbar-cancel-button.sc-ion-searchbar-md, .ion-color.sc-ion-searchbar-md-h .searchbar-clear-button.sc-ion-searchbar-md, .ion-color.sc-ion-searchbar-md-h .searchbar-search-icon.sc-ion-searchbar-md{color:inherit}.searchbar-search-icon.sc-ion-searchbar-md{color:var(--icon-color);pointer-events:none}.searchbar-input-container.sc-ion-searchbar-md{display:block;position:relative;-ms-flex-negative:1;flex-shrink:1;width:100%}.searchbar-input.sc-ion-searchbar-md{font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;-webkit-box-sizing:border-box;box-sizing:border-box;display:block;width:100%;border:0;outline:none;background:var(--background);font-family:inherit;-webkit-appearance:none;-moz-appearance:none;appearance:none}.searchbar-input.sc-ion-searchbar-md::-webkit-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.searchbar-input.sc-ion-searchbar-md::-moz-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.searchbar-input.sc-ion-searchbar-md:-ms-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.searchbar-input.sc-ion-searchbar-md::-ms-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.searchbar-input.sc-ion-searchbar-md::placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.searchbar-input.sc-ion-searchbar-md::-ms-clear, .searchbar-input.sc-ion-searchbar-md::-webkit-search-cancel-button{display:none}.searchbar-cancel-button.sc-ion-searchbar-md{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;display:none;height:100%;border:0;outline:none;color:var(--cancel-button-color);cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none}.searchbar-cancel-button.sc-ion-searchbar-md > div.sc-ion-searchbar-md{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%}.searchbar-clear-button.sc-ion-searchbar-md{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;display:none;min-height:0;outline:none;color:var(--clear-button-color);-webkit-appearance:none;-moz-appearance:none;appearance:none}.searchbar-has-value.searchbar-has-focus.sc-ion-searchbar-md-h .searchbar-clear-button.sc-ion-searchbar-md{display:block}.searchbar-disabled.sc-ion-searchbar-md-h{cursor:default;opacity:.4;pointer-events:none}.sc-ion-searchbar-md-h{--clear-button-color:initial;--cancel-button-color:var(--ion-color-step-900,#1a1a1a);--color:var(--ion-color-step-850,#262626);--icon-color:var(--ion-color-step-600,#666);--background:var(--ion-background-color,#fff);padding-left:8px;padding-right:8px;padding-top:8px;padding-bottom:8px;background:inherit}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.sc-ion-searchbar-md-h{padding-left:unset;padding-right:unset;-webkit-padding-start:8px;padding-inline-start:8px;-webkit-padding-end:8px;padding-inline-end:8px}}.searchbar-search-icon.sc-ion-searchbar-md{left:16px;top:11px;width:21px;height:21px}[dir=rtl].sc-ion-searchbar-md-h .searchbar-search-icon.sc-ion-searchbar-md, [dir=rtl] .sc-ion-searchbar-md-h .searchbar-search-icon.sc-ion-searchbar-md, [dir=rtl].sc-ion-searchbar-md .searchbar-search-icon.sc-ion-searchbar-md{left:unset;right:unset;right:16px}.searchbar-cancel-button.sc-ion-searchbar-md{left:5px;top:0;background-color:transparent;font-size:1.6em}[dir=rtl].sc-ion-searchbar-md-h .searchbar-cancel-button.sc-ion-searchbar-md, [dir=rtl] .sc-ion-searchbar-md-h .searchbar-cancel-button.sc-ion-searchbar-md, [dir=rtl].sc-ion-searchbar-md .searchbar-cancel-button.sc-ion-searchbar-md{left:unset;right:unset;right:5px}.searchbar-cancel-button.sc-ion-searchbar-md, .searchbar-search-icon.sc-ion-searchbar-md{position:absolute}.searchbar-cancel-button.activated.sc-ion-searchbar-md, .searchbar-search-icon.activated.sc-ion-searchbar-md{background-color:transparent}.searchbar-input.sc-ion-searchbar-md{padding-left:55px;padding-right:55px;padding-top:6px;padding-bottom:6px;border-radius:2px;background-position:left 8px center;height:auto;font-size:16px;font-weight:400;line-height:30px;-webkit-box-shadow:0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);box-shadow:0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12)}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.searchbar-input.sc-ion-searchbar-md{padding-left:unset;padding-right:unset;-webkit-padding-start:55px;padding-inline-start:55px;-webkit-padding-end:55px;padding-inline-end:55px}}[dir=rtl].sc-ion-searchbar-md-h .searchbar-input.sc-ion-searchbar-md, [dir=rtl] .sc-ion-searchbar-md-h .searchbar-input.sc-ion-searchbar-md, [dir=rtl].sc-ion-searchbar-md .searchbar-input.sc-ion-searchbar-md{background-position:right 8px center}.searchbar-clear-button.sc-ion-searchbar-md{right:13px;top:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;position:absolute;height:100%;border:0;background-color:transparent}[dir=rtl].sc-ion-searchbar-md-h .searchbar-clear-button.sc-ion-searchbar-md, [dir=rtl] .sc-ion-searchbar-md-h .searchbar-clear-button.sc-ion-searchbar-md, [dir=rtl].sc-ion-searchbar-md .searchbar-clear-button.sc-ion-searchbar-md{left:unset;right:unset;left:13px}.searchbar-clear-button.activated.sc-ion-searchbar-md{background-color:transparent}.searchbar-clear-icon.sc-ion-searchbar-md{width:22px;height:100%}.searchbar-has-focus.sc-ion-searchbar-md-h .searchbar-cancel-button.sc-ion-searchbar-md, .searchbar-has-focus.sc-ion-searchbar-md-h .searchbar-search-icon.sc-ion-searchbar-md, .searchbar-should-show-cancel.sc-ion-searchbar-md-h .searchbar-cancel-button.sc-ion-searchbar-md{display:block}.searchbar-has-focus.sc-ion-searchbar-md-h .searchbar-cancel-button.sc-ion-searchbar-md + .searchbar-search-icon.sc-ion-searchbar-md, .searchbar-should-show-cancel.sc-ion-searchbar-md-h .searchbar-cancel-button.sc-ion-searchbar-md + .searchbar-search-icon.sc-ion-searchbar-md{display:none}ion-toolbar.sc-ion-searchbar-md-h, ion-toolbar .sc-ion-searchbar-md-h{padding-left:7px;padding-right:7px;padding-top:3px;padding-bottom:3px}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){ion-toolbar.sc-ion-searchbar-md-h, ion-toolbar .sc-ion-searchbar-md-h{padding-left:unset;padding-right:unset;-webkit-padding-start:7px;padding-inline-start:7px;-webkit-padding-end:7px;padding-inline-end:7px}}"; }
 };
-let textareaIds = 0;
+/**
+ * Check if the cancel button should never be shown.
+ *
+ * TODO: Remove this when the `true` and `false`
+ * options are removed.
+ */
+const isCancelButtonSetToNever = (showCancelButton) => {
+    return (showCancelButton === 'never' ||
+        showCancelButton === 'false' ||
+        showCancelButton === false);
+};
+/**
+ * Check if the cancel button should be shown on focus.
+ *
+ * TODO: Remove this when the `true` and `false`
+ * options are removed.
+ */
+const isCancelButtonSetToFocus = (showCancelButton) => {
+    return (showCancelButton === 'focus' ||
+        showCancelButton === 'true' ||
+        showCancelButton === true ||
+        showCancelButton === '');
+};
 
 
 

@@ -1,43 +1,71 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[3],{
 
-/***/ "./node_modules/@ionic-super-tabs/core/dist/esm-es5/super-tab-indicator.entry.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/@ionic-super-tabs/core/dist/esm-es5/super-tab-indicator.entry.js ***!
-  \***************************************************************************************/
-/*! exports provided: super_tab_indicator */
+/***/ "./node_modules/@ionic/core/dist/esm-es5/hardware-back-button-5afe3cb0.js":
+/*!********************************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm-es5/hardware-back-button-5afe3cb0.js ***!
+  \********************************************************************************/
+/*! exports provided: startHardwareBackButton */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "super_tab_indicator", function() { return SuperTabIndicatorComponent; });
-/* harmony import */ var _core_4ed83284_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-4ed83284.js */ "./node_modules/@ionic-super-tabs/core/dist/esm-es5/core-4ed83284.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "startHardwareBackButton", function() { return startHardwareBackButton; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 
-var SuperTabIndicatorComponent = /** @class */ (function () {
-    function SuperTabIndicatorComponent(hostRef) {
-        Object(_core_4ed83284_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        /**
-         * Toolbar position
-         * This determines the position of the indicator
-         */
-        this.toolbarPosition = 'top';
-    }
-    SuperTabIndicatorComponent.prototype.render = function () {
-        var style = {};
-        if (this.toolbarPosition === 'bottom') {
-            style.top = 0;
+var startHardwareBackButton = function () {
+    var doc = document;
+    var busy = false;
+    doc.addEventListener('backbutton', function () {
+        if (busy) {
+            return;
         }
-        else {
-            style.bottom = 0;
+        var handlers = [];
+        var ev = new CustomEvent('ionBackButton', {
+            bubbles: false,
+            detail: {
+                register: function (priority, handler) {
+                    handlers.push({ priority: priority, handler: handler });
+                }
+            }
+        });
+        doc.dispatchEvent(ev);
+        if (handlers.length > 0) {
+            var selectedPriority_1 = Number.MIN_SAFE_INTEGER;
+            var selectedHandler_1;
+            handlers.forEach(function (_a) {
+                var priority = _a.priority, handler = _a.handler;
+                if (priority >= selectedPriority_1) {
+                    selectedPriority_1 = priority;
+                    selectedHandler_1 = handler;
+                }
+            });
+            busy = true;
+            executeAction(selectedHandler_1).then(function () { return busy = false; });
         }
-        return (Object(_core_4ed83284_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_4ed83284_js__WEBPACK_IMPORTED_MODULE_0__["H"], { style: style }));
-    };
-    Object.defineProperty(SuperTabIndicatorComponent, "style", {
-        get: function () { return ":host{display:block;height:var(--st-indicator-height,2px);width:100px;background:var(--st-indicator-color,var(--ion-color-contrast,#fff));position:absolute;pointer-events:none;-ms-touch-action:none;touch-action:none;left:0;-webkit-transform-origin:0;transform-origin:0;-webkit-transform:translate3d(var(--st-indicator-position-x,0),0,0) scaleX(var(--st-indicator-scale-x,0));transform:translate3d(var(--st-indicator-position-x,0),0,0) scaleX(var(--st-indicator-scale-x,0));-webkit-transition:-webkit-transform var(--st-indicator-transition-duration,.3s) cubic-bezier(.4,0,.2,1);transition:-webkit-transform var(--st-indicator-transition-duration,.3s) cubic-bezier(.4,0,.2,1);transition:transform var(--st-indicator-transition-duration,.3s) cubic-bezier(.4,0,.2,1);transition:transform var(--st-indicator-transition-duration,.3s) cubic-bezier(.4,0,.2,1),-webkit-transform var(--st-indicator-transition-duration,.3s) cubic-bezier(.4,0,.2,1);will-change:transform;-webkit-box-sizing:border-box;box-sizing:border-box;-ms-flex-order:-1;order:-1;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-font-smoothing:antialiased}"; },
-        enumerable: true,
-        configurable: true
     });
-    return SuperTabIndicatorComponent;
-}());
+};
+var executeAction = function (handler) { return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 0, void 0, void 0, function () {
+    var result, e_1;
+    return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 3, , 4]);
+                if (!handler) return [3 /*break*/, 2];
+                result = handler();
+                if (!(result != null)) return [3 /*break*/, 2];
+                return [4 /*yield*/, result];
+            case 1:
+                _a.sent();
+                _a.label = 2;
+            case 2: return [3 /*break*/, 4];
+            case 3:
+                e_1 = _a.sent();
+                console.error(e_1);
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
+        }
+    });
+}); };
 
 
 

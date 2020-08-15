@@ -1,345 +1,483 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[56],{
 
-/***/ "./node_modules/@ionic/core/dist/esm-es5/ion-refresher_2-md.entry.js":
-/*!***************************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm-es5/ion-refresher_2-md.entry.js ***!
-  \***************************************************************************/
-/*! exports provided: ion_refresher, ion_refresher_content */
+/***/ "./node_modules/@ionic/core/dist/esm-es5/ion-menu_4-ios.entry.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm-es5/ion-menu_4-ios.entry.js ***!
+  \***********************************************************************/
+/*! exports provided: ion_menu, ion_menu_button, ion_menu_controller, ion_menu_toggle */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_refresher", function() { return Refresher; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_refresher_content", function() { return RefresherContent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_menu", function() { return Menu; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_menu_button", function() { return MenuButton; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_menu_controller", function() { return MenuController; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_menu_toggle", function() { return MenuToggle; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core-ca0488fc.js */ "./node_modules/@ionic/core/dist/esm-es5/core-ca0488fc.js");
 /* harmony import */ var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config-3c7f3790.js */ "./node_modules/@ionic/core/dist/esm-es5/config-3c7f3790.js");
-/* harmony import */ var _index_3476b023_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index-3476b023.js */ "./node_modules/@ionic/core/dist/esm-es5/index-3476b023.js");
+/* harmony import */ var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers-46f4a262.js */ "./node_modules/@ionic/core/dist/esm-es5/helpers-46f4a262.js");
+/* harmony import */ var _animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./animation-af478fe9.js */ "./node_modules/@ionic/core/dist/esm-es5/animation-af478fe9.js");
+/* harmony import */ var _index_624eea58_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index-624eea58.js */ "./node_modules/@ionic/core/dist/esm-es5/index-624eea58.js");
+/* harmony import */ var _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./index-1e5940d5.js */ "./node_modules/@ionic/core/dist/esm-es5/index-1e5940d5.js");
+/* harmony import */ var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./theme-18cbe2cc.js */ "./node_modules/@ionic/core/dist/esm-es5/theme-18cbe2cc.js");
+/* harmony import */ var _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./cubic-bezier-2812fda3.js */ "./node_modules/@ionic/core/dist/esm-es5/cubic-bezier-2812fda3.js");
 
 
 
 
-var Refresher = /** @class */ (function () {
+
+
+
+
+
+var Menu = /** @class */ (function () {
     function class_1(hostRef) {
         Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
-        this.appliedStyles = false;
-        this.didStart = false;
-        this.progress = 0;
+        this.lastOnEnd = 0;
+        this.blocker = _index_624eea58_js__WEBPACK_IMPORTED_MODULE_5__["GESTURE_CONTROLLER"].createBlocker({ disableScroll: true });
+        this.mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
+        this.isAnimating = false;
+        this._isOpen = false;
+        this.isPaneVisible = false;
+        this.isEndSide = false;
         /**
-         * The current state which the refresher is in. The refresher's states include:
-         *
-         * - `inactive` - The refresher is not being pulled down or refreshing and is currently hidden.
-         * - `pulling` - The user is actively pulling down the refresher, but has not reached the point yet that if the user lets go, it'll refresh.
-         * - `cancelling` - The user pulled down the refresher and let go, but did not pull down far enough to kick off the `refreshing` state. After letting go, the refresher is in the `cancelling` state while it is closing, and will go back to the `inactive` state once closed.
-         * - `ready` - The user has pulled down the refresher far enough that if they let go, it'll begin the `refreshing` state.
-         * - `refreshing` - The refresher is actively waiting on the async operation to end. Once the refresh handler calls `complete()` it will begin the `completing` state.
-         * - `completing` - The `refreshing` state has finished and the refresher is in the way of closing itself. Once closed, the refresher will go back to the `inactive` state.
-         */
-        this.state = 1 /* Inactive */;
-        /**
-         * The minimum distance the user must pull down until the
-         * refresher will go into the `refreshing` state.
-         */
-        this.pullMin = 60;
-        /**
-         * The maximum distance of the pull until the refresher
-         * will automatically go into the `refreshing` state.
-         * Defaults to the result of `pullMin + 60`.
-         */
-        this.pullMax = this.pullMin + 60;
-        /**
-         * Time it takes to close the refresher.
-         */
-        this.closeDuration = '280ms';
-        /**
-         * Time it takes the refresher to to snap back to the `refreshing` state.
-         */
-        this.snapbackDuration = '280ms';
-        /**
-         * How much to multiply the pull speed by. To slow the pull animation down,
-         * pass a number less than `1`. To speed up the pull, pass a number greater
-         * than `1`. The default value is `1` which is equal to the speed of the cursor.
-         * If a negative value is passed in, the factor will be `1` instead.
-         *
-         * For example: If the value passed is `1.2` and the content is dragged by
-         * `10` pixels, instead of `10` pixels the content will be pulled by `12` pixels
-         * (an increase of 20 percent). If the value passed is `0.8`, the dragged amount
-         * will be `8` pixels, less than the amount the cursor has moved.
-         */
-        this.pullFactor = 1;
-        /**
-         * If `true`, the refresher will be hidden.
+         * If `true`, the menu is disabled.
          */
         this.disabled = false;
-        this.ionRefresh = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionRefresh", 7);
-        this.ionPull = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionPull", 7);
-        this.ionStart = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionStart", 7);
+        /**
+         * Which side of the view the menu should be placed.
+         */
+        this.side = 'start';
+        /**
+         * If `true`, swiping the menu is enabled.
+         */
+        this.swipeGesture = true;
+        /**
+         * The edge threshold for dragging the menu open.
+         * If a drag/swipe happens over this value, the menu is not triggered.
+         */
+        this.maxEdgeStart = 50;
+        this.ionWillOpen = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionWillOpen", 7);
+        this.ionWillClose = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionWillClose", 7);
+        this.ionDidOpen = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionDidOpen", 7);
+        this.ionDidClose = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionDidClose", 7);
+        this.ionMenuChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionMenuChange", 7);
     }
-    class_1.prototype.disabledChanged = function () {
-        if (this.gesture) {
-            this.gesture.setDisabled(this.disabled);
+    class_1.prototype.typeChanged = function (type, oldType) {
+        var contentEl = this.contentEl;
+        if (contentEl) {
+            if (oldType !== undefined) {
+                contentEl.classList.remove("menu-content-" + oldType);
+            }
+            contentEl.classList.add("menu-content-" + type);
+            contentEl.removeAttribute('style');
         }
+        if (this.menuInnerEl) {
+            // Remove effects of previous animations
+            this.menuInnerEl.removeAttribute('style');
+        }
+        this.animation = undefined;
+    };
+    class_1.prototype.disabledChanged = function () {
+        this.updateState();
+        this.ionMenuChange.emit({
+            disabled: this.disabled,
+            open: this._isOpen
+        });
+    };
+    class_1.prototype.sideChanged = function () {
+        this.isEndSide = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_3__["i"])(this.side);
+    };
+    class_1.prototype.swipeGestureChanged = function () {
+        this.updateState();
     };
     class_1.prototype.connectedCallback = function () {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
-            var contentEl, _a, _b;
+            var el, parent, content, _a;
             var _this = this;
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_c) {
-                switch (_c.label) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_b) {
+                switch (_b.label) {
                     case 0:
-                        if (this.el.getAttribute('slot') !== 'fixed') {
-                            console.error('Make sure you use: <ion-refresher slot="fixed">');
+                        if (this.type === undefined) {
+                            this.type = _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_2__["b"].get('menuType', this.mode === 'ios' ? 'reveal' : 'overlay');
+                        }
+                        el = this.el;
+                        parent = el.parentNode;
+                        if (this.contentId === undefined) {
+                            console.warn("[DEPRECATED][ion-menu] Using the [main] attribute is deprecated, please use the \"contentId\" property instead:\nBEFORE:\n  <ion-menu>...</ion-menu>\n  <div main>...</div>\n\nAFTER:\n  <ion-menu contentId=\"my-content\"></ion-menu>\n  <div id=\"my-content\">...</div>\n");
+                        }
+                        content = this.contentId !== undefined
+                            ? document.getElementById(this.contentId)
+                            : parent && parent.querySelector && parent.querySelector('[main]');
+                        if (!content || !content.tagName) {
+                            // requires content element
+                            console.error('Menu: must have a "content" element to listen for drag events on.');
                             return [2 /*return*/];
                         }
-                        contentEl = this.el.closest('ion-content');
-                        if (!contentEl) {
-                            console.error('<ion-refresher> must be used inside an <ion-content>');
-                            return [2 /*return*/];
-                        }
+                        this.contentEl = content;
+                        // add menu's content classes
+                        content.classList.add('menu-content');
+                        this.typeChanged(this.type, undefined);
+                        this.sideChanged();
+                        // register this menu with the app's menu controller
+                        _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_6__["m"]._register(this);
                         _a = this;
-                        return [4 /*yield*/, contentEl.getScrollElement()];
-                    case 1:
-                        _a.scrollEl = _c.sent();
-                        _b = this;
                         return [4 /*yield*/, Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./index-624eea58.js */ "./node_modules/@ionic/core/dist/esm-es5/index-624eea58.js"))];
-                    case 2:
-                        _b.gesture = (_c.sent()).createGesture({
-                            el: contentEl,
-                            gestureName: 'refresher',
-                            gesturePriority: 10,
-                            direction: 'y',
-                            threshold: 20,
-                            passive: false,
-                            canStart: function () { return _this.canStart(); },
+                    case 1:
+                        _a.gesture = (_b.sent()).createGesture({
+                            el: document,
+                            gestureName: 'menu-swipe',
+                            gesturePriority: 30,
+                            threshold: 10,
+                            canStart: function (ev) { return _this.canStart(ev); },
+                            onWillStart: function () { return _this.onWillStart(); },
                             onStart: function () { return _this.onStart(); },
                             onMove: function (ev) { return _this.onMove(ev); },
-                            onEnd: function () { return _this.onEnd(); },
+                            onEnd: function (ev) { return _this.onEnd(ev); },
                         });
-                        this.disabledChanged();
+                        this.updateState();
                         return [2 /*return*/];
                 }
             });
         });
     };
+    class_1.prototype.componentDidLoad = function () {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                this.ionMenuChange.emit({ disabled: this.disabled, open: this._isOpen });
+                this.updateState();
+                return [2 /*return*/];
+            });
+        });
+    };
     class_1.prototype.disconnectedCallback = function () {
-        this.scrollEl = undefined;
+        this.blocker.destroy();
+        _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_6__["m"]._unregister(this);
+        if (this.animation) {
+            this.animation.destroy();
+        }
         if (this.gesture) {
             this.gesture.destroy();
             this.gesture = undefined;
         }
+        this.animation = undefined;
+        this.contentEl = this.backdropEl = this.menuInnerEl = undefined;
+    };
+    class_1.prototype.onSplitPaneChanged = function (ev) {
+        this.isPaneVisible = ev.detail.isPane(this.el);
+        this.updateState();
+    };
+    class_1.prototype.onBackdropClick = function (ev) {
+        if (this._isOpen && this.lastOnEnd < ev.timeStamp - 100) {
+            var shouldClose = (ev.composedPath)
+                ? !ev.composedPath().includes(this.menuInnerEl)
+                : false;
+            if (shouldClose) {
+                ev.preventDefault();
+                ev.stopPropagation();
+                this.close();
+            }
+        }
     };
     /**
-     * Call `complete()` when your async operation has completed.
-     * For example, the `refreshing` state is while the app is performing
-     * an asynchronous operation, such as receiving more data from an
-     * AJAX request. Once the data has been received, you then call this
-     * method to signify that the refreshing has completed and to close
-     * the refresher. This method also changes the refresher's state from
-     * `refreshing` to `completing`.
+     * Returns `true` is the menu is open.
      */
-    class_1.prototype.complete = function () {
+    class_1.prototype.isOpen = function () {
+        return Promise.resolve(this._isOpen);
+    };
+    /**
+     * Returns `true` is the menu is active.
+     *
+     * A menu is active when it can be opened or closed, meaning it's enabled
+     * and it's not part of a `ion-split-pane`.
+     */
+    class_1.prototype.isActive = function () {
+        return Promise.resolve(this._isActive());
+    };
+    /**
+     * Opens the menu. If the menu is already open or it can't be opened,
+     * it returns `false`.
+     */
+    class_1.prototype.open = function (animated) {
+        if (animated === void 0) { animated = true; }
+        return this.setOpen(true, animated);
+    };
+    /**
+     * Closes the menu. If the menu is already closed or it can't be closed,
+     * it returns `false`.
+     */
+    class_1.prototype.close = function (animated) {
+        if (animated === void 0) { animated = true; }
+        return this.setOpen(false, animated);
+    };
+    /**
+     * Toggles the menu. If the menu is already open, it will try to close, otherwise it will try to open it.
+     * If the operation can't be completed successfully, it returns `false`.
+     */
+    class_1.prototype.toggle = function (animated) {
+        if (animated === void 0) { animated = true; }
+        return this.setOpen(!this._isOpen, animated);
+    };
+    /**
+     * Opens or closes the button.
+     * If the operation can't be completed successfully, it returns `false`.
+     */
+    class_1.prototype.setOpen = function (shouldOpen, animated) {
+        if (animated === void 0) { animated = true; }
+        return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_6__["m"]._setOpen(this, shouldOpen, animated);
+    };
+    class_1.prototype._setOpen = function (shouldOpen, animated) {
+        if (animated === void 0) { animated = true; }
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
-                this.close(32 /* Completing */, '120ms');
-                return [2 /*return*/];
+                switch (_a.label) {
+                    case 0:
+                        // If the menu is disabled or it is currently being animated, let's do nothing
+                        if (!this._isActive() || this.isAnimating || shouldOpen === this._isOpen) {
+                            return [2 /*return*/, false];
+                        }
+                        this.beforeAnimation(shouldOpen);
+                        return [4 /*yield*/, this.loadAnimation()];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, this.startAnimation(shouldOpen, animated)];
+                    case 2:
+                        _a.sent();
+                        this.afterAnimation(shouldOpen);
+                        return [2 /*return*/, true];
+                }
             });
         });
     };
-    /**
-     * Changes the refresher's state from `refreshing` to `cancelling`.
-     */
-    class_1.prototype.cancel = function () {
+    class_1.prototype.loadAnimation = function () {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
-                this.close(16 /* Cancelling */, '');
-                return [2 /*return*/];
+            var width, _a;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        width = this.menuInnerEl.offsetWidth;
+                        if (width === this.width && this.animation !== undefined) {
+                            return [2 /*return*/];
+                        }
+                        this.width = width;
+                        // Destroy existing animation
+                        if (this.animation) {
+                            this.animation.destroy();
+                            this.animation = undefined;
+                        }
+                        // Create new animation
+                        _a = this;
+                        return [4 /*yield*/, _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_6__["m"]._createAnimation(this.type, this)];
+                    case 1:
+                        // Create new animation
+                        _a.animation = _b.sent();
+                        if (!_config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_2__["b"].getBoolean('animated', true)) {
+                            this.animation.duration(0);
+                        }
+                        this.animation.fill('both');
+                        return [2 /*return*/];
+                }
             });
         });
     };
-    /**
-     * A number representing how far down the user has pulled.
-     * The number `0` represents the user hasn't pulled down at all. The
-     * number `1`, and anything greater than `1`, represents that the user
-     * has pulled far enough down that when they let go then the refresh will
-     * happen. If they let go and the number is less than `1`, then the
-     * refresh will not happen, and the content will return to it's original
-     * position.
-     */
-    class_1.prototype.getProgress = function () {
-        return Promise.resolve(this.progress);
+    class_1.prototype.startAnimation = function (shouldOpen, animated) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var isReversed, ani;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        isReversed = !shouldOpen;
+                        ani = this.animation
+                            .direction((isReversed) ? 'reverse' : 'normal')
+                            .easing((isReversed) ? 'cubic-bezier(0.4, 0.0, 0.6, 1)' : 'cubic-bezier(0.0, 0.0, 0.2, 1)');
+                        if (!animated) return [3 /*break*/, 2];
+                        return [4 /*yield*/, ani.playAsync()];
+                    case 1:
+                        _a.sent();
+                        return [3 /*break*/, 3];
+                    case 2:
+                        ani.playSync();
+                        _a.label = 3;
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
     };
-    class_1.prototype.canStart = function () {
-        if (!this.scrollEl) {
+    class_1.prototype._isActive = function () {
+        return !this.disabled && !this.isPaneVisible;
+    };
+    class_1.prototype.canSwipe = function () {
+        return this.swipeGesture && !this.isAnimating && this._isActive();
+    };
+    class_1.prototype.canStart = function (detail) {
+        if (!this.canSwipe()) {
             return false;
         }
-        if (this.state !== 1 /* Inactive */) {
+        if (this._isOpen) {
+            return true;
+            // TODO error
+        }
+        else if (_index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_6__["m"]._getOpenSync()) {
             return false;
         }
-        // if the scrollTop is greater than zero then it's
-        // not possible to pull the content down yet
-        if (this.scrollEl.scrollTop > 0) {
-            return false;
-        }
-        return true;
+        return checkEdgeSide(window, detail.currentX, this.isEndSide, this.maxEdgeStart);
+    };
+    class_1.prototype.onWillStart = function () {
+        this.beforeAnimation(!this._isOpen);
+        return this.loadAnimation();
     };
     class_1.prototype.onStart = function () {
-        this.progress = 0;
-        this.state = 1 /* Inactive */;
+        if (!this.isAnimating || !this.animation) {
+            Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_3__["b"])(false, 'isAnimating has to be true');
+            return;
+        }
+        // the cloned animation should not use an easing curve during seek
+        this.animation
+            .direction((this._isOpen) ? 'reverse' : 'normal')
+            .progressStart(true);
     };
     class_1.prototype.onMove = function (detail) {
-        if (!this.scrollEl) {
+        if (!this.isAnimating || !this.animation) {
+            Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_3__["b"])(false, 'isAnimating has to be true');
             return;
         }
-        // this method can get called like a bazillion times per second,
-        // so it's built to be as efficient as possible, and does its
-        // best to do any DOM read/writes only when absolutely necessary
-        // if multi-touch then get out immediately
-        var ev = detail.event;
-        if (ev.touches && ev.touches.length > 1) {
-            return;
-        }
-        // do nothing if it's actively refreshing
-        // or it's in the way of closing
-        // or this was never a startY
-        if ((this.state & 56 /* _BUSY_ */) !== 0) {
-            return;
-        }
-        var pullFactor = (Number.isNaN(this.pullFactor) || this.pullFactor < 0) ? 1 : this.pullFactor;
-        var deltaY = detail.deltaY * pullFactor;
-        // don't bother if they're scrolling up
-        // and have not already started dragging
-        if (deltaY <= 0) {
-            // the current Y is higher than the starting Y
-            // so they scrolled up enough to be ignored
-            this.progress = 0;
-            this.state = 1 /* Inactive */;
-            if (this.appliedStyles) {
-                // reset the styles only if they were applied
-                this.setCss(0, '', false, '');
-                return;
-            }
-            return;
-        }
-        if (this.state === 1 /* Inactive */) {
-            // this refresh is not already actively pulling down
-            // get the content's scrollTop
-            var scrollHostScrollTop = this.scrollEl.scrollTop;
-            // if the scrollTop is greater than zero then it's
-            // not possible to pull the content down yet
-            if (scrollHostScrollTop > 0) {
-                this.progress = 0;
-                return;
-            }
-            // content scrolled all the way to the top, and dragging down
-            this.state = 2 /* Pulling */;
-        }
-        // prevent native scroll events
-        if (ev.cancelable) {
-            ev.preventDefault();
-        }
-        // the refresher is actively pulling at this point
-        // move the scroll element within the content element
-        this.setCss(deltaY, '0ms', true, '');
-        if (deltaY === 0) {
-            // don't continue if there's no delta yet
-            this.progress = 0;
-            return;
-        }
-        var pullMin = this.pullMin;
-        // set pull progress
-        this.progress = deltaY / pullMin;
-        // emit "start" if it hasn't started yet
-        if (!this.didStart) {
-            this.didStart = true;
-            this.ionStart.emit();
-        }
-        // emit "pulling" on every move
-        this.ionPull.emit();
-        // do nothing if the delta is less than the pull threshold
-        if (deltaY < pullMin) {
-            // ensure it stays in the pulling state, cuz its not ready yet
-            this.state = 2 /* Pulling */;
-            return;
-        }
-        if (deltaY > this.pullMax) {
-            // they pulled farther than the max, so kick off the refresh
-            this.beginRefresh();
-            return;
-        }
-        // pulled farther than the pull min!!
-        // it is now in the `ready` state!!
-        // if they let go then it'll refresh, kerpow!!
-        this.state = 4 /* Ready */;
-        return;
+        var delta = computeDelta(detail.deltaX, this._isOpen, this.isEndSide);
+        var stepValue = delta / this.width;
+        this.animation.progressStep(stepValue);
     };
-    class_1.prototype.onEnd = function () {
-        // only run in a zone when absolutely necessary
-        if (this.state === 4 /* Ready */) {
-            // they pulled down far enough, so it's ready to refresh
-            this.beginRefresh();
-        }
-        else if (this.state === 2 /* Pulling */) {
-            // they were pulling down, but didn't pull down far enough
-            // set the content back to it's original location
-            // and close the refresher
-            // set that the refresh is actively cancelling
-            this.cancel();
-        }
-    };
-    class_1.prototype.beginRefresh = function () {
-        // assumes we're already back in a zone
-        // they pulled down far enough, so it's ready to refresh
-        this.state = 8 /* Refreshing */;
-        // place the content in a hangout position while it thinks
-        this.setCss(this.pullMin, this.snapbackDuration, true, '');
-        // emit "refresh" because it was pulled down far enough
-        // and they let go to begin refreshing
-        this.ionRefresh.emit({
-            complete: this.complete.bind(this)
-        });
-    };
-    class_1.prototype.close = function (state, delay) {
+    class_1.prototype.onEnd = function (detail) {
         var _this = this;
-        // create fallback timer incase something goes wrong with transitionEnd event
-        setTimeout(function () {
-            _this.state = 1 /* Inactive */;
-            _this.progress = 0;
-            _this.didStart = false;
-            _this.setCss(0, '0ms', false, '');
-        }, 600);
-        // reset set the styles on the scroll element
-        // set that the refresh is actively cancelling/completing
-        this.state = state;
-        this.setCss(0, this.closeDuration, true, delay);
-        // TODO: stop gesture
+        if (!this.isAnimating || !this.animation) {
+            Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_3__["b"])(false, 'isAnimating has to be true');
+            return;
+        }
+        var isOpen = this._isOpen;
+        var isEndSide = this.isEndSide;
+        var delta = computeDelta(detail.deltaX, isOpen, isEndSide);
+        var width = this.width;
+        var stepValue = delta / width;
+        var velocity = detail.velocityX;
+        var z = width / 2.0;
+        var shouldCompleteRight = velocity >= 0 && (velocity > 0.2 || detail.deltaX > z);
+        var shouldCompleteLeft = velocity <= 0 && (velocity < -0.2 || detail.deltaX < -z);
+        var shouldComplete = isOpen
+            ? isEndSide ? shouldCompleteRight : shouldCompleteLeft
+            : isEndSide ? shouldCompleteLeft : shouldCompleteRight;
+        var shouldOpen = !isOpen && shouldComplete;
+        if (isOpen && !shouldComplete) {
+            shouldOpen = true;
+        }
+        this.lastOnEnd = detail.timeStamp;
+        // Account for rounding errors in JS
+        var newStepValue = (shouldComplete) ? 0.001 : -0.001;
+        /**
+         * TODO: stepValue can sometimes return a negative
+         * value, but you can't have a negative time value
+         * for the cubic bezier curve (at least with web animations)
+         * Not sure if the negative step value is an error or not
+         */
+        var adjustedStepValue = (stepValue <= 0) ? 0.01 : stepValue;
+        /**
+         * Animation will be reversed here, so need to
+         * reverse the easing curve as well
+         *
+         * Additionally, we need to account for the time relative
+         * to the new easing curve, as `stepValue` is going to be given
+         * in terms of a linear curve.
+         */
+        newStepValue += Object(_cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_8__["g"])(new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_8__["P"](0, 0), new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_8__["P"](0.4, 0), new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_8__["P"](0.6, 1), new _cubic_bezier_2812fda3_js__WEBPACK_IMPORTED_MODULE_8__["P"](1, 1), Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_3__["c"])(0, adjustedStepValue, 1));
+        this.animation
+            .easing('cubic-bezier(0.4, 0.0, 0.6, 1)')
+            .onFinish(function () { return _this.afterAnimation(shouldOpen); }, { oneTimeCallback: true })
+            .progressEnd(shouldComplete ? 1 : 0, newStepValue, 300);
     };
-    class_1.prototype.setCss = function (y, duration, overflowVisible, delay) {
-        var _this = this;
-        this.appliedStyles = (y > 0);
-        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () {
-            if (_this.scrollEl) {
-                var style = _this.scrollEl.style;
-                style.transform = ((y > 0) ? "translateY(" + y + "px) translateZ(0px)" : 'translateZ(0px)');
-                style.transitionDuration = duration;
-                style.transitionDelay = delay;
-                style.overflow = (overflowVisible ? 'hidden' : '');
+    class_1.prototype.beforeAnimation = function (shouldOpen) {
+        Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_3__["b"])(!this.isAnimating, '_before() should not be called while animating');
+        // this places the menu into the correct location before it animates in
+        // this css class doesn't actually kick off any animations
+        this.el.classList.add(SHOW_MENU);
+        if (this.backdropEl) {
+            this.backdropEl.classList.add(SHOW_BACKDROP);
+        }
+        this.blocker.block();
+        this.isAnimating = true;
+        if (shouldOpen) {
+            this.ionWillOpen.emit();
+        }
+        else {
+            this.ionWillClose.emit();
+        }
+    };
+    class_1.prototype.afterAnimation = function (isOpen) {
+        Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_3__["b"])(this.isAnimating, '_before() should be called while animating');
+        // keep opening/closing the menu disabled for a touch more yet
+        // only add listeners/css if it's enabled and isOpen
+        // and only remove listeners/css if it's not open
+        // emit opened/closed events
+        this._isOpen = isOpen;
+        this.isAnimating = false;
+        if (!this._isOpen) {
+            this.blocker.unblock();
+        }
+        if (isOpen) {
+            // add css class
+            if (this.contentEl) {
+                this.contentEl.classList.add(MENU_CONTENT_OPEN);
             }
-        });
+            // emit open event
+            this.ionDidOpen.emit();
+        }
+        else {
+            // remove css classes
+            this.el.classList.remove(SHOW_MENU);
+            if (this.contentEl) {
+                this.contentEl.classList.remove(MENU_CONTENT_OPEN);
+            }
+            if (this.backdropEl) {
+                this.backdropEl.classList.remove(SHOW_BACKDROP);
+            }
+            if (this.animation) {
+                this.animation.stop();
+            }
+            // emit close event
+            this.ionDidClose.emit();
+        }
+    };
+    class_1.prototype.updateState = function () {
+        var isActive = this._isActive();
+        if (this.gesture) {
+            this.gesture.setDisabled(!isActive || !this.swipeGesture);
+        }
+        // Close menu immediately
+        if (!isActive && this._isOpen) {
+            // close if this menu is open, and should not be enabled
+            this.forceClosing();
+        }
+        if (!this.disabled) {
+            _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_6__["m"]._setActiveMenu(this);
+        }
+        Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_3__["b"])(!this.isAnimating, 'can not be animating');
+    };
+    class_1.prototype.forceClosing = function () {
+        Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_3__["b"])(this._isOpen, 'menu cannot be closed');
+        this.isAnimating = true;
+        var ani = this.animation.direction('reverse');
+        ani.playSync();
+        this.afterAnimation(false);
     };
     class_1.prototype.render = function () {
         var _a;
-        var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
-        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["H"], { slot: "fixed", class: (_a = {},
+        var _this = this;
+        var _b = this, isEndSide = _b.isEndSide, type = _b.type, disabled = _b.disabled, mode = _b.mode, isPaneVisible = _b.isPaneVisible;
+        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["H"], { role: "navigation", class: (_a = {},
                 _a[mode] = true,
-                // Used internally for styling
-                _a["refresher-" + mode] = true,
-                _a['refresher-active'] = this.state !== 1 /* Inactive */,
-                _a['refresher-pulling'] = this.state === 2 /* Pulling */,
-                _a['refresher-ready'] = this.state === 4 /* Ready */,
-                _a['refresher-refreshing'] = this.state === 8 /* Refreshing */,
-                _a['refresher-cancelling'] = this.state === 16 /* Cancelling */,
-                _a['refresher-completing'] = this.state === 32 /* Completing */,
-                _a) }));
+                _a["menu-type-" + type] = true,
+                _a['menu-enabled'] = !disabled,
+                _a['menu-side-end'] = isEndSide,
+                _a['menu-side-start'] = !isEndSide,
+                _a['menu-pane-visible'] = isPaneVisible,
+                _a) }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "menu-inner", ref: function (el) { return _this.menuInnerEl = el; } }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null)), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-backdrop", { ref: function (el) { return _this.backdropEl = el; }, class: "menu-backdrop", tappable: false, stopPropagation: false })));
     };
     Object.defineProperty(class_1.prototype, "el", {
         get: function () { return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
@@ -349,40 +487,286 @@ var Refresher = /** @class */ (function () {
     Object.defineProperty(class_1, "watchers", {
         get: function () {
             return {
-                "disabled": ["disabledChanged"]
+                "type": ["typeChanged"],
+                "disabled": ["disabledChanged"],
+                "side": ["sideChanged"],
+                "swipeGesture": ["swipeGestureChanged"]
             };
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(class_1, "style", {
-        get: function () { return "ion-refresher{left:0;top:0;display:none;position:absolute;width:100%;height:60px;z-index:-1}:host-context([dir=rtl]) ion-refresher,[dir=rtl] ion-refresher{left:unset;right:unset;right:0}ion-refresher.refresher-active{display:block}ion-refresher-content{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;height:100%}.refresher-pulling,.refresher-refreshing{display:none;width:100%}.refresher-pulling-icon,.refresher-refreshing-icon{-webkit-transform-origin:center;transform-origin:center;-webkit-transition:.2s;transition:.2s;font-size:30px;text-align:center}:host-context([dir=rtl]) .refresher-pulling-icon,:host-context([dir=rtl]) .refresher-refreshing-icon,[dir=rtl] .refresher-pulling-icon,[dir=rtl] .refresher-refreshing-icon{-webkit-transform-origin:calc(100% - center);transform-origin:calc(100% - center)}.refresher-pulling-text,.refresher-refreshing-text{font-size:16px;text-align:center}.refresher-pulling ion-refresher-content .refresher-pulling,.refresher-ready ion-refresher-content .refresher-pulling{display:block}.refresher-ready ion-refresher-content .refresher-pulling-icon{-webkit-transform:rotate(180deg);transform:rotate(180deg)}.refresher-cancelling ion-refresher-content .refresher-pulling,.refresher-refreshing ion-refresher-content .refresher-refreshing{display:block}.refresher-cancelling ion-refresher-content .refresher-pulling-icon{-webkit-transform:scale(0);transform:scale(0)}.refresher-completing ion-refresher-content .refresher-refreshing{display:block}.refresher-completing ion-refresher-content .refresher-refreshing-icon{-webkit-transform:scale(0);transform:scale(0)}.refresher-md .refresher-pulling-icon,.refresher-md .refresher-pulling-text,.refresher-md .refresher-refreshing-icon,.refresher-md .refresher-refreshing-text{color:var(--ion-text-color,#000)}.refresher-md .refresher-refreshing .spinner-crescent circle,.refresher-md .refresher-refreshing .spinner-lines-md line,.refresher-md .refresher-refreshing .spinner-lines-small-md line{stroke:var(--ion-text-color,#000)}.refresher-md .refresher-refreshing .spinner-bubbles circle,.refresher-md .refresher-refreshing .spinner-circles circle,.refresher-md .refresher-refreshing .spinner-dots circle{fill:var(--ion-text-color,#000)}"; },
+        get: function () { return ":host{--width:304px;--min-width:auto;--max-width:auto;--height:100%;--min-height:auto;--max-height:auto;--background:var(--ion-background-color,#fff);left:0;right:0;top:0;bottom:0;display:none;position:absolute;contain:strict}:host(.show-menu){display:block}.menu-inner{left:0;right:auto;top:0;bottom:0;-webkit-transform:translate3d(-9999px,0,0);transform:translate3d(-9999px,0,0);display:-ms-flexbox;display:flex;position:absolute;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:justify;justify-content:space-between;width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);background:var(--background);contain:strict}:host-context([dir=rtl]) .menu-inner,[dir=rtl] .menu-inner{left:unset;right:unset;left:auto;right:0;-webkit-transform:translate3d(calc(-1 * -9999px),0,0);transform:translate3d(calc(-1 * -9999px),0,0)}:host(.menu-side-start) .menu-inner{--ion-safe-area-right:0px;right:auto;left:0}:host(.menu-side-end) .menu-inner{--ion-safe-area-left:0px;right:0;left:auto}ion-backdrop{display:none;opacity:.01;z-index:-1}\@media (max-width:340px){.menu-inner{--width:264px}}:host(.menu-type-reveal){z-index:0}:host(.menu-type-reveal.show-menu) .menu-inner{-webkit-transform:translateZ(0);transform:translateZ(0)}:host(.menu-type-overlay){z-index:1000}:host(.menu-type-overlay) .show-backdrop{display:block;cursor:pointer}:host(.menu-pane-visible) .menu-inner{left:0;right:0;width:auto;-webkit-transform:none!important;transform:none!important;-webkit-box-shadow:none!important;box-shadow:none!important}:host(.menu-pane-visible) ion-backdrop{display:hidden!important}:host(.menu-type-push){z-index:1000}:host(.menu-type-push) .show-backdrop{display:block}"; },
         enumerable: true,
         configurable: true
     });
     return class_1;
 }());
-var RefresherContent = /** @class */ (function () {
-    function RefresherContent(hostRef) {
+var computeDelta = function (deltaX, isOpen, isEndSide) {
+    return Math.max(0, isOpen !== isEndSide ? -deltaX : deltaX);
+};
+var checkEdgeSide = function (win, posX, isEndSide, maxEdgeStart) {
+    if (isEndSide) {
+        return posX >= win.innerWidth - maxEdgeStart;
+    }
+    else {
+        return posX <= maxEdgeStart;
+    }
+};
+var SHOW_MENU = 'show-menu';
+var SHOW_BACKDROP = 'show-backdrop';
+var MENU_CONTENT_OPEN = 'menu-content-open';
+// Given a menu, return whether or not the menu toggle should be visible
+var updateVisibility = function (menu) { return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 0, void 0, void 0, function () {
+    var menuEl, _a;
+    return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_b) {
+        switch (_b.label) {
+            case 0: return [4 /*yield*/, _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_6__["m"].get(menu)];
+            case 1:
+                menuEl = _b.sent();
+                _a = menuEl;
+                if (!_a) return [3 /*break*/, 3];
+                return [4 /*yield*/, menuEl.isActive()];
+            case 2:
+                _a = (_b.sent());
+                _b.label = 3;
+            case 3: return [2 /*return*/, !!(_a)];
+        }
+    });
+}); };
+var MenuButton = /** @class */ (function () {
+    function class_2(hostRef) {
+        var _this = this;
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+        this.visible = false;
+        /**
+         * If `true`, the user cannot interact with the menu button.
+         */
+        this.disabled = false;
+        /**
+         * Automatically hides the menu button when the corresponding menu is not active
+         */
+        this.autoHide = true;
+        /**
+         * The type of the button.
+         */
+        this.type = 'button';
+        this.onClick = function () { return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this, void 0, void 0, function () {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                return [2 /*return*/, _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_6__["m"].toggle(this.menu)];
+            });
+        }); };
+    }
+    class_2.prototype.componentDidLoad = function () {
+        this.visibilityChanged();
+    };
+    class_2.prototype.visibilityChanged = function () {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var _a;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this;
+                        return [4 /*yield*/, updateVisibility(this.menu)];
+                    case 1:
+                        _a.visible = _b.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    class_2.prototype.render = function () {
+        var _a;
+        var _b = this, color = _b.color, disabled = _b.disabled;
+        var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
+        var menuIcon = _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_2__["b"].get('menuIcon', 'menu');
+        var hidden = this.autoHide && !this.visible;
+        var attrs = {
+            type: this.type
+        };
+        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["H"], { onClick: this.onClick, "aria-disabled": disabled ? 'true' : null, "aria-hidden": hidden ? 'true' : null, class: Object.assign(Object.assign((_a = {}, _a[mode] = true, _a), Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_7__["c"])(color)), { 'button': true, 'menu-button-hidden': hidden, 'menu-button-disabled': disabled, 'ion-activatable': true, 'ion-focusable': true }) }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("button", Object.assign({}, attrs, { disabled: disabled, class: "button-native" }), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-icon", { icon: menuIcon, mode: mode, lazy: false })), mode === 'md' && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-ripple-effect", { type: "unbounded" }))));
+    };
+    Object.defineProperty(class_2, "style", {
+        get: function () { return ":host{--background:transparent;--color-focused:var(--color);--border-radius:initial;--padding-top:0;--padding-bottom:0;color:var(--color);text-align:center;text-decoration:none;text-overflow:ellipsis;text-transform:none;white-space:nowrap;-webkit-font-kerning:none;font-kerning:none}.button-native{border-radius:var(--border-radius);font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:var(--padding-start);padding-right:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:-ms-flexbox;display:flex;position:relative;-ms-flex-flow:row nowrap;flex-flow:row nowrap;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;border:0;outline:none;background:var(--background);line-height:1;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:0;-webkit-appearance:none;-moz-appearance:none;appearance:none}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.button-native{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end)}}ion-icon{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;pointer-events:none}:host(.menu-button-hidden){display:none}:host(.menu-button-disabled){cursor:default;opacity:.5;pointer-events:none}\@media (any-hover:hover){:host(:hover) .button-native{background:var(--background-hover);color:var(--color-hover)}}:host(.ion-focused) .button-native{background:var(--background-focused);color:var(--color-focused)}:host(.ion-color) .button-native{color:var(--ion-color-base)}:host-context(ion-toolbar:not(.ion-color)){color:var(--ion-toolbar-color,var(--color))}:host{--background-focused:rgba(var(--ion-color-primary-rgb,56,128,255),0.1);--border-radius:4px;--color:var(--ion-color-primary,#3880ff);--padding-start:5px;--padding-end:5px;height:32px;font-size:31px}:host(.activated){opacity:.4}\@media (any-hover:hover){:host(:hover){opacity:.6}}:host(.ion-color.ion-focused) .button-native{background:rgba(var(--ion-color-base-rgb),.1)}"; },
+        enumerable: true,
+        configurable: true
+    });
+    return class_2;
+}());
+var MenuController = /** @class */ (function () {
+    function class_3(hostRef) {
         Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
     }
-    RefresherContent.prototype.componentWillLoad = function () {
-        if (this.pullingIcon === undefined) {
-            this.pullingIcon = _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_2__["b"].get('refreshingIcon', 'arrow-down');
-        }
-        if (this.refreshingSpinner === undefined) {
-            var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
-            this.refreshingSpinner = _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_2__["b"].get('refreshingSpinner', _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_2__["b"].get('spinner', mode === 'ios' ? 'lines' : 'crescent'));
-        }
+    /**
+     * Open the menu. If a menu is not provided then it will open the first
+     * menu found. If the specified menu is `start` or `end`, then it will open
+     * the enabled menu on that side. Otherwise, it will try to find the menu
+     * using the menu's `id` property. If a menu is not found then it will
+     * return `false`.
+     *
+     * @param menu The menuId or side of the menu to open.
+     */
+    class_3.prototype.open = function (menu) {
+        return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_6__["m"].open(menu);
     };
-    RefresherContent.prototype.render = function () {
-        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["H"], { class: Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this) }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "refresher-pulling" }, this.pullingIcon &&
-            Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "refresher-pulling-icon" }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-icon", { icon: this.pullingIcon, lazy: false })), this.pullingText &&
-            Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "refresher-pulling-text", innerHTML: Object(_index_3476b023_js__WEBPACK_IMPORTED_MODULE_3__["s"])(this.pullingText) })), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "refresher-refreshing" }, this.refreshingSpinner &&
-            Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "refresher-refreshing-icon" }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-spinner", { name: this.refreshingSpinner })), this.refreshingText &&
-            Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "refresher-refreshing-text", innerHTML: Object(_index_3476b023_js__WEBPACK_IMPORTED_MODULE_3__["s"])(this.refreshingText) }))));
+    /**
+     * Close the menu. If a menu is specified, it will close that menu.
+     * If no menu is specified, then it will close any menu that is open.
+     * If it does not find any open menus, it will return `false`.
+     *
+     * @param menu The menuId or side of the menu to close.
+     */
+    class_3.prototype.close = function (menu) {
+        return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_6__["m"].close(menu);
     };
-    return RefresherContent;
+    /**
+     * Toggle the menu open or closed. If the menu is already open, it will try to
+     * close the menu, otherwise it will try to open it. Returns `false` if
+     * a menu is not found.
+     *
+     * @param menu The menuId or side of the menu to toggle.
+     */
+    class_3.prototype.toggle = function (menu) {
+        return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_6__["m"].toggle(menu);
+    };
+    /**
+     * Enable or disable a menu. Disabling a menu will not allow gestures
+     * for that menu or any calls to open it. This is useful when there are
+     * multiple menus on the same side and only one of them should be allowed
+     * to open. Enabling a menu will automatically disable all other menus
+     * on that side.
+     *
+     * @param enable If `true`, the menu should be enabled.
+     * @param menu The menuId or side of the menu to enable or disable.
+     */
+    class_3.prototype.enable = function (enable, menu) {
+        return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_6__["m"].enable(enable, menu);
+    };
+    /**
+     * Enable or disable the ability to swipe open the menu.
+     *
+     * @param enable If `true`, the menu swipe gesture should be enabled.
+     * @param menu The menuId or side of the menu to enable or disable the swipe gesture on.
+     */
+    class_3.prototype.swipeGesture = function (enable, menu) {
+        return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_6__["m"].swipeGesture(enable, menu);
+    };
+    /**
+     * Get whether or not the menu is open. Returns `true` if the specified
+     * menu is open. If a menu is not specified, it will return `true` if
+     * any menu is currently open.
+     *
+     * @param menu The menuId or side of the menu that is being checked.
+     */
+    class_3.prototype.isOpen = function (menu) {
+        return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_6__["m"].isOpen(menu);
+    };
+    /**
+     * Get whether or not the menu is enabled. Returns `true` if the
+     * specified menu is enabled. Returns `false` if a menu is disabled
+     * or not found.
+     *
+     * @param menu The menuId or side of the menu that is being checked.
+     */
+    class_3.prototype.isEnabled = function (menu) {
+        return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_6__["m"].isEnabled(menu);
+    };
+    /**
+     * Get a menu instance. If a menu is not provided then it will return the first
+     * menu found. If the specified menu is `start` or `end`, then it will return the
+     * enabled menu on that side. Otherwise, it will try to find the menu using the menu's
+     * `id` property. If a menu is not found then it will return `null`.
+     *
+     * @param menu The menuId or side of the menu.
+     */
+    class_3.prototype.get = function (menu) {
+        return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_6__["m"].get(menu);
+    };
+    /**
+     * Get the instance of the opened menu. Returns `null` if a menu is not found.
+     */
+    class_3.prototype.getOpen = function () {
+        return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_6__["m"].getOpen();
+    };
+    /**
+     * Get all menu instances.
+     */
+    class_3.prototype.getMenus = function () {
+        return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_6__["m"].getMenus();
+    };
+    /**
+     * Get whether or not a menu is animating. Returns `true` if any
+     * menu is currently animating.
+     */
+    class_3.prototype.isAnimating = function () {
+        return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_6__["m"].isAnimating();
+    };
+    /**
+     * Registers a new animation that can be used with any `ion-menu` by
+     * passing the name of the animation in its `type` property.
+     *
+     * @param name The name of the animation to register.
+     * @param animation The animation function to register.
+     */
+    class_3.prototype.registerAnimation = function (name, animation) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                return [2 /*return*/, _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_6__["m"].registerAnimation(name, animation)];
+            });
+        });
+    };
+    return class_3;
+}());
+var MenuToggle = /** @class */ (function () {
+    function class_4(hostRef) {
+        var _this = this;
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+        this.visible = false;
+        /**
+         * Automatically hides the content when the corresponding menu is not active.
+         *
+         * By default, it's `true`. Change it to `false` in order to
+         * keep `ion-menu-toggle` always visible regardless the state of the menu.
+         */
+        this.autoHide = true;
+        this.onClick = function () {
+            return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_6__["m"].toggle(_this.menu);
+        };
+    }
+    class_4.prototype.connectedCallback = function () {
+        this.visibilityChanged();
+    };
+    class_4.prototype.visibilityChanged = function () {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var _a;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this;
+                        return [4 /*yield*/, updateVisibility(this.menu)];
+                    case 1:
+                        _a.visible = _b.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    class_4.prototype.render = function () {
+        var _a;
+        var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
+        var hidden = this.autoHide && !this.visible;
+        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["H"], { onClick: this.onClick, "aria-hidden": hidden ? 'true' : null, class: (_a = {},
+                _a[mode] = true,
+                _a['menu-toggle-hidden'] = hidden,
+                _a) }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null)));
+    };
+    Object.defineProperty(class_4, "style", {
+        get: function () { return ":host(.menu-toggle-hidden){display:none}"; },
+        enumerable: true,
+        configurable: true
+    });
+    return class_4;
 }());
 
 

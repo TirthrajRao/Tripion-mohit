@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injector, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
 import { TripService } from '../../services/trip.service';
 import { ModalController } from '@ionic/angular';
@@ -19,25 +19,32 @@ export class DestinationRequestComponent implements OnInit {
   allSlugs: any = [];
   resultsOfSelectedSlugs:any;
   subPlaces:any = [];
-
+  slideOpts:any;
+  // isActive:boolean = false;
+  isDisplay:boolean = false;
+  
   constructor(
     public router: Router,
     public _tripService: TripService,
     public appComponent: AppComponent,
     public modalController: ModalController
     ) { 
+    $(document).ready(function(){
+      $("#feture").css("color", "black");
+    });
+
     $(document).ready(function () {
       $('.country-slider').slick({
         infinite: true,
         dots: false,
-        slidesToShow: 4,
+        slidesToShow: 3,
         arrows: false, 
       });
-    })
+    });
   }
 
   ngOnInit() {
-    this.openModal();
+    // this.openModal();
   }
 
   ionViewWillEnter(){
@@ -57,15 +64,21 @@ export class DestinationRequestComponent implements OnInit {
       console.log("res", res);
       this.details = res.data;
       this.destinationReq = res.data;
+      this.isDisplay = true;
+
       this.loading = false;
-      this.createSlider();
+      // this.createSlider();
+      // this.createAccordian();
+      $(document).ready(function(){
+        $("#feture").css("color", "black");
+      });
     }, err => {
       console.log("err", err);
       this.loading = false;
       this.appComponent.errorAlert(err.error.message);
     });
   }
-
+  
   productDetail(destination){
     console.log("the products is ============>", destination);
     this.router.navigate(['/home/destination-detail/'+ destination.id])
@@ -76,6 +89,9 @@ export class DestinationRequestComponent implements OnInit {
     var idAttr = target.attributes.id;
     var value = idAttr.nodeValue;
     console.log("the value of selectTab is --------->", value);
+    // this.isActive = false;
+      this.isDisplay = false;
+
     var obj = {
       id : this.curruntUser.id,
       filter_data: value
@@ -87,12 +103,17 @@ export class DestinationRequestComponent implements OnInit {
     this.loading = true;
 
     if (value == 'feture') {
+      $(document).ready(function(){
+        $("#feture").css("color", "black");
+      });
+      // this.isActive = true;
+      this.isDisplay = true;
       console.log("the condition is working");
       this._tripService.getDestinationReqProduct(data).subscribe((res: any) => {
         console.log("res", res);
         this.destinationReq = null;
         this.destinationReq = res.data;
-        this.createSlider();
+        // this.createSlider();
         this.loading = false;
       }, err => {
         console.log("err", err);
@@ -101,9 +122,14 @@ export class DestinationRequestComponent implements OnInit {
       });
     }
     else {
+      this.isDisplay = false;
+      console.log("the details of an array is ------>", this.details);
+      $(document).ready(function(){
+        $("#feture").css("color", "#7f8dab");
+      });
       this._tripService.getDestinationReqFeture(obj).subscribe((res: any) => {
         this.destinationReq = res.data;
-        this.createSlider();
+        // this.createSlider();
         this.loading = false;
         console.log("the res of tabs feture image ------------>", res);
       }, (err) => {
@@ -127,17 +153,39 @@ export class DestinationRequestComponent implements OnInit {
     });
   }
 
+  createAccordian(){
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    console.log("ACC", acc)
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        console.log("clicked")
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    }
+  }
+
   openModal() {
-    $('#forgot-psw').click(function () {
-      console.log("====")
-      $('#forgot-password').fadeIn();
-    });
-    $('#forgot-password .modal_body').click(function (event) {
+    console.log("====")
+    this.createAccordian();
+    $('#product-modal').fadeIn();
+    $('#product-modal .modal_body').click(function (event) {
       event.stopPropagation();
     });
-    $('#forgot-password').click(() => {
-      $('#forgot-password').fadeOut();
-    });
+    // $('#product-modal').click(() => {
+    //   $('#product-modal').fadeOut();
+    // });
+  }
+
+  closeModal() {
+    this.createAccordian();
+    $('#product-modal').fadeOut();
   }
 
   allPaces(){
@@ -146,13 +194,18 @@ export class DestinationRequestComponent implements OnInit {
     }
 
     this._tripService.getDestinationReqPlaceTages(data).subscribe((res: any) => {
-      console.log("the all place of res ======>", res);
       this.placeTags = res.data;
-      this
+
+      this.placeTags.map((place) => {
+        place.subPlaces = [];
+      })
+      console.log("the all place of res ======>", this.placeTags);
+
     }, (err) => {
       console.log("the all place of err ======>", err);
     })
   }
+
 
   placeTag(id, value){
     console.log("the placeTag value of an id is ==========>", id, value);
@@ -161,14 +214,22 @@ export class DestinationRequestComponent implements OnInit {
       term_id: id
     }
     this.loading = true;
+
     this._tripService.getDestinationReqPlaceSubTages(data).subscribe((res: any) => {
       console.log("the sub placeTag res of =======>", res);
-      this.subPlaces = res.data;
+
+      const index = this.placeTags.findIndex((place) => {
+        return place.id === id
+      })
       this.loading = false;
+      this.placeTags[index].subPlaces = JSON.parse(JSON.stringify(res.data));
+      console.log("the index of the id =======>", this.placeTags);
+
     }, (err) => {
       console.log("the sub placeTag err of =======>", err);
     })
   }
+
 
   selectPlace(id, value){
     console.log("the selectPlace of the ------->", id, value);
@@ -193,10 +254,17 @@ export class DestinationRequestComponent implements OnInit {
       id: this.curruntUser.id,
       filter_data: this.resultsOfSelectedSlugs
     }
-
+    this.loading = true;
     this._tripService.getDestinationReqFeture(data).subscribe((res: any) => {
       console.log("the filtert of sub places is the ============>", res);
       this.destinationReq = res.data;
+      this.loading = false;
+      this.isDisplay = false;
+      $('#product-modal').fadeOut();
+      this.createAccordian();
+       $(document).ready(function(){
+        $("#feture").css("color", "#7f8dab");
+      });
     }, (err) => {
       console.log("the filtert of sub places err is the ============>", err);
     })

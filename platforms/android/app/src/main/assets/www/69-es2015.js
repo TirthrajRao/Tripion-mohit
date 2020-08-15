@@ -1,170 +1,305 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[69],{
 
-/***/ "./node_modules/@ionic/core/dist/esm/ion-split-pane-md.entry.js":
+/***/ "./node_modules/@ionic/core/dist/esm/ion-reorder_2-ios.entry.js":
 /*!**********************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/ion-split-pane-md.entry.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm/ion-reorder_2-ios.entry.js ***!
   \**********************************************************************/
-/*! exports provided: ion_split_pane */
+/*! exports provided: ion_reorder, ion_reorder_group */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_split_pane", function() { return SplitPane; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_reorder", function() { return Reorder; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_reorder_group", function() { return ReorderGroup; });
 /* harmony import */ var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-ca0488fc.js */ "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
 /* harmony import */ var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config-3c7f3790.js */ "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
+/* harmony import */ var _haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./haptic-c8f1473e.js */ "./node_modules/@ionic/core/dist/esm/haptic-c8f1473e.js");
 
 
 
-const SPLIT_PANE_MAIN = 'split-pane-main';
-const SPLIT_PANE_SIDE = 'split-pane-side';
-const QUERY = {
-    'xs': '(min-width: 0px)',
-    'sm': '(min-width: 576px)',
-    'md': '(min-width: 768px)',
-    'lg': '(min-width: 992px)',
-    'xl': '(min-width: 1200px)',
-    'never': ''
-};
-const SplitPane = class {
+
+const Reorder = class {
     constructor(hostRef) {
         Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        this.visible = false;
-        /**
-         * If `true`, the split pane will be hidden.
-         */
-        this.disabled = false;
-        /**
-         * When the split-pane should be shown.
-         * Can be a CSS media query expression, or a shortcut expression.
-         * Can also be a boolean expression.
-         */
-        this.when = QUERY['lg'];
-        this.ionSplitPaneVisible = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSplitPaneVisible", 7);
     }
-    visibleChanged(visible) {
-        const detail = { visible, isPane: this.isPane.bind(this) };
-        this.ionSplitPaneVisible.emit(detail);
+    onClick(ev) {
+        ev.preventDefault();
+        ev.stopImmediatePropagation();
     }
-    connectedCallback() {
-        this.styleChildren();
-        this.updateState();
+    render() {
+        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], { class: Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this) }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", { name: "reorder", lazy: false, class: "reorder-icon" }))));
+    }
+    static get style() { return ":host([slot]){display:none;line-height:0;z-index:100}.reorder-icon{display:block;font-size:22px;font-size:34px;opacity:.4}"; }
+};
+
+const ReorderGroup = class {
+    constructor(hostRef) {
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        this.lastToIndex = -1;
+        this.cachedHeights = [];
+        this.scrollElTop = 0;
+        this.scrollElBottom = 0;
+        this.scrollElInitial = 0;
+        this.containerTop = 0;
+        this.containerBottom = 0;
+        this.state = 0 /* Idle */;
+        /**
+         * If `true`, the reorder will be hidden.
+         */
+        this.disabled = true;
+        this.ionItemReorder = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionItemReorder", 7);
+    }
+    disabledChanged() {
+        if (this.gesture) {
+            this.gesture.setDisabled(this.disabled);
+        }
+    }
+    async connectedCallback() {
+        const contentEl = this.el.closest('ion-content');
+        if (contentEl) {
+            this.scrollEl = await contentEl.getScrollElement();
+        }
+        this.gesture = (await Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./index-624eea58.js */ "./node_modules/@ionic/core/dist/esm/index-624eea58.js"))).createGesture({
+            el: this.el,
+            gestureName: 'reorder',
+            gesturePriority: 110,
+            threshold: 0,
+            direction: 'y',
+            passive: false,
+            canStart: detail => this.canStart(detail),
+            onStart: ev => this.onStart(ev),
+            onMove: ev => this.onMove(ev),
+            onEnd: () => this.onEnd(),
+        });
+        this.disabledChanged();
     }
     disconnectedCallback() {
-        if (this.rmL) {
-            this.rmL();
-            this.rmL = undefined;
+        this.onEnd();
+        if (this.gesture) {
+            this.gesture.destroy();
+            this.gesture = undefined;
         }
     }
-    componentWillLoad() {
-        if (this.contentId === undefined) {
-            console.warn(`[DEPRECATED][ion-split-pane] Using the [main] attribute is deprecated, please use the "contentId" property instead:
-BEFORE:
-  <ion-split-pane>
-    ...
-    <div main>...</div>
-  </ion-split-pane>
-
-AFTER:
-  <ion-split-pane contentId="main-content">
-    ...
-    <div id="main-content">...</div>
-  </ion-split-pane>
-`);
-        }
+    /**
+     * Completes the reorder operation. Must be called by the `ionItemReorder` event.
+     *
+     * If a list of items is passed, the list will be reordered and returned in the
+     * proper order.
+     *
+     * If no parameters are passed or if `true` is passed in, the reorder will complete
+     * and the item will remain in the position it was dragged to. If `false` is passed,
+     * the reorder will complete and the item will bounce back to its original position.
+     *
+     * @param listOrReorder A list of items to be sorted and returned in the new order or a
+     * boolean of whether or not the reorder should reposition the item.
+     */
+    complete(listOrReorder) {
+        return Promise.resolve(this.completeSync(listOrReorder));
     }
-    updateState() {
-        if (this.rmL) {
-            this.rmL();
-            this.rmL = undefined;
-        }
-        // Check if the split-pane is disabled
-        if (this.disabled) {
-            this.visible = false;
-            return;
-        }
-        // When query is a boolean
-        const query = this.when;
-        if (typeof query === 'boolean') {
-            this.visible = query;
-            return;
-        }
-        // When query is a string, let's find first if it is a shortcut
-        const mediaQuery = QUERY[query] || query;
-        // Media query is empty or null, we hide it
-        if (mediaQuery.length === 0) {
-            this.visible = false;
-            return;
-        }
-        if (window.matchMedia) {
-            // Listen on media query
-            const callback = (q) => {
-                this.visible = q.matches;
-            };
-            const mediaList = window.matchMedia(mediaQuery);
-            mediaList.addListener(callback);
-            this.rmL = () => mediaList.removeListener(callback);
-            this.visible = mediaList.matches;
-        }
-    }
-    isPane(element) {
-        if (!this.visible) {
+    canStart(ev) {
+        if (this.selectedItemEl || this.state !== 0 /* Idle */) {
             return false;
         }
-        return element.parentElement === this.el
-            && element.classList.contains(SPLIT_PANE_SIDE);
+        const target = ev.event.target;
+        const reorderEl = target.closest('ion-reorder');
+        if (!reorderEl) {
+            return false;
+        }
+        const item = findReorderItem(reorderEl, this.el);
+        if (!item) {
+            return false;
+        }
+        ev.data = item;
+        return true;
     }
-    styleChildren() {
-        const contentId = this.contentId;
-        const children = this.el.children;
-        const nu = this.el.childElementCount;
-        let foundMain = false;
-        for (let i = 0; i < nu; i++) {
+    onStart(ev) {
+        ev.event.preventDefault();
+        const item = this.selectedItemEl = ev.data;
+        const heights = this.cachedHeights;
+        heights.length = 0;
+        const el = this.el;
+        const children = el.children;
+        if (!children || children.length === 0) {
+            return;
+        }
+        let sum = 0;
+        for (let i = 0; i < children.length; i++) {
             const child = children[i];
-            const isMain = contentId !== undefined ? child.id === contentId : child.hasAttribute('main');
-            if (isMain) {
-                if (foundMain) {
-                    console.warn('split pane cannot have more than one main node');
-                    return;
-                }
-                foundMain = true;
+            sum += child.offsetHeight;
+            heights.push(sum);
+            child.$ionIndex = i;
+        }
+        const box = el.getBoundingClientRect();
+        this.containerTop = box.top;
+        this.containerBottom = box.bottom;
+        if (this.scrollEl) {
+            const scrollBox = this.scrollEl.getBoundingClientRect();
+            this.scrollElInitial = this.scrollEl.scrollTop;
+            this.scrollElTop = scrollBox.top + AUTO_SCROLL_MARGIN;
+            this.scrollElBottom = scrollBox.bottom - AUTO_SCROLL_MARGIN;
+        }
+        else {
+            this.scrollElInitial = 0;
+            this.scrollElTop = 0;
+            this.scrollElBottom = 0;
+        }
+        this.lastToIndex = indexForItem(item);
+        this.selectedItemHeight = item.offsetHeight;
+        this.state = 1 /* Active */;
+        item.classList.add(ITEM_REORDER_SELECTED);
+        Object(_haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_2__["a"])();
+    }
+    onMove(ev) {
+        const selectedItem = this.selectedItemEl;
+        if (!selectedItem) {
+            return;
+        }
+        // Scroll if we reach the scroll margins
+        const scroll = this.autoscroll(ev.currentY);
+        // // Get coordinate
+        const top = this.containerTop - scroll;
+        const bottom = this.containerBottom - scroll;
+        const currentY = Math.max(top, Math.min(ev.currentY, bottom));
+        const deltaY = scroll + currentY - ev.startY;
+        const normalizedY = currentY - top;
+        const toIndex = this.itemIndexForTop(normalizedY);
+        if (toIndex !== this.lastToIndex) {
+            const fromIndex = indexForItem(selectedItem);
+            this.lastToIndex = toIndex;
+            Object(_haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_2__["b"])();
+            this.reorderMove(fromIndex, toIndex);
+        }
+        // Update selected item position
+        selectedItem.style.transform = `translateY(${deltaY}px)`;
+    }
+    onEnd() {
+        const selectedItemEl = this.selectedItemEl;
+        this.state = 2 /* Complete */;
+        if (!selectedItemEl) {
+            this.state = 0 /* Idle */;
+            return;
+        }
+        const toIndex = this.lastToIndex;
+        const fromIndex = indexForItem(selectedItemEl);
+        if (toIndex === fromIndex) {
+            this.completeSync();
+        }
+        else {
+            this.ionItemReorder.emit({
+                from: fromIndex,
+                to: toIndex,
+                complete: this.completeSync.bind(this)
+            });
+        }
+        Object(_haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    }
+    completeSync(listOrReorder) {
+        const selectedItemEl = this.selectedItemEl;
+        if (selectedItemEl && this.state === 2 /* Complete */) {
+            const children = this.el.children;
+            const len = children.length;
+            const toIndex = this.lastToIndex;
+            const fromIndex = indexForItem(selectedItemEl);
+            if (toIndex !== fromIndex && (!listOrReorder || listOrReorder === true)) {
+                const ref = (fromIndex < toIndex)
+                    ? children[toIndex + 1]
+                    : children[toIndex];
+                this.el.insertBefore(selectedItemEl, ref);
             }
-            setPaneClass(child, isMain);
+            if (Array.isArray(listOrReorder)) {
+                listOrReorder = reorderArray(listOrReorder, fromIndex, toIndex);
+            }
+            for (let i = 0; i < len; i++) {
+                children[i].style['transform'] = '';
+            }
+            selectedItemEl.style.transition = '';
+            selectedItemEl.classList.remove(ITEM_REORDER_SELECTED);
+            this.selectedItemEl = undefined;
+            this.state = 0 /* Idle */;
         }
-        if (!foundMain) {
-            console.warn('split pane does not have a specified main node');
+        return listOrReorder;
+    }
+    itemIndexForTop(deltaY) {
+        const heights = this.cachedHeights;
+        let i = 0;
+        // TODO: since heights is a sorted array of integers, we can do
+        // speed up the search using binary search. Remember that linear-search is still
+        // faster than binary-search for small arrays (<64) due CPU branch misprediction.
+        for (i = 0; i < heights.length; i++) {
+            if (heights[i] > deltaY) {
+                break;
+            }
         }
+        return i;
+    }
+    /********* DOM WRITE ********* */
+    reorderMove(fromIndex, toIndex) {
+        const itemHeight = this.selectedItemHeight;
+        const children = this.el.children;
+        for (let i = 0; i < children.length; i++) {
+            const style = children[i].style;
+            let value = '';
+            if (i > fromIndex && i <= toIndex) {
+                value = `translateY(${-itemHeight}px)`;
+            }
+            else if (i < fromIndex && i >= toIndex) {
+                value = `translateY(${itemHeight}px)`;
+            }
+            style['transform'] = value;
+        }
+    }
+    autoscroll(posY) {
+        if (!this.scrollEl) {
+            return 0;
+        }
+        let amount = 0;
+        if (posY < this.scrollElTop) {
+            amount = -SCROLL_JUMP;
+        }
+        else if (posY > this.scrollElBottom) {
+            amount = SCROLL_JUMP;
+        }
+        if (amount !== 0) {
+            this.scrollEl.scrollBy(0, amount);
+        }
+        return this.scrollEl.scrollTop - this.scrollElInitial;
     }
     render() {
         const mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
         return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], { class: {
                 [mode]: true,
-                // Used internally for styling
-                [`split-pane-${mode}`]: true,
-                'split-pane-visible': this.visible
+                'reorder-enabled': !this.disabled,
+                'reorder-list-active': this.state !== 0 /* Idle */,
             } }));
     }
     get el() { return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); }
     static get watchers() { return {
-        "visible": ["visibleChanged"],
-        "disabled": ["updateState"],
-        "when": ["updateState"]
+        "disabled": ["disabledChanged"]
     }; }
-    static get style() { return "ion-split-pane{left:0;right:0;top:0;bottom:0;display:-ms-flexbox;display:flex;position:absolute;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:nowrap;flex-wrap:nowrap;contain:strict}.split-pane-visible>.split-pane-main,.split-pane-visible>.split-pane-side{left:0;right:0;top:0;bottom:0;position:relative;-ms-flex:1;flex:1;-webkit-box-shadow:none!important;box-shadow:none!important;z-index:0}.split-pane-visible>.split-pane-side:not(ion-menu),.split-pane-visible>ion-menu.split-pane-side.menu-enabled{display:-ms-flexbox;display:flex;-ms-flex-negative:0;flex-shrink:0}.split-pane-side:not(ion-menu){display:none}.split-pane-visible>.split-pane-side{-ms-flex-order:-1;order:-1}.split-pane-visible>.split-pane-side[side=end]{-ms-flex-order:1;order:1}.split-pane-md{--border:1px solid var(--ion-item-border-color,var(--ion-border-color,var(--ion-color-step-150,rgba(0,0,0,0.13))))}.split-pane-md.split-pane-visible>.split-pane-side{min-width:270px;max-width:28%;border-right:var(--border);border-left:0}.split-pane-md.split-pane-visible>.split-pane-side[side=end]{min-width:270px;max-width:28%;border-right:0;border-left:var(--border)}"; }
+    static get style() { return ".reorder-list-active>*{-webkit-transition:-webkit-transform .3s;transition:-webkit-transform .3s;transition:transform .3s;transition:transform .3s,-webkit-transform .3s;will-change:transform}.reorder-enabled{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.reorder-enabled ion-reorder{display:block;cursor:-webkit-grab;cursor:grab;pointer-events:all;-ms-touch-action:none;touch-action:none}.reorder-selected,.reorder-selected ion-reorder{cursor:-webkit-grabbing;cursor:grabbing}.reorder-selected{position:relative;-webkit-transition:none!important;transition:none!important;-webkit-box-shadow:0 0 10px rgba(0,0,0,.4);box-shadow:0 0 10px rgba(0,0,0,.4);opacity:.8;z-index:100}.reorder-visible ion-reorder .reorder-icon{-webkit-transform:translateZ(0);transform:translateZ(0)}"; }
 };
-const setPaneClass = (el, isMain) => {
-    let toAdd;
-    let toRemove;
-    if (isMain) {
-        toAdd = SPLIT_PANE_MAIN;
-        toRemove = SPLIT_PANE_SIDE;
+const indexForItem = (element) => {
+    return element['$ionIndex'];
+};
+const findReorderItem = (node, container) => {
+    let parent;
+    while (node) {
+        parent = node.parentElement;
+        if (parent === container) {
+            return node;
+        }
+        node = parent;
     }
-    else {
-        toAdd = SPLIT_PANE_SIDE;
-        toRemove = SPLIT_PANE_MAIN;
-    }
-    const classList = el.classList;
-    classList.add(toAdd);
-    classList.remove(toRemove);
+    return undefined;
+};
+const AUTO_SCROLL_MARGIN = 60;
+const SCROLL_JUMP = 10;
+const ITEM_REORDER_SELECTED = 'reorder-selected';
+const reorderArray = (array, from, to) => {
+    const element = array[from];
+    array.splice(from, 1);
+    array.splice(to, 0, element);
+    return array.slice();
 };
 
 

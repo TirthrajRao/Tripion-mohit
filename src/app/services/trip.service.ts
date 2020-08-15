@@ -160,7 +160,15 @@ export class TripService {
    * @param {object} data 
    */
   getQuotations(data) {
-    return this.http.post(config.baseApiUrl + 'get-quotation', data);
+    return this.http.post(config.baseApiUrl + 'get-all-quotation', data);
+  }
+
+  /**
+   * Get Quotations of trip
+   * @param {object} data 
+   */
+  getSingleQuotations(data) {
+    return this.http.post(config.baseApiUrl + 'get-single-quotation', data);
   }
 
   /**
@@ -271,5 +279,13 @@ export class TripService {
   */
   getDestinationReqPlaceSubTages(data){
     return this.http.post('https://tripion-demo.mylionsgroup.com/wp-json/api/v2/place-subtags', data);
+  }
+
+  /**
+  *Destination Finder Fetured Functionality Page
+  * @param {object} data
+  */
+  addDestinationInquiry(data){
+    return this.http.post('https://tripion-demo.mylionsgroup.com/wp-json/api/v2/add-destination', data);
   }
 }

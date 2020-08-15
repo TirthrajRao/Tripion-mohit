@@ -1,780 +1,1169 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[4],{
 
-/***/ "./node_modules/@ionic-super-tabs/core/dist/esm-es5/super-tab_3.entry.js":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/@ionic-super-tabs/core/dist/esm-es5/super-tab_3.entry.js ***!
-  \*******************************************************************************/
-/*! exports provided: super_tab, super_tabs, super_tabs_container */
+/***/ "./node_modules/@ionic/core/dist/esm-es5/index-69c37885.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm-es5/index-69c37885.js ***!
+  \*****************************************************************/
+/*! exports provided: create */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "super_tab", function() { return SuperTabComponent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "super_tabs", function() { return SuperTabsComponent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "super_tabs_container", function() { return SuperTabsContainerComponent; });
-/* harmony import */ var _core_4ed83284_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-4ed83284.js */ "./node_modules/@ionic-super-tabs/core/dist/esm-es5/core-4ed83284.js");
-/* harmony import */ var _utils_5174e079_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils-5174e079.js */ "./node_modules/@ionic-super-tabs/core/dist/esm-es5/utils-5174e079.js");
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create", function() { return create; });
+var transitionEnd = function (el, callback) {
+    var unRegTrans;
+    var opts = { passive: true };
+    var unregister = function () {
+        if (unRegTrans) {
+            unRegTrans();
+        }
+    };
+    var onTransitionEnd = function (ev) {
+        if (el === ev.target) {
+            unregister();
+            callback(ev);
+        }
+    };
+    if (el) {
+        el.addEventListener('webkitTransitionEnd', onTransitionEnd, opts);
+        el.addEventListener('transitionend', onTransitionEnd, opts);
+        unRegTrans = function () {
+            el.removeEventListener('webkitTransitionEnd', onTransitionEnd, opts);
+            el.removeEventListener('transitionend', onTransitionEnd, opts);
+        };
+    }
+    return unregister;
 };
-var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
+var CSS_VALUE_REGEX = /(^-?\d*\.?\d*)(.*)/;
+var DURATION_MIN = 32;
+var TRANSITION_END_FALLBACK_PADDING_MS = 400;
+var TRANSFORM_PROPS = {
+    'translateX': 1,
+    'translateY': 1,
+    'translateZ': 1,
+    'scale': 1,
+    'scaleX': 1,
+    'scaleY': 1,
+    'scaleZ': 1,
+    'rotate': 1,
+    'rotateX': 1,
+    'rotateY': 1,
+    'rotateZ': 1,
+    'skewX': 1,
+    'skewY': 1,
+    'perspective': 1
 };
-
-
-var SuperTabComponent = /** @class */ (function () {
-    function class_1(hostRef) {
-        Object(_core_4ed83284_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+var win = typeof window !== 'undefined' ? window : {};
+var raf = win.requestAnimationFrame
+    ? win.requestAnimationFrame.bind(win)
+    : function (f) { return f(Date.now()); };
+var Animator = /** @class */ (function () {
+    function Animator() {
+        this._hasDur = false;
+        this._hasTweenEffect = false;
+        this._isAsync = false;
+        this._isReverse = false;
+        this._destroyed = false;
+        this.hasChildren = false;
+        this.isPlaying = false;
+        this.hasCompleted = false;
     }
-    class_1.prototype.componentDidLoad = function () {
-        this.checkIonContent();
-    };
-    class_1.prototype.componentDidUpdate = function () {
-        // check for ion-content after update, in case it was dynamically loaded
-        this.checkIonContent();
-    };
-    /**
-     * Check if we have an ion-content as a child and update the `noScroll` property
-     * if it's not set yet.
-     */
-    class_1.prototype.checkIonContent = function () {
-        if (typeof this.noScroll !== 'boolean') {
-            var ionContentEl = this.el.querySelector('ion-content');
-            if (ionContentEl && ionContentEl.parentElement === this.el) {
-                this.noScroll = true;
+    Animator.prototype.addElement = function (el) {
+        if (el != null) {
+            if (el.length > 0) {
+                for (var i = 0; i < el.length; i++) {
+                    this._addEl(el[i]);
+                }
+            }
+            else {
+                this._addEl(el);
             }
         }
+        return this;
     };
     /**
-     * Returns the root scrollable element
+     * NO DOM
      */
-    class_1.prototype.getRootScrollableEl = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var ionContent;
-            return __generator(this, function (_a) {
-                if (!this.noScroll && this.el.scrollHeight > this.el.clientHeight) {
-                    return [2 /*return*/, this.el];
-                }
-                ionContent = this.el.querySelector('ion-content');
-                if (ionContent) {
-                    return [2 /*return*/, ionContent.getScrollElement()];
-                }
-                if (this.noScroll) {
-                    return [2 /*return*/, null];
-                }
-                return [2 /*return*/, this.el];
-            });
-        });
-    };
-    class_1.prototype.render = function () {
-        return Object(_core_4ed83284_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null);
-    };
-    Object.defineProperty(class_1.prototype, "el", {
-        get: function () { return Object(_core_4ed83284_js__WEBPACK_IMPORTED_MODULE_0__["g"])(this); },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(class_1, "style", {
-        get: function () { return ":host{height:var(--super-tab-height,100%);position:relative;display:block;overflow-x:hidden;overflow-y:auto;contain:size style;z-index:1;-ms-flex-negative:0;flex-shrink:0;-ms-flex-positive:0;flex-grow:0;width:var(--super-tab-width,100vw);-webkit-transform:translateZ(0);transform:translateZ(0);-webkit-box-sizing:border-box;box-sizing:border-box;-ms-flex-order:-1;order:-1;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-font-smoothing:antialiased}:host[noScroll]{overflow-y:hidden}ion-content,ion-nav{height:100%;max-height:100%;position:absolute}ion-content>.ion-page,ion-nav>.ion-page{position:absolute}"; },
-        enumerable: true,
-        configurable: true
-    });
-    return class_1;
-}());
-var maxInitRetries = 1e3;
-var SuperTabsComponent = /** @class */ (function () {
-    function class_2(hostRef) {
-        var _this = this;
-        Object(_core_4ed83284_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        /**
-         * Initial active tab index.
-         * Defaults to `0`.
-         *
-         * @type {number}
-         */
-        this.activeTabIndex = 0;
-        this._config = _utils_5174e079_js__WEBPACK_IMPORTED_MODULE_1__["D"];
-        this.initAttempts = 0;
-        this.initPromise = new Promise(function (resolve) {
-            _this.initPromiseResolve = resolve;
-        });
-        this.tabChange = Object(_core_4ed83284_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "tabChange", 7);
-    }
-    /**
-     * Set/update the configuration
-     * @param {SuperTabsConfig} config Configuration object
-     */
-    class_2.prototype.setConfig = function (config) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                this.debug('setConfig called with: ', config);
-                this._config = Object.assign(Object.assign({}, _utils_5174e079_js__WEBPACK_IMPORTED_MODULE_1__["D"]), config);
-                return [2 /*return*/];
-            });
-        });
-    };
-    class_2.prototype.propagateConfig = function () {
-        this.container && (this.container.config = this._config);
-        this.toolbar && (this.toolbar.config = this._config);
+    Animator.prototype._addEl = function (el) {
+        if (el.nodeType === 1) {
+            (this._elements = this._elements || []).push(el);
+        }
     };
     /**
-     * Set the selected tab.
-     * This will move the container and the toolbar to the selected tab.
-     * @param index {number} the index of the tab you want to select
-     * @param [animate=true] {boolean} whether you want to animate the transition
+     * Add a child animation to this animation.
      */
-    class_2.prototype.selectTab = function (index, animate) {
-        if (animate === void 0) { animate = true; }
-        return __awaiter(this, void 0, void 0, function () {
-            var lastIndex;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        this.debug('selectTab', index, animate);
-                        return [4 /*yield*/, this.initPromise];
-                    case 1:
-                        _a.sent();
-                        lastIndex = this.activeTabIndex;
-                        if (!this.container) return [3 /*break*/, 3];
-                        return [4 /*yield*/, this.container.setActiveTabIndex(index, true, animate)];
-                    case 2:
-                        _a.sent();
-                        _a.label = 3;
-                    case 3:
-                        if (!this.toolbar) return [3 /*break*/, 5];
-                        return [4 /*yield*/, this.toolbar.setActiveTab(index, true, animate)];
-                    case 4:
-                        _a.sent();
-                        _a.label = 5;
-                    case 5:
-                        this.emitTabChangeEvent(index, lastIndex);
-                        this.activeTabIndex = lastIndex;
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    class_2.prototype.onConfigChange = function (config) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.setConfig(config)];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    class_2.prototype.onWindowResize = function () {
-        this.debug('onWindowResize');
-        this.toolbar && this.toolbar.setSelectedTab(this.activeTabIndex);
-        this.container.reindexTabs();
-    };
-    class_2.prototype.componentWillLoad = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        this.debug('componentWillLoad');
-                        if (!this.config) return [3 /*break*/, 2];
-                        return [4 /*yield*/, this.setConfig(this.config)];
-                    case 1:
-                        _a.sent();
-                        _a.label = 2;
-                    case 2: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    class_2.prototype.componentDidLoad = function () {
-        var _this = this;
-        this.debug('componentDidLoad');
-        // index children
-        this.indexChildren();
-        // set the selected tab so the toolbar & container are aligned and in sync
-        if (this.container) {
-            this.container.setActiveTabIndex(this.activeTabIndex);
-        }
-        if (this.toolbar) {
-            this.toolbar.setActiveTab(this.activeTabIndex);
-        }
-        // listen to `slotchange` event to detect any changes in children
-        this.el.shadowRoot.addEventListener('slotchange', this.onSlotchange.bind(this));
-        requestAnimationFrame(function () {
-            _this.initComponent();
-        });
-    };
-    class_2.prototype.initComponent = function () {
-        var _this = this;
-        if (!this.container) {
-            if (++this.initAttempts < maxInitRetries) {
-                requestAnimationFrame(function () {
-                    _this.initComponent();
-                });
-                return;
-            }
-        }
-        this.debug("failed to init " + this.initAttempts + " times");
-        if (this.container) {
-            this.container.moveContainerByIndex(this.activeTabIndex, false);
-        }
-        if (this.toolbar) {
-            this.toolbar.setSelectedTab(this.activeTabIndex, false);
-        }
-        this.propagateConfig();
-        this.setupEventListeners();
-        this.initPromiseResolve();
+    Animator.prototype.add = function (childAnimation) {
+        childAnimation.parent = this;
+        this.hasChildren = true;
+        (this._childAnimations = this._childAnimations || []).push(childAnimation);
+        return this;
     };
     /**
-     * Setup event listeners to synchronize child components
+     * Get the duration of this animation. If this animation does
+     * not have a duration, then it'll get the duration from its parent.
      */
-    class_2.prototype.setupEventListeners = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        if (!this.container) return [3 /*break*/, 2];
-                        return [4 /*yield*/, this.container.componentOnReady()];
-                    case 1:
-                        _a.sent();
-                        this.el.addEventListener('selectedTabIndexChange', this.onContainerSelectedTabChange.bind(this));
-                        this.el.addEventListener('activeTabIndexChange', this.onContainerActiveTabChange.bind(this));
-                        return [3 /*break*/, 3];
-                    case 2:
-                        this.debug('setupEventListeners: container does not exist');
-                        _a.label = 3;
-                    case 3:
-                        if (!this.toolbar) return [3 /*break*/, 5];
-                        return [4 /*yield*/, this.toolbar.componentOnReady()];
-                    case 4:
-                        _a.sent();
-                        this.el.addEventListener('buttonClick', this.onToolbarButtonClick.bind(this));
-                        return [3 /*break*/, 6];
-                    case 5:
-                        this.debug('setupEventListeners: toolbar does not exist');
-                        _a.label = 6;
-                    case 6: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    class_2.prototype.onContainerSelectedTabChange = function (ev) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        if (!this.toolbar) return [3 /*break*/, 2];
-                        return [4 /*yield*/, this.toolbar.setSelectedTab(ev.detail)];
-                    case 1:
-                        _a.sent();
-                        _a.label = 2;
-                    case 2: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    class_2.prototype.emitTabChangeEvent = function (newIndex, oldIndex) {
-        if (typeof newIndex !== 'number' || newIndex < 0) {
-            return;
+    Animator.prototype.getDuration = function (opts) {
+        if (opts && opts.duration !== undefined) {
+            return opts.duration;
         }
-        if (typeof oldIndex !== 'number' || oldIndex < 0) {
-            oldIndex = this.activeTabIndex;
+        else if (this._duration !== undefined) {
+            return this._duration;
         }
-        this.tabChange.emit({
-            changed: newIndex !== oldIndex,
-            index: newIndex,
-        });
-    };
-    class_2.prototype.onContainerActiveTabChange = function (ev) {
-        this.debug('onContainerActiveTabChange', ev);
-        var index = ev.detail;
-        this.emitTabChangeEvent(index);
-        this.activeTabIndex = index;
-        this.toolbar && this.toolbar.setActiveTab(index, true, true);
-    };
-    class_2.prototype.onToolbarButtonClick = function (ev) {
-        this.debug('onToolbarButtonClick', ev);
-        var index = ev.detail.index;
-        this.container && this.container.setActiveTabIndex(index, true, true);
-        this.emitTabChangeEvent(index);
-        this.activeTabIndex = index;
-    };
-    class_2.prototype.indexChildren = function () {
-        this.debug('indexChildren');
-        var container = this.el.querySelector('super-tabs-container');
-        var toolbar = this.el.querySelector('super-tabs-toolbar');
-        if (container && this.container !== container) {
-            this.container = container;
+        else if (this.parent) {
+            return this.parent.getDuration();
         }
-        if (toolbar && this.toolbar !== toolbar) {
-            this.toolbar = toolbar;
-        }
-        this.propagateConfig();
-    };
-    class_2.prototype.onSlotchange = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                // re-index the child components
-                this.indexChildren();
-                // reselect the current tab to ensure that we're on the correct tab
-                this.selectTab(this.activeTabIndex);
-                return [2 /*return*/];
-            });
-        });
+        return 0;
     };
     /**
-     * Internal method to output values in debug mode.
+     * Returns if the animation is a root one.
      */
-    class_2.prototype.debug = function () {
-        var vals = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            vals[_i] = arguments[_i];
+    Animator.prototype.isRoot = function () {
+        return !this.parent;
+    };
+    /**
+     * Set the duration for this animation.
+     */
+    Animator.prototype.duration = function (milliseconds) {
+        this._duration = milliseconds;
+        return this;
+    };
+    /**
+     * Get the easing of this animation. If this animation does
+     * not have an easing, then it'll get the easing from its parent.
+     */
+    Animator.prototype.getEasing = function () {
+        if (this._isReverse && this._reversedEasingName !== undefined) {
+            return this._reversedEasingName;
         }
-        Object(_utils_5174e079_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this._config, 'tabs', vals);
+        return this._easingName !== undefined ? this._easingName : (this.parent && this.parent.getEasing()) || null;
     };
-    class_2.prototype.render = function () {
-        // Render 3 slots
-        // Top & bottom slots allow the toolbar position to be configurable via slots.
-        // The nameless slot is used to hold the `super-tabs-container`.
-        return (Object(_core_4ed83284_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_4ed83284_js__WEBPACK_IMPORTED_MODULE_0__["H"], null, Object(_core_4ed83284_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", { name: "top" }), Object(_core_4ed83284_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null), Object(_core_4ed83284_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", { name: "bottom" })));
+    /**
+     * Set the easing for this animation.
+     */
+    Animator.prototype.easing = function (name) {
+        this._easingName = name;
+        return this;
     };
-    Object.defineProperty(class_2.prototype, "el", {
-        get: function () { return Object(_core_4ed83284_js__WEBPACK_IMPORTED_MODULE_0__["g"])(this); },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(class_2, "watchers", {
-        get: function () {
-            return {
-                "config": ["onConfigChange"]
+    /**
+     * Set the easing for this reversed animation.
+     */
+    Animator.prototype.easingReverse = function (name) {
+        this._reversedEasingName = name;
+        return this;
+    };
+    /**
+     * Add the "from" value for a specific property.
+     */
+    Animator.prototype.from = function (prop, val) {
+        this._addProp('from', prop, val);
+        return this;
+    };
+    /**
+     * Add the "to" value for a specific property.
+     */
+    Animator.prototype.to = function (prop, val, clearProperyAfterTransition) {
+        if (clearProperyAfterTransition === void 0) { clearProperyAfterTransition = false; }
+        var fx = this._addProp('to', prop, val);
+        if (clearProperyAfterTransition) {
+            // if this effect is a transform then clear the transform effect
+            // otherwise just clear the actual property
+            this.afterClearStyles(fx.trans ? ['transform', '-webkit-transform'] : [prop]);
+        }
+        return this;
+    };
+    /**
+     * Shortcut to add both the "from" and "to" for the same property.
+     */
+    Animator.prototype.fromTo = function (prop, fromVal, toVal, clearProperyAfterTransition) {
+        return this.from(prop, fromVal).to(prop, toVal, clearProperyAfterTransition);
+    };
+    /**
+     * NO DOM
+     */
+    Animator.prototype._getProp = function (name) {
+        if (this._fxProperties) {
+            return this._fxProperties.find(function (prop) { return prop.effectName === name; });
+        }
+        return undefined;
+    };
+    Animator.prototype._addProp = function (state, prop, val) {
+        var fxProp = this._getProp(prop);
+        if (!fxProp) {
+            // first time we've see this EffectProperty
+            var shouldTrans = (TRANSFORM_PROPS[prop] === 1);
+            fxProp = {
+                effectName: prop,
+                trans: shouldTrans,
+                // add the will-change property for transforms or opacity
+                wc: (shouldTrans ? 'transform' : prop)
             };
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(class_2, "style", {
-        get: function () { return ":host{height:100%;max-height:100%;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;overflow:hidden;z-index:1;position:relative;contain:layout size style;-ms-flex-order:-1;order:-1;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-font-smoothing:antialiased;-ms-touch-action:none;touch-action:none;-webkit-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0}"; },
-        enumerable: true,
-        configurable: true
-    });
-    return class_2;
-}());
-var SuperTabsContainerComponent = /** @class */ (function () {
-    function class_3(hostRef) {
-        Object(_core_4ed83284_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        /**
-         * Enable/disable swiping
-         */
-        this.swipeEnabled = true;
-        /**
-         * Set to true to automatically scroll to the top of the tab when the button is clicked while the tab is
-         * already selected.
-         */
-        this.autoScrollTop = false;
-        this.tabs = [];
-        this.isDragging = false;
-        this.leftThreshold = 0;
-        this.rightThreshold = 0;
-        this.scrollWidth = 0;
-        this.clientWidth = 0;
-        this.activeTabIndexChange = Object(_core_4ed83284_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "activeTabIndexChange", 7);
-        this.selectedTabIndexChange = Object(_core_4ed83284_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "selectedTabIndexChange", 7);
-        this.queue = Object(_core_4ed83284_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "queue");
-    }
-    class_3.prototype.componentDidLoad = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        this.debug('componentDidLoad');
-                        return [4 /*yield*/, this.indexTabs()];
-                    case 1:
-                        _a.sent();
-                        this.slot = this.el.shadowRoot.querySelector('slot');
-                        this.slot.addEventListener('slotchange', this.onSlotChange.bind(this));
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    class_3.prototype.onSlotChange = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                this.debug('onSlotChange', this.tabs.length);
-                return [2 /*return*/];
-            });
-        });
-    };
-    class_3.prototype.componentWillUpdate = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.indexTabs()];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    /**
-     * @internal
-     */
-    class_3.prototype.reindexTabs = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.indexTabs()];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    /**
-     * @internal
-     *
-     * Moves the container to align with the specified tab index
-     * @param index {number} Index of the tab
-     * @param animate {boolean} Whether to animate the transition
-     */
-    class_3.prototype.moveContainerByIndex = function (index, animate) {
-        var scrollX = this.indexToPosition(index);
-        if (scrollX === 0 && index > 0) {
-            return Promise.resolve();
+            (this._fxProperties = this._fxProperties || []).push(fxProp);
         }
-        return this.moveContainer(scrollX, animate);
+        // add from/to EffectState to the EffectProperty
+        var fxState = {
+            val: val,
+            num: 0,
+            effectUnit: '',
+        };
+        fxProp[state] = fxState;
+        if (typeof val === 'string' && val.indexOf(' ') < 0) {
+            var r = val.match(CSS_VALUE_REGEX);
+            if (r) {
+                var num = parseFloat(r[1]);
+                if (!isNaN(num)) {
+                    fxState.num = num;
+                }
+                fxState.effectUnit = (r[0] !== r[2] ? r[2] : '');
+            }
+        }
+        else if (typeof val === 'number') {
+            fxState.num = val;
+        }
+        return fxProp;
     };
     /**
-     * @internal
-     *
-     * Sets the scrollLeft property of the container
-     * @param scrollX {number}
-     * @param animate {boolean}
+     * Add CSS class to this animation's elements
+     * before the animation begins.
      */
-    class_3.prototype.moveContainer = function (scrollX, animate) {
-        Object(_utils_5174e079_js__WEBPACK_IMPORTED_MODULE_1__["s"])(this.el, scrollX, 0, animate ? this.config.transitionDuration : 0);
-        return Promise.resolve();
-    };
-    /** @internal */
-    class_3.prototype.setActiveTabIndex = function (index, moveContainer, animate) {
-        if (moveContainer === void 0) { moveContainer = true; }
-        if (animate === void 0) { animate = true; }
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        this.debug('setActiveTabIndex', index);
-                        if (!(this._activeTabIndex === index)) return [3 /*break*/, 2];
-                        if (!this.autoScrollTop) {
-                            return [2 /*return*/];
-                        }
-                        return [4 /*yield*/, this.scrollToTop()];
-                    case 1:
-                        _a.sent();
-                        _a.label = 2;
-                    case 2:
-                        if (!moveContainer) return [3 /*break*/, 4];
-                        return [4 /*yield*/, this.moveContainerByIndex(index, animate)];
-                    case 3:
-                        _a.sent();
-                        _a.label = 4;
-                    case 4: return [4 /*yield*/, this.updateActiveTabIndex(index, false)];
-                    case 5:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
-            });
-        });
+    Animator.prototype.beforeAddClass = function (className) {
+        (this._beforeAddClasses = this._beforeAddClasses || []).push(className);
+        return this;
     };
     /**
-     * Scroll the active tab to the top.
+     * Remove CSS class from this animation's elements
+     * before the animation begins.
      */
-    class_3.prototype.scrollToTop = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var current;
-            var _this = this;
-            return __generator(this, function (_a) {
-                if (this._activeTabIndex === undefined || this.tabs === undefined) {
-                    this.debug('activeTabIndex or tabs was undefined');
-                    return [2 /*return*/];
-                }
-                current = this.tabs[this._activeTabIndex];
-                this.queue.read(function () {
-                    if (!current) {
-                        _this.debug('Current active tab was undefined in scrollToTop');
-                        return;
-                    }
-                    current.getRootScrollableEl()
-                        .then(function (el) {
-                        if (el) {
-                            Object(_utils_5174e079_js__WEBPACK_IMPORTED_MODULE_1__["s"])(el, 0, 0, _this.config.transitionDuration);
-                        }
-                    });
-                });
-                return [2 /*return*/];
-            });
-        });
+    Animator.prototype.beforeRemoveClass = function (className) {
+        (this._beforeRemoveClasses = this._beforeRemoveClasses || []).push(className);
+        return this;
     };
-    class_3.prototype.updateActiveTabIndex = function (index, emit) {
-        if (emit === void 0) { emit = true; }
-        this.debug('updateActiveTabIndex', index, emit, this._activeTabIndex);
-        this._activeTabIndex = index;
-        emit && this.activeTabIndexChange.emit(this._activeTabIndex);
+    /**
+     * Set CSS inline styles to this animation's elements
+     * before the animation begins.
+     */
+    Animator.prototype.beforeStyles = function (styles) {
+        this._beforeStyles = styles;
+        return this;
     };
-    class_3.prototype.updateSelectedTabIndex = function (index) {
-        if (index === this._selectedTabIndex) {
+    /**
+     * Clear CSS inline styles from this animation's elements
+     * before the animation begins.
+     */
+    Animator.prototype.beforeClearStyles = function (propertyNames) {
+        this._beforeStyles = this._beforeStyles || {};
+        for (var _i = 0, propertyNames_1 = propertyNames; _i < propertyNames_1.length; _i++) {
+            var prop = propertyNames_1[_i];
+            this._beforeStyles[prop] = '';
+        }
+        return this;
+    };
+    /**
+     * Add a function which contains DOM reads, which will run
+     * before the animation begins.
+     */
+    Animator.prototype.beforeAddRead = function (domReadFn) {
+        (this._readCallbacks = this._readCallbacks || []).push(domReadFn);
+        return this;
+    };
+    /**
+     * Add a function which contains DOM writes, which will run
+     * before the animation begins.
+     */
+    Animator.prototype.beforeAddWrite = function (domWriteFn) {
+        (this._writeCallbacks = this._writeCallbacks || []).push(domWriteFn);
+        return this;
+    };
+    /**
+     * Add CSS class to this animation's elements
+     * after the animation finishes.
+     */
+    Animator.prototype.afterAddClass = function (className) {
+        (this._afterAddClasses = this._afterAddClasses || []).push(className);
+        return this;
+    };
+    /**
+     * Remove CSS class from this animation's elements
+     * after the animation finishes.
+     */
+    Animator.prototype.afterRemoveClass = function (className) {
+        (this._afterRemoveClasses = this._afterRemoveClasses || []).push(className);
+        return this;
+    };
+    /**
+     * Set CSS inline styles to this animation's elements
+     * after the animation finishes.
+     */
+    Animator.prototype.afterStyles = function (styles) {
+        this._afterStyles = styles;
+        return this;
+    };
+    /**
+     * Clear CSS inline styles from this animation's elements
+     * after the animation finishes.
+     */
+    Animator.prototype.afterClearStyles = function (propertyNames) {
+        this._afterStyles = this._afterStyles || {};
+        for (var _i = 0, propertyNames_2 = propertyNames; _i < propertyNames_2.length; _i++) {
+            var prop = propertyNames_2[_i];
+            this._afterStyles[prop] = '';
+        }
+        return this;
+    };
+    /**
+     * Play the animation.
+     */
+    Animator.prototype.play = function (opts) {
+        var _this = this;
+        // If the animation was already invalidated (it did finish), do nothing
+        if (this._destroyed) {
             return;
         }
-        this._selectedTabIndex = index;
-        this.selectedTabIndexChange.emit(this._selectedTabIndex);
-    };
-    class_3.prototype.onTouchStart = function (ev) {
-        return __awaiter(this, void 0, void 0, function () {
-            var avoid, element, coords, vw;
-            return __generator(this, function (_a) {
-                if (!this.swipeEnabled) {
-                    return [2 /*return*/];
-                }
-                if (this.config.avoidElements) {
-                    avoid = false;
-                    element = ev.target;
-                    if (element) {
-                        do {
-                            if (typeof element.getAttribute === 'function' && element.getAttribute('avoid-super-tabs')) {
-                                return [2 /*return*/];
-                            }
-                            element = element.parentElement;
-                        } while (element && !avoid);
-                    }
-                }
-                coords = Object(_utils_5174e079_js__WEBPACK_IMPORTED_MODULE_1__["p"])(ev);
-                vw = this.clientWidth;
-                if (coords.x < this.leftThreshold || coords.x > vw - this.rightThreshold) {
-                    // ignore this gesture, it started in the side menu touch zone
-                    return [2 /*return*/];
-                }
-                if (this.config.shortSwipeDuration > 0) {
-                    this.initialTimestamp = Object(_utils_5174e079_js__WEBPACK_IMPORTED_MODULE_1__["b"])();
-                }
-                this.initialCoords = coords;
-                this.lastPosX = coords.x;
-                return [2 /*return*/];
+        // this is the top level animation and is in full control
+        // of when the async play() should actually kick off
+        // if there is no duration then it'll set the TO property immediately
+        // if there is a duration, then it'll stage all animations at the
+        // FROM property and transition duration, wait a few frames, then
+        // kick off the animation by setting the TO property for each animation
+        this._isAsync = this._hasDuration(opts);
+        // ensure all past transition end events have been cleared
+        this._clearAsync();
+        // recursively kicks off the correct progress step for each child animation
+        // ******** DOM WRITE ****************
+        this._playInit(opts);
+        // doubling up RAFs since this animation was probably triggered
+        // from an input event, and just having one RAF would have this code
+        // run within the same frame as the triggering input event, and the
+        // input event probably already did way too much work for one frame
+        raf(function () {
+            raf(function () {
+                _this._playDomInspect(opts);
             });
         });
     };
-    class_3.prototype.onClick = function (ev) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                if (this.isDragging) {
-                    ev.stopImmediatePropagation();
-                    ev.preventDefault();
-                }
-                return [2 /*return*/];
-            });
+    Animator.prototype.playAsync = function (opts) {
+        var _this = this;
+        return new Promise(function (resolve) {
+            _this.onFinish(resolve, { oneTimeCallback: true, clearExistingCallbacks: true });
+            _this.play(opts);
+            return _this;
         });
     };
-    class_3.prototype.onTouchMove = function (ev) {
-        return __awaiter(this, void 0, void 0, function () {
-            var coords, shouldCapture, deltaX, scrollLeft, scrollX;
-            return __generator(this, function (_a) {
-                if (!this.swipeEnabled || !this.initialCoords || typeof this.lastPosX !== 'number') {
-                    return [2 /*return*/];
-                }
-                coords = Object(_utils_5174e079_js__WEBPACK_IMPORTED_MODULE_1__["p"])(ev);
-                if (!this.isDragging) {
-                    shouldCapture = Object(_utils_5174e079_js__WEBPACK_IMPORTED_MODULE_1__["c"])(coords, this.initialCoords, this.config);
-                    if (!shouldCapture) {
-                        if (Math.abs(coords.y - this.initialCoords.y) > 100) {
-                            this.initialCoords = void 0;
-                            this.lastPosX = void 0;
-                        }
-                        return [2 /*return*/];
-                    }
-                    // gesture is good, let's capture all next onTouchMove events
-                    this.isDragging = true;
-                }
-                // scroll container
-                if (!this.isDragging) {
-                    return [2 /*return*/];
-                }
-                // stop anything else from capturing these events, to make sure the content doesn't slide
-                if (!this.config.allowElementScroll) {
-                    ev.stopImmediatePropagation();
-                }
-                deltaX = this.lastPosX - coords.x;
-                if (deltaX === 0) {
-                    return [2 /*return*/];
-                }
-                scrollLeft = Object(_utils_5174e079_js__WEBPACK_IMPORTED_MODULE_1__["g"])(this.el);
-                scrollX = Object(_utils_5174e079_js__WEBPACK_IMPORTED_MODULE_1__["a"])(this.el, deltaX);
-                if (scrollX === scrollLeft) {
-                    return [2 /*return*/];
-                }
-                this.updateSelectedTabIndex(this.positionToIndex(scrollX));
-                // update last X value
-                this.lastPosX = coords.x;
-                this.moveContainer(scrollX, false);
-                return [2 /*return*/];
-            });
-        });
-    };
-    class_3.prototype.onTouchEnd = function (ev) {
-        return __awaiter(this, void 0, void 0, function () {
-            var coords, deltaTime, shortSwipe, shortSwipeDelta, selectedTabIndex, expectedTabIndex;
-            return __generator(this, function (_a) {
-                if (!this.swipeEnabled || !this.isDragging) {
-                    return [2 /*return*/];
-                }
-                coords = Object(_utils_5174e079_js__WEBPACK_IMPORTED_MODULE_1__["p"])(ev);
-                deltaTime = Object(_utils_5174e079_js__WEBPACK_IMPORTED_MODULE_1__["b"])() - this.initialTimestamp;
-                shortSwipe = this.config.shortSwipeDuration > 0 && deltaTime <= this.config.shortSwipeDuration;
-                shortSwipeDelta = coords.x - this.initialCoords.x;
-                selectedTabIndex = this.calcSelectedTab();
-                expectedTabIndex = Math.round(selectedTabIndex);
-                if (shortSwipe && expectedTabIndex === this._activeTabIndex) {
-                    selectedTabIndex += shortSwipeDelta > 0 ? -1 : 1;
-                }
-                selectedTabIndex = this.normalizeSelectedTab(selectedTabIndex);
-                this.updateActiveTabIndex(selectedTabIndex);
-                this.moveContainerByIndex(selectedTabIndex, true);
-                this.isDragging = false;
-                this.initialCoords = void 0;
-                this.lastPosX = void 0;
-                return [2 /*return*/];
-            });
-        });
-    };
-    class_3.prototype.indexTabs = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var tabs;
-            var _this = this;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        this.scrollWidth = this.el.scrollWidth;
-                        this.clientWidth = this.el.clientWidth;
-                        this.debug('indexTab', this.scrollWidth, this.clientWidth);
-                        if (this.scrollWidth === 0 || this.clientWidth === 0) {
-                            requestAnimationFrame(function () {
-                                _this.indexTabs();
-                            });
-                            return [2 /*return*/];
-                        }
-                        tabs = Array.from(this.el.querySelectorAll('super-tab'));
-                        return [4 /*yield*/, Promise.all(tabs.map(function (t) { return t.componentOnReady(); }))];
-                    case 1:
-                        _a.sent();
-                        this.tabs = tabs;
-                        if (this.ready && typeof this._activeTabIndex === 'number') {
-                            this.moveContainerByIndex(this._activeTabIndex, true);
-                        }
-                        if (this.config) {
-                            switch (this.config.sideMenu) {
-                                case 'both':
-                                    this.rightThreshold = this.leftThreshold = this.config.sideMenuThreshold || 0;
-                                    break;
-                                case 'left':
-                                    this.leftThreshold = this.config.sideMenuThreshold || 0;
-                                    break;
-                                case 'right':
-                                    this.rightThreshold = this.config.sideMenuThreshold || 0;
-                                    break;
-                            }
-                        }
-                        if (this._activeTabIndex !== undefined) {
-                            this.moveContainerByIndex(this._activeTabIndex, false)
-                                .then(function () {
-                                _this.ready = true;
-                            });
-                        }
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    class_3.prototype.calcSelectedTab = function () {
-        var tabsWidth = this.scrollWidth;
-        var tabWidth = this.clientWidth;
-        var minX = 0;
-        var maxX = tabsWidth - tabWidth;
-        var scrollX = Math.max(minX, Math.min(maxX, Object(_utils_5174e079_js__WEBPACK_IMPORTED_MODULE_1__["g"])(this.el)));
-        return this.positionToIndex(scrollX);
-    };
-    class_3.prototype.positionToIndex = function (scrollX) {
-        var tabWidth = this.clientWidth;
-        return scrollX / tabWidth;
-    };
-    class_3.prototype.indexToPosition = function (tabIndex) {
-        this.debug('indexToPosition', tabIndex, this.clientWidth);
-        var tabWidth = this.clientWidth;
-        return tabIndex * tabWidth;
-    };
-    class_3.prototype.normalizeSelectedTab = function (index) {
-        var tabsWidth = this.scrollWidth;
-        var tabWidth = this.clientWidth;
-        var minX = 0;
-        var maxX = tabsWidth - tabWidth;
-        var scrollX = Math.max(minX, Math.min(maxX, tabWidth * Math.round(index)));
-        return scrollX / tabWidth;
+    Animator.prototype.playSync = function () {
+        // If the animation was already invalidated (it did finish), do nothing
+        if (!this._destroyed) {
+            var opts = { duration: 0 };
+            this._isAsync = false;
+            this._clearAsync();
+            this._playInit(opts);
+            this._playDomInspect(opts);
+        }
     };
     /**
-     * Internal method to output values in debug mode.
+     * DOM WRITE
+     * RECURSION
      */
-    class_3.prototype.debug = function () {
-        var vals = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            vals[_i] = arguments[_i];
+    Animator.prototype._playInit = function (opts) {
+        // always default that an animation does not tween
+        // a tween requires that an Animation class has an element
+        // and that it has at least one FROM/TO effect
+        // and that the FROM/TO effect can tween numeric values
+        this._hasTweenEffect = false;
+        this.isPlaying = true;
+        this.hasCompleted = false;
+        this._hasDur = (this.getDuration(opts) > DURATION_MIN);
+        var children = this._childAnimations;
+        if (children) {
+            for (var _i = 0, children_1 = children; _i < children_1.length; _i++) {
+                var child = children_1[_i];
+                // ******** DOM WRITE ****************
+                child._playInit(opts);
+            }
         }
-        Object(_utils_5174e079_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this.config, 'container', vals);
+        if (this._hasDur) {
+            // if there is a duration then we want to start at step 0
+            // ******** DOM WRITE ****************
+            this._progress(0);
+            // add the will-change properties
+            // ******** DOM WRITE ****************
+            this._willChange(true);
+        }
     };
-    class_3.prototype.render = function () {
-        return Object(_core_4ed83284_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null);
+    /**
+     * DOM WRITE
+     * NO RECURSION
+     * ROOT ANIMATION
+     */
+    Animator.prototype._playDomInspect = function (opts) {
+        var _this = this;
+        // fire off all the "before" function that have DOM READS in them
+        // elements will be in the DOM, however visibily hidden
+        // so we can read their dimensions if need be
+        // ******** DOM READ ****************
+        // ******** DOM WRITE ****************
+        this._beforeAnimation();
+        // for the root animation only
+        // set the async TRANSITION END event
+        // and run onFinishes when the transition ends
+        var dur = this.getDuration(opts);
+        if (this._isAsync) {
+            this._asyncEnd(dur, true);
+        }
+        // ******** DOM WRITE ****************
+        this._playProgress(opts);
+        if (this._isAsync && !this._destroyed) {
+            // this animation has a duration so we need another RAF
+            // for the CSS TRANSITION properties to kick in
+            raf(function () {
+                _this._playToStep(1);
+            });
+        }
     };
-    Object.defineProperty(class_3.prototype, "el", {
-        get: function () { return Object(_core_4ed83284_js__WEBPACK_IMPORTED_MODULE_0__["g"])(this); },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(class_3, "style", {
-        get: function () { return ":host{display:-ms-flexbox;display:flex;-ms-flex-flow:row nowrap;flex-flow:row nowrap;min-width:100%;-ms-flex:1 1 auto;flex:1 1 auto;position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;width:var(--super-tab-width,100vw);height:var(--super-tab-height,100%);overflow:hidden;-webkit-transform:translateZ(0);transform:translateZ(0);-ms-touch-action:pan-y;touch-action:pan-y;-moz-user-select:none;-ms-user-select:none;user-select:none;will-change:scroll-position;-ms-flex-order:-1;order:-1;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-font-smoothing:antialiased}"; },
-        enumerable: true,
-        configurable: true
-    });
-    return class_3;
+    /**
+     * DOM WRITE
+     * RECURSION
+     */
+    Animator.prototype._playProgress = function (opts) {
+        var children = this._childAnimations;
+        if (children) {
+            for (var _i = 0, children_2 = children; _i < children_2.length; _i++) {
+                var child = children_2[_i];
+                // ******** DOM WRITE ****************
+                child._playProgress(opts);
+            }
+        }
+        if (this._hasDur) {
+            // set the CSS TRANSITION duration/easing
+            // ******** DOM WRITE ****************
+            this._setTrans(this.getDuration(opts), false);
+        }
+        else {
+            // this animation does not have a duration, so it should not animate
+            // just go straight to the TO properties and call it done
+            // ******** DOM WRITE ****************
+            this._progress(1);
+            // since there was no animation, immediately run the after
+            // ******** DOM WRITE ****************
+            this._setAfterStyles();
+            // this animation has no duration, so it has finished
+            // other animations could still be running
+            this._didFinish(true);
+        }
+    };
+    /**
+     * DOM WRITE
+     * RECURSION
+     */
+    Animator.prototype._playToStep = function (stepValue) {
+        if (!this._destroyed) {
+            var children = this._childAnimations;
+            if (children) {
+                for (var _i = 0, children_3 = children; _i < children_3.length; _i++) {
+                    var child = children_3[_i];
+                    // ******** DOM WRITE ****************
+                    child._playToStep(stepValue);
+                }
+            }
+            if (this._hasDur) {
+                // browser had some time to render everything in place
+                // and the transition duration/easing is set
+                // now set the TO properties which will trigger the transition to begin
+                // ******** DOM WRITE ****************
+                this._progress(stepValue);
+            }
+        }
+    };
+    /**
+     * DOM WRITE
+     * NO RECURSION
+     * ROOT ANIMATION
+     */
+    Animator.prototype._asyncEnd = function (dur, shouldComplete) {
+        var self = this;
+        var onTransitionEnd = function () {
+            // congrats! a successful transition completed!
+            // ensure transition end events and timeouts have been cleared
+            self._clearAsync();
+            // ******** DOM WRITE ****************
+            self._playEnd();
+            // transition finished
+            self._didFinishAll(shouldComplete, true, false);
+        };
+        var onTransitionFallback = function () {
+            // oh noz! the transition end event didn't fire in time!
+            // instead the fallback timer when first
+            // if all goes well this fallback should never fire
+            // clear the other async end events from firing
+            self._timerId = undefined;
+            self._clearAsync();
+            // set the after styles
+            // ******** DOM WRITE ****************
+            self._playEnd(shouldComplete ? 1 : 0);
+            // transition finished
+            self._didFinishAll(shouldComplete, true, false);
+        };
+        // set the TRANSITION END event on one of the transition elements
+        self._unregisterTrnsEnd = transitionEnd(self._transEl(), onTransitionEnd);
+        // set a fallback timeout if the transition end event never fires, or is too slow
+        // transition end fallback: (animation duration + XXms)
+        self._timerId = setTimeout(onTransitionFallback, (dur + TRANSITION_END_FALLBACK_PADDING_MS));
+    };
+    /**
+     * DOM WRITE
+     * RECURSION
+     */
+    Animator.prototype._playEnd = function (stepValue) {
+        var children = this._childAnimations;
+        if (children) {
+            for (var _i = 0, children_4 = children; _i < children_4.length; _i++) {
+                var child = children_4[_i];
+                // ******** DOM WRITE ****************
+                child._playEnd(stepValue);
+            }
+        }
+        if (this._hasDur) {
+            if (stepValue !== undefined) {
+                // too late to have a smooth animation, just finish it
+                // ******** DOM WRITE ****************
+                this._setTrans(0, true);
+                // ensure the ending progress step gets rendered
+                // ******** DOM WRITE ****************
+                this._progress(stepValue);
+            }
+            // set the after styles
+            // ******** DOM WRITE ****************
+            this._setAfterStyles();
+            // remove the will-change properties
+            // ******** DOM WRITE ****************
+            this._willChange(false);
+        }
+    };
+    /**
+     * NO DOM
+     * RECURSION
+     */
+    Animator.prototype._hasDuration = function (opts) {
+        if (this.getDuration(opts) > DURATION_MIN) {
+            return true;
+        }
+        var children = this._childAnimations;
+        if (children) {
+            for (var _i = 0, children_5 = children; _i < children_5.length; _i++) {
+                var child = children_5[_i];
+                if (child._hasDuration(opts)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    };
+    /**
+     * NO DOM
+     * RECURSION
+     */
+    Animator.prototype._hasDomReads = function () {
+        if (this._readCallbacks && this._readCallbacks.length > 0) {
+            return true;
+        }
+        var children = this._childAnimations;
+        if (children) {
+            for (var _i = 0, children_6 = children; _i < children_6.length; _i++) {
+                var child = children_6[_i];
+                if (child._hasDomReads()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    };
+    /**
+     * Immediately stop at the end of the animation.
+     */
+    Animator.prototype.stop = function (stepValue) {
+        if (stepValue === void 0) { stepValue = 1; }
+        // ensure all past transition end events have been cleared
+        this._clearAsync();
+        this._hasDur = true;
+        this._playEnd(stepValue);
+    };
+    /**
+     * NO DOM
+     * NO RECURSION
+     */
+    Animator.prototype._clearAsync = function () {
+        if (this._unregisterTrnsEnd) {
+            this._unregisterTrnsEnd();
+        }
+        if (this._timerId) {
+            clearTimeout(this._timerId);
+        }
+        this._timerId = this._unregisterTrnsEnd = undefined;
+    };
+    /**
+     * DOM WRITE
+     * NO RECURSION
+     */
+    Animator.prototype._progress = function (stepValue) {
+        // bread 'n butter
+        var val;
+        var elements = this._elements;
+        var effects = this._fxProperties;
+        if (!elements || elements.length === 0 || !effects || this._destroyed) {
+            return;
+        }
+        // flip the number if we're going in reverse
+        if (this._isReverse) {
+            stepValue = 1 - stepValue;
+        }
+        var i = 0;
+        var j = 0;
+        var finalTransform = '';
+        var fx;
+        for (i = 0; i < effects.length; i++) {
+            fx = effects[i];
+            if (fx.from && fx.to) {
+                var fromNum = fx.from.num;
+                var toNum = fx.to.num;
+                var tweenEffect = (fromNum !== toNum);
+                if (tweenEffect) {
+                    this._hasTweenEffect = true;
+                }
+                if (stepValue === 0) {
+                    // FROM
+                    val = fx.from.val;
+                }
+                else if (stepValue === 1) {
+                    // TO
+                    val = fx.to.val;
+                }
+                else if (tweenEffect) {
+                    // EVERYTHING IN BETWEEN
+                    var valNum = (((toNum - fromNum) * stepValue) + fromNum);
+                    var unit = fx.to.effectUnit;
+                    val = valNum + unit;
+                }
+                if (val !== null) {
+                    var prop = fx.effectName;
+                    if (fx.trans) {
+                        finalTransform += prop + '(' + val + ') ';
+                    }
+                    else {
+                        for (j = 0; j < elements.length; j++) {
+                            // ******** DOM WRITE ****************
+                            elements[j].style.setProperty(prop, val);
+                        }
+                    }
+                }
+            }
+        }
+        // place all transforms on the same property
+        if (finalTransform.length > 0) {
+            if (!this._isReverse && stepValue !== 1 || this._isReverse && stepValue !== 0) {
+                finalTransform += 'translateZ(0px)';
+            }
+            for (i = 0; i < elements.length; i++) {
+                // ******** DOM WRITE ****************
+                elements[i].style.setProperty('transform', finalTransform);
+                elements[i].style.setProperty('-webkit-transform', finalTransform);
+            }
+        }
+    };
+    /**
+     * DOM WRITE
+     * NO RECURSION
+     */
+    Animator.prototype._setTrans = function (dur, forcedLinearEasing) {
+        // Transition is not enabled if there are not effects
+        var elements = this._elements;
+        if (!elements || elements.length === 0 || !this._fxProperties) {
+            return;
+        }
+        // set the TRANSITION properties inline on the element
+        var easing = (forcedLinearEasing ? 'linear' : this.getEasing());
+        var durString = dur + 'ms';
+        for (var _i = 0, elements_1 = elements; _i < elements_1.length; _i++) {
+            var style = elements_1[_i].style;
+            if (dur > 0) {
+                // ******** DOM WRITE ****************
+                style.transitionDuration = durString;
+                // each animation can have a different easing
+                if (easing !== null) {
+                    // ******** DOM WRITE ****************
+                    style.transitionTimingFunction = easing;
+                }
+            }
+            else {
+                style.transitionDuration = '0';
+            }
+        }
+    };
+    /**
+     * DOM READ
+     * DOM WRITE
+     * RECURSION
+     */
+    Animator.prototype._beforeAnimation = function () {
+        // fire off all the "before" function that have DOM READS in them
+        // elements will be in the DOM, however visibily hidden
+        // so we can read their dimensions if need be
+        // ******** DOM READ ****************
+        this._fireBeforeReadFunc();
+        // ******** DOM READS ABOVE / DOM WRITES BELOW ****************
+        // fire off all the "before" function that have DOM WRITES in them
+        // ******** DOM WRITE ****************
+        this._fireBeforeWriteFunc();
+        // stage all of the before css classes and inline styles
+        // ******** DOM WRITE ****************
+        this._setBeforeStyles();
+    };
+    /**
+     * DOM WRITE
+     * RECURSION
+     */
+    Animator.prototype._setBeforeStyles = function () {
+        var children = this._childAnimations;
+        if (children) {
+            for (var _i = 0, children_7 = children; _i < children_7.length; _i++) {
+                var child = children_7[_i];
+                child._setBeforeStyles();
+            }
+        }
+        var elements = this._elements;
+        // before the animations have started
+        // only set before styles if animation is not reversed
+        if (!elements || elements.length === 0 || this._isReverse) {
+            return;
+        }
+        var addClasses = this._beforeAddClasses;
+        var removeClasses = this._beforeRemoveClasses;
+        for (var _a = 0, elements_2 = elements; _a < elements_2.length; _a++) {
+            var el = elements_2[_a];
+            var elementClassList = el.classList;
+            // css classes to add before the animation
+            if (addClasses) {
+                for (var _b = 0, addClasses_1 = addClasses; _b < addClasses_1.length; _b++) {
+                    var c = addClasses_1[_b];
+                    // ******** DOM WRITE ****************
+                    elementClassList.add(c);
+                }
+            }
+            // css classes to remove before the animation
+            if (removeClasses) {
+                for (var _c = 0, removeClasses_1 = removeClasses; _c < removeClasses_1.length; _c++) {
+                    var c = removeClasses_1[_c];
+                    // ******** DOM WRITE ****************
+                    elementClassList.remove(c);
+                }
+            }
+            // inline styles to add before the animation
+            if (this._beforeStyles) {
+                for (var _d = 0, _e = Object.entries(this._beforeStyles); _d < _e.length; _d++) {
+                    var _f = _e[_d], key = _f[0], value = _f[1];
+                    // ******** DOM WRITE ****************
+                    el.style.setProperty(key, value);
+                }
+            }
+        }
+    };
+    /**
+     * DOM READ
+     * RECURSION
+     */
+    Animator.prototype._fireBeforeReadFunc = function () {
+        var children = this._childAnimations;
+        if (children) {
+            for (var _i = 0, children_8 = children; _i < children_8.length; _i++) {
+                var child = children_8[_i];
+                // ******** DOM READ ****************
+                child._fireBeforeReadFunc();
+            }
+        }
+        var readFunctions = this._readCallbacks;
+        if (readFunctions) {
+            for (var _a = 0, readFunctions_1 = readFunctions; _a < readFunctions_1.length; _a++) {
+                var callback = readFunctions_1[_a];
+                // ******** DOM READ ****************
+                callback();
+            }
+        }
+    };
+    /**
+     * DOM WRITE
+     * RECURSION
+     */
+    Animator.prototype._fireBeforeWriteFunc = function () {
+        var children = this._childAnimations;
+        if (children) {
+            for (var _i = 0, children_9 = children; _i < children_9.length; _i++) {
+                var child = children_9[_i];
+                // ******** DOM WRITE ****************
+                child._fireBeforeWriteFunc();
+            }
+        }
+        var writeFunctions = this._writeCallbacks;
+        if (writeFunctions) {
+            for (var _a = 0, writeFunctions_1 = writeFunctions; _a < writeFunctions_1.length; _a++) {
+                var callback = writeFunctions_1[_a];
+                // ******** DOM WRITE ****************
+                callback();
+            }
+        }
+    };
+    /**
+     * DOM WRITE
+     */
+    Animator.prototype._setAfterStyles = function () {
+        var elements = this._elements;
+        if (!elements) {
+            return;
+        }
+        for (var _i = 0, elements_3 = elements; _i < elements_3.length; _i++) {
+            var el = elements_3[_i];
+            var elementClassList = el.classList;
+            // remove the transition duration/easing
+            // ******** DOM WRITE ****************
+            el.style.transitionDuration = el.style.transitionTimingFunction = '';
+            if (this._isReverse) {
+                // finished in reverse direction
+                // css classes that were added before the animation should be removed
+                var beforeAddClasses = this._beforeAddClasses;
+                if (beforeAddClasses) {
+                    for (var _a = 0, beforeAddClasses_1 = beforeAddClasses; _a < beforeAddClasses_1.length; _a++) {
+                        var c = beforeAddClasses_1[_a];
+                        elementClassList.remove(c);
+                    }
+                }
+                // css classes that were removed before the animation should be added
+                var beforeRemoveClasses = this._beforeRemoveClasses;
+                if (beforeRemoveClasses) {
+                    for (var _b = 0, beforeRemoveClasses_1 = beforeRemoveClasses; _b < beforeRemoveClasses_1.length; _b++) {
+                        var c = beforeRemoveClasses_1[_b];
+                        elementClassList.add(c);
+                    }
+                }
+                // inline styles that were added before the animation should be removed
+                var beforeStyles = this._beforeStyles;
+                if (beforeStyles) {
+                    for (var _c = 0, _d = Object.keys(beforeStyles); _c < _d.length; _c++) {
+                        var propName = _d[_c];
+                        // ******** DOM WRITE ****************
+                        el.style.removeProperty(propName);
+                    }
+                }
+            }
+            else {
+                // finished in forward direction
+                // css classes to add after the animation
+                var afterAddClasses = this._afterAddClasses;
+                if (afterAddClasses) {
+                    for (var _e = 0, afterAddClasses_1 = afterAddClasses; _e < afterAddClasses_1.length; _e++) {
+                        var c = afterAddClasses_1[_e];
+                        // ******** DOM WRITE ****************
+                        elementClassList.add(c);
+                    }
+                }
+                // css classes to remove after the animation
+                var afterRemoveClasses = this._afterRemoveClasses;
+                if (afterRemoveClasses) {
+                    for (var _f = 0, afterRemoveClasses_1 = afterRemoveClasses; _f < afterRemoveClasses_1.length; _f++) {
+                        var c = afterRemoveClasses_1[_f];
+                        // ******** DOM WRITE ****************
+                        elementClassList.remove(c);
+                    }
+                }
+                // inline styles to add after the animation
+                var afterStyles = this._afterStyles;
+                if (afterStyles) {
+                    for (var _g = 0, _h = Object.entries(afterStyles); _g < _h.length; _g++) {
+                        var _j = _h[_g], key = _j[0], value = _j[1];
+                        el.style.setProperty(key, value);
+                    }
+                }
+            }
+        }
+    };
+    /**
+     * DOM WRITE
+     * NO RECURSION
+     */
+    Animator.prototype._willChange = function (addWillChange) {
+        var wc;
+        var effects = this._fxProperties;
+        var willChange;
+        if (addWillChange && effects) {
+            wc = [];
+            for (var _i = 0, effects_1 = effects; _i < effects_1.length; _i++) {
+                var effect = effects_1[_i];
+                var propWC = effect.wc;
+                if (propWC === 'webkitTransform') {
+                    wc.push('transform', '-webkit-transform');
+                }
+                else if (propWC !== undefined) {
+                    wc.push(propWC);
+                }
+            }
+            willChange = wc.join(',');
+        }
+        else {
+            willChange = '';
+        }
+        var elements = this._elements;
+        if (elements) {
+            for (var _a = 0, elements_4 = elements; _a < elements_4.length; _a++) {
+                var el = elements_4[_a];
+                // ******** DOM WRITE ****************
+                el.style.setProperty('will-change', willChange);
+            }
+        }
+    };
+    /**
+     * Start the animation with a user controlled progress.
+     */
+    Animator.prototype.progressStart = function () {
+        // ensure all past transition end events have been cleared
+        this._clearAsync();
+        // ******** DOM READ/WRITE ****************
+        this._beforeAnimation();
+        // ******** DOM WRITE ****************
+        this._progressStart();
+    };
+    /**
+     * DOM WRITE
+     * RECURSION
+     */
+    Animator.prototype._progressStart = function () {
+        var children = this._childAnimations;
+        if (children) {
+            for (var _i = 0, children_10 = children; _i < children_10.length; _i++) {
+                var child = children_10[_i];
+                // ******** DOM WRITE ****************
+                child._progressStart();
+            }
+        }
+        // force no duration, linear easing
+        // ******** DOM WRITE ****************
+        this._setTrans(0, true);
+        // ******** DOM WRITE ****************
+        this._willChange(true);
+    };
+    /**
+     * Set the progress step for this animation.
+     * progressStep() is not debounced, so it should not be called faster than 60FPS.
+     */
+    Animator.prototype.progressStep = function (stepValue) {
+        // only update if the last update was more than 16ms ago
+        stepValue = Math.min(1, Math.max(0, stepValue));
+        var children = this._childAnimations;
+        if (children) {
+            for (var _i = 0, children_11 = children; _i < children_11.length; _i++) {
+                var child = children_11[_i];
+                // ******** DOM WRITE ****************
+                child.progressStep(stepValue);
+            }
+        }
+        // ******** DOM WRITE ****************
+        this._progress(stepValue);
+    };
+    /**
+     * End the progress animation.
+     */
+    Animator.prototype.progressEnd = function (shouldComplete, currentStepValue, dur) {
+        var _this = this;
+        if (dur === void 0) { dur = -1; }
+        if (this._isReverse) {
+            // if the animation is going in reverse then
+            // flip the step value: 0 becomes 1, 1 becomes 0
+            currentStepValue = 1 - currentStepValue;
+        }
+        var stepValue = shouldComplete ? 1 : 0;
+        var diff = Math.abs(currentStepValue - stepValue);
+        if (dur < 0) {
+            dur = this._duration || 0;
+        }
+        else if (diff < 0.05) {
+            dur = 0;
+        }
+        this._isAsync = (dur > 30);
+        this._progressEnd(shouldComplete, stepValue, dur, this._isAsync);
+        if (this._isAsync) {
+            // for the root animation only
+            // set the async TRANSITION END event
+            // and run onFinishes when the transition ends
+            // ******** DOM WRITE ****************
+            this._asyncEnd(dur, shouldComplete);
+            // this animation has a duration so we need another RAF
+            // for the CSS TRANSITION properties to kick in
+            if (!this._destroyed) {
+                raf(function () {
+                    _this._playToStep(stepValue);
+                });
+            }
+        }
+    };
+    /**
+     * DOM WRITE
+     * RECURSION
+     */
+    Animator.prototype._progressEnd = function (shouldComplete, stepValue, dur, isAsync) {
+        var children = this._childAnimations;
+        if (children) {
+            for (var _i = 0, children_12 = children; _i < children_12.length; _i++) {
+                var child = children_12[_i];
+                // ******** DOM WRITE ****************
+                child._progressEnd(shouldComplete, stepValue, dur, isAsync);
+            }
+        }
+        if (!isAsync) {
+            // stop immediately
+            // set all the animations to their final position
+            // ******** DOM WRITE ****************
+            this._progress(stepValue);
+            this._willChange(false);
+            this._setAfterStyles();
+            this._didFinish(shouldComplete);
+        }
+        else {
+            // animate it back to it's ending position
+            this.isPlaying = true;
+            this.hasCompleted = false;
+            this._hasDur = true;
+            // ******** DOM WRITE ****************
+            this._willChange(true);
+            this._setTrans(dur, false);
+        }
+    };
+    /**
+     * Add a callback to fire when the animation has finished.
+     */
+    Animator.prototype.onFinish = function (callback, opts) {
+        if (opts && opts.clearExistingCallbacks) {
+            this._onFinishCallbacks = this._onFinishOneTimeCallbacks = undefined;
+        }
+        if (opts && opts.oneTimeCallback) {
+            this._onFinishOneTimeCallbacks = this._onFinishOneTimeCallbacks || [];
+            this._onFinishOneTimeCallbacks.push(callback);
+        }
+        else {
+            this._onFinishCallbacks = this._onFinishCallbacks || [];
+            this._onFinishCallbacks.push(callback);
+        }
+        return this;
+    };
+    /**
+     * NO DOM
+     * RECURSION
+     */
+    Animator.prototype._didFinishAll = function (hasCompleted, finishAsyncAnimations, finishNoDurationAnimations) {
+        var children = this._childAnimations;
+        if (children) {
+            for (var _i = 0, children_13 = children; _i < children_13.length; _i++) {
+                var child = children_13[_i];
+                child._didFinishAll(hasCompleted, finishAsyncAnimations, finishNoDurationAnimations);
+            }
+        }
+        if (finishAsyncAnimations && this._isAsync || finishNoDurationAnimations && !this._isAsync) {
+            this._didFinish(hasCompleted);
+        }
+    };
+    /**
+     * NO RECURSION
+     */
+    Animator.prototype._didFinish = function (hasCompleted) {
+        this.isPlaying = false;
+        this.hasCompleted = hasCompleted;
+        if (this._onFinishCallbacks) {
+            // run all finish callbacks
+            for (var _i = 0, _a = this._onFinishCallbacks; _i < _a.length; _i++) {
+                var callback = _a[_i];
+                callback(this);
+            }
+        }
+        if (this._onFinishOneTimeCallbacks) {
+            // run all "onetime" finish callbacks
+            for (var _b = 0, _c = this._onFinishOneTimeCallbacks; _b < _c.length; _b++) {
+                var callback = _c[_b];
+                callback(this);
+            }
+            this._onFinishOneTimeCallbacks.length = 0;
+        }
+    };
+    /**
+     * Reverse the animation.
+     */
+    Animator.prototype.reverse = function (shouldReverse) {
+        if (shouldReverse === void 0) { shouldReverse = true; }
+        var children = this._childAnimations;
+        if (children) {
+            for (var _i = 0, children_14 = children; _i < children_14.length; _i++) {
+                var child = children_14[_i];
+                child.reverse(shouldReverse);
+            }
+        }
+        this._isReverse = !!shouldReverse;
+        return this;
+    };
+    /**
+     * Recursively destroy this animation and all child animations.
+     */
+    Animator.prototype.destroy = function () {
+        this._didFinish(false);
+        this._destroyed = true;
+        var children = this._childAnimations;
+        if (children) {
+            for (var _i = 0, children_15 = children; _i < children_15.length; _i++) {
+                var child = children_15[_i];
+                child.destroy();
+            }
+        }
+        this._clearAsync();
+        if (this._elements) {
+            this._elements.length = 0;
+        }
+        if (this._readCallbacks) {
+            this._readCallbacks.length = 0;
+        }
+        if (this._writeCallbacks) {
+            this._writeCallbacks.length = 0;
+        }
+        this.parent = undefined;
+        if (this._childAnimations) {
+            this._childAnimations.length = 0;
+        }
+        if (this._onFinishCallbacks) {
+            this._onFinishCallbacks.length = 0;
+        }
+        if (this._onFinishOneTimeCallbacks) {
+            this._onFinishOneTimeCallbacks.length = 0;
+        }
+    };
+    /**
+     * NO DOM
+     */
+    Animator.prototype._transEl = function () {
+        // get the lowest level element that has an Animator
+        var children = this._childAnimations;
+        if (children) {
+            for (var _i = 0, children_16 = children; _i < children_16.length; _i++) {
+                var child = children_16[_i];
+                var targetEl = child._transEl();
+                if (targetEl) {
+                    return targetEl;
+                }
+            }
+        }
+        return (this._hasTweenEffect &&
+            this._hasDur &&
+            this._elements !== undefined &&
+            this._elements.length > 0 ?
+            this._elements[0] : null);
+    };
+    return Animator;
 }());
+var create = function (animationBuilder, baseEl, opts) {
+    if (animationBuilder) {
+        return animationBuilder(Animator, baseEl, opts);
+    }
+    return Promise.resolve(new Animator());
+};
 
 
 

@@ -1,320 +1,339 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[5],{
 
-/***/ "./node_modules/@ionic/core/dist/esm-es5/ion-action-sheet-controller_8.entry.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm-es5/ion-action-sheet-controller_8.entry.js ***!
-  \**************************************************************************************/
-/*! exports provided: ion_action_sheet_controller, ion_alert_controller, ion_anchor, ion_loading_controller, ion_modal_controller, ion_picker_controller, ion_popover_controller, ion_toast_controller */
+/***/ "./node_modules/@ionic/core/dist/esm-es5/input-shims-a4fc53ac.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm-es5/input-shims-a4fc53ac.js ***!
+  \***********************************************************************/
+/*! exports provided: startInputShims */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_action_sheet_controller", function() { return ActionSheetController; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_alert_controller", function() { return AlertController; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_anchor", function() { return Anchor; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_loading_controller", function() { return LoadingController; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_modal_controller", function() { return ModalController; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_picker_controller", function() { return PickerController; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_popover_controller", function() { return PopoverController; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_toast_controller", function() { return ToastController; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core-ca0488fc.js */ "./node_modules/@ionic/core/dist/esm-es5/core-ca0488fc.js");
-/* harmony import */ var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config-3c7f3790.js */ "./node_modules/@ionic/core/dist/esm-es5/config-3c7f3790.js");
-/* harmony import */ var _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./overlays-10640d86.js */ "./node_modules/@ionic/core/dist/esm-es5/overlays-10640d86.js");
-/* harmony import */ var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./theme-18cbe2cc.js */ "./node_modules/@ionic/core/dist/esm-es5/theme-18cbe2cc.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "startInputShims", function() { return startInputShims; });
+/* harmony import */ var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers-46f4a262.js */ "./node_modules/@ionic/core/dist/esm-es5/helpers-46f4a262.js");
 
-
-
-
-
-var ActionSheetController = /** @class */ (function () {
-    function class_1(hostRef) {
-        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+var cloneMap = new WeakMap();
+var relocateInput = function (componentEl, inputEl, shouldRelocate, inputRelativeY) {
+    if (inputRelativeY === void 0) { inputRelativeY = 0; }
+    if (cloneMap.has(componentEl) === shouldRelocate) {
+        return;
     }
-    /**
-     * Create an action sheet overlay with action sheet options.
-     *
-     * @param options The options to use to create the action sheet.
-     */
-    class_1.prototype.create = function (options) {
-        return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-action-sheet', options);
-    };
-    /**
-     * Dismiss the open action sheet overlay.
-     *
-     * @param data Any data to emit in the dismiss events.
-     * @param role The role of the element that is dismissing the action sheet.
-     * This can be useful in a button handler for determining which button was
-     * clicked to dismiss the action sheet.
-     * Some examples include: ``"cancel"`, `"destructive"`, "selected"`, and `"backdrop"`.
-     * @param id The id of the action sheet to dismiss. If an id is not provided, it will dismiss the most recently opened action sheet.
-     */
-    class_1.prototype.dismiss = function (data, role, id) {
-        return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["j"])(document, data, role, 'ion-action-sheet', id);
-    };
-    /**
-     * Get the most recently opened action sheet overlay.
-     */
-    class_1.prototype.getTop = function () {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
-                return [2 /*return*/, Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["k"])(document, 'ion-action-sheet')];
-            });
-        });
-    };
-    return class_1;
-}());
-var AlertController = /** @class */ (function () {
-    function class_2(hostRef) {
-        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+    if (shouldRelocate) {
+        addClone(componentEl, inputEl, inputRelativeY);
     }
-    /**
-     * Create an alert overlay with alert options.
-     *
-     * @param options The options to use to create the alert.
-     */
-    class_2.prototype.create = function (options) {
-        return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-alert', options);
-    };
-    /**
-     * Dismiss the open alert overlay.
-     *
-     * @param data Any data to emit in the dismiss events.
-     * @param role The role of the element that is dismissing the alert.
-     * This can be useful in a button handler for determining which button was
-     * clicked to dismiss the alert.
-     * Some examples include: ``"cancel"`, `"destructive"`, "selected"`, and `"backdrop"`.
-     * @param id The id of the alert to dismiss. If an id is not provided, it will dismiss the most recently opened alert.
-     */
-    class_2.prototype.dismiss = function (data, role, id) {
-        return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["j"])(document, data, role, 'ion-alert', id);
-    };
-    /**
-     * Get the most recently opened alert overlay.
-     */
-    class_2.prototype.getTop = function () {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
-                return [2 /*return*/, Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["k"])(document, 'ion-alert')];
-            });
-        });
-    };
-    return class_2;
-}());
-var Anchor = /** @class */ (function () {
-    function Anchor(hostRef) {
-        var _this = this;
-        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
-        /**
-         * When using a router, it specifies the transition direction when navigating to
-         * another page using `href`.
-         */
-        this.routerDirection = 'forward';
-        this.onClick = function (ev) {
-            Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_4__["o"])(_this.href, ev, _this.routerDirection);
-        };
+    else {
+        removeClone(componentEl, inputEl);
     }
-    Anchor.prototype.componentDidLoad = function () {
-        console.warn('[DEPRECATED][ion-anchor] The <ion-anchor> component has been deprecated. Please use an <ion-router-link> if you are using a vanilla JS or Stencil project or an <a> with the Angular router.');
+};
+var isFocused = function (input) {
+    return input === input.getRootNode().activeElement;
+};
+var addClone = function (componentEl, inputEl, inputRelativeY) {
+    // this allows for the actual input to receive the focus from
+    // the user's touch event, but before it receives focus, it
+    // moves the actual input to a location that will not screw
+    // up the app's layout, and does not allow the native browser
+    // to attempt to scroll the input into place (messing up headers/footers)
+    // the cloned input fills the area of where native input should be
+    // while the native input fakes out the browser by relocating itself
+    // before it receives the actual focus event
+    // We hide the focused input (with the visible caret) invisible by making it scale(0),
+    var parentEl = inputEl.parentNode;
+    // DOM WRITES
+    var clonedEl = inputEl.cloneNode(false);
+    clonedEl.classList.add('cloned-input');
+    clonedEl.tabIndex = -1;
+    parentEl.appendChild(clonedEl);
+    cloneMap.set(componentEl, clonedEl);
+    var doc = componentEl.ownerDocument;
+    var tx = doc.dir === 'rtl' ? 9999 : -9999;
+    componentEl.style.pointerEvents = 'none';
+    inputEl.style.transform = "translate3d(" + tx + "px," + inputRelativeY + "px,0) scale(0)";
+};
+var removeClone = function (componentEl, inputEl) {
+    var clone = cloneMap.get(componentEl);
+    if (clone) {
+        cloneMap.delete(componentEl);
+        clone.remove();
+    }
+    componentEl.style.pointerEvents = '';
+    inputEl.style.transform = '';
+};
+var enableHideCaretOnScroll = function (componentEl, inputEl, scrollEl) {
+    if (!scrollEl || !inputEl) {
+        return function () { return; };
+    }
+    var scrollHideCaret = function (shouldHideCaret) {
+        if (isFocused(inputEl)) {
+            relocateInput(componentEl, inputEl, shouldHideCaret);
+        }
     };
-    Anchor.prototype.render = function () {
-        var _a;
-        var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
-        var attrs = {
-            href: this.href,
-            rel: this.rel
-        };
-        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["H"], { onClick: this.onClick, class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_4__["c"])(this.color)), (_a = {}, _a[mode] = true, _a['ion-activatable'] = true, _a)) }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("a", Object.assign({}, attrs), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null))));
+    var onBlur = function () { return relocateInput(componentEl, inputEl, false); };
+    var hideCaret = function () { return scrollHideCaret(true); };
+    var showCaret = function () { return scrollHideCaret(false); };
+    scrollEl.addEventListener('ionScrollStart', hideCaret);
+    scrollEl.addEventListener('ionScrollEnd', showCaret);
+    inputEl.addEventListener('blur', onBlur);
+    return function () {
+        scrollEl.removeEventListener('ionScrollStart', hideCaret);
+        scrollEl.removeEventListener('ionScrollEnd', showCaret);
+        inputEl.addEventListener('ionBlur', onBlur);
     };
-    Object.defineProperty(Anchor, "style", {
-        get: function () { return ":host{--background:transparent;--color:var(--ion-color-primary,#3880ff);background:var(--background);color:var(--color)}:host(.ion-color){color:var(--ion-color-base)}a{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit}"; },
-        enumerable: true,
-        configurable: true
+};
+var SKIP_SELECTOR = 'input, textarea, [no-blur]';
+var enableInputBlurring = function () {
+    var focused = true;
+    var didScroll = false;
+    var doc = document;
+    var onScroll = function () {
+        didScroll = true;
+    };
+    var onFocusin = function () {
+        focused = true;
+    };
+    var onTouchend = function (ev) {
+        // if app did scroll return early
+        if (didScroll) {
+            didScroll = false;
+            return;
+        }
+        var active = doc.activeElement;
+        if (!active) {
+            return;
+        }
+        // only blur if the active element is a text-input or a textarea
+        if (active.matches(SKIP_SELECTOR)) {
+            return;
+        }
+        // if the selected target is the active element, do not blur
+        var tapped = ev.target;
+        if (tapped === active) {
+            return;
+        }
+        if (tapped.matches(SKIP_SELECTOR) || tapped.closest(SKIP_SELECTOR)) {
+            return;
+        }
+        focused = false;
+        // TODO: find a better way, why 50ms?
+        setTimeout(function () {
+            if (!focused) {
+                active.blur();
+            }
+        }, 50);
+    };
+    doc.addEventListener('ionScrollStart', onScroll);
+    doc.addEventListener('focusin', onFocusin, true);
+    doc.addEventListener('touchend', onTouchend, false);
+    return function () {
+        doc.removeEventListener('ionScrollStart', onScroll, true);
+        doc.removeEventListener('focusin', onFocusin, true);
+        doc.removeEventListener('touchend', onTouchend, false);
+    };
+};
+var SCROLL_ASSIST_SPEED = 0.3;
+var getScrollData = function (componentEl, contentEl, keyboardHeight) {
+    var itemEl = componentEl.closest('ion-item,[ion-item]') || componentEl;
+    return calcScrollData(itemEl.getBoundingClientRect(), contentEl.getBoundingClientRect(), keyboardHeight, componentEl.ownerDocument.defaultView.innerHeight);
+};
+var calcScrollData = function (inputRect, contentRect, keyboardHeight, platformHeight) {
+    // compute input's Y values relative to the body
+    var inputTop = inputRect.top;
+    var inputBottom = inputRect.bottom;
+    // compute visible area
+    var visibleAreaTop = contentRect.top;
+    var visibleAreaBottom = Math.min(contentRect.bottom, platformHeight - keyboardHeight);
+    // compute safe area
+    var safeAreaTop = visibleAreaTop + 15;
+    var safeAreaBottom = visibleAreaBottom * 0.5;
+    // figure out if each edge of the input is within the safe area
+    var distanceToBottom = safeAreaBottom - inputBottom;
+    var distanceToTop = safeAreaTop - inputTop;
+    // desiredScrollAmount is the negated distance to the safe area according to our calculations.
+    var desiredScrollAmount = Math.round((distanceToBottom < 0)
+        ? -distanceToBottom
+        : (distanceToTop > 0)
+            ? -distanceToTop
+            : 0);
+    // our calculations make some assumptions that aren't always true, like the keyboard being closed when an input
+    // gets focus, so make sure we don't scroll the input above the visible area
+    var scrollAmount = Math.min(desiredScrollAmount, inputTop - visibleAreaTop);
+    var distance = Math.abs(scrollAmount);
+    var duration = distance / SCROLL_ASSIST_SPEED;
+    var scrollDuration = Math.min(400, Math.max(150, duration));
+    return {
+        scrollAmount: scrollAmount,
+        scrollDuration: scrollDuration,
+        scrollPadding: keyboardHeight,
+        inputSafeY: -(inputTop - safeAreaTop) + 4
+    };
+};
+var enableScrollAssist = function (componentEl, inputEl, contentEl, keyboardHeight) {
+    var coord;
+    var touchStart = function (ev) {
+        coord = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_0__["p"])(ev);
+    };
+    var touchEnd = function (ev) {
+        // input cover touchend/mouseup
+        if (!coord) {
+            return;
+        }
+        // get where the touchend/mouseup ended
+        var endCoord = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_0__["p"])(ev);
+        // focus this input if the pointer hasn't moved XX pixels
+        // and the input doesn't already have focus
+        if (!hasPointerMoved(6, coord, endCoord) && !isFocused(inputEl)) {
+            ev.preventDefault();
+            ev.stopPropagation();
+            // begin the input focus process
+            jsSetFocus(componentEl, inputEl, contentEl, keyboardHeight);
+        }
+    };
+    componentEl.addEventListener('touchstart', touchStart, true);
+    componentEl.addEventListener('touchend', touchEnd, true);
+    return function () {
+        componentEl.removeEventListener('touchstart', touchStart, true);
+        componentEl.removeEventListener('touchend', touchEnd, true);
+    };
+};
+var jsSetFocus = function (componentEl, inputEl, contentEl, keyboardHeight) {
+    var scrollData = getScrollData(componentEl, contentEl, keyboardHeight);
+    if (Math.abs(scrollData.scrollAmount) < 4) {
+        // the text input is in a safe position that doesn't
+        // require it to be scrolled into view, just set focus now
+        inputEl.focus();
+        return;
+    }
+    // temporarily move the focus to the focus holder so the browser
+    // doesn't freak out while it's trying to get the input in place
+    // at this point the native text input still does not have focus
+    relocateInput(componentEl, inputEl, true, scrollData.inputSafeY);
+    inputEl.focus();
+    // scroll the input into place
+    contentEl.scrollByPoint(0, scrollData.scrollAmount, scrollData.scrollDuration).then(function () {
+        // the scroll view is in the correct position now
+        // give the native text input focus
+        relocateInput(componentEl, inputEl, false, scrollData.inputSafeY);
+        // ensure this is the focused input
+        inputEl.focus();
     });
-    return Anchor;
-}());
-var LoadingController = /** @class */ (function () {
-    function class_3(hostRef) {
-        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+};
+var hasPointerMoved = function (threshold, startCoord, endCoord) {
+    if (startCoord && endCoord) {
+        var deltaX = (startCoord.x - endCoord.x);
+        var deltaY = (startCoord.y - endCoord.y);
+        var distance = deltaX * deltaX + deltaY * deltaY;
+        return distance > (threshold * threshold);
     }
-    /**
-     * Create a loading overlay with loading options.
-     *
-     * @param options The options to use to create the loading.
-     */
-    class_3.prototype.create = function (options) {
-        return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-loading', options);
+    return false;
+};
+var PADDING_TIMER_KEY = '$ionPaddingTimer';
+var enableScrollPadding = function (keyboardHeight) {
+    var doc = document;
+    var onFocusin = function (ev) {
+        setScrollPadding(ev.target, keyboardHeight);
     };
-    /**
-     * Dismiss the open loading overlay.
-     *
-     * @param data Any data to emit in the dismiss events.
-     * @param role The role of the element that is dismissing the loading.
-     * This can be useful in a button handler for determining which button was
-     * clicked to dismiss the loading.
-     * Some examples include: ``"cancel"`, `"destructive"`, "selected"`, and `"backdrop"`.
-     * @param id The id of the loading to dismiss. If an id is not provided, it will dismiss the most recently opened loading.
-     */
-    class_3.prototype.dismiss = function (data, role, id) {
-        return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["j"])(document, data, role, 'ion-loading', id);
+    var onFocusout = function (ev) {
+        setScrollPadding(ev.target, 0);
     };
-    /**
-     * Get the most recently opened loading overlay.
-     */
-    class_3.prototype.getTop = function () {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
-                return [2 /*return*/, Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["k"])(document, 'ion-loading')];
-            });
-        });
+    doc.addEventListener('focusin', onFocusin);
+    doc.addEventListener('focusout', onFocusout);
+    return function () {
+        doc.removeEventListener('focusin', onFocusin);
+        doc.removeEventListener('focusout', onFocusout);
     };
-    return class_3;
-}());
-var ModalController = /** @class */ (function () {
-    function class_4(hostRef) {
-        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+};
+var setScrollPadding = function (input, keyboardHeight) {
+    if (input.tagName !== 'INPUT') {
+        return;
     }
-    /**
-     * Create a modal overlay with modal options.
-     *
-     * @param options The options to use to create the modal.
-     */
-    class_4.prototype.create = function (options) {
-        return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-modal', options);
-    };
-    /**
-     * Dismiss the open modal overlay.
-     *
-     * @param data Any data to emit in the dismiss events.
-     * @param role The role of the element that is dismissing the modal.
-     * This can be useful in a button handler for determining which button was
-     * clicked to dismiss the modal.
-     * Some examples include: ``"cancel"`, `"destructive"`, "selected"`, and `"backdrop"`.
-     * @param id The id of the modal to dismiss. If an id is not provided, it will dismiss the most recently opened modal.
-     */
-    class_4.prototype.dismiss = function (data, role, id) {
-        return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["j"])(document, data, role, 'ion-modal', id);
-    };
-    /**
-     * Get the most recently opened modal overlay.
-     */
-    class_4.prototype.getTop = function () {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
-                return [2 /*return*/, Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["k"])(document, 'ion-modal')];
-            });
-        });
-    };
-    return class_4;
-}());
-var PickerController = /** @class */ (function () {
-    function class_5(hostRef) {
-        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+    if (input.parentElement && input.parentElement.tagName === 'ION-INPUT') {
+        return;
     }
-    /**
-     * Create a picker overlay with picker options.
-     *
-     * @param options The options to use to create the picker.
-     */
-    class_5.prototype.create = function (options) {
-        return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-picker', options);
-    };
-    /**
-     * Dismiss the open picker overlay.
-     *
-     * @param data Any data to emit in the dismiss events.
-     * @param role The role of the element that is dismissing the picker.
-     * This can be useful in a button handler for determining which button was
-     * clicked to dismiss the picker.
-     * Some examples include: ``"cancel"`, `"destructive"`, "selected"`, and `"backdrop"`.
-     * @param id The id of the picker to dismiss. If an id is not provided, it will dismiss the most recently opened picker.
-     */
-    class_5.prototype.dismiss = function (data, role, id) {
-        return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["j"])(document, data, role, 'ion-picker', id);
-    };
-    /**
-     * Get the most recently opened picker overlay.
-     */
-    class_5.prototype.getTop = function () {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
-                return [2 /*return*/, Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["k"])(document, 'ion-picker')];
-            });
-        });
-    };
-    return class_5;
-}());
-var PopoverController = /** @class */ (function () {
-    function class_6(hostRef) {
-        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+    if (input.parentElement &&
+        input.parentElement.parentElement &&
+        input.parentElement.parentElement.tagName === 'ION-SEARCHBAR') {
+        return;
     }
-    /**
-     * Create a popover overlay with popover options.
-     *
-     * @param options The options to use to create the popover.
-     */
-    class_6.prototype.create = function (options) {
-        return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-popover', options);
-    };
-    /**
-     * Dismiss the open popover overlay.
-     *
-     * @param data Any data to emit in the dismiss events.
-     * @param role The role of the element that is dismissing the popover.
-     * This can be useful in a button handler for determining which button was
-     * clicked to dismiss the popover.
-     * Some examples include: ``"cancel"`, `"destructive"`, "selected"`, and `"backdrop"`.
-     * @param id The id of the popover to dismiss. If an id is not provided, it will dismiss the most recently opened popover.
-     */
-    class_6.prototype.dismiss = function (data, role, id) {
-        return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["j"])(document, data, role, 'ion-popover', id);
-    };
-    /**
-     * Get the most recently opened popover overlay.
-     */
-    class_6.prototype.getTop = function () {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
-                return [2 /*return*/, Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["k"])(document, 'ion-popover')];
-            });
-        });
-    };
-    return class_6;
-}());
-var ToastController = /** @class */ (function () {
-    function class_7(hostRef) {
-        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+    var el = input.closest('ion-content');
+    if (el === null) {
+        return;
     }
-    /**
-     * Create a toast overlay with toast options.
-     *
-     * @param options The options to use to create the toast.
-     */
-    class_7.prototype.create = function (options) {
-        return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-toast', options);
+    var timer = el[PADDING_TIMER_KEY];
+    if (timer) {
+        clearTimeout(timer);
+    }
+    if (keyboardHeight > 0) {
+        el.style.setProperty('--keyboard-offset', keyboardHeight + "px");
+    }
+    else {
+        el[PADDING_TIMER_KEY] = setTimeout(function () {
+            el.style.setProperty('--keyboard-offset', '0px');
+        }, 120);
+    }
+};
+var INPUT_BLURRING = true;
+var SCROLL_PADDING = true;
+var startInputShims = function (config) {
+    var doc = document;
+    var keyboardHeight = config.getNumber('keyboardHeight', 290);
+    var scrollAssist = config.getBoolean('scrollAssist', true);
+    var hideCaret = config.getBoolean('hideCaretOnScroll', true);
+    var inputBlurring = config.getBoolean('inputBlurring', true);
+    var scrollPadding = config.getBoolean('scrollPadding', true);
+    var inputs = Array.from(doc.querySelectorAll('ion-input, ion-textarea'));
+    var hideCaretMap = new WeakMap();
+    var scrollAssistMap = new WeakMap();
+    var registerInput = function (componentEl) {
+        var inputEl = (componentEl.shadowRoot || componentEl).querySelector('input') || (componentEl.shadowRoot || componentEl).querySelector('textarea');
+        var scrollEl = componentEl.closest('ion-content');
+        if (!inputEl) {
+            return;
+        }
+        if (!!scrollEl && hideCaret && !hideCaretMap.has(componentEl)) {
+            var rmFn = enableHideCaretOnScroll(componentEl, inputEl, scrollEl);
+            hideCaretMap.set(componentEl, rmFn);
+        }
+        if (!!scrollEl && scrollAssist && !scrollAssistMap.has(componentEl)) {
+            var rmFn = enableScrollAssist(componentEl, inputEl, scrollEl, keyboardHeight);
+            scrollAssistMap.set(componentEl, rmFn);
+        }
     };
-    /**
-     * Dismiss the open toast overlay.
-     *
-     * @param data Any data to emit in the dismiss events.
-     * @param role The role of the element that is dismissing the toast. For example, 'cancel' or 'backdrop'.
-     * @param id The id of the toast to dismiss. If an id is not provided, it will dismiss the most recently opened toast.
-     */
-    class_7.prototype.dismiss = function (data, role, id) {
-        return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["j"])(document, data, role, 'ion-toast', id);
+    var unregisterInput = function (componentEl) {
+        if (hideCaret) {
+            var fn = hideCaretMap.get(componentEl);
+            if (fn) {
+                fn();
+            }
+            hideCaretMap.delete(componentEl);
+        }
+        if (scrollAssist) {
+            var fn = scrollAssistMap.get(componentEl);
+            if (fn) {
+                fn();
+            }
+            scrollAssistMap.delete(componentEl);
+        }
     };
-    /**
-     * Get the most recently opened toast overlay.
-     */
-    class_7.prototype.getTop = function () {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
-                return [2 /*return*/, Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["k"])(document, 'ion-toast')];
-            });
-        });
-    };
-    return class_7;
-}());
+    if (inputBlurring && INPUT_BLURRING) {
+        enableInputBlurring();
+    }
+    if (scrollPadding && SCROLL_PADDING) {
+        enableScrollPadding(keyboardHeight);
+    }
+    // Input might be already loaded in the DOM before ion-device-hacks did.
+    // At this point we need to look for all of the inputs not registered yet
+    // and register them.
+    for (var _i = 0, inputs_1 = inputs; _i < inputs_1.length; _i++) {
+        var input = inputs_1[_i];
+        registerInput(input);
+    }
+    doc.addEventListener('ionInputDidLoad', (function (ev) {
+        registerInput(ev.detail);
+    }));
+    doc.addEventListener('ionInputDidUnload', (function (ev) {
+        unregisterInput(ev.detail);
+    }));
+};
 
 
 

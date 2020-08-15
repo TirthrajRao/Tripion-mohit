@@ -1,343 +1,316 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[58],{
 
-/***/ "./node_modules/@ionic/core/dist/esm-es5/ion-reorder_2-md.entry.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm-es5/ion-reorder_2-md.entry.js ***!
-  \*************************************************************************/
-/*! exports provided: ion_reorder, ion_reorder_group */
+/***/ "./node_modules/@ionic/core/dist/esm-es5/ion-modal-ios.entry.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm-es5/ion-modal-ios.entry.js ***!
+  \**********************************************************************/
+/*! exports provided: ion_modal */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_reorder", function() { return Reorder; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_reorder_group", function() { return ReorderGroup; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_modal", function() { return Modal; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core-ca0488fc.js */ "./node_modules/@ionic/core/dist/esm-es5/core-ca0488fc.js");
 /* harmony import */ var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config-3c7f3790.js */ "./node_modules/@ionic/core/dist/esm-es5/config-3c7f3790.js");
-/* harmony import */ var _haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./haptic-c8f1473e.js */ "./node_modules/@ionic/core/dist/esm-es5/haptic-c8f1473e.js");
+/* harmony import */ var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers-46f4a262.js */ "./node_modules/@ionic/core/dist/esm-es5/helpers-46f4a262.js");
+/* harmony import */ var _animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./animation-af478fe9.js */ "./node_modules/@ionic/core/dist/esm-es5/animation-af478fe9.js");
+/* harmony import */ var _constants_3c3e1099_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./constants-3c3e1099.js */ "./node_modules/@ionic/core/dist/esm-es5/constants-3c3e1099.js");
+/* harmony import */ var _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./overlays-10640d86.js */ "./node_modules/@ionic/core/dist/esm-es5/overlays-10640d86.js");
+/* harmony import */ var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./theme-18cbe2cc.js */ "./node_modules/@ionic/core/dist/esm-es5/theme-18cbe2cc.js");
+/* harmony import */ var _framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./framework-delegate-c2e2e1f4.js */ "./node_modules/@ionic/core/dist/esm-es5/framework-delegate-c2e2e1f4.js");
+/* harmony import */ var _index_6826f2f6_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./index-6826f2f6.js */ "./node_modules/@ionic/core/dist/esm-es5/index-6826f2f6.js");
 
 
 
 
-var Reorder = /** @class */ (function () {
-    function Reorder(hostRef) {
-        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
-    }
-    Reorder.prototype.onClick = function (ev) {
-        ev.preventDefault();
-        ev.stopImmediatePropagation();
-    };
-    Reorder.prototype.render = function () {
-        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["H"], { class: Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this) }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-icon", { name: "reorder", lazy: false, class: "reorder-icon" }))));
-    };
-    Object.defineProperty(Reorder, "style", {
-        get: function () { return ":host([slot]){display:none;line-height:0;z-index:100}.reorder-icon{display:block;font-size:22px;font-size:31px;opacity:.3}"; },
-        enumerable: true,
-        configurable: true
-    });
-    return Reorder;
-}());
-var ReorderGroup = /** @class */ (function () {
+
+
+
+
+
+
+/**
+ * iOS Modal Enter Animation
+ */
+var iosEnterAnimation = function (baseEl) {
+    var baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_4__["c"])();
+    var backdropAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_4__["c"])();
+    var wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_4__["c"])();
+    backdropAnimation
+        .addElement(baseEl.querySelector('ion-backdrop'))
+        .fromTo('opacity', 0.01, 0.4);
+    wrapperAnimation
+        .addElement(baseEl.querySelector('.modal-wrapper'))
+        .beforeStyles({ 'opacity': 1 })
+        .fromTo('transform', 'translateY(100%)', 'translateY(0%)');
+    return baseAnimation
+        .addElement(baseEl)
+        .easing('cubic-bezier(0.36,0.66,0.04,1)')
+        .duration(400)
+        .beforeAddClass('show-modal')
+        .addAnimation([backdropAnimation, wrapperAnimation]);
+};
+/**
+ * Animations for modals
+ */
+// export function modalSlideIn(rootEl: HTMLElement) {
+// }
+// export class ModalSlideOut {
+//   constructor(el: HTMLElement) {
+//     let backdrop = new Animation(this.plt, el.querySelector('ion-backdrop'));
+//     let wrapperEle = <HTMLElement>el.querySelector('.modal-wrapper');
+//     let wrapperEleRect = wrapperEle.getBoundingClientRect();
+//     let wrapper = new Animation(this.plt, wrapperEle);
+//     // height of the screen - top of the container tells us how much to scoot it down
+//     // so it's off-screen
+//     wrapper.fromTo('translateY', '0px', `${this.plt.height() - wrapperEleRect.top}px`);
+//     backdrop.fromTo('opacity', 0.4, 0.0);
+//     this
+//       .element(this.leavingView.pageRef())
+//       .easing('ease-out')
+//       .duration(250)
+//       .add(backdrop)
+//       .add(wrapper);
+//   }
+// }
+// export class ModalMDSlideIn {
+//   constructor(el: HTMLElement) {
+//     const backdrop = new Animation(this.plt, el.querySelector('ion-backdrop'));
+//     const wrapper = new Animation(this.plt, el.querySelector('.modal-wrapper'));
+//     backdrop.fromTo('opacity', 0.01, 0.4);
+//     wrapper.fromTo('translateY', '40px', '0px');
+//     wrapper.fromTo('opacity', 0.01, 1);
+//     const DURATION = 280;
+//     const EASING = 'cubic-bezier(0.36,0.66,0.04,1)';
+//     this.element(this.enteringView.pageRef()).easing(EASING).duration(DURATION)
+//       .add(backdrop)
+//       .add(wrapper);
+//   }
+// }
+// export class ModalMDSlideOut {
+//   constructor(el: HTMLElement) {
+//     const backdrop = new Animation(this.plt, el.querySelector('ion-backdrop'));
+//     const wrapper = new Animation(this.plt, el.querySelector('.modal-wrapper'));
+//     backdrop.fromTo('opacity', 0.4, 0.0);
+//     wrapper.fromTo('translateY', '0px', '40px');
+//     wrapper.fromTo('opacity', 0.99, 0);
+//     this
+//       .element(this.leavingView.pageRef())
+//       .duration(200)
+//       .easing('cubic-bezier(0.47,0,0.745,0.715)')
+//       .add(wrapper)
+//       .add(backdrop);
+//   }
+// }
+/**
+ * iOS Modal Leave Animation
+ */
+var iosLeaveAnimation = function (baseEl) {
+    var baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_4__["c"])();
+    var backdropAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_4__["c"])();
+    var wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_4__["c"])();
+    var wrapperEl = baseEl.querySelector('.modal-wrapper');
+    var wrapperElRect = wrapperEl.getBoundingClientRect();
+    backdropAnimation
+        .addElement(baseEl.querySelector('ion-backdrop'))
+        .fromTo('opacity', 0.4, 0.0);
+    wrapperAnimation
+        .addElement(wrapperEl)
+        .beforeStyles({ 'opacity': 1 })
+        .fromTo('transform', 'translateY(0%)', "translateY(" + (baseEl.ownerDocument.defaultView.innerHeight - wrapperElRect.top) + "px)");
+    return baseAnimation
+        .addElement(baseEl)
+        .easing('ease-out')
+        .duration(250)
+        .addAnimation([backdropAnimation, wrapperAnimation]);
+};
+/**
+ * Md Modal Enter Animation
+ */
+var mdEnterAnimation = function (baseEl) {
+    var baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_4__["c"])();
+    var backdropAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_4__["c"])();
+    var wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_4__["c"])();
+    backdropAnimation
+        .addElement(baseEl.querySelector('ion-backdrop'))
+        .fromTo('opacity', 0.01, 0.32);
+    wrapperAnimation
+        .addElement(baseEl.querySelector('.modal-wrapper'))
+        .keyframes([
+        { offset: 0, opacity: 0.01, transform: 'translateY(40px)' },
+        { offset: 1, opacity: 1, transform: 'translateY(0px)' }
+    ]);
+    return baseAnimation
+        .addElement(baseEl)
+        .easing('cubic-bezier(0.36,0.66,0.04,1)')
+        .duration(280)
+        .beforeAddClass('show-modal')
+        .addAnimation([backdropAnimation, wrapperAnimation]);
+};
+/**
+ * Md Modal Leave Animation
+ */
+var mdLeaveAnimation = function (baseEl) {
+    var baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_4__["c"])();
+    var backdropAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_4__["c"])();
+    var wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_4__["c"])();
+    var wrapperEl = baseEl.querySelector('.modal-wrapper');
+    backdropAnimation
+        .addElement(baseEl.querySelector('ion-backdrop'))
+        .fromTo('opacity', 0.32, 0.0);
+    wrapperAnimation
+        .addElement(wrapperEl)
+        .keyframes([
+        { offset: 0, opacity: 0.99, transform: 'translateY(0px)' },
+        { offset: 1, opacity: 0, transform: 'translateY(40px)' }
+    ]);
+    return baseAnimation
+        .addElement(baseEl)
+        .easing('cubic-bezier(0.47,0,0.745,0.715)')
+        .duration(200)
+        .addAnimation([backdropAnimation, wrapperAnimation]);
+};
+var Modal = /** @class */ (function () {
     function class_1(hostRef) {
+        var _this = this;
         Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
-        this.lastToIndex = -1;
-        this.cachedHeights = [];
-        this.scrollElTop = 0;
-        this.scrollElBottom = 0;
-        this.scrollElInitial = 0;
-        this.containerTop = 0;
-        this.containerBottom = 0;
-        this.state = 0 /* Idle */;
+        this.presented = false;
+        this.mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
         /**
-         * If `true`, the reorder will be hidden.
+         * If `true`, the keyboard will be automatically dismissed when the overlay is presented.
          */
-        this.disabled = true;
-        this.ionItemReorder = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionItemReorder", 7);
+        this.keyboardClose = true;
+        /**
+         * If `true`, the modal will be dismissed when the backdrop is clicked.
+         */
+        this.backdropDismiss = true;
+        /**
+         * If `true`, a backdrop will be displayed behind the modal.
+         */
+        this.showBackdrop = true;
+        /**
+         * If `true`, the modal will animate.
+         */
+        this.animated = true;
+        this.onBackdropTap = function () {
+            _this.dismiss(undefined, _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_6__["B"]);
+        };
+        this.onDismiss = function (ev) {
+            ev.stopPropagation();
+            ev.preventDefault();
+            _this.dismiss();
+        };
+        this.onLifecycle = function (modalEvent) {
+            var el = _this.usersElement;
+            var name = LIFECYCLE_MAP[modalEvent.type];
+            if (el && name) {
+                var ev = new CustomEvent(name, {
+                    bubbles: false,
+                    cancelable: false,
+                    detail: modalEvent.detail
+                });
+                el.dispatchEvent(ev);
+            }
+        };
+        Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_6__["d"])(this.el);
+        this.didPresent = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionModalDidPresent", 7);
+        this.willPresent = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionModalWillPresent", 7);
+        this.willDismiss = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionModalWillDismiss", 7);
+        this.didDismiss = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionModalDidDismiss", 7);
     }
-    class_1.prototype.disabledChanged = function () {
-        if (this.gesture) {
-            this.gesture.setDisabled(this.disabled);
-        }
-    };
-    class_1.prototype.connectedCallback = function () {
+    /**
+     * Present the modal overlay after it has been created.
+     */
+    class_1.prototype.present = function () {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
-            var contentEl, _a, _b;
-            var _this = this;
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_c) {
-                switch (_c.label) {
+            var container, componentProps, _a;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_b) {
+                switch (_b.label) {
                     case 0:
-                        contentEl = this.el.closest('ion-content');
-                        if (!contentEl) return [3 /*break*/, 2];
+                        if (this.presented) {
+                            return [2 /*return*/];
+                        }
+                        container = this.el.querySelector(".modal-wrapper");
+                        if (!container) {
+                            throw new Error('container is undefined');
+                        }
+                        componentProps = Object.assign(Object.assign({}, this.componentProps), { modal: this.el });
                         _a = this;
-                        return [4 /*yield*/, contentEl.getScrollElement()];
+                        return [4 /*yield*/, Object(_framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_8__["a"])(this.delegate, container, this.component, ['ion-page'], componentProps)];
                     case 1:
-                        _a.scrollEl = _c.sent();
-                        _c.label = 2;
+                        _a.usersElement = _b.sent();
+                        return [4 /*yield*/, Object(_index_6826f2f6_js__WEBPACK_IMPORTED_MODULE_9__["d"])(this.usersElement)];
                     case 2:
-                        _b = this;
-                        return [4 /*yield*/, Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./index-624eea58.js */ "./node_modules/@ionic/core/dist/esm-es5/index-624eea58.js"))];
-                    case 3:
-                        _b.gesture = (_c.sent()).createGesture({
-                            el: this.el,
-                            gestureName: 'reorder',
-                            gesturePriority: 110,
-                            threshold: 0,
-                            direction: 'y',
-                            passive: false,
-                            canStart: function (detail) { return _this.canStart(detail); },
-                            onStart: function (ev) { return _this.onStart(ev); },
-                            onMove: function (ev) { return _this.onMove(ev); },
-                            onEnd: function () { return _this.onEnd(); },
-                        });
-                        this.disabledChanged();
-                        return [2 /*return*/];
+                        _b.sent();
+                        return [2 /*return*/, Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_6__["e"])(this, 'modalEnter', iosEnterAnimation, mdEnterAnimation)];
                 }
             });
         });
     };
-    class_1.prototype.disconnectedCallback = function () {
-        this.onEnd();
-        if (this.gesture) {
-            this.gesture.destroy();
-            this.gesture = undefined;
-        }
+    /**
+     * Dismiss the modal overlay after it has been presented.
+     *
+     * @param data Any data to emit in the dismiss events.
+     * @param role The role of the element that is dismissing the modal. For example, 'cancel' or 'backdrop'.
+     */
+    class_1.prototype.dismiss = function (data, role) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var dismissed;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_6__["f"])(this, data, role, 'modalLeave', iosLeaveAnimation, mdLeaveAnimation)];
+                    case 1:
+                        dismissed = _a.sent();
+                        if (!dismissed) return [3 /*break*/, 3];
+                        return [4 /*yield*/, Object(_framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_8__["d"])(this.delegate, this.usersElement)];
+                    case 2:
+                        _a.sent();
+                        _a.label = 3;
+                    case 3: return [2 /*return*/, dismissed];
+                }
+            });
+        });
     };
     /**
-     * Completes the reorder operation. Must be called by the `ionItemReorder` event.
-     *
-     * If a list of items is passed, the list will be reordered and returned in the
-     * proper order.
-     *
-     * If no parameters are passed or if `true` is passed in, the reorder will complete
-     * and the item will remain in the position it was dragged to. If `false` is passed,
-     * the reorder will complete and the item will bounce back to its original position.
-     *
-     * @param listOrReorder A list of items to be sorted and returned in the new order or a
-     * boolean of whether or not the reorder should reposition the item.
+     * Returns a promise that resolves when the modal did dismiss.
      */
-    class_1.prototype.complete = function (listOrReorder) {
-        return Promise.resolve(this.completeSync(listOrReorder));
+    class_1.prototype.onDidDismiss = function () {
+        return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_6__["g"])(this.el, 'ionModalDidDismiss');
     };
-    class_1.prototype.canStart = function (ev) {
-        if (this.selectedItemEl || this.state !== 0 /* Idle */) {
-            return false;
-        }
-        var target = ev.event.target;
-        var reorderEl = target.closest('ion-reorder');
-        if (!reorderEl) {
-            return false;
-        }
-        var item = findReorderItem(reorderEl, this.el);
-        if (!item) {
-            return false;
-        }
-        ev.data = item;
-        return true;
-    };
-    class_1.prototype.onStart = function (ev) {
-        ev.event.preventDefault();
-        var item = this.selectedItemEl = ev.data;
-        var heights = this.cachedHeights;
-        heights.length = 0;
-        var el = this.el;
-        var children = el.children;
-        if (!children || children.length === 0) {
-            return;
-        }
-        var sum = 0;
-        for (var i = 0; i < children.length; i++) {
-            var child = children[i];
-            sum += child.offsetHeight;
-            heights.push(sum);
-            child.$ionIndex = i;
-        }
-        var box = el.getBoundingClientRect();
-        this.containerTop = box.top;
-        this.containerBottom = box.bottom;
-        if (this.scrollEl) {
-            var scrollBox = this.scrollEl.getBoundingClientRect();
-            this.scrollElInitial = this.scrollEl.scrollTop;
-            this.scrollElTop = scrollBox.top + AUTO_SCROLL_MARGIN;
-            this.scrollElBottom = scrollBox.bottom - AUTO_SCROLL_MARGIN;
-        }
-        else {
-            this.scrollElInitial = 0;
-            this.scrollElTop = 0;
-            this.scrollElBottom = 0;
-        }
-        this.lastToIndex = indexForItem(item);
-        this.selectedItemHeight = item.offsetHeight;
-        this.state = 1 /* Active */;
-        item.classList.add(ITEM_REORDER_SELECTED);
-        Object(_haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_3__["a"])();
-    };
-    class_1.prototype.onMove = function (ev) {
-        var selectedItem = this.selectedItemEl;
-        if (!selectedItem) {
-            return;
-        }
-        // Scroll if we reach the scroll margins
-        var scroll = this.autoscroll(ev.currentY);
-        // // Get coordinate
-        var top = this.containerTop - scroll;
-        var bottom = this.containerBottom - scroll;
-        var currentY = Math.max(top, Math.min(ev.currentY, bottom));
-        var deltaY = scroll + currentY - ev.startY;
-        var normalizedY = currentY - top;
-        var toIndex = this.itemIndexForTop(normalizedY);
-        if (toIndex !== this.lastToIndex) {
-            var fromIndex = indexForItem(selectedItem);
-            this.lastToIndex = toIndex;
-            Object(_haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_3__["b"])();
-            this.reorderMove(fromIndex, toIndex);
-        }
-        // Update selected item position
-        selectedItem.style.transform = "translateY(" + deltaY + "px)";
-    };
-    class_1.prototype.onEnd = function () {
-        var selectedItemEl = this.selectedItemEl;
-        this.state = 2 /* Complete */;
-        if (!selectedItemEl) {
-            this.state = 0 /* Idle */;
-            return;
-        }
-        var toIndex = this.lastToIndex;
-        var fromIndex = indexForItem(selectedItemEl);
-        if (toIndex === fromIndex) {
-            this.completeSync();
-        }
-        else {
-            this.ionItemReorder.emit({
-                from: fromIndex,
-                to: toIndex,
-                complete: this.completeSync.bind(this)
-            });
-        }
-        Object(_haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    };
-    class_1.prototype.completeSync = function (listOrReorder) {
-        var selectedItemEl = this.selectedItemEl;
-        if (selectedItemEl && this.state === 2 /* Complete */) {
-            var children = this.el.children;
-            var len = children.length;
-            var toIndex = this.lastToIndex;
-            var fromIndex = indexForItem(selectedItemEl);
-            if (toIndex !== fromIndex && (!listOrReorder || listOrReorder === true)) {
-                var ref = (fromIndex < toIndex)
-                    ? children[toIndex + 1]
-                    : children[toIndex];
-                this.el.insertBefore(selectedItemEl, ref);
-            }
-            if (Array.isArray(listOrReorder)) {
-                listOrReorder = reorderArray(listOrReorder, fromIndex, toIndex);
-            }
-            for (var i = 0; i < len; i++) {
-                children[i].style['transform'] = '';
-            }
-            selectedItemEl.style.transition = '';
-            selectedItemEl.classList.remove(ITEM_REORDER_SELECTED);
-            this.selectedItemEl = undefined;
-            this.state = 0 /* Idle */;
-        }
-        return listOrReorder;
-    };
-    class_1.prototype.itemIndexForTop = function (deltaY) {
-        var heights = this.cachedHeights;
-        var i = 0;
-        // TODO: since heights is a sorted array of integers, we can do
-        // speed up the search using binary search. Remember that linear-search is still
-        // faster than binary-search for small arrays (<64) due CPU branch misprediction.
-        for (i = 0; i < heights.length; i++) {
-            if (heights[i] > deltaY) {
-                break;
-            }
-        }
-        return i;
-    };
-    /********* DOM WRITE ********* */
-    class_1.prototype.reorderMove = function (fromIndex, toIndex) {
-        var itemHeight = this.selectedItemHeight;
-        var children = this.el.children;
-        for (var i = 0; i < children.length; i++) {
-            var style = children[i].style;
-            var value = '';
-            if (i > fromIndex && i <= toIndex) {
-                value = "translateY(" + -itemHeight + "px)";
-            }
-            else if (i < fromIndex && i >= toIndex) {
-                value = "translateY(" + itemHeight + "px)";
-            }
-            style['transform'] = value;
-        }
-    };
-    class_1.prototype.autoscroll = function (posY) {
-        if (!this.scrollEl) {
-            return 0;
-        }
-        var amount = 0;
-        if (posY < this.scrollElTop) {
-            amount = -SCROLL_JUMP;
-        }
-        else if (posY > this.scrollElBottom) {
-            amount = SCROLL_JUMP;
-        }
-        if (amount !== 0) {
-            this.scrollEl.scrollBy(0, amount);
-        }
-        return this.scrollEl.scrollTop - this.scrollElInitial;
+    /**
+     * Returns a promise that resolves when the modal will dismiss.
+     */
+    class_1.prototype.onWillDismiss = function () {
+        return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_6__["g"])(this.el, 'ionModalWillDismiss');
     };
     class_1.prototype.render = function () {
-        var _a;
+        var _a, _b;
         var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
-        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["H"], { class: (_a = {},
-                _a[mode] = true,
-                _a['reorder-enabled'] = !this.disabled,
-                _a['reorder-list-active'] = this.state !== 0 /* Idle */,
-                _a) }));
+        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["H"], { "no-router": true, "aria-modal": "true", class: Object.assign((_a = {}, _a[mode] = true, _a), Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_7__["g"])(this.cssClass)), style: {
+                zIndex: "" + (20000 + this.overlayIndex),
+            }, onIonBackdropTap: this.onBackdropTap, onIonDismiss: this.onDismiss, onIonModalDidPresent: this.onLifecycle, onIonModalWillPresent: this.onLifecycle, onIonModalWillDismiss: this.onLifecycle, onIonModalDidDismiss: this.onLifecycle }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-backdrop", { visible: this.showBackdrop, tappable: this.backdropDismiss }), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { role: "dialog", class: (_b = {},
+                _b["modal-wrapper"] = true,
+                _b[mode] = true,
+                _b) })));
     };
     Object.defineProperty(class_1.prototype, "el", {
         get: function () { return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(class_1, "watchers", {
-        get: function () {
-            return {
-                "disabled": ["disabledChanged"]
-            };
-        },
-        enumerable: true,
-        configurable: true
-    });
     Object.defineProperty(class_1, "style", {
-        get: function () { return ".reorder-list-active>*{-webkit-transition:-webkit-transform .3s;transition:-webkit-transform .3s;transition:transform .3s;transition:transform .3s,-webkit-transform .3s;will-change:transform}.reorder-enabled{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.reorder-enabled ion-reorder{display:block;cursor:-webkit-grab;cursor:grab;pointer-events:all;-ms-touch-action:none;touch-action:none}.reorder-selected,.reorder-selected ion-reorder{cursor:-webkit-grabbing;cursor:grabbing}.reorder-selected{position:relative;-webkit-transition:none!important;transition:none!important;-webkit-box-shadow:0 0 10px rgba(0,0,0,.4);box-shadow:0 0 10px rgba(0,0,0,.4);opacity:.8;z-index:100}.reorder-visible ion-reorder .reorder-icon{-webkit-transform:translateZ(0);transform:translateZ(0)}"; },
+        get: function () { return ".sc-ion-modal-ios-h{--width:100%;--min-width:auto;--max-width:auto;--height:100%;--min-height:auto;--max-height:auto;--overflow:hidden;--border-radius:0;--border-width:0;--border-style:none;--border-color:transparent;--background:var(--ion-background-color,#fff);--box-shadow:none;left:0;right:0;top:0;bottom:0;display:-ms-flexbox;display:flex;position:absolute;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;contain:strict}.overlay-hidden.sc-ion-modal-ios-h{display:none}.modal-wrapper.sc-ion-modal-ios{border-radius:var(--border-radius);width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);border-width:var(--border-width);border-style:var(--border-style);border-color:var(--border-color);background:var(--background);-webkit-box-shadow:var(--box-shadow);box-shadow:var(--box-shadow);overflow:var(--overflow);z-index:10}\@media only screen and (min-width:768px) and (min-height:600px){.sc-ion-modal-ios-h{--width:600px;--height:500px;--ion-safe-area-top:0px;--ion-safe-area-bottom:0px;--ion-safe-area-right:0px;--ion-safe-area-left:0px}}\@media only screen and (min-width:768px) and (min-height:768px){.sc-ion-modal-ios-h{--width:600px;--height:600px}}\@media only screen and (min-width:768px) and (min-height:600px){.sc-ion-modal-ios-h{--border-radius:10px}}.modal-wrapper.sc-ion-modal-ios{-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}"; },
         enumerable: true,
         configurable: true
     });
     return class_1;
 }());
-var indexForItem = function (element) {
-    return element['$ionIndex'];
-};
-var findReorderItem = function (node, container) {
-    var parent;
-    while (node) {
-        parent = node.parentElement;
-        if (parent === container) {
-            return node;
-        }
-        node = parent;
-    }
-    return undefined;
-};
-var AUTO_SCROLL_MARGIN = 60;
-var SCROLL_JUMP = 10;
-var ITEM_REORDER_SELECTED = 'reorder-selected';
-var reorderArray = function (array, from, to) {
-    var element = array[from];
-    array.splice(from, 1);
-    array.splice(to, 0, element);
-    return array.slice();
+var LIFECYCLE_MAP = {
+    'ionModalDidPresent': 'ionViewDidEnter',
+    'ionModalWillPresent': 'ionViewWillEnter',
+    'ionModalWillDismiss': 'ionViewWillLeave',
+    'ionModalDidDismiss': 'ionViewDidLeave',
 };
 
 

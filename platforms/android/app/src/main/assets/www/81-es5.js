@@ -1,570 +1,594 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[81],{
 
-/***/ "./node_modules/@ionic/core/dist/esm-es5/ion-virtual-scroll.entry.js":
-/*!***************************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm-es5/ion-virtual-scroll.entry.js ***!
-  \***************************************************************************/
-/*! exports provided: ion_virtual_scroll */
+/***/ "./node_modules/@ionic/core/dist/esm-es5/ion-slide_2-ios.entry.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm-es5/ion-slide_2-ios.entry.js ***!
+  \************************************************************************/
+/*! exports provided: ion_slide, ion_slides */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_virtual_scroll", function() { return VirtualScroll; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_slide", function() { return Slide; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_slides", function() { return Slides; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core-ca0488fc.js */ "./node_modules/@ionic/core/dist/esm-es5/core-ca0488fc.js");
 /* harmony import */ var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config-3c7f3790.js */ "./node_modules/@ionic/core/dist/esm-es5/config-3c7f3790.js");
 
 
 
-var CELL_TYPE_ITEM = 'item';
-var CELL_TYPE_HEADER = 'header';
-var CELL_TYPE_FOOTER = 'footer';
-var NODE_CHANGE_NONE = 0;
-var NODE_CHANGE_POSITION = 1;
-var NODE_CHANGE_CELL = 2;
-var MIN_READS = 2;
-var updateVDom = function (dom, heightIndex, cells, range) {
-    // reset dom
-    for (var _i = 0, dom_1 = dom; _i < dom_1.length; _i++) {
-        var node = dom_1[_i];
-        node.change = NODE_CHANGE_NONE;
-        node.d = true;
+var Slide = /** @class */ (function () {
+    function Slide(hostRef) {
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
     }
-    // try to match into exisiting dom
-    var toMutate = [];
-    var end = range.offset + range.length;
-    var _loop_1 = function (i) {
-        var cell = cells[i];
-        var node = dom.find(function (n) { return n.d && n.cell === cell; });
-        if (node) {
-            var top = heightIndex[i];
-            if (top !== node.top) {
-                node.top = top;
-                node.change = NODE_CHANGE_POSITION;
-            }
-            node.d = false;
-        }
-        else {
-            toMutate.push(cell);
-        }
+    Slide.prototype.render = function () {
+        var _a;
+        var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
+        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["H"], { class: (_a = {},
+                _a[mode] = true,
+                _a['swiper-slide'] = true,
+                _a['swiper-zoom-container'] = true,
+                _a) }));
     };
-    for (var i = range.offset; i < end; i++) {
-        _loop_1(i);
-    }
-    // needs to append
-    var pool = dom.filter(function (n) { return n.d; });
-    var _loop_2 = function (cell) {
-        var node = pool.find(function (n) { return n.d && n.cell.type === cell.type; });
-        var index = cell.i;
-        if (node) {
-            node.d = false;
-            node.change = NODE_CHANGE_CELL;
-            node.cell = cell;
-            node.top = heightIndex[index];
-        }
-        else {
-            dom.push({
-                d: false,
-                cell: cell,
-                visible: true,
-                change: NODE_CHANGE_CELL,
-                top: heightIndex[index],
-            });
-        }
-    };
-    for (var _a = 0, toMutate_1 = toMutate; _a < toMutate_1.length; _a++) {
-        var cell = toMutate_1[_a];
-        _loop_2(cell);
-    }
-    dom
-        .filter(function (n) { return n.d && n.top !== -9999; })
-        .forEach(function (n) {
-        n.change = NODE_CHANGE_POSITION;
-        n.top = -9999;
+    Object.defineProperty(Slide, "style", {
+        get: function () { return "ion-slide{height:100%}.slide-zoom,ion-slide{display:block;width:100%}.slide-zoom,.swiper-slide{text-align:center}.swiper-slide{display:-ms-flexbox;display:flex;position:relative;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;font-size:18px;-webkit-box-sizing:border-box;box-sizing:border-box}.swiper-slide img{width:auto;max-width:100%;height:auto;max-height:100%}"; },
+        enumerable: true,
+        configurable: true
     });
-};
-var doRender = function (el, nodeRender, dom, updateCellHeight) {
-    var children = Array.from(el.children).filter(function (n) { return n.tagName !== 'TEMPLATE'; });
-    var childrenNu = children.length;
-    var child;
-    for (var i = 0; i < dom.length; i++) {
-        var node = dom[i];
-        var cell = node.cell;
-        // the cell change, the content must be updated
-        if (node.change === NODE_CHANGE_CELL) {
-            if (i < childrenNu) {
-                child = children[i];
-                nodeRender(child, cell, i);
-            }
-            else {
-                var newChild = createNode(el, cell.type);
-                child = nodeRender(newChild, cell, i) || newChild;
-                child.classList.add('virtual-item');
-                el.appendChild(child);
-            }
-            child['$ionCell'] = cell;
-        }
-        else {
-            child = children[i];
-        }
-        // only update position when it changes
-        if (node.change !== NODE_CHANGE_NONE) {
-            child.style.transform = "translate3d(0," + node.top + "px,0)";
-        }
-        // update visibility
-        var visible = cell.visible;
-        if (node.visible !== visible) {
-            if (visible) {
-                child.classList.remove('virtual-loading');
-            }
-            else {
-                child.classList.add('virtual-loading');
-            }
-            node.visible = visible;
-        }
-        // dynamic height
-        if (cell.reads > 0) {
-            updateCellHeight(cell, child);
-            cell.reads--;
-        }
-    }
-};
-var createNode = function (el, type) {
-    var template = getTemplate(el, type);
-    if (template && el.ownerDocument) {
-        return el.ownerDocument.importNode(template.content, true).children[0];
-    }
-    return null;
-};
-var getTemplate = function (el, type) {
-    switch (type) {
-        case CELL_TYPE_ITEM: return el.querySelector('template:not([name])');
-        case CELL_TYPE_HEADER: return el.querySelector('template[name=header]');
-        case CELL_TYPE_FOOTER: return el.querySelector('template[name=footer]');
-    }
-};
-var getViewport = function (scrollTop, vierportHeight, margin) {
-    return {
-        top: Math.max(scrollTop - margin, 0),
-        bottom: scrollTop + vierportHeight + margin
-    };
-};
-var getRange = function (heightIndex, viewport, buffer) {
-    var topPos = viewport.top;
-    var bottomPos = viewport.bottom;
-    // find top index
-    var i = 0;
-    for (; i < heightIndex.length; i++) {
-        if (heightIndex[i] > topPos) {
-            break;
-        }
-    }
-    var offset = Math.max(i - buffer - 1, 0);
-    // find bottom index
-    for (; i < heightIndex.length; i++) {
-        if (heightIndex[i] >= bottomPos) {
-            break;
-        }
-    }
-    var end = Math.min(i + buffer, heightIndex.length);
-    var length = end - offset;
-    return { offset: offset, length: length };
-};
-var getShouldUpdate = function (dirtyIndex, currentRange, range) {
-    var end = range.offset + range.length;
-    return (dirtyIndex <= end ||
-        currentRange.offset !== range.offset ||
-        currentRange.length !== range.length);
-};
-var findCellIndex = function (cells, index) {
-    var max = cells.length > 0 ? cells[cells.length - 1].index : 0;
-    if (index === 0) {
-        return 0;
-    }
-    else if (index === max + 1) {
-        return cells.length;
-    }
-    else {
-        return cells.findIndex(function (c) { return c.index === index; });
-    }
-};
-var inplaceUpdate = function (dst, src, offset) {
-    if (offset === 0 && src.length >= dst.length) {
-        return src;
-    }
-    for (var i = 0; i < src.length; i++) {
-        dst[i + offset] = src[i];
-    }
-    return dst;
-};
-var calcCells = function (items, itemHeight, headerHeight, footerHeight, headerFn, footerFn, approxHeaderHeight, approxFooterHeight, approxItemHeight, j, offset, len) {
-    var cells = [];
-    var end = len + offset;
-    for (var i = offset; i < end; i++) {
-        var item = items[i];
-        if (headerFn) {
-            var value = headerFn(item, i, items);
-            if (value != null) {
-                cells.push({
-                    i: j++,
-                    type: CELL_TYPE_HEADER,
-                    value: value,
-                    index: i,
-                    height: headerHeight ? headerHeight(value, i) : approxHeaderHeight,
-                    reads: headerHeight ? 0 : MIN_READS,
-                    visible: !!headerHeight,
-                });
-            }
-        }
-        cells.push({
-            i: j++,
-            type: CELL_TYPE_ITEM,
-            value: item,
-            index: i,
-            height: itemHeight ? itemHeight(item, i) : approxItemHeight,
-            reads: itemHeight ? 0 : MIN_READS,
-            visible: !!itemHeight,
-        });
-        if (footerFn) {
-            var value = footerFn(item, i, items);
-            if (value != null) {
-                cells.push({
-                    i: j++,
-                    type: CELL_TYPE_FOOTER,
-                    value: value,
-                    index: i,
-                    height: footerHeight ? footerHeight(value, i) : approxFooterHeight,
-                    reads: footerHeight ? 0 : MIN_READS,
-                    visible: !!footerHeight,
-                });
-            }
-        }
-    }
-    return cells;
-};
-var calcHeightIndex = function (buf, cells, index) {
-    var acum = buf[index];
-    for (var i = index; i < buf.length; i++) {
-        buf[i] = acum;
-        acum += cells[i].height;
-    }
-    return acum;
-};
-var resizeBuffer = function (buf, len) {
-    if (!buf) {
-        return new Uint32Array(len);
-    }
-    if (buf.length === len) {
-        return buf;
-    }
-    else if (len > buf.length) {
-        var newBuf = new Uint32Array(len);
-        newBuf.set(buf);
-        return newBuf;
-    }
-    else {
-        return buf.subarray(0, len);
-    }
-};
-var positionForIndex = function (index, cells, heightIndex) {
-    var cell = cells.find(function (c) { return c.type === CELL_TYPE_ITEM && c.index === index; });
-    if (cell) {
-        return heightIndex[cell.i];
-    }
-    return -1;
-};
-var VirtualScroll = /** @class */ (function () {
+    return Slide;
+}());
+var Slides = /** @class */ (function () {
     function class_1(hostRef) {
         var _this = this;
         Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
-        this.range = { offset: 0, length: 0 };
-        this.viewportHeight = 0;
-        this.cells = [];
-        this.virtualDom = [];
-        this.isEnabled = false;
-        this.viewportOffset = 0;
-        this.currentScrollTop = 0;
-        this.indexDirty = 0;
-        this.lastItemLen = 0;
-        this.totalHeight = 0;
+        this.swiperReady = false;
+        this.swiper = new Promise(function (resolve) { _this.readySwiper = resolve; });
         /**
-         * It is important to provide this
-         * if virtual item height will be significantly larger than the default
-         * The approximate height of each virtual item template's cell.
-         * This dimension is used to help determine how many cells should
-         * be created when initialized, and to help calculate the height of
-         * the scrollable area. This height value can only use `px` units.
-         * Note that the actual rendered size of each cell comes from the
-         * app's CSS, whereas this approximation is used to help calculate
-         * initial dimensions before the item has been rendered.
+         * Options to pass to the swiper instance.
+         * See http://idangero.us/swiper/api/ for valid options
          */
-        this.approxItemHeight = 45;
+        this.options = {}; // SwiperOptions;  // TODO
         /**
-         * The approximate height of each header template's cell.
-         * This dimension is used to help determine how many cells should
-         * be created when initialized, and to help calculate the height of
-         * the scrollable area. This height value can only use `px` units.
-         * Note that the actual rendered size of each cell comes from the
-         * app's CSS, whereas this approximation is used to help calculate
-         * initial dimensions before the item has been rendered.
+         * If `true`, show the pagination.
          */
-        this.approxHeaderHeight = 30;
+        this.pager = false;
         /**
-         * The approximate width of each footer template's cell.
-         * This dimension is used to help determine how many cells should
-         * be created when initialized, and to help calculate the height of
-         * the scrollable area. This height value can only use `px` units.
-         * Note that the actual rendered size of each cell comes from the
-         * app's CSS, whereas this approximation is used to help calculate
-         * initial dimensions before the item has been rendered.
+         * If `true`, show the scrollbar.
          */
-        this.approxFooterHeight = 30;
-        this.onScroll = function () {
-            _this.updateVirtualScroll();
-        };
+        this.scrollbar = false;
+        this.ionSlidesDidLoad = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlidesDidLoad", 7);
+        this.ionSlideTap = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideTap", 7);
+        this.ionSlideDoubleTap = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideDoubleTap", 7);
+        this.ionSlideWillChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideWillChange", 7);
+        this.ionSlideDidChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideDidChange", 7);
+        this.ionSlideNextStart = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideNextStart", 7);
+        this.ionSlidePrevStart = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlidePrevStart", 7);
+        this.ionSlideNextEnd = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideNextEnd", 7);
+        this.ionSlidePrevEnd = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlidePrevEnd", 7);
+        this.ionSlideTransitionStart = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideTransitionStart", 7);
+        this.ionSlideTransitionEnd = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideTransitionEnd", 7);
+        this.ionSlideDrag = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideDrag", 7);
+        this.ionSlideReachStart = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideReachStart", 7);
+        this.ionSlideReachEnd = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideReachEnd", 7);
+        this.ionSlideTouchStart = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideTouchStart", 7);
+        this.ionSlideTouchEnd = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideTouchEnd", 7);
     }
-    class_1.prototype.itemsChanged = function () {
-        this.calcCells();
-        this.updateVirtualScroll();
+    class_1.prototype.optionsChanged = function () {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var swiper;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!this.swiperReady) return [3 /*break*/, 3];
+                        return [4 /*yield*/, this.getSwiper()];
+                    case 1:
+                        swiper = _a.sent();
+                        Object.assign(swiper.params, this.options);
+                        return [4 /*yield*/, this.update()];
+                    case 2:
+                        _a.sent();
+                        _a.label = 3;
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
     };
     class_1.prototype.connectedCallback = function () {
+        var _this = this;
+        var mut = this.mutationO = new MutationObserver(function () {
+            if (_this.swiperReady) {
+                _this.update();
+            }
+        });
+        mut.observe(this.el, {
+            childList: true,
+            subtree: true
+        });
+        this.el.componentOnReady().then(function () { return _this.initSwiper(); });
+    };
+    class_1.prototype.disconnectedCallback = function () {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
-            var contentEl, _a;
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_b) {
-                switch (_b.label) {
+            var swiper;
+            var _this = this;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                switch (_a.label) {
                     case 0:
-                        contentEl = this.el.closest('ion-content');
-                        if (!contentEl) {
-                            console.error('<ion-virtual-scroll> must be used inside an <ion-content>');
-                            return [2 /*return*/];
+                        if (this.mutationO) {
+                            this.mutationO.disconnect();
+                            this.mutationO = undefined;
                         }
-                        _a = this;
-                        return [4 /*yield*/, contentEl.getScrollElement()];
+                        return [4 /*yield*/, this.getSwiper()];
                     case 1:
-                        _a.scrollEl = _b.sent();
-                        this.contentEl = contentEl;
-                        this.calcCells();
-                        this.updateState();
+                        swiper = _a.sent();
+                        swiper.destroy(true, true);
+                        this.swiper = new Promise(function (resolve) { _this.readySwiper = resolve; });
+                        this.swiperReady = false;
                         return [2 /*return*/];
                 }
             });
         });
     };
-    class_1.prototype.componentDidUpdate = function () {
-        this.updateState();
-    };
-    class_1.prototype.disconnectedCallback = function () {
-        this.scrollEl = undefined;
-    };
-    class_1.prototype.onResize = function () {
-        this.calcCells();
-        this.updateVirtualScroll();
-    };
     /**
-     * Returns the position of the virtual item at the given index.
+     * Update the underlying slider implementation. Call this if you've added or removed
+     * child slides.
      */
-    class_1.prototype.positionForItem = function (index) {
-        return Promise.resolve(positionForIndex(index, this.cells, this.getHeightIndex()));
-    };
-    /**
-     * This method marks a subset of items as dirty, so they can be re-rendered. Items should be marked as
-     * dirty any time the content or their style changes.
-     *
-     * The subset of items to be updated can are specifing by an offset and a length.
-     */
-    class_1.prototype.checkRange = function (offset, len) {
-        if (len === void 0) { len = -1; }
+    class_1.prototype.update = function () {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
-            var length, cellIndex, cells;
+            var swiper;
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
-                // TODO: kind of hacky how we do in-place updated of the cells
-                // array. this part needs a complete refactor
-                if (!this.items) {
-                    return [2 /*return*/];
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, Promise.all([
+                            this.getSwiper(),
+                            waitForSlides(this.el)
+                        ])];
+                    case 1:
+                        swiper = (_a.sent())[0];
+                        swiper.update();
+                        return [2 /*return*/];
                 }
-                length = (len === -1)
-                    ? this.items.length - offset
-                    : len;
-                cellIndex = findCellIndex(this.cells, offset);
-                cells = calcCells(this.items, this.itemHeight, this.headerHeight, this.footerHeight, this.headerFn, this.footerFn, this.approxHeaderHeight, this.approxFooterHeight, this.approxItemHeight, cellIndex, offset, length);
-                this.cells = inplaceUpdate(this.cells, cells, cellIndex);
-                this.lastItemLen = this.items.length;
-                this.indexDirty = Math.max(offset - 1, 0);
-                this.scheduleUpdate();
-                return [2 /*return*/];
             });
         });
     };
     /**
-     * This method marks the tail the items array as dirty, so they can be re-rendered.
+     * Force swiper to update its height (when autoHeight is enabled) for the duration
+     * equal to 'speed' parameter.
      *
-     * It's equivalent to calling:
-     *
-     * ```js
-     * virtualScroll.checkRange(lastItemLen);
-     * ```
+     * @param speed The transition duration (in ms).
      */
-    class_1.prototype.checkEnd = function () {
+    class_1.prototype.updateAutoHeight = function (speed) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var swiper;
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
-                if (this.items) {
-                    this.checkRange(this.lastItemLen);
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getSwiper()];
+                    case 1:
+                        swiper = _a.sent();
+                        swiper.updateAutoHeight(speed);
+                        return [2 /*return*/];
                 }
-                return [2 /*return*/];
             });
         });
     };
-    class_1.prototype.updateVirtualScroll = function () {
-        // do nothing if virtual-scroll is disabled
-        if (!this.isEnabled || !this.scrollEl) {
-            return;
-        }
-        // unschedule future updates
-        if (this.timerUpdate) {
-            clearTimeout(this.timerUpdate);
-            this.timerUpdate = undefined;
-        }
-        // schedule DOM operations into the stencil queue
-        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["f"])(this.readVS.bind(this));
-        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["w"])(this.writeVS.bind(this));
+    /**
+     * Transition to the specified slide.
+     *
+     * @param index The index of the slide to transition to.
+     * @param speed The transition duration (in ms).
+     * @param runCallbacks If true, the transition will produce [Transition/SlideChange][Start/End] transition events.
+     */
+    class_1.prototype.slideTo = function (index, speed, runCallbacks) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var swiper;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getSwiper()];
+                    case 1:
+                        swiper = _a.sent();
+                        swiper.slideTo(index, speed, runCallbacks);
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
-    class_1.prototype.readVS = function () {
-        var _a = this, contentEl = _a.contentEl, scrollEl = _a.scrollEl, el = _a.el;
-        var topOffset = 0;
-        var node = el;
-        while (node && node !== contentEl) {
-            topOffset += node.offsetTop;
-            node = node.parentElement;
-        }
-        this.viewportOffset = topOffset;
-        if (scrollEl) {
-            this.viewportHeight = scrollEl.offsetHeight;
-            this.currentScrollTop = scrollEl.scrollTop;
-        }
+    /**
+     * Transition to the next slide.
+     *
+     * @param speed The transition duration (in ms).
+     * @param runCallbacks If true, the transition will produce [Transition/SlideChange][Start/End] transition events.
+     */
+    class_1.prototype.slideNext = function (speed, runCallbacks) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var swiper;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getSwiper()];
+                    case 1:
+                        swiper = _a.sent();
+                        swiper.slideNext(speed, runCallbacks);
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
-    class_1.prototype.writeVS = function () {
-        var dirtyIndex = this.indexDirty;
-        // get visible viewport
-        var scrollTop = this.currentScrollTop - this.viewportOffset;
-        var viewport = getViewport(scrollTop, this.viewportHeight, 100);
-        // compute lazily the height index
-        var heightIndex = this.getHeightIndex();
-        // get array bounds of visible cells base in the viewport
-        var range = getRange(heightIndex, viewport, 2);
-        // fast path, do nothing
-        var shouldUpdate = getShouldUpdate(dirtyIndex, this.range, range);
-        if (!shouldUpdate) {
-            return;
-        }
-        this.range = range;
-        // in place mutation of the virtual DOM
-        updateVDom(this.virtualDom, heightIndex, this.cells, range);
-        // Write DOM
-        // Different code paths taken depending of the render API used
-        if (this.nodeRender) {
-            doRender(this.el, this.nodeRender, this.virtualDom, this.updateCellHeight.bind(this));
-        }
-        else if (this.domRender) {
-            this.domRender(this.virtualDom);
-        }
-        else if (this.renderItem) {
-            this.el.forceUpdate();
-        }
+    /**
+     * Transition to the previous slide.
+     *
+     * @param speed The transition duration (in ms).
+     * @param runCallbacks If true, the transition will produce the [Transition/SlideChange][Start/End] transition events.
+     */
+    class_1.prototype.slidePrev = function (speed, runCallbacks) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var swiper;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getSwiper()];
+                    case 1:
+                        swiper = _a.sent();
+                        swiper.slidePrev(speed, runCallbacks);
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
-    class_1.prototype.updateCellHeight = function (cell, node) {
+    /**
+     * Get the index of the active slide.
+     */
+    class_1.prototype.getActiveIndex = function () {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var swiper;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getSwiper()];
+                    case 1:
+                        swiper = _a.sent();
+                        return [2 /*return*/, swiper.activeIndex];
+                }
+            });
+        });
+    };
+    /**
+     * Get the index of the previous slide.
+     */
+    class_1.prototype.getPreviousIndex = function () {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var swiper;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getSwiper()];
+                    case 1:
+                        swiper = _a.sent();
+                        return [2 /*return*/, swiper.previousIndex];
+                }
+            });
+        });
+    };
+    /**
+     * Get the total number of slides.
+     */
+    class_1.prototype.length = function () {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var swiper;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getSwiper()];
+                    case 1:
+                        swiper = _a.sent();
+                        return [2 /*return*/, swiper.slides.length];
+                }
+            });
+        });
+    };
+    /**
+     * Get whether or not the current slide is the last slide.
+     */
+    class_1.prototype.isEnd = function () {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var swiper;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getSwiper()];
+                    case 1:
+                        swiper = _a.sent();
+                        return [2 /*return*/, swiper.isEnd];
+                }
+            });
+        });
+    };
+    /**
+     * Get whether or not the current slide is the first slide.
+     */
+    class_1.prototype.isBeginning = function () {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var swiper;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getSwiper()];
+                    case 1:
+                        swiper = _a.sent();
+                        return [2 /*return*/, swiper.isBeginning];
+                }
+            });
+        });
+    };
+    /**
+     * Start auto play.
+     */
+    class_1.prototype.startAutoplay = function () {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var swiper;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getSwiper()];
+                    case 1:
+                        swiper = _a.sent();
+                        if (swiper.autoplay) {
+                            swiper.autoplay.start();
+                        }
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /**
+     * Stop auto play.
+     */
+    class_1.prototype.stopAutoplay = function () {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var swiper;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getSwiper()];
+                    case 1:
+                        swiper = _a.sent();
+                        if (swiper.autoplay) {
+                            swiper.autoplay.stop();
+                        }
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /**
+     * Lock or unlock the ability to slide to the next slide.
+     *
+     * @param lock If `true`, disable swiping to the next slide.
+     */
+    class_1.prototype.lockSwipeToNext = function (lock) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var swiper;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getSwiper()];
+                    case 1:
+                        swiper = _a.sent();
+                        swiper.allowSlideNext = !lock;
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /**
+     * Lock or unlock the ability to slide to the previous slide.
+     *
+     * @param lock If `true`, disable swiping to the previous slide.
+     */
+    class_1.prototype.lockSwipeToPrev = function (lock) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var swiper;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getSwiper()];
+                    case 1:
+                        swiper = _a.sent();
+                        swiper.allowSlidePrev = !lock;
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /**
+     * Lock or unlock the ability to slide to the next or previous slide.
+     *
+     * @param lock If `true`, disable swiping to the next and previous slide.
+     */
+    class_1.prototype.lockSwipes = function (lock) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var swiper;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getSwiper()];
+                    case 1:
+                        swiper = _a.sent();
+                        swiper.allowSlideNext = !lock;
+                        swiper.allowSlidePrev = !lock;
+                        swiper.allowTouchMove = !lock;
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /**
+     * Get the Swiper instance.
+     * Use this to access the full Swiper API.
+     * See https://idangero.us/swiper/api/ for all API options.
+     */
+    class_1.prototype.getSwiper = function () {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                return [2 /*return*/, this.swiper];
+            });
+        });
+    };
+    class_1.prototype.initSwiper = function () {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var finalOptions, Swiper, swiper;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        finalOptions = this.normalizeOptions();
+                        return [4 /*yield*/, __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! ./swiper.bundle-ccdaac54.js */ "./node_modules/@ionic/core/dist/esm-es5/swiper.bundle-ccdaac54.js"))];
+                    case 1:
+                        Swiper = (_a.sent()).Swiper;
+                        return [4 /*yield*/, waitForSlides(this.el)];
+                    case 2:
+                        _a.sent();
+                        swiper = new Swiper(this.el, finalOptions);
+                        this.swiperReady = true;
+                        this.readySwiper(swiper);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    class_1.prototype.normalizeOptions = function () {
         var _this = this;
-        var update = function () {
-            if (node['$ionCell'] === cell) {
-                var style = window.getComputedStyle(node);
-                var height = node.offsetHeight + parseFloat(style.getPropertyValue('margin-bottom'));
-                _this.setCellHeight(cell, height);
+        // Base options, can be changed
+        // TODO Add interface SwiperOptions
+        var swiperOptions = {
+            effect: undefined,
+            direction: 'horizontal',
+            initialSlide: 0,
+            loop: false,
+            parallax: false,
+            slidesPerView: 1,
+            spaceBetween: 0,
+            speed: 300,
+            slidesPerColumn: 1,
+            slidesPerColumnFill: 'column',
+            slidesPerGroup: 1,
+            centeredSlides: false,
+            slidesOffsetBefore: 0,
+            slidesOffsetAfter: 0,
+            touchEventsTarget: 'container',
+            autoplay: false,
+            freeMode: false,
+            freeModeMomentum: true,
+            freeModeMomentumRatio: 1,
+            freeModeMomentumBounce: true,
+            freeModeMomentumBounceRatio: 1,
+            freeModeMomentumVelocityRatio: 1,
+            freeModeSticky: false,
+            freeModeMinimumVelocity: 0.02,
+            autoHeight: false,
+            setWrapperSize: false,
+            zoom: {
+                maxRatio: 3,
+                minRatio: 1,
+                toggle: false,
+            },
+            touchRatio: 1,
+            touchAngle: 45,
+            simulateTouch: true,
+            touchStartPreventDefault: false,
+            shortSwipes: true,
+            longSwipes: true,
+            longSwipesRatio: 0.5,
+            longSwipesMs: 300,
+            followFinger: true,
+            threshold: 0,
+            touchMoveStopPropagation: true,
+            touchReleaseOnEdges: false,
+            iOSEdgeSwipeDetection: false,
+            iOSEdgeSwipeThreshold: 20,
+            resistance: true,
+            resistanceRatio: 0.85,
+            watchSlidesProgress: false,
+            watchSlidesVisibility: false,
+            preventClicks: true,
+            preventClicksPropagation: true,
+            slideToClickedSlide: false,
+            loopAdditionalSlides: 0,
+            noSwiping: true,
+            runCallbacksOnInit: true,
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true
+            },
+            flipEffect: {
+                slideShadows: true,
+                limitRotation: true
+            },
+            cubeEffect: {
+                slideShadows: true,
+                shadow: true,
+                shadowOffset: 20,
+                shadowScale: 0.94
+            },
+            fadeEffect: {
+                crossfade: false
+            },
+            a11y: {
+                prevSlideMessage: 'Previous slide',
+                nextSlideMessage: 'Next slide',
+                firstSlideMessage: 'This is the first slide',
+                lastSlideMessage: 'This is the last slide'
             }
         };
-        if (node && node.componentOnReady) {
-            node.componentOnReady().then(update);
-        }
-        else {
-            update();
-        }
-    };
-    class_1.prototype.setCellHeight = function (cell, height) {
-        var index = cell.i;
-        // the cell might changed since the height update was scheduled
-        if (cell !== this.cells[index]) {
-            return;
-        }
-        if (cell.height !== height || cell.visible !== true) {
-            cell.visible = true;
-            cell.height = height;
-            this.indexDirty = Math.min(this.indexDirty, index);
-            this.scheduleUpdate();
-        }
-    };
-    class_1.prototype.scheduleUpdate = function () {
-        var _this = this;
-        clearTimeout(this.timerUpdate);
-        this.timerUpdate = setTimeout(function () { return _this.updateVirtualScroll(); }, 100);
-    };
-    class_1.prototype.updateState = function () {
-        var shouldEnable = !!(this.scrollEl &&
-            this.cells);
-        if (shouldEnable !== this.isEnabled) {
-            this.enableScrollEvents(shouldEnable);
-            if (shouldEnable) {
-                this.updateVirtualScroll();
-            }
-        }
-    };
-    class_1.prototype.calcCells = function () {
-        if (!this.items) {
-            return;
-        }
-        this.lastItemLen = this.items.length;
-        this.cells = calcCells(this.items, this.itemHeight, this.headerHeight, this.footerHeight, this.headerFn, this.footerFn, this.approxHeaderHeight, this.approxFooterHeight, this.approxItemHeight, 0, 0, this.lastItemLen);
-        this.indexDirty = 0;
-    };
-    class_1.prototype.getHeightIndex = function () {
-        if (this.indexDirty !== Infinity) {
-            this.calcHeightIndex(this.indexDirty);
-        }
-        return this.heightIndex;
-    };
-    class_1.prototype.calcHeightIndex = function (index) {
-        if (index === void 0) { index = 0; }
-        // TODO: optimize, we don't need to calculate all the cells
-        this.heightIndex = resizeBuffer(this.heightIndex, this.cells.length);
-        this.totalHeight = calcHeightIndex(this.heightIndex, this.cells, index);
-        this.indexDirty = Infinity;
-    };
-    class_1.prototype.enableScrollEvents = function (shouldListen) {
-        var _this = this;
-        if (this.rmEvent) {
-            this.rmEvent();
-            this.rmEvent = undefined;
-        }
-        var scrollEl = this.scrollEl;
-        if (scrollEl) {
-            this.isEnabled = shouldListen;
-            scrollEl.addEventListener('scroll', this.onScroll);
-            this.rmEvent = function () {
-                scrollEl.removeEventListener('scroll', _this.onScroll);
+        if (this.pager) {
+            swiperOptions.pagination = {
+                el: this.paginationEl,
+                type: 'bullets',
+                clickable: false,
+                hideOnClick: false,
             };
         }
-    };
-    class_1.prototype.renderVirtualNode = function (node) {
-        var _a = node.cell, type = _a.type, value = _a.value, index = _a.index;
-        switch (type) {
-            case CELL_TYPE_ITEM: return this.renderItem(value, index);
-            case CELL_TYPE_HEADER: return this.renderHeader(value, index);
-            case CELL_TYPE_FOOTER: return this.renderFooter(value, index);
+        if (this.scrollbar) {
+            swiperOptions.scrollbar = {
+                el: this.scrollbarEl,
+                hide: true,
+            };
         }
+        // Keep the event options separate, we dont want users
+        // overwriting these
+        var eventOptions = {
+            on: {
+                init: function () {
+                    setTimeout(function () {
+                        _this.ionSlidesDidLoad.emit();
+                    }, 20);
+                },
+                slideChangeTransitionStart: this.ionSlideWillChange.emit,
+                slideChangeTransitionEnd: this.ionSlideDidChange.emit,
+                slideNextTransitionStart: this.ionSlideNextStart.emit,
+                slidePrevTransitionStart: this.ionSlidePrevStart.emit,
+                slideNextTransitionEnd: this.ionSlideNextEnd.emit,
+                slidePrevTransitionEnd: this.ionSlidePrevEnd.emit,
+                transitionStart: this.ionSlideTransitionStart.emit,
+                transitionEnd: this.ionSlideTransitionEnd.emit,
+                sliderMove: this.ionSlideDrag.emit,
+                reachBeginning: this.ionSlideReachStart.emit,
+                reachEnd: this.ionSlideReachEnd.emit,
+                touchStart: this.ionSlideTouchStart.emit,
+                touchEnd: this.ionSlideTouchEnd.emit,
+                tap: this.ionSlideTap.emit,
+                doubleTap: this.ionSlideDoubleTap.emit
+            }
+        };
+        var customEvents = (!!this.options && !!this.options.on) ? this.options.on : {};
+        // merge "on" event listeners, while giving our event listeners priority
+        var mergedEventOptions = { on: Object.assign(Object.assign({}, customEvents), eventOptions.on) };
+        // Merge the base, user options, and events together then pas to swiper
+        return Object.assign(Object.assign(Object.assign({}, swiperOptions), this.options), mergedEventOptions);
     };
     class_1.prototype.render = function () {
+        var _a;
         var _this = this;
-        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["H"], { style: {
-                height: this.totalHeight + "px"
-            } }, this.renderItem && (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])(VirtualProxy, { dom: this.virtualDom }, this.virtualDom.map(function (node) { return _this.renderVirtualNode(node); })))));
+        var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
+        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["H"], { class: (_a = {},
+                _a["" + mode] = true,
+                // Used internally for styling
+                _a["slides-" + mode] = true,
+                _a['swiper-container'] = true,
+                _a) }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "swiper-wrapper" }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null)), this.pager && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "swiper-pagination", ref: function (el) { return _this.paginationEl = el; } }), this.scrollbar && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "swiper-scrollbar", ref: function (el) { return _this.scrollbarEl = el; } })));
     };
+    Object.defineProperty(class_1, "assetsDirs", {
+        get: function () { return ["swiper"]; },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(class_1.prototype, "el", {
         get: function () { return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
         enumerable: true,
@@ -573,34 +597,21 @@ var VirtualScroll = /** @class */ (function () {
     Object.defineProperty(class_1, "watchers", {
         get: function () {
             return {
-                "itemHeight": ["itemsChanged"],
-                "headerHeight": ["itemsChanged"],
-                "footerHeight": ["itemsChanged"],
-                "items": ["itemsChanged"]
+                "options": ["optionsChanged"]
             };
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(class_1, "style", {
-        get: function () { return "ion-virtual-scroll{display:block;position:relative;width:100%;contain:strict;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}ion-virtual-scroll>.virtual-loading{opacity:0}ion-virtual-scroll>.virtual-item{position:absolute!important;top:0!important;right:0!important;left:0!important;-webkit-transition-duration:0ms;transition-duration:0ms;will-change:transform}"; },
+        get: function () { return ".swiper-container{margin:0 auto;position:relative;overflow:hidden;list-style:none;padding:0;z-index:1}.swiper-container-no-flexbox .swiper-slide{float:left}.swiper-container-vertical>.swiper-wrapper{-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column}.swiper-wrapper{position:relative;width:100%;height:100%;z-index:1;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-transition-property:-webkit-transform;transition-property:-webkit-transform;-o-transition-property:transform;transition-property:transform;transition-property:transform,-webkit-transform;-webkit-box-sizing:content-box;box-sizing:content-box}.swiper-container-android .swiper-slide,.swiper-wrapper{-webkit-transform:translateZ(0);transform:translateZ(0)}.swiper-container-multirow>.swiper-wrapper{-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap}.swiper-container-free-mode>.swiper-wrapper{-webkit-transition-timing-function:ease-out;-o-transition-timing-function:ease-out;transition-timing-function:ease-out;margin:0 auto}.swiper-slide{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:100%;height:100%;position:relative;-webkit-transition-property:-webkit-transform;transition-property:-webkit-transform;-o-transition-property:transform;transition-property:transform;transition-property:transform,-webkit-transform}.swiper-invisible-blank-slide{visibility:hidden}.swiper-container-autoheight,.swiper-container-autoheight .swiper-slide{height:auto}.swiper-container-autoheight .swiper-wrapper{-webkit-box-align:start;-webkit-align-items:flex-start;-ms-flex-align:start;align-items:flex-start;-webkit-transition-property:height,-webkit-transform;transition-property:height,-webkit-transform;-o-transition-property:transform,height;transition-property:transform,height;transition-property:transform,height,-webkit-transform}.swiper-container-3d{-webkit-perspective:1200px;perspective:1200px}.swiper-container-3d .swiper-cube-shadow,.swiper-container-3d .swiper-slide,.swiper-container-3d .swiper-slide-shadow-bottom,.swiper-container-3d .swiper-slide-shadow-left,.swiper-container-3d .swiper-slide-shadow-right,.swiper-container-3d .swiper-slide-shadow-top,.swiper-container-3d .swiper-wrapper{-webkit-transform-style:preserve-3d;transform-style:preserve-3d}.swiper-container-3d .swiper-slide-shadow-bottom,.swiper-container-3d .swiper-slide-shadow-left,.swiper-container-3d .swiper-slide-shadow-right,.swiper-container-3d .swiper-slide-shadow-top{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:10}.swiper-container-3d .swiper-slide-shadow-left{background-image:-webkit-gradient(linear,right top,left top,from(rgba(0,0,0,.5)),to(transparent));background-image:-webkit-linear-gradient(right,rgba(0,0,0,.5),transparent);background-image:-o-linear-gradient(right,rgba(0,0,0,.5),transparent);background-image:linear-gradient(270deg,rgba(0,0,0,.5),transparent)}.swiper-container-3d .swiper-slide-shadow-right{background-image:-webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.5)),to(transparent));background-image:-webkit-linear-gradient(left,rgba(0,0,0,.5),transparent);background-image:-o-linear-gradient(left,rgba(0,0,0,.5),transparent);background-image:linear-gradient(90deg,rgba(0,0,0,.5),transparent)}.swiper-container-3d .swiper-slide-shadow-top{background-image:-webkit-gradient(linear,left bottom,left top,from(rgba(0,0,0,.5)),to(transparent));background-image:-webkit-linear-gradient(bottom,rgba(0,0,0,.5),transparent);background-image:-o-linear-gradient(bottom,rgba(0,0,0,.5),transparent);background-image:linear-gradient(0deg,rgba(0,0,0,.5),transparent)}.swiper-container-3d .swiper-slide-shadow-bottom{background-image:-webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.5)),to(transparent));background-image:-webkit-linear-gradient(top,rgba(0,0,0,.5),transparent);background-image:-o-linear-gradient(top,rgba(0,0,0,.5),transparent);background-image:linear-gradient(180deg,rgba(0,0,0,.5),transparent)}.swiper-container-wp8-horizontal,.swiper-container-wp8-horizontal>.swiper-wrapper{-ms-touch-action:pan-y;touch-action:pan-y}.swiper-container-wp8-vertical,.swiper-container-wp8-vertical>.swiper-wrapper{-ms-touch-action:pan-x;touch-action:pan-x}.swiper-button-next,.swiper-button-prev{position:absolute;top:50%;width:27px;height:44px;margin-top:-22px;z-index:10;cursor:pointer;background-size:27px 44px;background-position:50%;background-repeat:no-repeat}.swiper-button-next.swiper-button-disabled,.swiper-button-prev.swiper-button-disabled{opacity:.35;cursor:auto;pointer-events:none}.swiper-button-prev,.swiper-container-rtl .swiper-button-next{background-image:url(\"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D\'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg\'%20viewBox%3D\'0%200%2027%2044\'%3E%3Cpath%20d%3D\'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z\'%20fill%3D\'%23007aff\'%2F%3E%3C%2Fsvg%3E\");left:10px;right:auto}.swiper-button-next,.swiper-container-rtl .swiper-button-prev{background-image:url(\"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D\'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg\'%20viewBox%3D\'0%200%2027%2044\'%3E%3Cpath%20d%3D\'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z\'%20fill%3D\'%23007aff\'%2F%3E%3C%2Fsvg%3E\");right:10px;left:auto}.swiper-button-prev.swiper-button-white,.swiper-container-rtl .swiper-button-next.swiper-button-white{background-image:url(\"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D\'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg\'%20viewBox%3D\'0%200%2027%2044\'%3E%3Cpath%20d%3D\'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z\'%20fill%3D\'%23ffffff\'%2F%3E%3C%2Fsvg%3E\")}.swiper-button-next.swiper-button-white,.swiper-container-rtl .swiper-button-prev.swiper-button-white{background-image:url(\"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D\'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg\'%20viewBox%3D\'0%200%2027%2044\'%3E%3Cpath%20d%3D\'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z\'%20fill%3D\'%23ffffff\'%2F%3E%3C%2Fsvg%3E\")}.swiper-button-prev.swiper-button-black,.swiper-container-rtl .swiper-button-next.swiper-button-black{background-image:url(\"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D\'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg\'%20viewBox%3D\'0%200%2027%2044\'%3E%3Cpath%20d%3D\'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z\'%20fill%3D\'%23000000\'%2F%3E%3C%2Fsvg%3E\")}.swiper-button-next.swiper-button-black,.swiper-container-rtl .swiper-button-prev.swiper-button-black{background-image:url(\"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D\'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg\'%20viewBox%3D\'0%200%2027%2044\'%3E%3Cpath%20d%3D\'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z\'%20fill%3D\'%23000000\'%2F%3E%3C%2Fsvg%3E\")}.swiper-button-lock{display:none}.swiper-pagination{position:absolute;text-align:center;-webkit-transition:opacity .3s;-o-transition:.3s opacity;transition:opacity .3s;-webkit-transform:translateZ(0);transform:translateZ(0);z-index:10}.swiper-pagination.swiper-pagination-hidden{opacity:0}.swiper-container-horizontal>.swiper-pagination-bullets,.swiper-pagination-custom,.swiper-pagination-fraction{bottom:10px;left:0;width:100%}.swiper-pagination-bullets-dynamic{overflow:hidden;font-size:0}.swiper-pagination-bullets-dynamic .swiper-pagination-bullet{-webkit-transform:scale(.33);-ms-transform:scale(.33);transform:scale(.33);position:relative}.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active,.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-main{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev{-webkit-transform:scale(.66);-ms-transform:scale(.66);transform:scale(.66)}.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev-prev{-webkit-transform:scale(.33);-ms-transform:scale(.33);transform:scale(.33)}.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next{-webkit-transform:scale(.66);-ms-transform:scale(.66);transform:scale(.66)}.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next-next{-webkit-transform:scale(.33);-ms-transform:scale(.33);transform:scale(.33)}.swiper-pagination-bullet{width:8px;height:8px;display:inline-block;border-radius:100%;background:#000;opacity:.2}button.swiper-pagination-bullet{border:none;margin:0;padding:0;-webkit-box-shadow:none;box-shadow:none;-webkit-appearance:none;-moz-appearance:none;appearance:none}.swiper-pagination-clickable .swiper-pagination-bullet{cursor:pointer}.swiper-pagination-bullet-active{opacity:1;background:#007aff}.swiper-container-vertical>.swiper-pagination-bullets{right:10px;top:50%;-webkit-transform:translate3d(0,-50%,0);transform:translate3d(0,-50%,0)}.swiper-container-vertical>.swiper-pagination-bullets .swiper-pagination-bullet{margin:6px 0;display:block}.swiper-container-vertical>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic{top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);width:8px}.swiper-container-vertical>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet{display:inline-block;-webkit-transition:top .2s,-webkit-transform .2s;transition:top .2s,-webkit-transform .2s;-o-transition:.2s transform,.2s top;transition:transform .2s,top .2s;transition:transform .2s,top .2s,-webkit-transform .2s}.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{margin:0 4px}.swiper-container-horizontal>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic{left:50%;-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);white-space:nowrap}.swiper-container-horizontal>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet{-webkit-transition:left .2s,-webkit-transform .2s;transition:left .2s,-webkit-transform .2s;-o-transition:.2s transform,.2s left;transition:transform .2s,left .2s;transition:transform .2s,left .2s,-webkit-transform .2s}.swiper-container-horizontal.swiper-container-rtl>.swiper-pagination-bullets-dynamic .swiper-pagination-bullet{-webkit-transition:right .2s,-webkit-transform .2s;transition:right .2s,-webkit-transform .2s;-o-transition:.2s transform,.2s right;transition:transform .2s,right .2s;transition:transform .2s,right .2s,-webkit-transform .2s}.swiper-pagination-progressbar{background:rgba(0,0,0,.25);position:absolute}.swiper-pagination-progressbar .swiper-pagination-progressbar-fill{background:#007aff;position:absolute;left:0;top:0;width:100%;height:100%;-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);-webkit-transform-origin:left top;-ms-transform-origin:left top;transform-origin:left top}.swiper-container-rtl .swiper-pagination-progressbar .swiper-pagination-progressbar-fill{-webkit-transform-origin:right top;-ms-transform-origin:right top;transform-origin:right top}.swiper-container-horizontal>.swiper-pagination-progressbar,.swiper-container-vertical>.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite{width:100%;height:4px;left:0;top:0}.swiper-container-horizontal>.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite,.swiper-container-vertical>.swiper-pagination-progressbar{width:4px;height:100%;left:0;top:0}.swiper-pagination-white .swiper-pagination-bullet-active{background:#fff}.swiper-pagination-progressbar.swiper-pagination-white{background:hsla(0,0%,100%,.25)}.swiper-pagination-progressbar.swiper-pagination-white .swiper-pagination-progressbar-fill{background:#fff}.swiper-pagination-black .swiper-pagination-bullet-active{background:#000}.swiper-pagination-progressbar.swiper-pagination-black{background:rgba(0,0,0,.25)}.swiper-pagination-progressbar.swiper-pagination-black .swiper-pagination-progressbar-fill{background:#000}.swiper-pagination-lock{display:none}.swiper-scrollbar{border-radius:10px;position:relative;-ms-touch-action:none;background:rgba(0,0,0,.1)}.swiper-container-horizontal>.swiper-scrollbar{position:absolute;left:1%;bottom:3px;z-index:50;height:5px;width:98%}.swiper-container-vertical>.swiper-scrollbar{position:absolute;right:3px;top:1%;z-index:50;width:5px;height:98%}.swiper-scrollbar-drag{height:100%;width:100%;position:relative;background:rgba(0,0,0,.5);border-radius:10px;left:0;top:0}.swiper-scrollbar-cursor-drag{cursor:move}.swiper-scrollbar-lock{display:none}.swiper-zoom-container{width:100%;height:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;text-align:center}.swiper-zoom-container>canvas,.swiper-zoom-container>img,.swiper-zoom-container>svg{max-width:100%;max-height:100%;-o-object-fit:contain;object-fit:contain}.swiper-slide-zoomed{cursor:move}.swiper-lazy-preloader{width:42px;height:42px;position:absolute;left:50%;top:50%;margin-left:-21px;margin-top:-21px;z-index:10;-webkit-transform-origin:50%;-ms-transform-origin:50%;transform-origin:50%;-webkit-animation:swiper-preloader-spin 1s steps(12,end) infinite;animation:swiper-preloader-spin 1s steps(12,end) infinite}.swiper-lazy-preloader:after{display:block;content:\"\";width:100%;height:100%;background-image:url(\"data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D\'0%200%20120%20120\'%20xmlns%3D\'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg\'%20xmlns%3Axlink%3D\'http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink\'%3E%3Cdefs%3E%3Cline%20id%3D\'l\'%20x1%3D\'60\'%20x2%3D\'60\'%20y1%3D\'7\'%20y2%3D\'27\'%20stroke%3D\'%236c6c6c\'%20stroke-width%3D\'11\'%20stroke-linecap%3D\'round\'%2F%3E%3C%2Fdefs%3E%3Cg%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.27\'%2F%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.27\'%20transform%3D\'rotate(30%2060%2C60)\'%2F%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.27\'%20transform%3D\'rotate(60%2060%2C60)\'%2F%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.27\'%20transform%3D\'rotate(90%2060%2C60)\'%2F%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.27\'%20transform%3D\'rotate(120%2060%2C60)\'%2F%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.27\'%20transform%3D\'rotate(150%2060%2C60)\'%2F%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.37\'%20transform%3D\'rotate(180%2060%2C60)\'%2F%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.46\'%20transform%3D\'rotate(210%2060%2C60)\'%2F%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.56\'%20transform%3D\'rotate(240%2060%2C60)\'%2F%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.66\'%20transform%3D\'rotate(270%2060%2C60)\'%2F%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.75\'%20transform%3D\'rotate(300%2060%2C60)\'%2F%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.85\'%20transform%3D\'rotate(330%2060%2C60)\'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E\");background-position:50%;background-size:100%;background-repeat:no-repeat}.swiper-lazy-preloader-white:after{background-image:url(\"data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D\'0%200%20120%20120\'%20xmlns%3D\'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg\'%20xmlns%3Axlink%3D\'http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink\'%3E%3Cdefs%3E%3Cline%20id%3D\'l\'%20x1%3D\'60\'%20x2%3D\'60\'%20y1%3D\'7\'%20y2%3D\'27\'%20stroke%3D\'%23fff\'%20stroke-width%3D\'11\'%20stroke-linecap%3D\'round\'%2F%3E%3C%2Fdefs%3E%3Cg%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.27\'%2F%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.27\'%20transform%3D\'rotate(30%2060%2C60)\'%2F%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.27\'%20transform%3D\'rotate(60%2060%2C60)\'%2F%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.27\'%20transform%3D\'rotate(90%2060%2C60)\'%2F%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.27\'%20transform%3D\'rotate(120%2060%2C60)\'%2F%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.27\'%20transform%3D\'rotate(150%2060%2C60)\'%2F%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.37\'%20transform%3D\'rotate(180%2060%2C60)\'%2F%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.46\'%20transform%3D\'rotate(210%2060%2C60)\'%2F%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.56\'%20transform%3D\'rotate(240%2060%2C60)\'%2F%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.66\'%20transform%3D\'rotate(270%2060%2C60)\'%2F%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.75\'%20transform%3D\'rotate(300%2060%2C60)\'%2F%3E%3Cuse%20xlink%3Ahref%3D\'%23l\'%20opacity%3D\'.85\'%20transform%3D\'rotate(330%2060%2C60)\'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E\")}\@-webkit-keyframes swiper-preloader-spin{to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}\@keyframes swiper-preloader-spin{to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}.swiper-container .swiper-notification{position:absolute;left:0;top:0;pointer-events:none;opacity:0;z-index:-1000}.swiper-container-fade.swiper-container-free-mode .swiper-slide{-webkit-transition-timing-function:ease-out;-o-transition-timing-function:ease-out;transition-timing-function:ease-out}.swiper-container-fade .swiper-slide{pointer-events:none;-webkit-transition-property:opacity;-o-transition-property:opacity;transition-property:opacity}.swiper-container-fade .swiper-slide .swiper-slide{pointer-events:none}.swiper-container-fade .swiper-slide-active,.swiper-container-fade .swiper-slide-active .swiper-slide-active{pointer-events:auto}.swiper-container-cube{overflow:visible}.swiper-container-cube .swiper-slide{pointer-events:none;-webkit-backface-visibility:hidden;backface-visibility:hidden;z-index:1;visibility:hidden;-webkit-transform-origin:0 0;-ms-transform-origin:0 0;transform-origin:0 0;width:100%;height:100%}.swiper-container-cube .swiper-slide .swiper-slide{pointer-events:none}.swiper-container-cube.swiper-container-rtl .swiper-slide{-webkit-transform-origin:100% 0;-ms-transform-origin:100% 0;transform-origin:100% 0}.swiper-container-cube .swiper-slide-active,.swiper-container-cube .swiper-slide-active .swiper-slide-active{pointer-events:auto}.swiper-container-cube .swiper-slide-active,.swiper-container-cube .swiper-slide-next,.swiper-container-cube .swiper-slide-next+.swiper-slide,.swiper-container-cube .swiper-slide-prev{pointer-events:auto;visibility:visible}.swiper-container-cube .swiper-slide-shadow-bottom,.swiper-container-cube .swiper-slide-shadow-left,.swiper-container-cube .swiper-slide-shadow-right,.swiper-container-cube .swiper-slide-shadow-top{z-index:0;-webkit-backface-visibility:hidden;backface-visibility:hidden}.swiper-container-cube .swiper-cube-shadow{position:absolute;left:0;bottom:0;width:100%;height:100%;background:#000;opacity:.6;-webkit-filter:blur(50px);filter:blur(50px);z-index:0}.swiper-container-flip{overflow:visible}.swiper-container-flip .swiper-slide{pointer-events:none;-webkit-backface-visibility:hidden;backface-visibility:hidden;z-index:1}.swiper-container-flip .swiper-slide .swiper-slide{pointer-events:none}.swiper-container-flip .swiper-slide-active,.swiper-container-flip .swiper-slide-active .swiper-slide-active{pointer-events:auto}.swiper-container-flip .swiper-slide-shadow-bottom,.swiper-container-flip .swiper-slide-shadow-left,.swiper-container-flip .swiper-slide-shadow-right,.swiper-container-flip .swiper-slide-shadow-top{z-index:0;-webkit-backface-visibility:hidden;backface-visibility:hidden}.swiper-container-coverflow .swiper-wrapper{-ms-perspective:1200px}ion-slides{display:block;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swiper-pagination-bullet{background:var(--bullet-background)}.swiper-pagination-bullet-active{background:var(--bullet-background-active)}.swiper-pagination-progressbar{background:var(--progress-bar-background)}.swiper-pagination-progressbar .swiper-pagination-progressbar-fill{background:var(--progress-bar-background-active)}.swiper-scrollbar{background:var(--scroll-bar-background)}.swiper-scrollbar-drag{background:var(--scroll-bar-background-active)}.slides-ios{--bullet-background:var(--ion-color-step-200,#ccc);--bullet-background-active:var(--ion-color-primary,#3880ff);--progress-bar-background:rgba(var(--ion-text-color-rgb,0,0,0),0.25);--progress-bar-background-active:var(--ion-color-primary-shade,#3171e0);--scroll-bar-background:rgba(var(--ion-text-color-rgb,0,0,0),0.1);--scroll-bar-background-active:rgba(var(--ion-text-color-rgb,0,0,0),0.5)}"; },
         enumerable: true,
         configurable: true
     });
     return class_1;
 }());
-var VirtualProxy = function (_a, children, utils) {
-    var dom = _a.dom;
-    return utils.map(children, function (child, i) {
-        var node = dom[i];
-        var vattrs = child.vattrs || {};
-        var classes = vattrs.class || '';
-        classes += 'virtual-item ';
-        if (!node.visible) {
-            classes += 'virtual-loading';
-        }
-        return Object.assign(Object.assign({}, child), { vattrs: Object.assign(Object.assign({}, vattrs), { class: classes, style: Object.assign(Object.assign({}, vattrs.style), { transform: "translate3d(0," + node.top + "px,0)" }) }) });
-    });
+var waitForSlides = function (el) {
+    return Promise.all(Array.from(el.querySelectorAll('ion-slide')).map(function (s) { return s.componentOnReady(); }));
 };
 
 

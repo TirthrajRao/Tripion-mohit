@@ -41,9 +41,10 @@ public class NativeGeocoder extends CordovaPlugin {
             JSONObject options = null;
             try {
                 options = args.getJSONObject(2);
-            } catch (JSONException e) { }
+            } catch (JSONException ignored) { }
 
-            this.reverseGeocode(latitude, longitude, options, callbackContext);
+            final JSONObject finalOptions = options;
+            cordova.getThreadPool().execute(() -> reverseGeocode(latitude, longitude, finalOptions, callbackContext));
             return true;
         }
 
@@ -52,8 +53,10 @@ public class NativeGeocoder extends CordovaPlugin {
             JSONObject options = null;
             try {
                 options = args.getJSONObject(1);
-            } catch (JSONException e) { }
-            this.forwardGeocode(addressString, options, callbackContext);
+            } catch (JSONException ignored) { }
+
+            final JSONObject finalOptions = options;
+            cordova.getThreadPool().execute(() -> forwardGeocode(addressString, finalOptions, callbackContext));
             return true;
         }
 
@@ -67,7 +70,7 @@ public class NativeGeocoder extends CordovaPlugin {
      * @param options JSONObject
      * @param callbackContext CallbackContext
      */
-    private void reverseGeocode(double latitude, double longitude, JSONObject options, CallbackContext callbackContext) throws JSONException{
+    private void reverseGeocode(double latitude, double longitude, JSONObject options, CallbackContext callbackContext) {
 
         if (latitude == 0 || longitude == 0) {
             PluginResult r = new PluginResult(PluginResult.Status.ERROR, "Expected two non-empty double arguments.");
@@ -134,7 +137,7 @@ public class NativeGeocoder extends CordovaPlugin {
      * @param options JSONObject
      * @param callbackContext CallbackContext
      */
-    private void forwardGeocode(String addressString, JSONObject options, CallbackContext callbackContext) throws JSONException {
+    private void forwardGeocode(String addressString, JSONObject options, CallbackContext callbackContext) {
         if (addressString == null || addressString.length() == 0) {
             PluginResult r = new PluginResult(PluginResult.Status.ERROR, "Expected a non-empty string argument.");
             callbackContext.sendPluginResult(r);
@@ -229,26 +232,38 @@ public class NativeGeocoder extends CordovaPlugin {
      * @param options JSONObject
      * @return NativeGeocoderOptions
      */
-    private NativeGeocoderOptions getNativeGeocoderOptions(JSONObject options) throws JSONException {
+    private NativeGeocoderOptions getNativeGeocoderOptions(JSONObject options) {
         NativeGeocoderOptions geocoderOptions = new NativeGeocoderOptions();
 
         if (options != null) {
-            geocoderOptions.useLocale = !options.has("useLocale") || options.getBoolean("useLocale");
+            try {
+                geocoderOptions.useLocale = !options.has("useLocale") || options.getBoolean("useLocale");
+            } catch (JSONException e) {
+                geocoderOptions.useLocale = true;
+            }
+
             if (options.has("defaultLocale")) {
-                geocoderOptions.defaultLocale = options.getString("defaultLocale");
+                try {
+                    geocoderOptions.defaultLocale = options.getString("defaultLocale");
+                } catch (JSONException e) {
+                    geocoderOptions.defaultLocale = null;
+                }
             } else {
                 geocoderOptions.defaultLocale = null;
             }
             if (options.has("maxResults")) {
-                geocoderOptions.maxResults = options.getInt("maxResults");
-
-                if (geocoderOptions.maxResults > 0) {
-                    int MAX_RESULTS_COUNT = 5;
-                    geocoderOptions.maxResults = geocoderOptions.maxResults > MAX_RESULTS_COUNT ? MAX_RESULTS_COUNT : geocoderOptions.maxResults;
-                } else {
+                try {
+                    geocoderOptions.maxResults = options.getInt("maxResults");
+                } catch (JSONException e) {
                     geocoderOptions.maxResults = 1;
                 }
 
+                if (geocoderOptions.maxResults > 0) {
+                    int MAX_RESULTS_COUNT = 5;
+                    geocoderOptions.maxResults = Math.min(geocoderOptions.maxResults, MAX_RESULTS_COUNT);
+                } else {
+                    geocoderOptions.maxResults = 1;
+                }
             } else {
                 geocoderOptions.maxResults = 1;
             }
@@ -272,7 +287,7 @@ public class NativeGeocoder extends CordovaPlugin {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 locale = Locale.forLanguageTag(geocoderOptions.defaultLocale);
             } else {
-                String parts[] = geocoderOptions.defaultLocale.split("[-_]", -1);
+                String[] parts = geocoderOptions.defaultLocale.split("[-_]", -1);
                 if (parts.length == 1)
                     locale = new Locale(parts[0]);
                 else if (parts.length == 2 || (parts.length == 3 && parts[2].startsWith("#")))
@@ -290,5 +305,4 @@ public class NativeGeocoder extends CordovaPlugin {
         }
         return geocoder;
     }
-
 }

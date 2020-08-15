@@ -112,8 +112,8 @@ ion-content {
     border-radius: 22px;
     box-shadow: 0px 0px 14px rgba($color: #584bdd, $alpha: 0.4);
     padding: 20px;
-  margin-top: -22px;
-  margin-bottom: 20px;
+    margin-top: 22px;
+    margin-bottom: 20px;
     background-color: #ffffff;
     position: relative;
 }
@@ -125,7 +125,6 @@ ion-content {
 }
 .product-detail h2 {
     font-size: 24px;
-    color: #aa55ff;
     font-weight: bold;
     margin-top: 25px;
 }
@@ -138,7 +137,7 @@ ion-content {
     color: #aa55ff;
 }
 .product-detail a{
-    background: linear-gradient(to right, #584bdd, #aa55ff);
+    background: linear-gradient(#0575e6, #021b79);
     color: #ffffff;
     text-align: center;
        padding: 14px 40px;
@@ -149,4 +148,17 @@ ion-content {
     text-decoration: none;
     display: inline-block;
     width: 100%;
+}
+
+
+.destination-tags{
+    width: fit-content;
+    padding: 13px;
+    background: #d3d3d347;
+    border-radius: 50px;
+    font-size: 14px;
+    margin: 6px 
+}
+.swiper-pagination-bullet {
+    background: #d3d3d3c4;
 }

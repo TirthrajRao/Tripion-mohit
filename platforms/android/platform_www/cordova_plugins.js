@@ -263,14 +263,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-badge.Badge",
-      "file": "plugins/cordova-plugin-badge/www/badge.js",
-      "pluginId": "cordova-plugin-badge",
-      "clobbers": [
-        "cordova.plugins.notification.badge"
-      ]
-    },
-    {
       "id": "cordova-plugin-camera.Camera",
       "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
       "pluginId": "cordova-plugin-camera",
@@ -412,6 +404,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "pluginId": "cordova-plugin-ionic-webview",
       "clobbers": [
         "Ionic.WebView"
+      ]
+    },
+    {
+      "id": "cordova-plugin-badge.Badge",
+      "file": "plugins/cordova-plugin-badge/www/badge.js",
+      "pluginId": "cordova-plugin-badge",
+      "clobbers": [
+        "cordova.plugins.notification.badge"
       ]
     },
     {
@@ -577,33 +577,33 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
   module.exports.metadata = {
     "com-badrit-base64": "0.2.0",
     "com-sarriaroman-photoviewer": "1.2.4",
+    "cordova-plugin-add-swift-support": "2.0.2",
     "cordova-plugin-file": "6.0.2",
     "cordova-plugin-advanced-http": "2.4.1",
-    "cordova-plugin-badge": "0.8.8",
+    "cordova-plugin-androidx": "1.0.2",
+    "cordova-plugin-androidx-adapter": "1.1.0",
     "cordova-plugin-camera": "4.1.0",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-document-viewer": "0.9.13",
     "cordova-plugin-facebook4": "6.4.0",
-    "cordova-plugin-fcm-with-dependecy-updated": "4.4.0",
+    "cordova-plugin-fcm-with-dependecy-updated": "4.6.4",
     "cordova-plugin-file-opener2": "2.2.1",
     "cordova-plugin-file-transfer": "1.7.1",
     "cordova-plugin-filepath": "1.5.7",
     "cordova-plugin-geolocation": "4.0.2",
-    "cordova-plugin-googleplus": "8.4.0",
+    "cordova-plugin-googleplus": "8.5.0",
     "cordova-plugin-inappbrowser": "3.2.0",
     "cordova-plugin-ionic-keyboard": "2.2.0",
-    "cordova-plugin-ionic-webview": "4.1.3",
+    "cordova-plugin-ionic-webview": "4.2.1",
+    "cordova-plugin-badge": "0.8.8",
     "cordova-plugin-local-notification": "0.9.0-beta.2",
     "cordova-plugin-media": "5.0.3",
     "cordova-plugin-media-capture": "3.0.3",
-    "cordova-plugin-nativegeocoder": "3.2.2",
+    "cordova-plugin-nativegeocoder": "3.4.1",
     "cordova-plugin-network-information": "2.0.2",
-    "cordova-plugin-preview-any-file": "0.1.5",
+    "cordova-plugin-preview-any-file": "0.1.6",
     "cordova-plugin-splashscreen": "5.0.2",
     "cordova-plugin-statusbar": "2.4.2",
-    "cordova-plugin-whitelist": "1.3.3",
-    "cordova-plugin-androidx": "1.0.2",
-    "cordova-plugin-androidx-adapter": "1.1.0",
-    "cordova-plugin-add-swift-support": "2.0.2"
+    "cordova-plugin-whitelist": "1.3.3"
   };
 });

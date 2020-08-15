@@ -1,394 +1,532 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[18],{
 
-/***/ "./node_modules/@ionic/core/dist/esm-es5/ion-button_2-ios.entry.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm-es5/ion-button_2-ios.entry.js ***!
-  \*************************************************************************/
-/*! exports provided: ion_button, ion_icon */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "./node_modules/@ionic/core/dist/esm-es5/dom-96781eef-a2fb04dd.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm-es5/dom-96781eef-a2fb04dd.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_button", function() { return Button; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_icon", function() { return Icon; });
-/* harmony import */ var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-ca0488fc.js */ "./node_modules/@ionic/core/dist/esm-es5/core-ca0488fc.js");
-/* harmony import */ var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config-3c7f3790.js */ "./node_modules/@ionic/core/dist/esm-es5/config-3c7f3790.js");
-/* harmony import */ var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers-46f4a262.js */ "./node_modules/@ionic/core/dist/esm-es5/helpers-46f4a262.js");
-/* harmony import */ var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./theme-18cbe2cc.js */ "./node_modules/@ionic/core/dist/esm-es5/theme-18cbe2cc.js");
-
-
-
-
-var Button = /** @class */ (function () {
-    function Button(hostRef) {
-        var _this = this;
-        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        this.inToolbar = false;
-        this.inItem = false;
-        /**
-         * The type of button.
-         */
-        this.buttonType = 'button';
-        /**
-         * If `true`, the user cannot interact with the button.
-         */
-        this.disabled = false;
-        /**
-         * When using a router, it specifies the transition direction when navigating to
-         * another page using `href`.
-         */
-        this.routerDirection = 'forward';
-        /**
-         * If `true`, activates a button with a heavier font weight.
-         */
-        this.strong = false;
-        /**
-         * The type of the button.
-         */
-        this.type = 'button';
-        this.handleClick = function (ev) {
-            if (_this.type === 'button') {
-                Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["o"])(_this.href, ev, _this.routerDirection);
+(function () {
+    var aa = new Set("annotation-xml color-profile font-face font-face-src font-face-uri font-face-format font-face-name missing-glyph".split(" "));
+    function g(a) { var b = aa.has(a); a = /^[a-z][.0-9_a-z]*-[\-.0-9_a-z]*$/.test(a); return !b && a; }
+    function l(a) { var b = a.isConnected; if (void 0 !== b)
+        return b; for (; a && !(a.__CE_isImportDocument || a instanceof Document);)
+        a = a.parentNode || (window.ShadowRoot && a instanceof ShadowRoot ? a.host : void 0); return !(!a || !(a.__CE_isImportDocument || a instanceof Document)); }
+    function n(a, b) { for (; b && b !== a && !b.nextSibling;)
+        b = b.parentNode; return b && b !== a ? b.nextSibling : null; }
+    function p(a, b, d) { d = void 0 === d ? new Set : d; for (var c = a; c;) {
+        if (c.nodeType === Node.ELEMENT_NODE) {
+            var e = c;
+            b(e);
+            var f = e.localName;
+            if ("link" === f && "import" === e.getAttribute("rel")) {
+                c = e.import;
+                if (c instanceof Node && !d.has(c))
+                    for (d.add(c), c = c.firstChild; c; c = c.nextSibling)
+                        p(c, b, d);
+                c = n(a, e);
+                continue;
             }
-            else if (Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["h"])(_this.el)) {
-                // this button wants to specifically submit a form
-                // climb up the dom to see if we're in a <form>
-                // and if so, then use JS to submit it
-                var form = _this.el.closest('form');
-                if (form) {
-                    ev.preventDefault();
-                    var fakeButton = document.createElement('button');
-                    fakeButton.type = _this.type;
-                    fakeButton.style.display = 'none';
-                    form.appendChild(fakeButton);
-                    fakeButton.click();
-                    fakeButton.remove();
+            else if ("template" === f) {
+                c = n(a, e);
+                continue;
+            }
+            if (e = e.__CE_shadowRoot)
+                for (e = e.firstChild; e; e = e.nextSibling)
+                    p(e, b, d);
+        }
+        c = c.firstChild ? c.firstChild : n(a, c);
+    } }
+    function r(a, b, d) { a[b] = d; }
+    function u() { this.a = new Map; this.g = new Map; this.c = []; this.f = []; this.b = !1; }
+    function ba(a, b, d) { a.a.set(b, d); a.g.set(d.constructorFunction, d); }
+    function ca(a, b) { a.b = !0; a.c.push(b); }
+    function da(a, b) { a.b = !0; a.f.push(b); }
+    function v(a, b) { a.b && p(b, function (b) { return w(a, b); }); }
+    function w(a, b) { if (a.b && !b.__CE_patched) {
+        b.__CE_patched = !0;
+        for (var d = 0; d < a.c.length; d++)
+            a.c[d](b);
+        for (d = 0; d < a.f.length; d++)
+            a.f[d](b);
+    } }
+    function x(a, b) { var d = []; p(b, function (b) { return d.push(b); }); for (b = 0; b < d.length; b++) {
+        var c = d[b];
+        1 === c.__CE_state ? a.connectedCallback(c) : y(a, c);
+    } }
+    function z(a, b) { var d = []; p(b, function (b) { return d.push(b); }); for (b = 0; b < d.length; b++) {
+        var c = d[b];
+        1 === c.__CE_state && a.disconnectedCallback(c);
+    } }
+    function A(a, b, d) {
+        d = void 0 === d ? {} : d;
+        var c = d.u || new Set, e = d.i || function (b) { return y(a, b); }, f = [];
+        p(b, function (b) { if ("link" === b.localName && "import" === b.getAttribute("rel")) {
+            var d = b.import;
+            d instanceof Node && (d.__CE_isImportDocument = !0, d.__CE_hasRegistry = !0);
+            d && "complete" === d.readyState ? d.__CE_documentLoadHandled = !0 : b.addEventListener("load", function () { var d = b.import; if (!d.__CE_documentLoadHandled) {
+                d.__CE_documentLoadHandled = !0;
+                var f = new Set(c);
+                f.delete(d);
+                A(a, d, { u: f, i: e });
+            } });
+        }
+        else
+            f.push(b); }, c);
+        if (a.b)
+            for (b =
+                0; b < f.length; b++)
+                w(a, f[b]);
+        for (b = 0; b < f.length; b++)
+            e(f[b]);
+    }
+    function y(a, b) {
+        if (void 0 === b.__CE_state) {
+            var d = b.ownerDocument;
+            if (d.defaultView || d.__CE_isImportDocument && d.__CE_hasRegistry)
+                if (d = a.a.get(b.localName)) {
+                    d.constructionStack.push(b);
+                    var c = d.constructorFunction;
+                    try {
+                        try {
+                            if (new c !== b)
+                                throw Error("The custom element constructor did not produce the element being upgraded.");
+                        }
+                        finally {
+                            d.constructionStack.pop();
+                        }
+                    }
+                    catch (t) {
+                        throw b.__CE_state = 2, t;
+                    }
+                    b.__CE_state = 1;
+                    b.__CE_definition = d;
+                    if (d.attributeChangedCallback)
+                        for (d = d.observedAttributes, c = 0; c < d.length; c++) {
+                            var e = d[c], f = b.getAttribute(e);
+                            null !== f && a.attributeChangedCallback(b, e, null, f, null);
+                        }
+                    l(b) && a.connectedCallback(b);
                 }
-            }
-        };
-        this.onFocus = function () {
-            _this.ionFocus.emit();
-        };
-        this.onBlur = function () {
-            _this.ionBlur.emit();
-        };
-        this.ionFocus = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
-        this.ionBlur = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
+        }
     }
-    Button.prototype.componentWillLoad = function () {
-        this.inToolbar = !!this.el.closest('ion-buttons');
-        this.inItem = !!this.el.closest('ion-item') || !!this.el.closest('ion-item-divider');
+    u.prototype.connectedCallback = function (a) { var b = a.__CE_definition; b.connectedCallback && b.connectedCallback.call(a); };
+    u.prototype.disconnectedCallback = function (a) { var b = a.__CE_definition; b.disconnectedCallback && b.disconnectedCallback.call(a); };
+    u.prototype.attributeChangedCallback = function (a, b, d, c, e) { var f = a.__CE_definition; f.attributeChangedCallback && -1 < f.observedAttributes.indexOf(b) && f.attributeChangedCallback.call(a, b, d, c, e); };
+    function B(a) { var b = document; this.c = a; this.a = b; this.b = void 0; A(this.c, this.a); "loading" === this.a.readyState && (this.b = new MutationObserver(this.f.bind(this)), this.b.observe(this.a, { childList: !0, subtree: !0 })); }
+    function C(a) { a.b && a.b.disconnect(); }
+    B.prototype.f = function (a) { var b = this.a.readyState; "interactive" !== b && "complete" !== b || C(this); for (b = 0; b < a.length; b++)
+        for (var d = a[b].addedNodes, c = 0; c < d.length; c++)
+            A(this.c, d[c]); };
+    function ea() { var a = this; this.b = this.a = void 0; this.c = new Promise(function (b) { a.b = b; a.a && b(a.a); }); }
+    function D(a) { if (a.a)
+        throw Error("Already resolved."); a.a = void 0; a.b && a.b(void 0); }
+    function E(a) { this.c = !1; this.a = a; this.j = new Map; this.f = function (b) { return b(); }; this.b = !1; this.g = []; this.o = new B(a); }
+    E.prototype.l = function (a, b) {
+        var d = this;
+        if (!(b instanceof Function))
+            throw new TypeError("Custom element constructors must be functions.");
+        if (!g(a))
+            throw new SyntaxError("The element name '" + a + "' is not valid.");
+        if (this.a.a.get(a))
+            throw Error("A custom element with name '" + a + "' has already been defined.");
+        if (this.c)
+            throw Error("A custom element is already being defined.");
+        this.c = !0;
+        try {
+            var c = function (b) {
+                var a = e[b];
+                if (void 0 !== a && !(a instanceof Function))
+                    throw Error("The '" + b + "' callback must be a function.");
+                return a;
+            }, e = b.prototype;
+            if (!(e instanceof Object))
+                throw new TypeError("The custom element constructor's prototype is not an object.");
+            var f = c("connectedCallback");
+            var t = c("disconnectedCallback");
+            var k = c("adoptedCallback");
+            var h = c("attributeChangedCallback");
+            var m = b.observedAttributes || [];
+        }
+        catch (q) {
+            return;
+        }
+        finally {
+            this.c = !1;
+        }
+        b = { localName: a, constructorFunction: b, connectedCallback: f, disconnectedCallback: t, adoptedCallback: k, attributeChangedCallback: h, observedAttributes: m, constructionStack: [] };
+        ba(this.a, a, b);
+        this.g.push(b);
+        this.b || (this.b = !0, this.f(function () { return fa(d); }));
     };
-    Object.defineProperty(Button.prototype, "hasIconOnly", {
-        get: function () {
-            return !!this.el.querySelector('ion-icon[slot="icon-only"]');
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Button.prototype, "rippleType", {
-        get: function () {
-            var hasClearFill = this.fill === undefined || this.fill === 'clear';
-            // If the button is in a toolbar, has a clear fill (which is the default)
-            // and only has an icon we use the unbounded "circular" ripple effect
-            if (hasClearFill && this.hasIconOnly && this.inToolbar) {
-                return 'unbounded';
+    E.prototype.i = function (a) { A(this.a, a); };
+    function fa(a) { if (!1 !== a.b) {
+        a.b = !1;
+        for (var b = a.g, d = [], c = new Map, e = 0; e < b.length; e++)
+            c.set(b[e].localName, []);
+        A(a.a, document, { i: function (b) { if (void 0 === b.__CE_state) {
+                var e = b.localName, f = c.get(e);
+                f ? f.push(b) : a.a.a.get(e) && d.push(b);
+            } } });
+        for (e = 0; e < d.length; e++)
+            y(a.a, d[e]);
+        for (; 0 < b.length;) {
+            var f = b.shift();
+            e = f.localName;
+            f = c.get(f.localName);
+            for (var t = 0; t < f.length; t++)
+                y(a.a, f[t]);
+            (e = a.j.get(e)) && D(e);
+        }
+    } }
+    E.prototype.get = function (a) { if (a = this.a.a.get(a))
+        return a.constructorFunction; };
+    E.prototype.m = function (a) { if (!g(a))
+        return Promise.reject(new SyntaxError("'" + a + "' is not a valid custom element name.")); var b = this.j.get(a); if (b)
+        return b.c; b = new ea; this.j.set(a, b); this.a.a.get(a) && !this.g.some(function (b) { return b.localName === a; }) && D(b); return b.c; };
+    E.prototype.s = function (a) { C(this.o); var b = this.f; this.f = function (d) { return a(function () { return b(d); }); }; };
+    window.CustomElementRegistry = E;
+    E.prototype.define = E.prototype.l;
+    E.prototype.upgrade = E.prototype.i;
+    E.prototype.get = E.prototype.get;
+    E.prototype.whenDefined = E.prototype.m;
+    E.prototype.polyfillWrapFlushCallback = E.prototype.s;
+    var F = window.Document.prototype.createElement, G = window.Document.prototype.createElementNS, ha = window.Document.prototype.importNode, ia = window.Document.prototype.prepend, ja = window.Document.prototype.append, ka = window.DocumentFragment.prototype.prepend, la = window.DocumentFragment.prototype.append, H = window.Node.prototype.cloneNode, I = window.Node.prototype.appendChild, J = window.Node.prototype.insertBefore, K = window.Node.prototype.removeChild, L = window.Node.prototype.replaceChild, M = Object.getOwnPropertyDescriptor(window.Node.prototype, "textContent"), N = window.Element.prototype.attachShadow, O = Object.getOwnPropertyDescriptor(window.Element.prototype, "innerHTML"), P = window.Element.prototype.getAttribute, Q = window.Element.prototype.setAttribute, R = window.Element.prototype.removeAttribute, S = window.Element.prototype.getAttributeNS, T = window.Element.prototype.setAttributeNS, U = window.Element.prototype.removeAttributeNS, ma = window.Element.prototype.insertAdjacentElement, na = window.Element.prototype.insertAdjacentHTML, oa = window.Element.prototype.prepend, pa = window.Element.prototype.append, V = window.Element.prototype.before, qa = window.Element.prototype.after, ra = window.Element.prototype.replaceWith, sa = window.Element.prototype.remove, ta = window.HTMLElement, W = Object.getOwnPropertyDescriptor(window.HTMLElement.prototype, "innerHTML"), ua = window.HTMLElement.prototype.insertAdjacentElement, va = window.HTMLElement.prototype.insertAdjacentHTML;
+    var wa = new function () { };
+    function xa() {
+        var a = X;
+        window.HTMLElement = function () {
+            function b() {
+                var b = this.constructor, c = a.g.get(b);
+                if (!c)
+                    throw Error("The custom element being constructed was not registered with `customElements`.");
+                var e = c.constructionStack;
+                if (0 === e.length)
+                    return e = F.call(document, c.localName), Object.setPrototypeOf(e, b.prototype), e.__CE_state = 1, e.__CE_definition = c, w(a, e), e;
+                c = e.length - 1;
+                var f = e[c];
+                if (f === wa)
+                    throw Error("The HTMLElement constructor was either called reentrantly for this constructor or called multiple times.");
+                e[c] = wa;
+                Object.setPrototypeOf(f, b.prototype);
+                w(a, f);
+                return f;
             }
-            return 'bounded';
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Button.prototype.render = function () {
-        var _a;
-        var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
-        var _b = this, buttonType = _b.buttonType, type = _b.type, disabled = _b.disabled, rel = _b.rel, target = _b.target, size = _b.size, href = _b.href, color = _b.color, expand = _b.expand, hasIconOnly = _b.hasIconOnly, shape = _b.shape, strong = _b.strong;
-        var finalSize = size === undefined && this.inItem ? 'small' : size;
-        var TagType = href === undefined ? 'button' : 'a';
-        var attrs = (TagType === 'button')
-            ? { type: type }
-            : {
-                download: this.download,
-                href: href,
-                rel: rel,
-                target: target
-            };
-        var fill = this.fill;
-        if (fill === undefined) {
-            fill = this.inToolbar ? 'clear' : 'solid';
-        }
-        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], { onClick: this.handleClick, "aria-disabled": disabled ? 'true' : null, class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(color)), (_a = {}, _a[mode] = true, _a[buttonType] = true, _a[buttonType + "-" + expand] = expand !== undefined, _a[buttonType + "-" + finalSize] = finalSize !== undefined, _a[buttonType + "-" + shape] = shape !== undefined, _a[buttonType + "-" + fill] = true, _a[buttonType + "-strong"] = strong, _a['button-has-icon-only'] = hasIconOnly, _a['button-disabled'] = disabled, _a['ion-activatable'] = true, _a['ion-focusable'] = true, _a)) }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(TagType, Object.assign({}, attrs, { class: "button-native", disabled: disabled, onFocus: this.onFocus, onBlur: this.onBlur }), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", { class: "button-inner" }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", { name: "icon-only" }), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", { name: "start" }), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", { name: "end" })), mode === 'md' && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", { type: this.rippleType }))));
-    };
-    Object.defineProperty(Button.prototype, "el", {
-        get: function () { return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Button, "style", {
-        get: function () { return ":host{--overflow:hidden;--ripple-color:currentColor;--border-width:initial;--border-color:initial;--border-style:initial;--color-hover:initial;--box-shadow:none;display:inline-block;width:auto;color:var(--color);font-family:var(--ion-font-family,inherit);text-align:center;text-decoration:none;text-overflow:ellipsis;white-space:nowrap;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:top;vertical-align:-webkit-baseline-middle;pointer-events:auto;-webkit-font-kerning:none;font-kerning:none}:host(.button-disabled){--opacity:.5;pointer-events:none}:host(.button-disabled) .button-native{cursor:default;pointer-events:none}:host(.button-solid){--background:var(--ion-color-primary,#3880ff);--background-focused:var(--ion-color-primary-shade,#3171e0);--background-hover:var(--ion-color-primary-tint,#4c8dff);--color:var(--ion-color-primary-contrast,#fff);--color-activated:var(--ion-color-primary-contrast,#fff);--color-focused:var(--ion-color-primary-contrast,#fff)}:host(.button-solid.ion-color) .button-native{background:var(--ion-color-base);color:var(--ion-color-contrast)}:host(.button-solid.ion-color.ion-focused) .button-native{background:var(--ion-color-shade)}:host(.button-outline){--border-color:var(--ion-color-primary,#3880ff);--background:transparent;--color:var(--ion-color-primary,#3880ff);--color-focused:var(--ion-color-primary,#3880ff)}:host(.button-outline.ion-color) .button-native{border-color:var(--ion-color-base);background:transparent;color:var(--ion-color-base)}:host(.button-outline.ion-focused.ion-color) .button-native{background:rgba(var(--ion-color-base-rgb),.1);color:var(--ion-color-base)}:host(.button-clear){--border-width:0;--background:transparent;--color:var(--ion-color-primary,#3880ff)}:host(.button-clear.ion-color) .button-native{background:transparent;color:var(--ion-color-base)}:host(.button-clear.ion-focused.ion-color) .button-native{background:rgba(var(--ion-color-base-rgb),.1);color:var(--ion-color-base)}:host(.button-clear.activated.ion-color) .button-native{background:transparent}:host(.button-block){display:block}:host(.button-block) .button-native{margin-left:0;margin-right:0;display:block;width:100%;clear:both;contain:content}:host(.button-block) .button-native:after{clear:both}:host(.button-full){display:block}:host(.button-full) .button-native{margin-left:0;margin-right:0;display:block;width:100%;contain:content}:host(.button-full:not(.button-round)) .button-native{border-radius:0;border-right-width:0;border-left-width:0}.button-native{border-radius:var(--border-radius);-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:var(--padding-start);padding-right:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;display:block;position:relative;width:100%;height:100%;-webkit-transition:var(--transition);transition:var(--transition);border-width:var(--border-width);border-style:var(--border-style);border-color:var(--border-color);outline:none;background:var(--background);line-height:1;-webkit-box-shadow:var(--box-shadow);box-shadow:var(--box-shadow);contain:layout style;cursor:pointer;opacity:var(--opacity);overflow:var(--overflow);z-index:0;-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-appearance:none;-moz-appearance:none;appearance:none}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.button-native{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end)}}.button-native::-moz-focus-inner{border:0}.button-inner{display:-ms-flexbox;display:flex;-ms-flex-flow:row nowrap;flex-flow:row nowrap;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%}::slotted(ion-icon){font-size:1.4em;pointer-events:none}::slotted(ion-icon[slot=start]){margin-left:-.3em;margin-right:.3em;margin-top:0;margin-bottom:0}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){::slotted(ion-icon[slot=start]){margin-left:unset;margin-right:unset;-webkit-margin-start:-.3em;margin-inline-start:-.3em;-webkit-margin-end:.3em;margin-inline-end:.3em}}::slotted(ion-icon[slot=end]){margin-left:.3em;margin-right:-.2em;margin-top:0;margin-bottom:0}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){::slotted(ion-icon[slot=end]){margin-left:unset;margin-right:unset;-webkit-margin-start:.3em;margin-inline-start:.3em;-webkit-margin-end:-.2em;margin-inline-end:-.2em}}::slotted(ion-icon[slot=icon-only]){font-size:1.8em}ion-ripple-effect{color:var(--ripple-color)}:host(.ion-focused) .button-native{background:var(--background-focused);color:var(--color-focused)}:host(.activated) .button-native{background:var(--background-activated);color:var(--color-activated)}\@media (any-hover:hover){:host(:hover) .button-native{background:var(--background-hover);color:var(--color-hover)}}:host{--border-radius:10px;--padding-top:0;--padding-bottom:0;--padding-start:1em;--padding-end:1em;--transition:background-color,opacity 100ms linear;margin-left:2px;margin-right:2px;margin-top:4px;margin-bottom:4px;height:2.8em;font-size:16px;font-weight:500;letter-spacing:-.03em}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host{margin-left:unset;margin-right:unset;-webkit-margin-start:2px;margin-inline-start:2px;-webkit-margin-end:2px;margin-inline-end:2px}}:host(.button-solid){--background-activated:var(--ion-color-primary-shade,#3171e0)}:host(.button-solid.activated){--opacity:1}:host(.button-solid.activated.ion-color) .button-native{background:var(--ion-color-shade)}:host(.button-outline){--border-radius:10px;--border-width:1px;--border-style:solid;--background-activated:var(--ion-color-primary,#3880ff);--background-focused:rgba(var(--ion-color-primary-rgb,56,128,255),0.1);--color-activated:var(--ion-color-primary-contrast,#fff)}:host(.button-outline.activated.ion-color) .button-native{background:var(--ion-color-base);color:var(--ion-color-contrast)}:host(.button-clear.activated){--opacity:0.4}:host(.button-clear){--background-activated:transparent;--background-focused:rgba(var(--ion-color-primary-rgb,56,128,255),0.1);--color-activated:var(--ion-color-primary,#3880ff);--color-focused:var(--ion-color-primary,#3880ff)}:host(.button-large){--border-radius:12px;--padding-top:0;--padding-start:1em;--padding-end:1em;--padding-bottom:0;height:2.8em;font-size:20px}:host(.button-small){--border-radius:6px;--padding-top:0;--padding-start:0.9em;--padding-end:0.9em;--padding-bottom:0;height:2.1em;font-size:13px}:host(.button-round){--border-radius:64px;--padding-top:0;--padding-start:26px;--padding-end:26px;--padding-bottom:0}:host(.button-strong){font-weight:600}\@media (any-hover:hover){:host(.button-solid:hover){--opacity:0.8}:host(.button-clear:hover),:host(.button-outline:hover){--opacity:0.6}:host(.ion-focused:hover){--background-hover:var(--background-focused);--color-hover:var(--color-focused)}:host(.activated:hover){--background-hover:var(--background-activated);--color-hover:var(--color-activated)}}"; },
-        enumerable: true,
-        configurable: true
-    });
-    return Button;
-}());
-var CACHED_MAP;
-var getIconMap = function () {
-    if (!CACHED_MAP) {
-        var win = window;
-        win.Ionicons = win.Ionicons || {};
-        CACHED_MAP = win.Ionicons.map = win.Ionicons.map || new Map();
+            b.prototype = ta.prototype;
+            Object.defineProperty(b.prototype, "constructor", { writable: !0, configurable: !0, enumerable: !1, value: b });
+            return b;
+        }();
     }
-    return CACHED_MAP;
-};
-var getUrl = function (i) {
-    var url = getSrc(i.src);
-    if (url) {
-        return url;
-    }
-    url = getName(i.name, i.icon, i.mode, i.ios, i.md);
-    if (url) {
-        return getNamedUrl(url);
-    }
-    if (i.icon) {
-        url = getSrc(i.icon);
-        if (url) {
-            return url;
-        }
-        url = getSrc(i.icon[i.mode]);
-        if (url) {
-            return url;
-        }
-    }
-    return null;
-};
-var getNamedUrl = function (name) {
-    var url = getIconMap().get(name);
-    if (url) {
-        return url;
-    }
-    return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["i"])("svg/" + name + ".svg");
-};
-var getName = function (name, icon, mode, ios, md) {
-    // default to "md" if somehow the mode wasn't set
-    mode = (mode && mode.toLowerCase()) === 'ios' ? 'ios' : 'md';
-    // if an icon was passed in using the ios or md attributes
-    // set the iconName to whatever was passed in
-    if (ios && mode === 'ios') {
-        name = ios.toLowerCase();
-    }
-    else if (md && mode === 'md') {
-        name = md.toLowerCase();
-    }
-    else {
-        if (!name && icon && !isSrc(icon)) {
-            name = icon;
-        }
-        if (isStr(name)) {
-            name = name.toLowerCase();
-            if (!/^md-|^ios-|^logo-/.test(name)) {
-                // this does not have one of the defaults
-                // so lets auto add in the mode prefix for them
-                name = mode + '-' + name;
+    function Y(a, b, d) { function c(b) { return function (d) { for (var e = [], c = 0; c < arguments.length; ++c)
+        e[c] = arguments[c]; c = []; for (var f = [], m = 0; m < e.length; m++) {
+        var q = e[m];
+        q instanceof Element && l(q) && f.push(q);
+        if (q instanceof DocumentFragment)
+            for (q = q.firstChild; q; q = q.nextSibling)
+                c.push(q);
+        else
+            c.push(q);
+    } b.apply(this, e); for (e = 0; e < f.length; e++)
+        z(a, f[e]); if (l(this))
+        for (e = 0; e < c.length; e++)
+            f = c[e], f instanceof Element && x(a, f); }; } void 0 !== d.h && (b.prepend = c(d.h)); void 0 !== d.append && (b.append = c(d.append)); }
+    function ya() {
+        var a = X;
+        r(Document.prototype, "createElement", function (b) { if (this.__CE_hasRegistry) {
+            var d = a.a.get(b);
+            if (d)
+                return new d.constructorFunction;
+        } b = F.call(this, b); w(a, b); return b; });
+        r(Document.prototype, "importNode", function (b, d) { b = ha.call(this, b, !!d); this.__CE_hasRegistry ? A(a, b) : v(a, b); return b; });
+        r(Document.prototype, "createElementNS", function (b, d) {
+            if (this.__CE_hasRegistry && (null === b || "http://www.w3.org/1999/xhtml" === b)) {
+                var c = a.a.get(d);
+                if (c)
+                    return new c.constructorFunction;
             }
-        }
-    }
-    if (!isStr(name) || name.trim() === '') {
-        return null;
-    }
-    // only allow alpha characters and dash
-    var invalidChars = name.replace(/[a-z]|-|\d/gi, '');
-    if (invalidChars !== '') {
-        return null;
-    }
-    return name;
-};
-var getSrc = function (src) {
-    if (isStr(src)) {
-        src = src.trim();
-        if (isSrc(src)) {
-            return src;
-        }
-    }
-    return null;
-};
-var isSrc = function (str) {
-    return str.length > 0 && /(\/|\.)/.test(str);
-};
-var isStr = function (val) { return typeof val === 'string'; };
-var validateContent = function (svgContent) {
-    if (svgContent) {
-        var div = document.createElement('div');
-        div.innerHTML = svgContent;
-        // setup this way to ensure it works on our buddy IE
-        for (var i = div.childNodes.length - 1; i >= 0; i--) {
-            if (div.childNodes[i].nodeName.toLowerCase() !== 'svg') {
-                div.removeChild(div.childNodes[i]);
-            }
-        }
-        // must only have 1 root element
-        var svgElm = div.firstElementChild;
-        if (svgElm && svgElm.nodeName.toLowerCase() === 'svg') {
-            svgElm.setAttribute('class', 's-ion-icon');
-            // root element must be an svg
-            // lets double check we've got valid elements
-            // do not allow scripts
-            if (isValid(svgElm)) {
-                return div.innerHTML;
-            }
-        }
-    }
-    return '';
-};
-var isValid = function (elm) {
-    if (elm.nodeType === 1) {
-        if (elm.nodeName.toLowerCase() === 'script') {
-            return false;
-        }
-        for (var i = 0; i < elm.attributes.length; i++) {
-            var val = elm.attributes[i].value;
-            if (isStr(val) && val.toLowerCase().indexOf('on') === 0) {
-                return false;
-            }
-        }
-        for (var i = 0; i < elm.childNodes.length; i++) {
-            if (!isValid(elm.childNodes[i])) {
-                return false;
-            }
-        }
-    }
-    return true;
-};
-var requests = new Map();
-var getSvgContent = function (url) {
-    // see if we already have a request for this url
-    var req = requests.get(url);
-    if (!req) {
-        // we don't already have a request
-        req = fetch(url).then(function (rsp) {
-            if (rsp.status <= 299) {
-                return rsp.text();
-            }
-            return Promise.resolve(null);
-        }).then(function (svgContent) { return validateContent(svgContent); });
-        // cache for the same requests
-        requests.set(url, req);
-    }
-    return req;
-};
-var Icon = /** @class */ (function () {
-    function Icon(hostRef) {
-        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        this.mode = getIonMode(this);
-        this.isVisible = false;
-        /**
-         * If enabled, ion-icon will be loaded lazily when it's visible in the viewport.
-         * Default, `false`.
-         */
-        this.lazy = false;
-    }
-    Icon.prototype.connectedCallback = function () {
-        var _this = this;
-        // purposely do not return the promise here because loading
-        // the svg file should not hold up loading the app
-        // only load the svg if it's visible
-        this.waitUntilVisible(this.el, '50px', function () {
-            _this.isVisible = true;
-            _this.loadIcon();
+            b = G.call(this, b, d);
+            w(a, b);
+            return b;
         });
-    };
-    Icon.prototype.disconnectedCallback = function () {
-        if (this.io) {
-            this.io.disconnect();
-            this.io = undefined;
-        }
-    };
-    Icon.prototype.waitUntilVisible = function (el, rootMargin, cb) {
-        var _this = this;
-        if (this.lazy && typeof window !== 'undefined' && window.IntersectionObserver) {
-            var io_1 = this.io = new window.IntersectionObserver(function (data) {
-                if (data[0].isIntersecting) {
-                    io_1.disconnect();
-                    _this.io = undefined;
-                    cb();
+        Y(a, Document.prototype, { h: ia, append: ja });
+    }
+    function za() {
+        function a(a, c) { Object.defineProperty(a, "textContent", { enumerable: c.enumerable, configurable: !0, get: c.get, set: function (a) { if (this.nodeType === Node.TEXT_NODE)
+                c.set.call(this, a);
+            else {
+                var d = void 0;
+                if (this.firstChild) {
+                    var e = this.childNodes, k = e.length;
+                    if (0 < k && l(this)) {
+                        d = Array(k);
+                        for (var h = 0; h < k; h++)
+                            d[h] = e[h];
+                    }
                 }
-            }, { rootMargin: rootMargin });
-            io_1.observe(el);
-        }
-        else {
-            // browser doesn't support IntersectionObserver
-            // so just fallback to always show it
-            cb();
-        }
-    };
-    Icon.prototype.loadIcon = function () {
-        var _this = this;
-        if (this.isVisible) {
-            var url = getUrl(this);
-            if (url) {
-                getSvgContent(url)
-                    .then(function (svgContent) { return _this.svgContent = svgContent; });
+                c.set.call(this, a);
+                if (d)
+                    for (a = 0; a < d.length; a++)
+                        z(b, d[a]);
+            } } }); }
+        var b = X;
+        r(Node.prototype, "insertBefore", function (a, c) {
+            if (a instanceof DocumentFragment) {
+                var e = Array.prototype.slice.apply(a.childNodes);
+                a = J.call(this, a, c);
+                if (l(this))
+                    for (c = 0; c < e.length; c++)
+                        x(b, e[c]);
+                return a;
             }
+            e = l(a);
+            c = J.call(this, a, c);
+            e && z(b, a);
+            l(this) && x(b, a);
+            return c;
+        });
+        r(Node.prototype, "appendChild", function (a) { if (a instanceof DocumentFragment) {
+            var c = Array.prototype.slice.apply(a.childNodes);
+            a = I.call(this, a);
+            if (l(this))
+                for (var e = 0; e < c.length; e++)
+                    x(b, c[e]);
+            return a;
+        } c = l(a); e = I.call(this, a); c && z(b, a); l(this) && x(b, a); return e; });
+        r(Node.prototype, "cloneNode", function (a) {
+            a = H.call(this, !!a);
+            this.ownerDocument.__CE_hasRegistry ? A(b, a) : v(b, a);
+            return a;
+        });
+        r(Node.prototype, "removeChild", function (a) { var c = l(a), e = K.call(this, a); c && z(b, a); return e; });
+        r(Node.prototype, "replaceChild", function (a, c) { if (a instanceof DocumentFragment) {
+            var e = Array.prototype.slice.apply(a.childNodes);
+            a = L.call(this, a, c);
+            if (l(this))
+                for (z(b, c), c = 0; c < e.length; c++)
+                    x(b, e[c]);
+            return a;
+        } e = l(a); var f = L.call(this, a, c), d = l(this); d && z(b, c); e && z(b, a); d && x(b, a); return f; });
+        M && M.get ? a(Node.prototype, M) : ca(b, function (b) {
+            a(b, { enumerable: !0, configurable: !0, get: function () {
+                    for (var a = [], b = 0; b < this.childNodes.length; b++) {
+                        var f = this.childNodes[b];
+                        f.nodeType !== Node.COMMENT_NODE && a.push(f.textContent);
+                    }
+                    return a.join("");
+                }, set: function (a) { for (; this.firstChild;)
+                    K.call(this, this.firstChild); null != a && "" !== a && I.call(this, document.createTextNode(a)); } });
+        });
+    }
+    function Aa(a) {
+        function b(b) { return function (e) { for (var c = [], d = 0; d < arguments.length; ++d)
+            c[d] = arguments[d]; d = []; for (var k = [], h = 0; h < c.length; h++) {
+            var m = c[h];
+            m instanceof Element && l(m) && k.push(m);
+            if (m instanceof DocumentFragment)
+                for (m = m.firstChild; m; m = m.nextSibling)
+                    d.push(m);
+            else
+                d.push(m);
+        } b.apply(this, c); for (c = 0; c < k.length; c++)
+            z(a, k[c]); if (l(this))
+            for (c = 0; c < d.length; c++)
+                k = d[c], k instanceof Element && x(a, k); }; }
+        var d = Element.prototype;
+        void 0 !== V && (d.before = b(V));
+        void 0 !== V && (d.after = b(qa));
+        void 0 !== ra &&
+            r(d, "replaceWith", function (b) { for (var e = [], c = 0; c < arguments.length; ++c)
+                e[c] = arguments[c]; c = []; for (var d = [], k = 0; k < e.length; k++) {
+                var h = e[k];
+                h instanceof Element && l(h) && d.push(h);
+                if (h instanceof DocumentFragment)
+                    for (h = h.firstChild; h; h = h.nextSibling)
+                        c.push(h);
+                else
+                    c.push(h);
+            } k = l(this); ra.apply(this, e); for (e = 0; e < d.length; e++)
+                z(a, d[e]); if (k)
+                for (z(a, this), e = 0; e < c.length; e++)
+                    d = c[e], d instanceof Element && x(a, d); });
+        void 0 !== sa && r(d, "remove", function () { var b = l(this); sa.call(this); b && z(a, this); });
+    }
+    function Ba() {
+        function a(a, b) { Object.defineProperty(a, "innerHTML", { enumerable: b.enumerable, configurable: !0, get: b.get, set: function (a) { var e = this, d = void 0; l(this) && (d = [], p(this, function (a) { a !== e && d.push(a); })); b.set.call(this, a); if (d)
+                for (var f = 0; f < d.length; f++) {
+                    var t = d[f];
+                    1 === t.__CE_state && c.disconnectedCallback(t);
+                } this.ownerDocument.__CE_hasRegistry ? A(c, this) : v(c, this); return a; } }); }
+        function b(a, b) { r(a, "insertAdjacentElement", function (a, e) { var d = l(e); a = b.call(this, a, e); d && z(c, e); l(a) && x(c, e); return a; }); }
+        function d(a, b) {
+            function e(a, b) { for (var e = []; a !== b; a = a.nextSibling)
+                e.push(a); for (b = 0; b < e.length; b++)
+                A(c, e[b]); }
+            r(a, "insertAdjacentHTML", function (a, c) {
+                a = a.toLowerCase();
+                if ("beforebegin" === a) {
+                    var d = this.previousSibling;
+                    b.call(this, a, c);
+                    e(d || this.parentNode.firstChild, this);
+                }
+                else if ("afterbegin" === a)
+                    d = this.firstChild, b.call(this, a, c), e(this.firstChild, d);
+                else if ("beforeend" === a)
+                    d = this.lastChild, b.call(this, a, c), e(d || this.firstChild, null);
+                else if ("afterend" === a)
+                    d = this.nextSibling, b.call(this, a, c), e(this.nextSibling, d);
+                else
+                    throw new SyntaxError("The value provided (" + String(a) + ") is not one of 'beforebegin', 'afterbegin', 'beforeend', or 'afterend'.");
+            });
         }
-        if (!this.ariaLabel) {
-            var label = getName(this.name, this.icon, this.mode, this.ios, this.md);
-            // user did not provide a label
-            // come up with the label based on the icon name
-            if (label) {
-                this.ariaLabel = label
-                    .replace('ios-', '')
-                    .replace('md-', '')
-                    .replace(/\-/g, ' ');
-            }
-        }
-    };
-    Icon.prototype.render = function () {
-        var _a, _b;
-        var mode = this.mode || 'md';
-        var flipRtl = this.flipRtl || (this.ariaLabel && this.ariaLabel.indexOf('arrow') > -1 && this.flipRtl !== false);
-        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], { role: "img", class: Object.assign((_a = {}, _a[mode] = true, _a), createColorClasses(this.color), (_b = {}, _b["icon-" + this.size] = !!this.size, _b['flip-rtl'] = !!flipRtl && this.el.ownerDocument.dir === 'rtl', _b)) }, ((this.svgContent)
-            ? Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "icon-inner", innerHTML: this.svgContent })
-            : Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "icon-inner" }))));
-    };
-    Object.defineProperty(Icon, "assetsDirs", {
-        get: function () { return ["svg"]; },
+        var c = X;
+        N && r(Element.prototype, "attachShadow", function (a) { a = N.call(this, a); var b = c; if (b.b && !a.__CE_patched) {
+            a.__CE_patched = !0;
+            for (var e = 0; e < b.c.length; e++)
+                b.c[e](a);
+        } return this.__CE_shadowRoot = a; });
+        O && O.get ? a(Element.prototype, O) : W && W.get ? a(HTMLElement.prototype, W) : da(c, function (b) {
+            a(b, { enumerable: !0, configurable: !0, get: function () { return H.call(this, !0).innerHTML; },
+                set: function (a) { var b = "template" === this.localName, c = b ? this.content : this, e = G.call(document, this.namespaceURI, this.localName); for (e.innerHTML = a; 0 < c.childNodes.length;)
+                    K.call(c, c.childNodes[0]); for (a = b ? e.content : e; 0 < a.childNodes.length;)
+                    I.call(c, a.childNodes[0]); } });
+        });
+        r(Element.prototype, "setAttribute", function (a, b) { if (1 !== this.__CE_state)
+            return Q.call(this, a, b); var e = P.call(this, a); Q.call(this, a, b); b = P.call(this, a); c.attributeChangedCallback(this, a, e, b, null); });
+        r(Element.prototype, "setAttributeNS", function (a, b, d) { if (1 !== this.__CE_state)
+            return T.call(this, a, b, d); var e = S.call(this, a, b); T.call(this, a, b, d); d = S.call(this, a, b); c.attributeChangedCallback(this, b, e, d, a); });
+        r(Element.prototype, "removeAttribute", function (a) { if (1 !== this.__CE_state)
+            return R.call(this, a); var b = P.call(this, a); R.call(this, a); null !== b && c.attributeChangedCallback(this, a, b, null, null); });
+        r(Element.prototype, "removeAttributeNS", function (a, b) {
+            if (1 !== this.__CE_state)
+                return U.call(this, a, b);
+            var d = S.call(this, a, b);
+            U.call(this, a, b);
+            var e = S.call(this, a, b);
+            d !== e && c.attributeChangedCallback(this, b, d, e, a);
+        });
+        ua ? b(HTMLElement.prototype, ua) : ma ? b(Element.prototype, ma) : console.warn("Custom Elements: `Element#insertAdjacentElement` was not patched.");
+        va ? d(HTMLElement.prototype, va) : na ? d(Element.prototype, na) : console.warn("Custom Elements: `Element#insertAdjacentHTML` was not patched.");
+        Y(c, Element.prototype, { h: oa, append: pa });
+        Aa(c);
+    }
+    var Z = window.customElements;
+    if (!Z || Z.forcePolyfill || "function" != typeof Z.define || "function" != typeof Z.get) {
+        var X = new u;
+        xa();
+        ya();
+        Y(X, DocumentFragment.prototype, { h: ka, append: la });
+        za();
+        Ba();
+        document.__CE_hasRegistry = !0;
+        var customElements = new E(X);
+        Object.defineProperty(window, "customElements", { configurable: !0, enumerable: !0, value: customElements });
+    }
+}).call(self);
+// Polyfill document.baseURI
+if (typeof document.baseURI !== 'string') {
+    Object.defineProperty(Document.prototype, 'baseURI', {
         enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Icon.prototype, "el", {
-        get: function () { return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Icon, "watchers", {
+        configurable: true,
         get: function () {
-            return {
-                "name": ["loadIcon"],
-                "src": ["loadIcon"],
-                "icon": ["loadIcon"]
-            };
-        },
-        enumerable: true,
-        configurable: true
+            var base = document.querySelector('base');
+            if (base) {
+                return base.href;
+            }
+            return document.URL;
+        }
     });
-    Object.defineProperty(Icon, "style", {
-        get: function () { return ":host{display:inline-block;width:1em;height:1em;contain:strict;fill:currentColor;-webkit-box-sizing:content-box!important;box-sizing:content-box!important}.icon-inner,svg{display:block;height:100%;width:100%}:host(.flip-rtl) .icon-inner{-webkit-transform:scaleX(-1);transform:scaleX(-1)}:host(.icon-small){font-size:18px!important}:host(.icon-large){font-size:32px!important}:host(.ion-color){color:var(--ion-color-base)!important}:host(.ion-color-primary){--ion-color-base:var(--ion-color-primary,#3880ff)}:host(.ion-color-secondary){--ion-color-base:var(--ion-color-secondary,#0cd1e8)}:host(.ion-color-tertiary){--ion-color-base:var(--ion-color-tertiary,#f4a942)}:host(.ion-color-success){--ion-color-base:var(--ion-color-success,#10dc60)}:host(.ion-color-warning){--ion-color-base:var(--ion-color-warning,#ffce00)}:host(.ion-color-danger){--ion-color-base:var(--ion-color-danger,#f14141)}:host(.ion-color-light){--ion-color-base:var(--ion-color-light,#f4f5f8)}:host(.ion-color-medium){--ion-color-base:var(--ion-color-medium,#989aa2)}:host(.ion-color-dark){--ion-color-base:var(--ion-color-dark,#222428)}"; },
-        enumerable: true,
-        configurable: true
-    });
-    return Icon;
-}());
-var getIonMode = function (ref) {
-    return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["j"])(ref) || document.documentElement.getAttribute('mode') || 'md';
-};
-var createColorClasses = function (color) {
-    var _a;
-    return (color) ? (_a = {
-            'ion-color': true
-        },
-        _a["ion-color-" + color] = true,
-        _a) : null;
-};
-
+}
+// Polyfill CustomEvent
+if (typeof window.CustomEvent !== 'function') {
+    window.CustomEvent = function CustomEvent(event, params) {
+        params = params || { bubbles: false, cancelable: false, detail: undefined };
+        var evt = document.createEvent('CustomEvent');
+        evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+        return evt;
+    };
+    window.CustomEvent.prototype = window.Event.prototype;
+}
+// Event.composedPath
+(function (E, d, w) {
+    if (!E.composedPath) {
+        E.composedPath = function () {
+            if (this.path) {
+                return this.path;
+            }
+            var target = this.target;
+            this.path = [];
+            while (target.parentNode !== null) {
+                this.path.push(target);
+                target = target.parentNode;
+            }
+            this.path.push(d, w);
+            return this.path;
+        };
+    }
+})(Event.prototype, document, window);
+/*!
+Element.closest and Element.matches
+https://github.com/jonathantneal/closest
+Creative Commons Zero v1.0 Universal
+*/
+(function (a) { "function" !== typeof a.matches && (a.matches = a.msMatchesSelector || a.mozMatchesSelector || a.webkitMatchesSelector || function (a) { a = (this.document || this.ownerDocument).querySelectorAll(a); for (var b = 0; a[b] && a[b] !== this;)
+    ++b; return !!a[b]; }); "function" !== typeof a.closest && (a.closest = function (a) { for (var b = this; b && 1 === b.nodeType;) {
+    if (b.matches(a))
+        return b;
+    b = b.parentNode;
+} return null; }); })(window.Element.prototype);
+/*!
+Element.getRootNode()
+*/
+(function (c) { function d(a) { a = b(a); return a && 11 === a.nodeType ? d(a.host) : a; } function b(a) { return a && a.parentNode ? b(a.parentNode) : a; } "function" !== typeof c.getRootNode && (c.getRootNode = function (a) { return a && a.composed ? d(this) : b(this); }); })(Element.prototype);
+/*!
+Element.isConnected()
+*/
+(function (prototype) {
+    if (!("isConnected" in prototype)) {
+        Object.defineProperty(prototype, 'isConnected', {
+            configurable: true,
+            enumerable: true,
+            get: function () {
+                var root = this.getRootNode({ composed: true });
+                return root && root.nodeType === 9;
+            }
+        });
+    }
+})(Element.prototype);
+/*!
+Element.remove()
+*/
+(function (b) { b.forEach(function (a) { a.hasOwnProperty("remove") || Object.defineProperty(a, "remove", { configurable: !0, enumerable: !0, writable: !0, value: function () { null !== this.parentNode && this.parentNode.removeChild(this); } }); }); })([Element.prototype, CharacterData.prototype, DocumentType.prototype]);
+/*!
+Element.classList
+*/
+!function (e) { 'classList' in e || Object.defineProperty(e, "classList", { get: function () { var e = this, t = (e.getAttribute("class") || "").replace(/^\s+|\s$/g, "").split(/\s+/g); function n() { t.length > 0 ? e.setAttribute("class", t.join(" ")) : e.removeAttribute("class"); } return "" === t[0] && t.splice(0, 1), t.toggle = function (e, i) { void 0 !== i ? i ? t.add(e) : t.remove(e) : -1 !== t.indexOf(e) ? t.splice(t.indexOf(e), 1) : t.push(e), n(); }, t.add = function () { for (var e = [].slice.call(arguments), i = 0, s = e.length; i < s; i++)
+        -1 === t.indexOf(e[i]) && t.push(e[i]); n(); }, t.remove = function () { for (var e = [].slice.call(arguments), i = 0, s = e.length; i < s; i++)
+        -1 !== t.indexOf(e[i]) && t.splice(t.indexOf(e[i]), 1); n(); }, t.item = function (e) { return t[e]; }, t.contains = function (e) { return -1 !== t.indexOf(e); }, t.replace = function (e, i) { -1 !== t.indexOf(e) && t.splice(t.indexOf(e), 1, i), n(); }, t.value = e.getAttribute("class") || "", t; } }); }(Element.prototype);
+/*!
+DOMTokenList
+*/
+(function (prototype) {
+    try {
+        document.body.classList.add();
+    }
+    catch (e) {
+        var originalAdd = prototype.add;
+        var originalRemove = prototype.remove;
+        prototype.add = function () {
+            for (var i = 0; i < arguments.length; i++) {
+                originalAdd.call(this, arguments[i]);
+            }
+        };
+        prototype.remove = function () {
+            for (var i = 0; i < arguments.length; i++) {
+                originalRemove.call(this, arguments[i]);
+            }
+        };
+    }
+}(DOMTokenList.prototype));
 
 
 /***/ })

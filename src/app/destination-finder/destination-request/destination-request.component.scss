@@ -87,25 +87,27 @@
 }
 
 
-
-
-.accordion .card-header:after {
-    font-family: 'FontAwesome';  
-    content: "\f068";
-    float: right; 
-}
-.accordion .card-header.collapsed:after {
-    /* symbol for "collapsed" panels */
-    content: "\f067"; 
+.nav-item.active .nav-link,
+.nav-item .nav-link:active,
+.nav-item .nav-link:focus,
+.nav-item:hover .nav-link {
+    color: black;
+    font-weight: bold;
 }
 
+.nav-item a {
+    outline: none;
+    color: #7f8dab;
+}
 
 
+.nav-link{
+    padding: .5rem 0rem;
+}
 
-
-
-
-
+.nav-link.active{
+    font-weight: bold;   
+}
 
 
 .bg-image {
@@ -133,13 +135,16 @@
 ul.nav.nav-tabs {
     padding: 15px 10px;
 }
+.content-slider{
+    margin: 15px  20px;
+    border-radius: 20px;   
+}
 .content-slide{
     height: 250px;
     width: 100%;
-    margin: 15px 20px;
-    border-radius: 20px;
     overflow: hidden;
     position: relative;
+    outline: none;
 }
 .content-slide img{
     max-width: 100%;
@@ -155,7 +160,7 @@ ul.nav.nav-tabs {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(#aa55ff00, #584bddd1);
+    background: linear-gradient(#aa55ff00, #584bdd75);
     opacity: 0.6;
 }
 .content-slide p{
@@ -205,13 +210,12 @@ ul.nav.nav-tabs {
     object-fit: cover;
 }
 .single-post-text {
-    padding: 15px 10px;
+    padding: 27px 10px;
     margin-left: 40%;
     width: 62%;
 }
 .single-post-text h4 {
     font-size: 16px;
-    color: #aa55ff;
     font-weight: bold;
 }
 .single-post-text h5 {
@@ -233,7 +237,6 @@ ul.nav.nav-tabs {
     margin-bottom: 10px;
 }
 .filter-sec h5{
-    color: #584bdd;
     font-size: 15px;
     font-weight: bold;
 }
@@ -263,18 +266,18 @@ ul.nav.nav-tabs {
     margin: 25px 25px 15px;
     font-size: 26px;
     font-weight: bold;
-    color: #584bdd;
 }
 ion-checkbox {
     --size: 22px;
-    --border-color: #000;
-    --background-checked: #584bdd;
-    --border-color-checked: #584bdd;
+    --background-checked: #3880ff;
+    --border-color-checked: #3880ff;
     --checkmark-width: 10px;
+    vertical-align: middle;
+    --border-color: #7F8DAB;
 }
 ion-label {
     margin-left: 15px;
-    color: #000;
+    color: #7F8DAB;
     font-weight: 600;
     font-size: 14px;
 }
@@ -285,7 +288,7 @@ ion-label {
     padding-top: 5px;
 }
 .buttons a:last-child {
-    background: linear-gradient(to right, #584bdd, #aa55ff);
+    background: linear-gradient(#0575e6, #021b79);
     color: #ffffff;
 }
 .buttons a {
@@ -302,13 +305,12 @@ ion-label {
 }
 .buttons a:first-child {
     background-color: #ffffff;
-    color: #584bdd;
 }
 
 // accordion css start
 .accordion-group a {
     width: 100%;
-    background: linear-gradient(to right, #584bdd, #aa55ff);
+    background: linear-gradient(#0575e6, #021b79);
     color: #fff;
     padding: 12px;
     position: relative;
@@ -344,4 +346,20 @@ ion-label {
 }
 .accordion-group a[aria-expanded="true"]:after {
     content: "\f077";
+}
+
+
+.segment-card {
+    display: flex;
+    overflow-x: scroll;
+    .segment-item {
+        display: inline-block !important;
+        min-width: 100px !important;
+        width: auto !important;
+    }
+}
+
+
+.swiper-pagination-bullet {
+    background: #d3d3d3c4;
 }

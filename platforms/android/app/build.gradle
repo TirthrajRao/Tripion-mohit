@@ -99,8 +99,8 @@ ext {
 
 // PLUGIN GRADLE EXTENSIONS START
 apply from: "../com-sarriaroman-photoviewer/tripion-photoviewer.gradle"
-apply from: "../cordova-plugin-badge/tripion-badge.gradle"
 apply from: "../cordova-plugin-fcm-with-dependecy-updated/tripion-FCMPlugin.gradle"
+apply from: "../cordova-plugin-badge/tripion-badge.gradle"
 apply from: "../cordova-plugin-local-notification/tripion-localnotification.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 

@@ -1,80 +1,80 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[29],{
 
-/***/ "./node_modules/@ionic/core/dist/esm/ion-img.entry.js":
-/*!************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/ion-img.entry.js ***!
-  \************************************************************/
-/*! exports provided: ion_img */
+/***/ "./node_modules/@ionic/core/dist/esm/ion-backdrop-md.entry.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm/ion-backdrop-md.entry.js ***!
+  \********************************************************************/
+/*! exports provided: ion_backdrop */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_img", function() { return Img; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_backdrop", function() { return Backdrop; });
 /* harmony import */ var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-ca0488fc.js */ "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
 /* harmony import */ var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config-3c7f3790.js */ "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
+/* harmony import */ var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers-46f4a262.js */ "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
+/* harmony import */ var _index_624eea58_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index-624eea58.js */ "./node_modules/@ionic/core/dist/esm/index-624eea58.js");
 
 
 
-const Img = class {
+
+
+const Backdrop = class {
     constructor(hostRef) {
         Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        this.onLoad = () => {
-            this.ionImgDidLoad.emit();
-        };
-        this.onError = () => {
-            this.ionError.emit();
-        };
-        this.ionImgWillLoad = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionImgWillLoad", 7);
-        this.ionImgDidLoad = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionImgDidLoad", 7);
-        this.ionError = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionError", 7);
+        this.lastClick = -10000;
+        this.blocker = _index_624eea58_js__WEBPACK_IMPORTED_MODULE_3__["GESTURE_CONTROLLER"].createBlocker({
+            disableScroll: true
+        });
+        /**
+         * If `true`, the backdrop will be visible.
+         */
+        this.visible = true;
+        /**
+         * If `true`, the backdrop will can be clicked and will emit the `ionBackdropTap` event.
+         */
+        this.tappable = true;
+        /**
+         * If `true`, the backdrop will stop propagation on tap.
+         */
+        this.stopPropagation = true;
+        this.ionBackdropTap = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBackdropTap", 7);
     }
-    srcChanged() {
-        this.addIO();
-    }
-    componentDidLoad() {
-        this.addIO();
-    }
-    addIO() {
-        if (this.src === undefined) {
-            return;
-        }
-        if ('IntersectionObserver' in window) {
-            this.removeIO();
-            this.io = new IntersectionObserver(data => {
-                // because there will only ever be one instance
-                // of the element we are observing
-                // we can just use data[0]
-                if (data[0].isIntersecting) {
-                    this.load();
-                    this.removeIO();
-                }
-            });
-            this.io.observe(this.el);
-        }
-        else {
-            // fall back to setTimeout for Safari and IE
-            setTimeout(() => this.load(), 200);
+    connectedCallback() {
+        if (this.stopPropagation) {
+            this.blocker.block();
         }
     }
-    load() {
-        this.loadError = this.onError;
-        this.loadSrc = this.src;
-        this.ionImgWillLoad.emit();
+    disconnectedCallback() {
+        this.blocker.unblock();
     }
-    removeIO() {
-        if (this.io) {
-            this.io.disconnect();
-            this.io = undefined;
+    onTouchStart(ev) {
+        this.lastClick = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["n"])(ev);
+        this.emitTap(ev);
+    }
+    onMouseDown(ev) {
+        if (this.lastClick < Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["n"])(ev) - 2500) {
+            this.emitTap(ev);
+        }
+    }
+    emitTap(ev) {
+        if (this.stopPropagation) {
+            ev.preventDefault();
+            ev.stopPropagation();
+        }
+        if (this.tappable) {
+            this.ionBackdropTap.emit();
         }
     }
     render() {
-        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], { class: Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this) }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("img", { decoding: "async", src: this.loadSrc, alt: this.alt, onLoad: this.onLoad, onError: this.loadError })));
+        const mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], { tabindex: "-1", class: {
+                [mode]: true,
+                'backdrop-hide': !this.visible,
+                'backdrop-no-tappable': !this.tappable,
+            } }));
     }
-    get el() { return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); }
-    static get watchers() { return {
-        "src": ["srcChanged"]
-    }; }
-    static get style() { return ":host{-o-object-fit:contain;object-fit:contain}:host,img{display:block}img{width:100%;height:100%;-o-object-fit:inherit;object-fit:inherit;-o-object-position:inherit;object-position:inherit}"; }
+    static get style() { return ":host{left:0;right:0;top:0;bottom:0;display:block;position:absolute;-webkit-transform:translateZ(0);transform:translateZ(0);contain:strict;cursor:pointer;opacity:.01;-ms-touch-action:none;touch-action:none;z-index:2}:host(.backdrop-hide){background:transparent}:host(.backdrop-no-tappable){cursor:auto}:host{background-color:var(--ion-backdrop-color,#000)}"; }
 };
 
 
