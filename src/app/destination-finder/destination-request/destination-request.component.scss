@@ -323,7 +323,6 @@ ion-label {
 }
 .accordion-group .accordion-content {
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 10px;
     padding: 20px 20px 8px;
     border-radius: 5px;
     margin-top: -6px;
@@ -362,4 +361,62 @@ ion-label {
 
 .swiper-pagination-bullet {
     background: #d3d3d3c4;
+}
+
+
+
+
+.accordion {
+color: #444;
+    cursor: pointer;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    background: -webkit-gradient(linear, left top, left bottom, from(#0575e6), to(#021b79));
+    background: linear-gradient(#0575e6, #021b79);
+    color: white;
+    font-weight: 700;
+    border-radius: 6px;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.accordion:after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f13a";
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+    font-size: 16px;    
+}
+
+.active:after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f139";
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+.panel {
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+
+    margin-bottom: 10px;
+
+   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 6px;
+    border-radius: 5px;
 }

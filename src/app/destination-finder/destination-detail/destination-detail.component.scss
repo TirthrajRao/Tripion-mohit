@@ -152,12 +152,18 @@ ion-content {
 
 
 .destination-tags{
-    width: fit-content;
-    padding: 13px;
+    text-align: center;
+    padding: 8px 15px;
     background: #d3d3d347;
     border-radius: 50px;
-    font-size: 14px;
-    margin: 6px 
+    font-size: 12px;
+    margin: 3px;
+    font-weight: 500;
+    white-space: nowrap;
+    flex-basis: 0 !important;
+    -webkit-box-flex: 1 !important;
+    flex-grow: 1 !important;
+    max-width: 100%;
 }
 .swiper-pagination-bullet {
     background: #d3d3d3c4;

@@ -54,3 +54,85 @@ $button_color: #003574;
 [data-toggle="collapse"].collapsed .fa:before {
     content: "\f13a";
 }
+
+.general_details .general_details_header i {
+    color: black;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 40px;
+    margin-left: auto;
+}
+
+
+
+.accordion {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    color: white;
+    font-weight: 700;
+    border-radius: 6px;
+}
+
+.active, .accordion:hover {
+  background-color: white;
+}
+
+.accordion:after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f13a";
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    margin-left: auto;
+    margin-top: 7px;
+}
+
+.active:after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f139";
+    color: black    ;
+    font-weight: bold;
+    float: right;
+    font-size: 18px;
+    margin-left: auto;
+    margin-top: 7px;
+}
+
+.panel {
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+
+    margin-bottom: 10px;
+
+   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 6px;
+    border-radius: 5px;
+}
+
+
+.accordion_inner{
+    padding: 25px;
+}
+
+.general_detail{
+    background: white;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    padding: 15px;
+    font-weight: 700;
+    border-radius: 6px;
+}

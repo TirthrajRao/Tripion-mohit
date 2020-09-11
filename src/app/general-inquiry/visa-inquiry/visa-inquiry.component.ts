@@ -20,6 +20,7 @@ export class VisaInquiryComponent implements OnInit {
   international_travel = 'Yes';
   curruntDate: string = new Date().toISOString();
   nextYear;
+  isSponser:boolean = true;
 
   constructor(public route: Router, public _tripService: TripService) {
     this.visaForm = new FormGroup({
@@ -100,6 +101,13 @@ export class VisaInquiryComponent implements OnInit {
   selectVisaType(e) {
     $('#other-input').val("");
     this.visaForm.controls.visa_type.setValue(e.target.value);
+    console.log("the event is the ============================>", e, "===>", e.target.value);
+    if (e.target.value == 'tourist') {
+      this.isSponser = false;
+    }
+    else{
+      this.isSponser = true;
+    }
   }
 
   nextYearCount() {

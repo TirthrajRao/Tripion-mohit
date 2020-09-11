@@ -88,7 +88,7 @@
       <div class="filter-content">
         <h4 class="filter-head">Filter by</h4>
         <div class="filter-list">
-          <div id="accordion" *ngFor="let place of placeTags">
+          <!-- <div id="accordion" *ngFor="let place of placeTags">
             <div class="accordion-group">
               <a role="button" class="collapsed accordion">{{place.name}}</a>
               <div [id]="'collapse'+place.id" class="collapse panel" role="tabpanel" [attr.aria-labelledby]="'heading'+place.id"
@@ -100,8 +100,26 @@
                 </div>
               </div>
             </div>
+          </div> -->
+          <div id="accordion" *ngFor="let place of placeTags">
+            <div class="accordion-group">
+              <!-- <a role="button" class="collapsed accordion">{{place.name}}</a> -->
+              <button class="accordion">{{place.name}}</button>
+              <!-- <div [id]="'collapse'+place.id" class="collapse panel" role="tabpanel" [attr.aria-labelledby]="'heading'+place.id" -->
+              <!-- data-parent="#accordion"> -->
+                  <div class="panel">
+              <div class="accordion-content">
+                <div class="single-list" *ngFor="let subplace of place.sub_cat">
+                  <ion-checkbox checked='false' (click)="selectPlace(subplace.id, subplace)"></ion-checkbox>
+                  <!-- <ion-label>{{subplace.name}}</ion-label> -->
+                    <ion-label>{{subplace.name}}</ion-label>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+
       </div>
       <div class="buttons">
         <a (click)="closeModal()">Cancel</a>
@@ -109,6 +127,6 @@
       </div>
     </div>
   </div>
-</div>
+  <!-- </div> -->
 
 </ion-content>

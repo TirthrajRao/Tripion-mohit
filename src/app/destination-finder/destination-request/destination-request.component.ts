@@ -20,7 +20,6 @@ export class DestinationRequestComponent implements OnInit {
   resultsOfSelectedSlugs:any;
   subPlaces:any = [];
   slideOpts:any;
-  // isActive:boolean = false;
   isDisplay:boolean = false;
   
   constructor(
@@ -44,7 +43,6 @@ export class DestinationRequestComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.openModal();
   }
 
   ionViewWillEnter(){
@@ -65,10 +63,7 @@ export class DestinationRequestComponent implements OnInit {
       this.details = res.data;
       this.destinationReq = res.data;
       this.isDisplay = true;
-
       this.loading = false;
-      // this.createSlider();
-      // this.createAccordian();
       $(document).ready(function(){
         $("#feture").css("color", "black");
       });
@@ -89,8 +84,7 @@ export class DestinationRequestComponent implements OnInit {
     var idAttr = target.attributes.id;
     var value = idAttr.nodeValue;
     console.log("the value of selectTab is --------->", value);
-    // this.isActive = false;
-      this.isDisplay = false;
+    this.isDisplay = false;
 
     var obj = {
       id : this.curruntUser.id,
@@ -106,14 +100,12 @@ export class DestinationRequestComponent implements OnInit {
       $(document).ready(function(){
         $("#feture").css("color", "black");
       });
-      // this.isActive = true;
       this.isDisplay = true;
       console.log("the condition is working");
       this._tripService.getDestinationReqProduct(data).subscribe((res: any) => {
         console.log("res", res);
         this.destinationReq = null;
         this.destinationReq = res.data;
-        // this.createSlider();
         this.loading = false;
       }, err => {
         console.log("err", err);
@@ -156,17 +148,16 @@ export class DestinationRequestComponent implements OnInit {
   createAccordian(){
     var acc = document.getElementsByClassName("accordion");
     var i;
-    console.log("ACC", acc)
+
     for (i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function () {
+      acc[i].addEventListener("click", function() {
         this.classList.toggle("active");
-        console.log("clicked")
         var panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-          panel.style.display = "none";
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
         } else {
-          panel.style.display = "block";
-        }
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        } 
       });
     }
   }
@@ -178,9 +169,6 @@ export class DestinationRequestComponent implements OnInit {
     $('#product-modal .modal_body').click(function (event) {
       event.stopPropagation();
     });
-    // $('#product-modal').click(() => {
-    //   $('#product-modal').fadeOut();
-    // });
   }
 
   closeModal() {
@@ -262,7 +250,7 @@ export class DestinationRequestComponent implements OnInit {
       this.isDisplay = false;
       $('#product-modal').fadeOut();
       this.createAccordian();
-       $(document).ready(function(){
+      $(document).ready(function(){
         $("#feture").css("color", "#7f8dab");
       });
     }, (err) => {

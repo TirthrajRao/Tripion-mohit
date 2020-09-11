@@ -43,6 +43,8 @@ export class AirTicketsInquiryComponent implements OnInit {
       // children_passenger: new FormControl('0'),
       // adults_passenger: new FormControl('0'),
       // senior_passenger: new FormControl('0'),
+      to_destination: new FormControl(''),
+      from_destination: new FormControl(''),
       journey_type: new FormControl('Round Trip'),
       flightTire_preference: new FormControl(''),
       flightSeat_preferences: new FormControl('Aisle'),
@@ -53,7 +55,26 @@ export class AirTicketsInquiryComponent implements OnInit {
     })
 
   }
-  ngOnInit() { }
+  ngOnInit() { 
+    this.createAccrodian();
+  }
+
+  createAccrodian(){
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        } 
+      });
+    }
+  }
 
   get f() { return this.airTickitForm.controls; }
 
@@ -84,43 +105,43 @@ export class AirTicketsInquiryComponent implements OnInit {
 
   //Decrement passangers count
   // decrement(type) {
-  //   console.log("type in dec", type);
-  //   if (type == "infants") {
-  //     if (this.infantsPassenger)
-  //       this.infantsPassenger--;
-  //     this.airTickitForm.controls.infants_passenger.setValue(this.infantsPassenger)
-  //   } else if (type == "children") {
-  //     if (this.childrenPassenger)
-  //       this.childrenPassenger--;
-  //     this.airTickitForm.controls.children_passenger.setValue(this.childrenPassenger)
-  //   } else if (type == 'adults') {
-  //     if (this.adultsPassenger)
-  //       this.adultsPassenger--;
-  //     this.airTickitForm.controls.adults_passenger.setValue(this.adultsPassenger)
-  //   } else if (type == 'senior') {
-  //     if (this.seniorPassenger)
-  //       this.seniorPassenger--;
-  //     this.airTickitForm.controls.senior_passenger.setValue(this.seniorPassenger)
-  //   }
-  // }
+    //   console.log("type in dec", type);
+    //   if (type == "infants") {
+      //     if (this.infantsPassenger)
+      //       this.infantsPassenger--;
+      //     this.airTickitForm.controls.infants_passenger.setValue(this.infantsPassenger)
+      //   } else if (type == "children") {
+        //     if (this.childrenPassenger)
+        //       this.childrenPassenger--;
+        //     this.airTickitForm.controls.children_passenger.setValue(this.childrenPassenger)
+        //   } else if (type == 'adults') {
+          //     if (this.adultsPassenger)
+          //       this.adultsPassenger--;
+          //     this.airTickitForm.controls.adults_passenger.setValue(this.adultsPassenger)
+          //   } else if (type == 'senior') {
+            //     if (this.seniorPassenger)
+            //       this.seniorPassenger--;
+            //     this.airTickitForm.controls.senior_passenger.setValue(this.seniorPassenger)
+            //   }
+            // }
 
-  // //Increment passangers count
-  // increment(type) {
-  //   console.log("type in inc", type)
-  //   if (type == "infants") {
-  //     this.infantsPassenger++;
-  //     this.airTickitForm.controls.infants_passenger.setValue(this.infantsPassenger)
-  //   } else if (type == "children") {
-  //     this.childrenPassenger++;
-  //     this.airTickitForm.controls.children_passenger.setValue(this.childrenPassenger)
-  //   } else if (type == 'adults') {
-  //     this.adultsPassenger++;
-  //     this.airTickitForm.controls.adults_passenger.setValue(this.adultsPassenger)
-  //   } else if (type == 'senior') {
-  //     this.seniorPassenger++;
-  //     this.airTickitForm.controls.senior_passenger.setValue(this.seniorPassenger)
-  //   }
-  // }
+            // //Increment passangers count
+            // increment(type) {
+              //   console.log("type in inc", type)
+              //   if (type == "infants") {
+                //     this.infantsPassenger++;
+                //     this.airTickitForm.controls.infants_passenger.setValue(this.infantsPassenger)
+                //   } else if (type == "children") {
+                  //     this.childrenPassenger++;
+                  //     this.airTickitForm.controls.children_passenger.setValue(this.childrenPassenger)
+                  //   } else if (type == 'adults') {
+                    //     this.adultsPassenger++;
+                    //     this.airTickitForm.controls.adults_passenger.setValue(this.adultsPassenger)
+                    //   } else if (type == 'senior') {
+                      //     this.seniorPassenger++;
+                      //     this.airTickitForm.controls.senior_passenger.setValue(this.seniorPassenger)
+                      //   }
+                      // }
 
 
   /**
@@ -156,38 +177,38 @@ export class AirTicketsInquiryComponent implements OnInit {
   /**
    * Set flight tire preferences
    */
-  selectTier(e) {
-    if (!this.flightTireArray.includes(e.detail.value)) {
-      this.flightTireArray.push(e.detail.value);
-    } else {
-      var index = this.flightTireArray.indexOf(e.detail.value);
-      this.flightTireArray.splice(index, 1);
-    }
-    console.log(this.flightTireArray);
-    this.airTickitForm.controls.flightTire_preference.setValue(this.flightTireArray);
-  }
+   selectTier(e) {
+     if (!this.flightTireArray.includes(e.detail.value)) {
+       this.flightTireArray.push(e.detail.value);
+     } else {
+       var index = this.flightTireArray.indexOf(e.detail.value);
+       this.flightTireArray.splice(index, 1);
+     }
+     console.log(this.flightTireArray);
+     this.airTickitForm.controls.flightTire_preference.setValue(this.flightTireArray);
+   }
 
   /**
    * set seat belt extender value
    */
-  selectSeatBelt(e) {
-    console.log(e.detail)
-    if (e.detail.checked) {
-      this.airTickitForm.controls.seat_belt_extender.setValue(e.detail.value)
-    } else {
-      this.airTickitForm.controls.seat_belt_extender.setValue('No')
-    }
-  }
+   selectSeatBelt(e) {
+     console.log(e.detail)
+     if (e.detail.checked) {
+       this.airTickitForm.controls.seat_belt_extender.setValue(e.detail.value)
+     } else {
+       this.airTickitForm.controls.seat_belt_extender.setValue('No')
+     }
+   }
 
    /**
    * set Wheelchair asistance value
    */
-  selectWheelChair(e) {
-    console.log(e.detail)
-    if (e.detail.checked) {
-      this.airTickitForm.controls.wheelChair_assistance.setValue(e.detail.value)
-    } else {
-      this.airTickitForm.controls.wheelChair_assistance.setValue('No')
-    }
-  }
-}
+   selectWheelChair(e) {
+     console.log(e.detail)
+     if (e.detail.checked) {
+       this.airTickitForm.controls.wheelChair_assistance.setValue(e.detail.value)
+     } else {
+       this.airTickitForm.controls.wheelChair_assistance.setValue('No')
+     }
+   }
+ }
