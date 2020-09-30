@@ -1,0 +1,4 @@
+#Mon Sep 21 13:35:41 IST 2020
+base.0=/var/www/html/Tripion_new/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex

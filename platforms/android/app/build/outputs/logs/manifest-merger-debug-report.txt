@@ -1,0 +1,696 @@
+-- Merging decision tree log ---
+provider#org.apache.cordova.camera.FileProvider
+INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:13:9-15:20
+	android:grantUriPermissions
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:13:92-126
+	android:authorities
+		INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:13:19-66
+	android:exported
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:13:67-91
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:13:127-180
+provider#io.github.pwlin.cordova.plugins.fileopener2.FileProvider
+INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:34:9-36:20
+	android:grantUriPermissions
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:34:99-133
+	android:authorities
+		INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:34:19-73
+	android:exported
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:34:74-98
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:34:134-205
+provider#de.appplant.cordova.plugin.notification.util.AssetProvider
+INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:37:9-39:20
+	android:grantUriPermissions
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:37:92-126
+	android:authorities
+		INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:37:19-66
+	android:exported
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:37:67-91
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:37:127-200
+manifest
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:2:1-57:12
+INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:2:1-57:12
+INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:2:1-57:12
+INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:2:1-57:12
+MERGED from [com.commit451:PhotoView:1.2.4] /home/mohit/.gradle/caches/transforms-1/files-1.1/PhotoView-1.2.4.aar/83c9e710484534017fb60e621bf266a0/AndroidManifest.xml:2:1-12:12
+MERGED from [com.squareup.picasso:picasso:2.71828] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-picasso-2.71828.aar/f24cd664c0bd3a8d63030494235aee84/AndroidManifest.xml:2:1-14:12
+MERGED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:2:1-52:12
+MERGED from [com.google.firebase:firebase-messaging:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-firebase-messaging-19.0.0.aar/f36efa15d19b44cd719d0fc83aada272/AndroidManifest.xml:17:1-37:12
+MERGED from [:CordovaLib] /var/www/html/Tripion_new/platforms/android/CordovaLib/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:1-27:12
+MERGED from [com.facebook.android:facebook-android-sdk:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-5.5.2.aar/1c6f586a042d352c28cbce673b89cccf/AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-login:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-login-5.5.2.aar/e7dcd4758871b8b531967485792532e4/AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-share:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-share-5.5.2.aar/742a6e42457ac00f56deeb19d7bb5b63/AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-common:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-common-5.5.2.aar/c2efaacce83fe1ccc8f800a38f4b4e1e/AndroidManifest.xml:21:1-37:12
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/legacy-support-v4-1.0.0.aar/2f19a10205a67ef4b6e18c7c71550533/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-auth:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-auth-15.0.1.aar/bbea0b623b0d66e5e6ad1e8dee7f287e/AndroidManifest.xml:17:1-39:12
+MERGED from [com.google.android.gms:play-services-identity:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-identity-15.0.1.aar/3776d0cbadb11b328d67b04904d35cc6/AndroidManifest.xml:17:1-24:12
+MERGED from [com.facebook.android:facebook-places:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/facebook-places-5.5.2.aar/d76d72f766060720360c78315872f547/AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-applinks:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/facebook-applinks-5.5.2.aar/35bbfdd507678ee8a9ae78423c4af27b/AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-messenger:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/facebook-messenger-5.5.2.aar/cac5fd4117bae9967ab583c8e5608567/AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-core:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-core-5.5.2.aar/62a28cf16d6b1d038e33ed5ab44cc348/AndroidManifest.xml:21:1-61:12
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/exifinterface-1.0.0.aar/69193288d5a8e4939a402f1fc8e762a3/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:17:1-47:12
+MERGED from [com.google.firebase:firebase-common:18.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-common-18.0.0.aar/409968857a02f3ee1c0ab0a057cada89/AndroidManifest.xml:2:1-19:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-auth-api-phone-15.0.1.aar/d94c860826b77eaa26d382795f8c42ce/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-auth-base:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-auth-base-15.0.1.aar/d0e94edca07d8c0783495b2fc1c85163/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-interop-17.0.0.aar/de9407305bee6e0b8afe1a0e34ce207c/AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.android.gms:play-services-base:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-base-17.0.0.aar/ee43ce022d1fe82e1d315496c8b945fc/AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-tasks-17.0.0.aar/824d86b358b84332b93c77b274710adb/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-18.0.0.aar/4a39368157221beffb9c1c38ec7e1ff8/AndroidManifest.xml:17:1-25:12
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-stats-17.0.0.aar/93ceef93fa56baa8594c03e035679220/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-17.0.0.aar/c1ca5f6e1cc6c73834ff986b993f583f/AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.media:media:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/media-1.0.0.aar/0ac8c2dd02d94e700c571e5ac7c6edc7/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.appcompat:appcompat:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/appcompat-1.0.0.aar/1c897f0631a70957465a5e46642ddb60/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/fragment-1.0.0.aar/5c0dd94d53b2bf844ea1e1f5b1a1edd6/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.browser:browser:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/browser-1.0.0.aar/40b70cc227fa37ab4059f9127a5670c6/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/vectordrawable-animated-1.0.0.aar/22914580cda17e2ac498cc24c909cafd/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/legacy-support-core-ui-1.0.0.aar/5f0b204931c2c524da9587478640e32a/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/legacy-support-core-utils-1.0.0.aar/4f66afa45869619bab7bbc700912d8de/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/loader-1.0.0.aar/3bd10e67cc2f8a5938f94c4957d8d2c9/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/viewpager-1.0.0.aar/180044f699daaa6ff6479325aebe5857/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-1.0.0.aar/c99b6733df3ad27851df9c137a9f96f8/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/drawerlayout-1.0.0.aar/d31bd9413603fe3b68f566a4804ca6ae/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-1.0.0.aar/e2eae4df80528ab30468992ea6b1fb55/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/customview-1.0.0.aar/4d68af77723f6b42366a1c859c5c4d30/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-1.0.0.aar/39f8ac59037063210d15d993621206c7/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-1.0.0.aar/5f44e0af399e78f663b90fe6c9aa35e8/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/vectordrawable-1.0.0.aar/3a2697344e3863f405e461a795189c06/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/core-1.0.0.aar/b1792dd0560dbff216c8ba2fbfeaaf6c/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/versionedparcelable-1.0.0.aar/42c98892fb7ea3ade5ce57f8f0c846e1/AndroidManifest.xml:17:1-25:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/lifecycle-runtime-2.0.0.aar/4dff8636b03a70cbdc8af14e9c52f1a2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/documentfile-1.0.0.aar/5e00a8fb2eadb4e02ed832bcc172c338/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-1.0.0.aar/41ec62d0462d961bc537e330edb02846/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/print-1.0.0.aar/bcbd562f3df917de2624f959a6ee1f19/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/interpolator-1.0.0.aar/0259b193c99ae39bd5aaeea537388f0c/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/cursoradapter-1.0.0.aar/518842ad46653a036ff1176699b96cc6/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/lifecycle-viewmodel-2.0.0.aar/62094efe9f6b1f56a2cde4cecacbe4ae/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/cardview-1.0.0.aar/8bf5f1087a2c6c560c722a3eac9344ff/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/lifecycle-livedata-2.0.0.aar/2c4a89635a335d62d4b4237f1b8a26e9/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/lifecycle-livedata-core-2.0.0.aar/6ab39f31cd0dd7a14847ab2fd07597f1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/core-runtime-2.0.0.aar/26d795d3597621af3a192dfd7096a381/AndroidManifest.xml:17:1-22:12
+INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:2:1-57:12
+INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:2:1-57:12
+INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:2:1-57:12
+	package
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:2:98-124
+		INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml
+		INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml
+	android:versionName
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:2:70-97
+		INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml
+		INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml
+	android:hardwareAccelerated
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:2:11-45
+	xmlns:android
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:2:125-183
+	android:versionCode
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:2:46-69
+		INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml
+		INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml
+supports-screens
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:3:5-191
+	android:largeScreens
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:3:49-76
+	android:smallScreens
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:3:132-159
+	android:normalScreens
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:3:77-105
+	android:xlargeScreens
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:3:160-188
+	android:resizeable
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:3:106-131
+	android:anyDensity
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:3:23-48
+uses-permission#android.permission.INTERNET
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:4:5-67
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:23:5-67
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:4:22-64
+application
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:5:5-43:19
+MERGED from [com.squareup.picasso:picasso:2.71828] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-picasso-2.71828.aar/f24cd664c0bd3a8d63030494235aee84/AndroidManifest.xml:7:5-12:19
+MERGED from [com.squareup.picasso:picasso:2.71828] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-picasso-2.71828.aar/f24cd664c0bd3a8d63030494235aee84/AndroidManifest.xml:7:5-12:19
+MERGED from [com.google.firebase:firebase-messaging:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-firebase-messaging-19.0.0.aar/f36efa15d19b44cd719d0fc83aada272/AndroidManifest.xml:22:5-35:19
+MERGED from [com.google.firebase:firebase-messaging:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-firebase-messaging-19.0.0.aar/f36efa15d19b44cd719d0fc83aada272/AndroidManifest.xml:22:5-35:19
+MERGED from [com.facebook.android:facebook-android-sdk:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-5.5.2.aar/1c6f586a042d352c28cbce673b89cccf/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-android-sdk:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-5.5.2.aar/1c6f586a042d352c28cbce673b89cccf/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-login:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-login-5.5.2.aar/e7dcd4758871b8b531967485792532e4/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-login:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-login-5.5.2.aar/e7dcd4758871b8b531967485792532e4/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-share:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-share-5.5.2.aar/742a6e42457ac00f56deeb19d7bb5b63/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-share:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-share-5.5.2.aar/742a6e42457ac00f56deeb19d7bb5b63/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-common:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-common-5.5.2.aar/c2efaacce83fe1ccc8f800a38f4b4e1e/AndroidManifest.xml:28:5-35:19
+MERGED from [com.facebook.android:facebook-common:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-common-5.5.2.aar/c2efaacce83fe1ccc8f800a38f4b4e1e/AndroidManifest.xml:28:5-35:19
+MERGED from [com.google.android.gms:play-services-auth:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-auth-15.0.1.aar/bbea0b623b0d66e5e6ad1e8dee7f287e/AndroidManifest.xml:22:5-37:19
+MERGED from [com.google.android.gms:play-services-auth:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-auth-15.0.1.aar/bbea0b623b0d66e5e6ad1e8dee7f287e/AndroidManifest.xml:22:5-37:19
+MERGED from [com.google.android.gms:play-services-identity:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-identity-15.0.1.aar/3776d0cbadb11b328d67b04904d35cc6/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-identity:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-identity-15.0.1.aar/3776d0cbadb11b328d67b04904d35cc6/AndroidManifest.xml:22:5-20
+MERGED from [com.facebook.android:facebook-places:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/facebook-places-5.5.2.aar/d76d72f766060720360c78315872f547/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-places:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/facebook-places-5.5.2.aar/d76d72f766060720360c78315872f547/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-applinks:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/facebook-applinks-5.5.2.aar/35bbfdd507678ee8a9ae78423c4af27b/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-applinks:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/facebook-applinks-5.5.2.aar/35bbfdd507678ee8a9ae78423c4af27b/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-messenger:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/facebook-messenger-5.5.2.aar/cac5fd4117bae9967ab583c8e5608567/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-messenger:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/facebook-messenger-5.5.2.aar/cac5fd4117bae9967ab583c8e5608567/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-core:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-core-5.5.2.aar/62a28cf16d6b1d038e33ed5ab44cc348/AndroidManifest.xml:28:5-59:19
+MERGED from [com.facebook.android:facebook-core:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-core-5.5.2.aar/62a28cf16d6b1d038e33ed5ab44cc348/AndroidManifest.xml:28:5-59:19
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:28:5-45:19
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:28:5-45:19
+MERGED from [com.google.firebase:firebase-common:18.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-common-18.0.0.aar/409968857a02f3ee1c0ab0a057cada89/AndroidManifest.xml:11:5-17:19
+MERGED from [com.google.firebase:firebase-common:18.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-common-18.0.0.aar/409968857a02f3ee1c0ab0a057cada89/AndroidManifest.xml:11:5-17:19
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-interop-17.0.0.aar/de9407305bee6e0b8afe1a0e34ce207c/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-interop-17.0.0.aar/de9407305bee6e0b8afe1a0e34ce207c/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.android.gms:play-services-base:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-base-17.0.0.aar/ee43ce022d1fe82e1d315496c8b945fc/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-base-17.0.0.aar/ee43ce022d1fe82e1d315496c8b945fc/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-tasks-17.0.0.aar/824d86b358b84332b93c77b274710adb/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-tasks-17.0.0.aar/824d86b358b84332b93c77b274710adb/AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-18.0.0.aar/4a39368157221beffb9c1c38ec7e1ff8/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-18.0.0.aar/4a39368157221beffb9c1c38ec7e1ff8/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-stats-17.0.0.aar/93ceef93fa56baa8594c03e035679220/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-stats-17.0.0.aar/93ceef93fa56baa8594c03e035679220/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-17.0.0.aar/c1ca5f6e1cc6c73834ff986b993f583f/AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-17.0.0.aar/c1ca5f6e1cc6c73834ff986b993f583f/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.core:core:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/core-1.0.0.aar/b1792dd0560dbff216c8ba2fbfeaaf6c/AndroidManifest.xml:22:5-89
+MERGED from [androidx.core:core:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/core-1.0.0.aar/b1792dd0560dbff216c8ba2fbfeaaf6c/AndroidManifest.xml:22:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/versionedparcelable-1.0.0.aar/42c98892fb7ea3ade5ce57f8f0c846e1/AndroidManifest.xml:22:5-23:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/versionedparcelable-1.0.0.aar/42c98892fb7ea3ade5ce57f8f0c846e1/AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/core-1.0.0.aar/b1792dd0560dbff216c8ba2fbfeaaf6c/AndroidManifest.xml:22:18-86
+	android:supportsRtl
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:5:182-208
+	android:label
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:5:88-120
+	android:hardwareAccelerated
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:5:18-52
+	android:icon
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:5:53-87
+	android:networkSecurityConfig
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:5:121-181
+activity#io.ionic.tripion.MainActivity
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:6:9-11:20
+	android:label
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:6:136-173
+	android:launchMode
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:6:174-204
+	android:windowSoftInputMode
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:6:296-338
+	android:configChanges
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:6:19-135
+	android:theme
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:6:233-295
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:6:205-232
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:7:13-10:29
+	android:label
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:7:28-65
+action#android.intent.action.MAIN
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:8:17-69
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:8:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:9:17-77
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:9:27-74
+activity#com.sarriaroman.PhotoViewer.PhotoActivity
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:12:9-143
+	android:theme
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:12:76-140
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:12:19-75
+provider#de.sitewaerts.cordova.documentviewer.FileProvider
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:16:9-18:20
+	android:grantUriPermissions
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:16:117-151
+	android:authorities
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:16:19-91
+	android:exported
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:16:92-116
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:16:152-216
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:17:13-127
+	android:resource
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:17:75-124
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:17:24-74
+meta-data#com.facebook.sdk.ApplicationId
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:19:9-102
+	android:value
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:19:66-99
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:19:20-65
+meta-data#com.facebook.sdk.ApplicationName
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:20:9-106
+	android:value
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:20:68-103
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:20:20-67
+activity#com.facebook.FacebookActivity
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:21:9-186
+MERGED from [com.facebook.android:facebook-common:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-common-5.5.2.aar/c2efaacce83fe1ccc8f800a38f4b4e1e/AndroidManifest.xml:29:9-32:66
+MERGED from [com.facebook.android:facebook-common:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-common-5.5.2.aar/c2efaacce83fe1ccc8f800a38f4b4e1e/AndroidManifest.xml:29:9-32:66
+	android:label
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:21:103-138
+	android:configChanges
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:21:19-102
+	android:theme
+		ADDED from [com.facebook.android:facebook-common:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-common-5.5.2.aar/c2efaacce83fe1ccc8f800a38f4b4e1e/AndroidManifest.xml:32:13-63
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:21:139-183
+activity#com.gae.scaffolder.plugin.FCMPluginActivity
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:22:9-27:20
+	android:launchMode
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:22:43-73
+	android:exported
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:22:19-42
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:22:74-132
+intent-filter#action:name:FCM_PLUGIN_ACTIVITY+category:name:android.intent.category.DEFAULT
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:23:13-26:29
+action#FCM_PLUGIN_ACTIVITY
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:24:17-62
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:24:25-59
+category#android.intent.category.DEFAULT
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:25:17-76
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:25:27-73
+service#com.gae.scaffolder.plugin.MyFirebaseMessagingService
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:28:9-32:19
+	android:stopWithTask
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:28:86-114
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:28:18-85
+intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:29:13-31:29
+action#com.google.firebase.MESSAGING_EVENT
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:30:17-78
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:30:25-75
+meta-data#com.google.firebase.messaging.default_notification_icon
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:33:9-132
+	android:resource
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:33:91-129
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:33:20-90
+receiver#de.appplant.cordova.plugin.localnotification.TriggerReceiver
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:40:9-122
+	android:exported
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:40:19-43
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:40:44-119
+receiver#de.appplant.cordova.plugin.localnotification.ClearReceiver
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:41:9-120
+	android:exported
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:41:19-43
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:41:44-117
+activity#de.appplant.cordova.plugin.localnotification.ClickReceiver
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:42:9-205
+	android:launchMode
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:42:44-79
+	android:exported
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:42:19-43
+	android:theme
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:42:154-202
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:42:80-153
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:44:5-81
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:44:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:45:5-80
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:45:22-77
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:46:5-81
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:46:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:47:5-79
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:47:22-76
+uses-feature#android.hardware.location.gps
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:48:5-66
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:48:19-63
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:49:5-71
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:49:22-68
+uses-permission#android.permission.USE_CREDENTIALS
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:50:5-74
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:50:22-71
+uses-permission#android.permission.WAKE_LOCK
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:51:5-68
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:24:5-68
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:24:5-68
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:51:22-65
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:52:5-71
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:52:22-68
+uses-permission#android.permission.MODIFY_AUDIO_SETTINGS
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:53:5-80
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:53:22-77
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:54:5-75
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:54:22-72
+uses-permission#android.permission.RECORD_VIDEO
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:55:5-71
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:55:22-68
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:56:5-79
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:22:5-79
+	android:name
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml:56:22-76
+uses-sdk
+INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml
+INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml
+MERGED from [com.commit451:PhotoView:1.2.4] /home/mohit/.gradle/caches/transforms-1/files-1.1/PhotoView-1.2.4.aar/83c9e710484534017fb60e621bf266a0/AndroidManifest.xml:8:5-10:41
+MERGED from [com.commit451:PhotoView:1.2.4] /home/mohit/.gradle/caches/transforms-1/files-1.1/PhotoView-1.2.4.aar/83c9e710484534017fb60e621bf266a0/AndroidManifest.xml:8:5-10:41
+MERGED from [com.squareup.picasso:picasso:2.71828] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-picasso-2.71828.aar/f24cd664c0bd3a8d63030494235aee84/AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.picasso:picasso:2.71828] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-picasso-2.71828.aar/f24cd664c0bd3a8d63030494235aee84/AndroidManifest.xml:5:5-44
+MERGED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:7:5-9:41
+MERGED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:firebase-messaging:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-firebase-messaging-19.0.0.aar/f36efa15d19b44cd719d0fc83aada272/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-messaging:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-firebase-messaging-19.0.0.aar/f36efa15d19b44cd719d0fc83aada272/AndroidManifest.xml:20:5-44
+MERGED from [:CordovaLib] /var/www/html/Tripion_new/platforms/android/CordovaLib/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:5-44
+MERGED from [:CordovaLib] /var/www/html/Tripion_new/platforms/android/CordovaLib/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:5-44
+MERGED from [com.facebook.android:facebook-android-sdk:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-5.5.2.aar/1c6f586a042d352c28cbce673b89cccf/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-android-sdk:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-5.5.2.aar/1c6f586a042d352c28cbce673b89cccf/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-login:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-login-5.5.2.aar/e7dcd4758871b8b531967485792532e4/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-login:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-login-5.5.2.aar/e7dcd4758871b8b531967485792532e4/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-share:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-share-5.5.2.aar/742a6e42457ac00f56deeb19d7bb5b63/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-share:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-share-5.5.2.aar/742a6e42457ac00f56deeb19d7bb5b63/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-common:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-common-5.5.2.aar/c2efaacce83fe1ccc8f800a38f4b4e1e/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-common:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-common-5.5.2.aar/c2efaacce83fe1ccc8f800a38f4b4e1e/AndroidManifest.xml:24:5-26:41
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/legacy-support-v4-1.0.0.aar/2f19a10205a67ef4b6e18c7c71550533/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/legacy-support-v4-1.0.0.aar/2f19a10205a67ef4b6e18c7c71550533/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-auth-15.0.1.aar/bbea0b623b0d66e5e6ad1e8dee7f287e/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-auth-15.0.1.aar/bbea0b623b0d66e5e6ad1e8dee7f287e/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-identity:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-identity-15.0.1.aar/3776d0cbadb11b328d67b04904d35cc6/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-identity:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-identity-15.0.1.aar/3776d0cbadb11b328d67b04904d35cc6/AndroidManifest.xml:20:5-44
+MERGED from [com.facebook.android:facebook-places:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/facebook-places-5.5.2.aar/d76d72f766060720360c78315872f547/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-places:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/facebook-places-5.5.2.aar/d76d72f766060720360c78315872f547/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-applinks:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/facebook-applinks-5.5.2.aar/35bbfdd507678ee8a9ae78423c4af27b/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-applinks:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/facebook-applinks-5.5.2.aar/35bbfdd507678ee8a9ae78423c4af27b/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-messenger:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/facebook-messenger-5.5.2.aar/cac5fd4117bae9967ab583c8e5608567/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-messenger:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/facebook-messenger-5.5.2.aar/cac5fd4117bae9967ab583c8e5608567/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-core:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-core-5.5.2.aar/62a28cf16d6b1d038e33ed5ab44cc348/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-core:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-core-5.5.2.aar/62a28cf16d6b1d038e33ed5ab44cc348/AndroidManifest.xml:24:5-26:41
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/exifinterface-1.0.0.aar/69193288d5a8e4939a402f1fc8e762a3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/exifinterface-1.0.0.aar/69193288d5a8e4939a402f1fc8e762a3/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-common:18.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-common-18.0.0.aar/409968857a02f3ee1c0ab0a057cada89/AndroidManifest.xml:6:5-8:41
+MERGED from [com.google.firebase:firebase-common:18.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-common-18.0.0.aar/409968857a02f3ee1c0ab0a057cada89/AndroidManifest.xml:6:5-8:41
+MERGED from [com.google.android.gms:play-services-auth-api-phone:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-auth-api-phone-15.0.1.aar/d94c860826b77eaa26d382795f8c42ce/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-auth-api-phone-15.0.1.aar/d94c860826b77eaa26d382795f8c42ce/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-auth-base-15.0.1.aar/d0e94edca07d8c0783495b2fc1c85163/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-auth-base-15.0.1.aar/d0e94edca07d8c0783495b2fc1c85163/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-interop-17.0.0.aar/de9407305bee6e0b8afe1a0e34ce207c/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-interop-17.0.0.aar/de9407305bee6e0b8afe1a0e34ce207c/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-base-17.0.0.aar/ee43ce022d1fe82e1d315496c8b945fc/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-base-17.0.0.aar/ee43ce022d1fe82e1d315496c8b945fc/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-tasks-17.0.0.aar/824d86b358b84332b93c77b274710adb/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-tasks-17.0.0.aar/824d86b358b84332b93c77b274710adb/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-18.0.0.aar/4a39368157221beffb9c1c38ec7e1ff8/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-18.0.0.aar/4a39368157221beffb9c1c38ec7e1ff8/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-stats-17.0.0.aar/93ceef93fa56baa8594c03e035679220/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-stats-17.0.0.aar/93ceef93fa56baa8594c03e035679220/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-17.0.0.aar/c1ca5f6e1cc6c73834ff986b993f583f/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-17.0.0.aar/c1ca5f6e1cc6c73834ff986b993f583f/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/media-1.0.0.aar/0ac8c2dd02d94e700c571e5ac7c6edc7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/media-1.0.0.aar/0ac8c2dd02d94e700c571e5ac7c6edc7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/appcompat-1.0.0.aar/1c897f0631a70957465a5e46642ddb60/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/appcompat-1.0.0.aar/1c897f0631a70957465a5e46642ddb60/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/fragment-1.0.0.aar/5c0dd94d53b2bf844ea1e1f5b1a1edd6/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/fragment-1.0.0.aar/5c0dd94d53b2bf844ea1e1f5b1a1edd6/AndroidManifest.xml:20:5-44
+MERGED from [androidx.browser:browser:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/browser-1.0.0.aar/40b70cc227fa37ab4059f9127a5670c6/AndroidManifest.xml:20:5-44
+MERGED from [androidx.browser:browser:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/browser-1.0.0.aar/40b70cc227fa37ab4059f9127a5670c6/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/vectordrawable-animated-1.0.0.aar/22914580cda17e2ac498cc24c909cafd/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/vectordrawable-animated-1.0.0.aar/22914580cda17e2ac498cc24c909cafd/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/legacy-support-core-ui-1.0.0.aar/5f0b204931c2c524da9587478640e32a/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/legacy-support-core-ui-1.0.0.aar/5f0b204931c2c524da9587478640e32a/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/legacy-support-core-utils-1.0.0.aar/4f66afa45869619bab7bbc700912d8de/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/legacy-support-core-utils-1.0.0.aar/4f66afa45869619bab7bbc700912d8de/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/loader-1.0.0.aar/3bd10e67cc2f8a5938f94c4957d8d2c9/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/loader-1.0.0.aar/3bd10e67cc2f8a5938f94c4957d8d2c9/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/viewpager-1.0.0.aar/180044f699daaa6ff6479325aebe5857/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/viewpager-1.0.0.aar/180044f699daaa6ff6479325aebe5857/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-1.0.0.aar/c99b6733df3ad27851df9c137a9f96f8/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-1.0.0.aar/c99b6733df3ad27851df9c137a9f96f8/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/drawerlayout-1.0.0.aar/d31bd9413603fe3b68f566a4804ca6ae/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/drawerlayout-1.0.0.aar/d31bd9413603fe3b68f566a4804ca6ae/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-1.0.0.aar/e2eae4df80528ab30468992ea6b1fb55/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-1.0.0.aar/e2eae4df80528ab30468992ea6b1fb55/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/customview-1.0.0.aar/4d68af77723f6b42366a1c859c5c4d30/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/customview-1.0.0.aar/4d68af77723f6b42366a1c859c5c4d30/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-1.0.0.aar/39f8ac59037063210d15d993621206c7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-1.0.0.aar/39f8ac59037063210d15d993621206c7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-1.0.0.aar/5f44e0af399e78f663b90fe6c9aa35e8/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-1.0.0.aar/5f44e0af399e78f663b90fe6c9aa35e8/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/vectordrawable-1.0.0.aar/3a2697344e3863f405e461a795189c06/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/vectordrawable-1.0.0.aar/3a2697344e3863f405e461a795189c06/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/core-1.0.0.aar/b1792dd0560dbff216c8ba2fbfeaaf6c/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/core-1.0.0.aar/b1792dd0560dbff216c8ba2fbfeaaf6c/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/versionedparcelable-1.0.0.aar/42c98892fb7ea3ade5ce57f8f0c846e1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/versionedparcelable-1.0.0.aar/42c98892fb7ea3ade5ce57f8f0c846e1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/lifecycle-runtime-2.0.0.aar/4dff8636b03a70cbdc8af14e9c52f1a2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/lifecycle-runtime-2.0.0.aar/4dff8636b03a70cbdc8af14e9c52f1a2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/documentfile-1.0.0.aar/5e00a8fb2eadb4e02ed832bcc172c338/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/documentfile-1.0.0.aar/5e00a8fb2eadb4e02ed832bcc172c338/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-1.0.0.aar/41ec62d0462d961bc537e330edb02846/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-1.0.0.aar/41ec62d0462d961bc537e330edb02846/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/print-1.0.0.aar/bcbd562f3df917de2624f959a6ee1f19/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/print-1.0.0.aar/bcbd562f3df917de2624f959a6ee1f19/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/interpolator-1.0.0.aar/0259b193c99ae39bd5aaeea537388f0c/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/interpolator-1.0.0.aar/0259b193c99ae39bd5aaeea537388f0c/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/cursoradapter-1.0.0.aar/518842ad46653a036ff1176699b96cc6/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/cursoradapter-1.0.0.aar/518842ad46653a036ff1176699b96cc6/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/lifecycle-viewmodel-2.0.0.aar/62094efe9f6b1f56a2cde4cecacbe4ae/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/lifecycle-viewmodel-2.0.0.aar/62094efe9f6b1f56a2cde4cecacbe4ae/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/cardview-1.0.0.aar/8bf5f1087a2c6c560c722a3eac9344ff/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/cardview-1.0.0.aar/8bf5f1087a2c6c560c722a3eac9344ff/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/lifecycle-livedata-2.0.0.aar/2c4a89635a335d62d4b4237f1b8a26e9/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/lifecycle-livedata-2.0.0.aar/2c4a89635a335d62d4b4237f1b8a26e9/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/lifecycle-livedata-core-2.0.0.aar/6ab39f31cd0dd7a14847ab2fd07597f1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/lifecycle-livedata-core-2.0.0.aar/6ab39f31cd0dd7a14847ab2fd07597f1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/core-runtime-2.0.0.aar/26d795d3597621af3a192dfd7096a381/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/core-runtime-2.0.0.aar/26d795d3597621af3a192dfd7096a381/AndroidManifest.xml:20:5-44
+INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml
+INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml
+		INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml
+		ADDED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml
+		INJECTED from /var/www/html/Tripion_new/platforms/android/app/src/main/AndroidManifest.xml
+provider#com.squareup.picasso.PicassoProvider
+ADDED from [com.squareup.picasso:picasso:2.71828] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-picasso-2.71828.aar/f24cd664c0bd3a8d63030494235aee84/AndroidManifest.xml:8:9-11:40
+	android:authorities
+		ADDED from [com.squareup.picasso:picasso:2.71828] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-picasso-2.71828.aar/f24cd664c0bd3a8d63030494235aee84/AndroidManifest.xml:10:13-72
+	android:exported
+		ADDED from [com.squareup.picasso:picasso:2.71828] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-picasso-2.71828.aar/f24cd664c0bd3a8d63030494235aee84/AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [com.squareup.picasso:picasso:2.71828] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-picasso-2.71828.aar/f24cd664c0bd3a8d63030494235aee84/AndroidManifest.xml:9:13-64
+uses-permission#com.sec.android.provider.badge.permission.READ
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:19:5-86
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:19:22-83
+uses-permission#com.sec.android.provider.badge.permission.WRITE
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:20:5-87
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:20:22-84
+uses-permission#com.htc.launcher.permission.READ_SETTINGS
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:23:5-81
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:23:22-78
+uses-permission#com.htc.launcher.permission.UPDATE_SHORTCUT
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:24:5-83
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:24:22-80
+uses-permission#com.sonyericsson.home.permission.BROADCAST_BADGE
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:27:5-88
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:27:22-85
+uses-permission#com.sonymobile.home.permission.PROVIDER_INSERT_BADGE
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:28:5-92
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:28:22-89
+uses-permission#com.anddoes.launcher.permission.UPDATE_COUNT
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:31:5-84
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:31:22-81
+uses-permission#com.majeur.launcher.permission.UPDATE_BADGE
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:34:5-83
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:34:22-80
+uses-permission#com.huawei.android.launcher.permission.CHANGE_BADGE
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:37:5-91
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:37:22-88
+uses-permission#com.huawei.android.launcher.permission.READ_SETTINGS
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:38:5-92
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:38:22-89
+uses-permission#com.huawei.android.launcher.permission.WRITE_SETTINGS
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:39:5-93
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:39:22-90
+uses-permission#android.permission.READ_APP_BADGE
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:42:5-73
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:42:22-70
+uses-permission#com.oppo.launcher.permission.READ_SETTINGS
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:45:5-82
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:45:22-79
+uses-permission#com.oppo.launcher.permission.WRITE_SETTINGS
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:46:5-83
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:46:22-80
+uses-permission#me.everything.badger.permission.BADGE_COUNT_READ
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:49:5-88
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:49:22-85
+uses-permission#me.everything.badger.permission.BADGE_COUNT_WRITE
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:50:5-89
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /home/mohit/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/42e74533319792ba8f6861467580919d/AndroidManifest.xml:50:22-86
+service#com.google.firebase.messaging.FirebaseMessagingService
+ADDED from [com.google.firebase:firebase-messaging:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-firebase-messaging-19.0.0.aar/f36efa15d19b44cd719d0fc83aada272/AndroidManifest.xml:28:9-34:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-messaging:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-firebase-messaging-19.0.0.aar/f36efa15d19b44cd719d0fc83aada272/AndroidManifest.xml:30:13-37
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-firebase-messaging-19.0.0.aar/f36efa15d19b44cd719d0fc83aada272/AndroidManifest.xml:29:13-82
+activity#com.facebook.CustomTabMainActivity
+ADDED from [com.facebook.android:facebook-common:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-common-5.5.2.aar/c2efaacce83fe1ccc8f800a38f4b4e1e/AndroidManifest.xml:33:9-71
+	android:name
+		ADDED from [com.facebook.android:facebook-common:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-common-5.5.2.aar/c2efaacce83fe1ccc8f800a38f4b4e1e/AndroidManifest.xml:33:19-68
+activity#com.facebook.CustomTabActivity
+ADDED from [com.facebook.android:facebook-common:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-common-5.5.2.aar/c2efaacce83fe1ccc8f800a38f4b4e1e/AndroidManifest.xml:34:9-67
+	android:name
+		ADDED from [com.facebook.android:facebook-common:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-common-5.5.2.aar/c2efaacce83fe1ccc8f800a38f4b4e1e/AndroidManifest.xml:34:19-64
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-auth-15.0.1.aar/bbea0b623b0d66e5e6ad1e8dee7f287e/AndroidManifest.xml:23:9-27:75
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-auth-15.0.1.aar/bbea0b623b0d66e5e6ad1e8dee7f287e/AndroidManifest.xml:25:13-46
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-auth-15.0.1.aar/bbea0b623b0d66e5e6ad1e8dee7f287e/AndroidManifest.xml:26:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-auth-15.0.1.aar/bbea0b623b0d66e5e6ad1e8dee7f287e/AndroidManifest.xml:27:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-auth-15.0.1.aar/bbea0b623b0d66e5e6ad1e8dee7f287e/AndroidManifest.xml:24:13-93
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-auth-15.0.1.aar/bbea0b623b0d66e5e6ad1e8dee7f287e/AndroidManifest.xml:33:9-36:110
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-auth-15.0.1.aar/bbea0b623b0d66e5e6ad1e8dee7f287e/AndroidManifest.xml:35:13-36
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-auth-15.0.1.aar/bbea0b623b0d66e5e6ad1e8dee7f287e/AndroidManifest.xml:36:13-107
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:15.0.1] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-auth-15.0.1.aar/bbea0b623b0d66e5e6ad1e8dee7f287e/AndroidManifest.xml:34:13-89
+provider#com.facebook.internal.FacebookInitProvider
+ADDED from [com.facebook.android:facebook-core:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-core-5.5.2.aar/62a28cf16d6b1d038e33ed5ab44cc348/AndroidManifest.xml:39:9-42:40
+	android:authorities
+		ADDED from [com.facebook.android:facebook-core:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-core-5.5.2.aar/62a28cf16d6b1d038e33ed5ab44cc348/AndroidManifest.xml:41:13-72
+	android:exported
+		ADDED from [com.facebook.android:facebook-core:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-core-5.5.2.aar/62a28cf16d6b1d038e33ed5ab44cc348/AndroidManifest.xml:42:13-37
+	android:name
+		ADDED from [com.facebook.android:facebook-core:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-core-5.5.2.aar/62a28cf16d6b1d038e33ed5ab44cc348/AndroidManifest.xml:40:13-70
+receiver#com.facebook.CurrentAccessTokenExpirationBroadcastReceiver
+ADDED from [com.facebook.android:facebook-core:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-core-5.5.2.aar/62a28cf16d6b1d038e33ed5ab44cc348/AndroidManifest.xml:44:9-50:20
+	android:exported
+		ADDED from [com.facebook.android:facebook-core:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-core-5.5.2.aar/62a28cf16d6b1d038e33ed5ab44cc348/AndroidManifest.xml:46:13-37
+	android:name
+		ADDED from [com.facebook.android:facebook-core:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-core-5.5.2.aar/62a28cf16d6b1d038e33ed5ab44cc348/AndroidManifest.xml:45:13-86
+intent-filter#action:name:com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED
+ADDED from [com.facebook.android:facebook-core:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-core-5.5.2.aar/62a28cf16d6b1d038e33ed5ab44cc348/AndroidManifest.xml:47:13-49:29
+action#com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED
+ADDED from [com.facebook.android:facebook-core:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-core-5.5.2.aar/62a28cf16d6b1d038e33ed5ab44cc348/AndroidManifest.xml:48:17-95
+	android:name
+		ADDED from [com.facebook.android:facebook-core:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-core-5.5.2.aar/62a28cf16d6b1d038e33ed5ab44cc348/AndroidManifest.xml:48:25-92
+receiver#com.facebook.CampaignTrackingReceiver
+ADDED from [com.facebook.android:facebook-core:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-core-5.5.2.aar/62a28cf16d6b1d038e33ed5ab44cc348/AndroidManifest.xml:51:9-58:20
+	android:exported
+		ADDED from [com.facebook.android:facebook-core:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-core-5.5.2.aar/62a28cf16d6b1d038e33ed5ab44cc348/AndroidManifest.xml:53:13-36
+	android:permission
+		ADDED from [com.facebook.android:facebook-core:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-core-5.5.2.aar/62a28cf16d6b1d038e33ed5ab44cc348/AndroidManifest.xml:54:13-69
+	android:name
+		ADDED from [com.facebook.android:facebook-core:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-core-5.5.2.aar/62a28cf16d6b1d038e33ed5ab44cc348/AndroidManifest.xml:52:13-65
+intent-filter#action:name:com.android.vending.INSTALL_REFERRER
+ADDED from [com.facebook.android:facebook-core:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-core-5.5.2.aar/62a28cf16d6b1d038e33ed5ab44cc348/AndroidManifest.xml:55:13-57:29
+action#com.android.vending.INSTALL_REFERRER
+ADDED from [com.facebook.android:facebook-core:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-core-5.5.2.aar/62a28cf16d6b1d038e33ed5ab44cc348/AndroidManifest.xml:56:17-79
+	android:name
+		ADDED from [com.facebook.android:facebook-core:5.5.2] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-facebook-core-5.5.2.aar/62a28cf16d6b1d038e33ed5ab44cc348/AndroidManifest.xml:56:25-76
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:26:5-82
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:26:22-79
+service#com.google.firebase.components.ComponentDiscoveryService
+ADDED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:29:9-35:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:31:13-37
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:30:13-84
+meta-data#com.google.firebase.components:com.google.firebase.iid.Registrar
+ADDED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:32:13-34:85
+	android:value
+		ADDED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:34:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:33:17-96
+receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
+ADDED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:37:9-44:20
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:39:13-36
+	android:permission
+		ADDED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:40:13-73
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:38:13-78
+intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:41:13-43:29
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:42:17-81
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:19.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-iid-19.0.0.aar/ab356ad5d350216905c70398004fdf92/AndroidManifest.xml:42:25-78
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:18.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-common-18.0.0.aar/409968857a02f3ee1c0ab0a057cada89/AndroidManifest.xml:12:9-16:39
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:18.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-common-18.0.0.aar/409968857a02f3ee1c0ab0a057cada89/AndroidManifest.xml:14:13-72
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:18.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-common-18.0.0.aar/409968857a02f3ee1c0ab0a057cada89/AndroidManifest.xml:15:13-37
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:18.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-common-18.0.0.aar/409968857a02f3ee1c0ab0a057cada89/AndroidManifest.xml:16:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-common:18.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/firebase-common-18.0.0.aar/409968857a02f3ee1c0ab0a057cada89/AndroidManifest.xml:13:13-77
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-base-17.0.0.aar/ee43ce022d1fe82e1d315496c8b945fc/AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-base-17.0.0.aar/ee43ce022d1fe82e1d315496c8b945fc/AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-base-17.0.0.aar/ee43ce022d1fe82e1d315496c8b945fc/AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/play-services-base-17.0.0.aar/ee43ce022d1fe82e1d315496c8b945fc/AndroidManifest.xml:24:13-79
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-17.0.0.aar/c1ca5f6e1cc6c73834ff986b993f583f/AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-17.0.0.aar/c1ca5f6e1cc6c73834ff986b993f583f/AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:17.0.0] /home/mohit/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-17.0.0.aar/c1ca5f6e1cc6c73834ff986b993f583f/AndroidManifest.xml:24:13-58
