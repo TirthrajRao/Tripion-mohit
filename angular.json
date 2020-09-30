@@ -39,7 +39,11 @@
                 "input": "src/global.scss"
               }
             ],
-            "scripts": []
+            "scripts": [
+              {
+                "input": "node_modules/vue/dist/vue.min.js",
+              }
+            ]
           },
           "configurations": {
             "production": {

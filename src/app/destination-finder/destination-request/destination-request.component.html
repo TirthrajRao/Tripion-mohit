@@ -2,8 +2,8 @@
   <app-header [cname]="'Destination Finder'"></app-header>
 </ion-header>
 
-<ion-content class="bg-image">
-  <ion-card no-padding no-margin class="no-border-radius segment-card">
+<ion-content>
+<!--   <ion-card no-padding no-margin class="no-border-radius segment-card">
     <ion-tab-button class="segment-item">
       <ion-label class="nav-item"><a class="nav-link" id="feture" aria-controls="feture" (click)="selectTab($event)" aria-selected="true">Feature</a></ion-label>
     </ion-tab-button>
@@ -28,7 +28,7 @@
     <ion-tab-button class="segment-item">
       <ion-label class="nav-item"><a class="nav-link" id="south-america" aria-controls="feture" (click)="selectTab($event)" aria-selected="true">South-America</a></ion-label>
     </ion-tab-button>
-  </ion-card>
+  </ion-card> -->
   <div class="product-content">
     <ion-slides class="content-slider" *ngIf="isDisplay && destinationReq.length" pager="true">
       <ion-slide class="content-slide" *ngFor="let destination of details" (click)="productDetail(destination)">
@@ -37,7 +37,7 @@
       </ion-slide>
     </ion-slides>
 
-    <div class="bottom-sec">
+    <!-- <div class="bottom-sec">
       <div class="filter-sec">
         <h5>All Products</h5>
         <p (click)="openModal()">
@@ -57,9 +57,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
-  <div class="success_alert_box1" style="display: none;">
+<!--   <div class="success_alert_box1" style="display: none;">
     <div class="alert_box_content">
       <div class="alert_box_text">
         <div class="alert_box_image">
@@ -71,8 +71,8 @@
         </p>
       </div>
     </div>
-  </div>
-  <div *ngIf="loading">
+  </div> -->
+  <!-- <div *ngIf="loading">
     <div id="loader-wrapper">
       <div class="heartbeatloader">
         <ion-img class="svgdraw" src="assets/images/loader.gif"></ion-img>
@@ -88,45 +88,66 @@
       <div class="filter-content">
         <h4 class="filter-head">Filter by</h4>
         <div class="filter-list">
-          <!-- <div id="accordion" *ngFor="let place of placeTags">
+          <div id="accordion" *ngFor="let place of placeTags">
             <div class="accordion-group">
-              <a role="button" class="collapsed accordion">{{place.name}}</a>
-              <div [id]="'collapse'+place.id" class="collapse panel" role="tabpanel" [attr.aria-labelledby]="'heading'+place.id"
-              data-parent="#accordion">
-              <div class="accordion-content">
-                <div class="single-list" *ngFor="let subplace of place.sub_cat">
-                  <ion-checkbox checked='false' (click)="selectPlace(subplace.id, subplace)"></ion-checkbox>
-                  <ion-label>{{subplace.name}}</ion-label>
+              <button class="accordion">{{place.name}}</button>
+                <div class="panel">
+                  <div class="accordion-content">
+                    <div class="single-list" *ngFor="let subplace of place.sub_cat">
+                      <ion-checkbox checked='false' (click)="selectPlace(subplace.id, subplace)"></ion-checkbox>
+                      <ion-label>{{subplace.name}}</ion-label>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div> -->
-          <div id="accordion" *ngFor="let place of placeTags">
-            <div class="accordion-group">
-              <!-- <a role="button" class="collapsed accordion">{{place.name}}</a> -->
-              <button class="accordion">{{place.name}}</button>
-              <!-- <div [id]="'collapse'+place.id" class="collapse panel" role="tabpanel" [attr.aria-labelledby]="'heading'+place.id" -->
-              <!-- data-parent="#accordion"> -->
-                  <div class="panel">
-              <div class="accordion-content">
-                <div class="single-list" *ngFor="let subplace of place.sub_cat">
-                  <ion-checkbox checked='false' (click)="selectPlace(subplace.id, subplace)"></ion-checkbox>
-                  <!-- <ion-label>{{subplace.name}}</ion-label> -->
-                    <ion-label>{{subplace.name}}</ion-label>
-                  </div>
-                </div>
+          </div>
+
+        </div>
+        <div class="buttons">
+          <a (click)="closeModal()">Cancel</a>
+          <a (click)="placeFilter()">Apply</a>
+        </div>
+      </div>
+    </div> -->
+  <!-- </ion-content> -->
+
+  <!-- <ion-content> -->
+    <div class="container p-0">
+
+      <div class="row p-0 m-0" *ngIf="destinationReq.length">
+
+        <div class="col-6 p-0 m-0" *ngFor="let destination of destinationReq" (click)="productDetail(destination)">
+          <div class="dcard">
+            <div class="trigger"></div>
+            <div class="trigger"></div>
+            <div class="trigger"></div>
+            <div class="trigger"></div>
+            <div class="trigger"></div>
+            <div class="trigger"></div>
+            <div class="trigger"></div>
+            <div class="trigger"></div>
+            <div class="trigger"></div>
+
+            <div class="paracard">
+              <img src="{{destination.images}}" alt="image">
+              <div class="frame">
+                <h4>{{destination.name}}</h4>
               </div>
             </div>
           </div>
         </div>
 
       </div>
-      <div class="buttons">
-        <a (click)="closeModal()">Cancel</a>
-        <a (click)="placeFilter()">Apply</a>
-      </div>
     </div>
-  </div>
-  <!-- </div> -->
-
-</ion-content>
+        <div *ngIf="loading">
+          <div id="loader-wrapper">
+            <div class="heartbeatloader">
+              <ion-img class="svgdraw" src="assets/images/loader.gif"></ion-img>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!loading && !destinationReq.length" class="no_folder">
+          <span class="text-white text-center no-request">No Inquiry</span>
+        </div>
+  </ion-content>

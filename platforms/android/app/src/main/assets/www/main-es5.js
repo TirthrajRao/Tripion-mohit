@@ -835,6 +835,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// import Vue from 'vue';
+// import Ionic from '@ionic/vue';
 // import { SafePipe } from './safe.pipe';
 var AppModule = /** @class */ (function () {
     function AppModule() {

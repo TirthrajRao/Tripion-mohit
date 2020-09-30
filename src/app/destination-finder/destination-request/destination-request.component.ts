@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TripService } from '../../services/trip.service';
 import { ModalController } from '@ionic/angular';
 import { AppComponent } from '../../app.component';
+// import Vue from 'vue';
 
 declare const $: any;
 @Component({
@@ -257,4 +258,8 @@ export class DestinationRequestComponent implements OnInit {
       console.log("the filtert of sub places err is the ============>", err);
     })
   }
+
+
+
+
 }
