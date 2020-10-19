@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TripService } from '../../services/trip.service';
 import { ModalController } from '@ionic/angular';
 import { AppComponent } from '../../app.component';
+// import Vue from 'vue';
 
 declare const $: any;
 @Component({
@@ -19,8 +20,8 @@ export class DestinationRequestComponent implements OnInit {
   allSlugs: any = [];
   resultsOfSelectedSlugs:any;
   subPlaces:any = [];
+  slideOpts:any;
   isDisplay:boolean = false;
-
   
   constructor(
     public router: Router,
@@ -29,7 +30,7 @@ export class DestinationRequestComponent implements OnInit {
     public modalController: ModalController
     ) { 
     $(document).ready(function(){
-      $("#feture").css("color", "#0575e6");
+      $("#feture").css("color", "black");
     });
 
     $(document).ready(function () {
@@ -64,22 +65,19 @@ export class DestinationRequestComponent implements OnInit {
     this._tripService.getDestinationReqProduct(data).subscribe((res: any) => {
       console.log("res", res);
       this.details = res.data;
-      this.loading = false;
-      this.isDisplay = true;
       this.destinationReq = res.data;
+      this.isDisplay = true;
+      this.loading = false;
       $(document).ready(function(){
-        $("#feture").css("color", "#0575e6");
+        $("#feture").css("color", "black");
       });
-    }, (err) => {
+    }, err => {
       console.log("err", err);
       this.loading = false;
       this.appComponent.errorAlert(err.error.message);  
     });
   }
   
-  /**
-  * Open Destination Inner Page
-  */
   productDetail(destination){
     console.log("the products is ============>", destination);
     this.router.navigate(['/home/destination-detail/'+ destination.id])
@@ -94,7 +92,6 @@ export class DestinationRequestComponent implements OnInit {
     var value = idAttr.nodeValue;
     console.log("the value of selectTab is --------->", value);
     this.isDisplay = false;
-    this.loading = true;
 
     var obj = {
       id : this.curruntUser.id,
@@ -107,9 +104,10 @@ export class DestinationRequestComponent implements OnInit {
 
     if (value == 'feture') {
       $(document).ready(function(){
-        $("#feture").css("color", "#0575e6");
+        $("#feture").css("color", "black");
       });
       this.isDisplay = true;
+      console.log("the condition is working");
       this._tripService.getDestinationReqProduct(data).subscribe((res: any) => {
         console.log("res", res);
         this.destinationReq = null;
@@ -129,6 +127,7 @@ export class DestinationRequestComponent implements OnInit {
       });
       this._tripService.getDestinationReqFeture(obj).subscribe((res: any) => {
         this.destinationReq = res.data;
+        // this.createSlider();
         this.loading = false;
         console.log("the res of tabs feture image ------------>", res);
       }, (err) => {
@@ -137,37 +136,46 @@ export class DestinationRequestComponent implements OnInit {
     }   
   }
 
-  /**
-  * Open Model
-  */
+  createSlider(){
+    $(document).ready(function () {
+      if ($('.content-slider').hasClass('slick-initialized'))
+        $('.content-slider').slick('unslick');
+      setTimeout(() => {
+        $('.content-slider').not('.slick-initialized').slick({
+          infinite: true,
+          dots: true,
+          slidesToShow: 1,
+          arrows: false,
+        });
+      }, 200);
+    });
+  }
+
+  createAccordian(){
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        } 
+      });
+    }
+  }
+
   openModal() {
     console.log("====")
-    $('#product-modal').fadeIn();
     this.createAccordian();
+    $('#product-modal').fadeIn();
     $('#product-modal .modal_body').click(function (event) {
       event.stopPropagation();
       console.log("fadeIN called");
     });
-  }
-
-  /**
-  * Create Accordian
-  */
-  createAccordian(){
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-    console.log("ACC", acc)
-    for (i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function () {
-        this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-          panel.style.display = "none";
-        } else {
-          panel.style.display = "block";
-        }
-      });
-    }
   }
 
   /**
@@ -187,15 +195,42 @@ export class DestinationRequestComponent implements OnInit {
     }
     this._tripService.getDestinationReqPlaceTages(data).subscribe((res: any) => {
       this.placeTags = res.data;
-      console.log("the all place of filter res ====>", res);
+
+      this.placeTags.map((place) => {
+        place.subPlaces = [];
+      })
+      console.log("the all place of res ======>", this.placeTags);
+
     }, (err) => {
       console.log("the all place of err ======>", err);
     })
   }
 
-  /**
-  * Filter in Select Subplaces  
-  */
+
+  placeTag(id, value){
+    console.log("the placeTag value of an id is ==========>", id, value);
+    var data = {
+      id: this.curruntUser.id,
+      term_id: id
+    }
+    this.loading = true;
+
+    this._tripService.getDestinationReqPlaceSubTages(data).subscribe((res: any) => {
+      console.log("the sub placeTag res of =======>", res);
+
+      const index = this.placeTags.findIndex((place) => {
+        return place.id === id
+      })
+      this.loading = false;
+      this.placeTags[index].subPlaces = JSON.parse(JSON.stringify(res.data));
+      console.log("the index of the id =======>", this.placeTags);
+
+    }, (err) => {
+      console.log("the sub placeTag err of =======>", err);
+    })
+  }
+
+
   selectPlace(id, value){
     console.log("the selectPlace of the ------->", id, value);
     
@@ -222,7 +257,6 @@ export class DestinationRequestComponent implements OnInit {
       id: this.curruntUser.id,
       filter_data: this.resultsOfSelectedSlugs
     }
-    this.createAccordian();
     this.loading = true;
     this._tripService.getDestinationReqFeture(data).subscribe((res: any) => {
       console.log("the filtert of sub places is the ============>", res);
@@ -230,11 +264,16 @@ export class DestinationRequestComponent implements OnInit {
       this.loading = false;
       this.isDisplay = false;
       $('#product-modal').fadeOut();
-       $(document).ready(function(){
+      this.createAccordian();
+      $(document).ready(function(){
         $("#feture").css("color", "#7f8dab");
       });
     }, (err) => {
       console.log("the filtert of sub places err is the ============>", err);
     })
   }
+
+
+
+
 }

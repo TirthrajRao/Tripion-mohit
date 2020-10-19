@@ -87,7 +87,6 @@ ion-content {
 }
 .image-slide {
     position: relative;
-    height: 45vh;
 }
 .image-slide img {
     min-height: 100%;
@@ -99,10 +98,8 @@ ion-content {
 }
 .product-detail {
     border-radius: 22px;
-    box-shadow: 0px 0px 14px rgba($color: #584bdd, $alpha: 0.4);
     padding: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+    margin-bottom: 20px;
     background-color: #ffffff;
     position: relative;
 }
@@ -143,15 +140,92 @@ ion-content {
 }
 
 
-.product-detail h6{
-    background: #d3d3d338;
-    padding: 12px;
-    width: fit-content;
+.destination-tags{
+text-align: center;
+    padding: 8px 15px;
+    /* background: #d3d3d347; */
     border-radius: 50px;
-    display: inline-block;
+    font-size: 12px;
+    margin: 5px;
+    font-weight: 500;
+    white-space: nowrap;
+    flex-basis: 0 !important;
+    -webkit-box-flex: 1 !important;
+    flex-grow: 1 !important;
+    max-width: 100%;
+    border: 2px solid #f3b84d;
+}
+.swiper-pagination-bullet {
+    background: #d3d3d3c4;
 }
 
-.alltags{
-    width: 100% !important;
-    
+
+.image-slider{
+    width: 100%;
+    position: relative;
+    border-radius: 20px;
+    height: 220px;
+}
+
+
+.image-slide p{
+    position: absolute;
+    z-index: 1111;
+    bottom: 0px;
+    color: #fff;
+    font-weight: bold;
+    width: 100%;
+    padding: 9px;
+    text-align:center;
+    background-color: #f3b84dd4;
+}
+hr{
+    border-width: 1px;
+    box-sizing: content-box;
+}
+
+.package {
+    padding: 10px 22px;
+    border-radius: 50px;
+    background-color: #f3b84d;
+    width: fit-content;
+    font-weight: bold;
+    color: black;
+    margin-top: 21px;
+}
+
+.package p{
+    font-size: 15px;
+    color: black;
+    line-height: 23px;
+    margin-bottom: 0px; 
+}
+
+.fa-arrow-right:before {
+    padding-left: 16px;
+}
+
+.placeImages img{
+    border-radius: 15px;
+    height: 53px;
+}
+
+.prevactive{
+    color: #f3b84d;
+    font-size: 20px;
+}
+
+.previnactive{
+    color: black;
+    font-size: 20px;
+}
+
+.nextactive{
+    color: #f3b84d;
+    font-size: 20px;
+}
+
+.nextinactive{
+    color: black;
+    font-size: 20px;
 }

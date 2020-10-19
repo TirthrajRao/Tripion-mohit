@@ -1003,6 +1003,8 @@ span.select2-selection__placeholder {
     background: linear-gradient(#0575e6, #021b79);
     height: 8px;
     width: 8px;
+    position: absolute;
+    z-index: 1200;
 }
 .content-slider ul.slick-dots li {
     display: inline-block;
@@ -1011,10 +1013,14 @@ span.select2-selection__placeholder {
     margin: 3px;
     border-radius: 50%;
     background-color: #d3d1e6;
+    position: absolute;
+    z-index: 1200;
 }
 .content-slider ul.slick-dots {
     text-align: center;
-    bottom: 15px;
+    margin-top: -10px;
+    position: absolute;
+    z-index: 1200;
 }
 .content-slider ul.slick-dots li button {
     display: none;

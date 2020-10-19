@@ -55,6 +55,8 @@ import { DestinationDetailComponent } from '../destination-finder/destination-de
 import { DestinationOtherDetailComponent } from '../destination-finder/destination-other-detail/destination-other-detail.component';
 import { ClimateComponent } from '../destination-finder/climate/climate.component';
 import { PopularityOfDestinationComponent } from '../destination-finder/popularity-of-destination/popularity-of-destination.component';
+import { FindDestinationComponent } from '../destination-finder/find-destination/find-destination.component';
+import { PreferenceDestinationComponent } from '../destination-finder/preference-destination/preference-destination.component';
 import { GeneralQuatationComponent } from '../general-quatation/general-quatation.component';
 import { GeneralQuatationDetailComponent } from '../general-quatation-detail/general-quatation-detail.component';
 
@@ -332,6 +334,14 @@ export class IonicGestureConfig extends HammerGestureConfig {
           {
             path:'general-quatation-detail/:id',
             component:GeneralQuatationDetailComponent
+          },
+          {
+            path:'find-your-destination',
+            component:FindDestinationComponent
+          },
+          {
+            path:'preference-destination/:id',
+            component:PreferenceDestinationComponent
           }
         ]
       },
@@ -400,7 +410,9 @@ export class IonicGestureConfig extends HammerGestureConfig {
     ClimateComponent,
     PopularityOfDestinationComponent,
     GeneralQuatationComponent,
-    GeneralQuatationDetailComponent
+    GeneralQuatationDetailComponent,
+    FindDestinationComponent,
+    PreferenceDestinationComponent
   ],
   providers: [
     FileTransfer,

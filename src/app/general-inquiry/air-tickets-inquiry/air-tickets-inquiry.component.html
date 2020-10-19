@@ -89,6 +89,24 @@
                 </div> -->
 
                 <div class="general_details">
+                    <div class="general_details_body">
+                        <div>
+                            <ion-item>
+                                <ion-label position="floating">To</ion-label>
+                                <ion-input formControlName="to_destination">
+                                </ion-input>
+                            </ion-item>
+                        </div>
+                        <div>
+                            <ion-item>
+                                <ion-label position="floating">From</ion-label>
+                                <ion-input formControlName="from_destination"></ion-input>
+                            </ion-item>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="general_details">
                     <div class="general_details_header">
                         <img src="assets/images/jounry.png">
                         <p>Journey Type</p>
@@ -97,173 +115,184 @@
                         <div class="row option-img">
                             <div class="col-6">
                                 <input type="radio" class="mr-2" id="Journey1" formControlName="journey_type"
-                                    value="Round Trip">
+                                value="Round Trip">
                                 <label for="Journey1"><img src="assets/images/round.png">Round Trip</label>
                             </div>
                             <div class="col-6">
                                 <input type="radio" class="mr-2" id="Journey2" value="One Way"
-                                    formControlName="journey_type">
+                                formControlName="journey_type">
                                 <label for="Journey2"><img src="assets/images/single.png">One Way</label>
                             </div>
                             <div class="col-6">
                                 <input type="radio" class="mr-2" id="Journey3" value="Multi City"
-                                    formControlName="journey_type">
+                                formControlName="journey_type">
                                 <label for="Journey3"><img src="assets/images/multi.png" style="height: 25px;">Multi
-                                    City</label>
+                                City</label>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="general_details">
-                    <div class="general_details_header">
-                        <img src="assets/images/flight-tire.png">
-                        <p>Flight Tier Prefernece</p>
-                    </div>
-                    <div class="general_details_body">
 
-                        <div class="select_plan_check">
-                            <ion-checkbox checked="false" (ionChange)="selectTier($event)" value="Economies">
-                            </ion-checkbox>
-                            <ion-label class="ml-3">Economy</ion-label>
-                        </div>
-                        <div class="select_plan_check">
-                            <ion-checkbox checked="false" (ionChange)="selectTier($event)" value="Business Class">
-                            </ion-checkbox>
-                            <ion-label class="ml-3">Business Class</ion-label>
-                        </div>
-                        <div class="select_plan_check">
-                            <ion-checkbox checked="false" (ionChange)="selectTier($event)" value="First Class">
-                            </ion-checkbox>
-                            <ion-label class="ml-3">First Class</ion-label>
-                        </div>
-                        <div class="select_plan_check">
-                            <ion-checkbox checked="false" (ionChange)="selectTier($event)" value="Premium Economy">
-                            </ion-checkbox>
-                            <ion-label class="ml-3">Premium Economy Class</ion-label>
-                        </div>
-                    </div>
+                <div class="general">
+                    <div class="toggle-section general_detail collapsed collapsed" data-toggle="collapse" data-target="#add-room"
+                    aria-expanded="false" aria-controls="add-room">Personalize Option <i class="fa float-right"
+                    aria-hidden="true"></i>
                 </div>
 
-                <div class="general_details">
-                    <div class="general_details_header">
-                        <img src="assets/images/flight-tire.png">
-                        <p>Flight Seat Preference</p>
-                        <a class="toggle-section collapsed collapsed" data-toggle="collapse" data-target="#flight-seat"
-                            aria-expanded="false" aria-controls="flight-seat"> <i class="fa" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="collapse multi-collapse mb-2" id="flight-seat">
-                        <div class="card card-body">
-                            The Seat preference might be chargeable by the airline and will be notified prior to
-                            confirming the ticket.
+                <div class="collapse multi-collapse mb-2 mt-3" id="add-room">
+                    <div class="general_details">
+                        <div class="general_details_header accordion">
+                            <img src="assets/images/flight-tire.png">
+                            <p>Flight Tier Preference</p>
                         </div>
-                    </div>
-                    <div class="general_details_body">
-                        <div class="row">
-                            <div class="col-6">
-                                <input type="radio" class="mr-2" id="Flight1" value="Aisle"
-                                    formControlName="flightSeat_preferences" (change)="selectVisaType($event)">
-                                <label for="Flight1">Aisle</label>
-                            </div>
-                            <div class="col-6">
-                                <input type="radio" class="mr-2" id="Flight2" value="Middle"
-                                    formControlName="flightSeat_preferences" (change)="selectVisaType($event)">
-                                <label for="Flight2">Middle</label>
-                            </div>
-                            <div class="col-6">
-                                <input type="radio" class="mr-2" id="Flight3" value="Window"
-                                    formControlName="flightSeat_preferences" (change)="selectVisaType($event)">
-                                <label for="Flight3">Window</label>
-                            </div>
-                            <div class="col-6">
-                                <input type="radio" class="mr-2" id="Flight4" value="Legroom Seats"
-                                    formControlName="flightSeat_preferences" (change)="selectVisaType($event)">
-                                <label for="Flight4">Legroom Seats</label>
-                            </div>
-                        </div>
-                        <div>
-                            <ion-item>
-                                <ion-label position="floating">Other</ion-label>
-                                <ion-input type="text" (ionInput)="changeInputValue($event)" id="other-input">
-                                </ion-input>
-                            </ion-item>
-                        </div>
-                        <div *ngIf="submitted && f.flightSeat_preferences.errors" class="invalid-feedback">
-                            <div *ngIf="f.flightSeat_preferences.errors.required">Choose one Flight Seat Preference
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="general_details">
-                    <div class="general_details_header">
-                        <img src="assets/images/flight-meal.png">
-                        <p>In-Flight Meal</p>
-                    </div>
-                    <div class="general_details_body">
-                        <div>
-                            <ion-item>
-                                <ion-label position="floating">Meal</ion-label>
-                                <ion-select formControlName="in_flight_meal" multiple="true">
-                                    <ion-select-option value="Veg Hindu Meal">Veg Hindu Meal</ion-select-option>
-                                    <ion-select-option value="Veg Vegan">Veg Vegan</ion-select-option>
-                                    <ion-select-option value="Veg Jain">Veg Jain</ion-select-option>
-                                    <ion-select-option value="Veg Lacto-ovo meal">Veg Lacto-ovo meal
-                                    </ion-select-option>
-                                    <ion-select-option value="Veg Oriental">Veg Oriental</ion-select-option>
-                                    <ion-select-option value="Infant Meal">Infant Meal</ion-select-option>
-                                    <ion-select-option value="Child Meal">Child Meal</ion-select-option>
-                                    <ion-select-option value="Diabetic meal">Diabetic meal</ion-select-option>
-                                    <ion-select-option value="Fruit Platter">Fruit Platter</ion-select-option>
-                                    <ion-select-option value="Gluten Intolerant Meal">Gluten Intolerant Meal
-                                    </ion-select-option>
-                                    <ion-select-option value="Kosher Meal">Kosher Meal</ion-select-option>
-                                    <ion-select-option value="Hindu Non-veg">Hindu Non-veg</ion-select-option>
-                                </ion-select>
-                            </ion-item>
-                            <div *ngIf="submitted && f.in_flight_meal.errors" class="invalid-feedback">
-                                <div *ngIf="f.in_flight_meal.errors.required">Select Flight Meal</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="general_details">
-                    <div class="general_details_header">
-                        <img src="assets/images/jounry.png">
-                        <p>Airline Preference</p>
-                    </div>
-                    <div class="general_details_body">
-                        <div>
-                            <ion-item>
-                                <ion-label position="floating">Airline Preference</ion-label>
-                                <ion-input type="text" formControlName="airline_preference"></ion-input>
-                            </ion-item>
-                            <div *ngIf="submitted && f.airline_preference.errors" class="invalid-feedback">
-                                <div *ngIf="f.airline_preference.errors.required">Airline Preference is required
+                        <div class="panel">
+                            <div class="accordion_inner">
+                                <div class="select_plan_check">
+                                    <ion-checkbox checked="false" (ionChange)="selectTier($event)" value="Economies">
+                                    </ion-checkbox>
+                                    <ion-label class="ml-3">Economy</ion-label>
+                                </div>
+                                <div class="select_plan_check">
+                                    <ion-checkbox checked="false" (ionChange)="selectTier($event)" value="Business Class">
+                                    </ion-checkbox>
+                                    <ion-label class="ml-3">Business Class</ion-label>
+                                </div>
+                                <div class="select_plan_check">
+                                    <ion-checkbox checked="false" (ionChange)="selectTier($event)" value="First Class">
+                                    </ion-checkbox>
+                                    <ion-label class="ml-3">First Class</ion-label>
+                                </div>
+                                <div class="select_plan_check">
+                                    <ion-checkbox checked="false" (ionChange)="selectTier($event)" value="Premium Economy">
+                                    </ion-checkbox>
+                                    <ion-label class="ml-3">Premium Economy Class</ion-label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="general_details colapse-icon">
-                    <div class="general_details_header">
-                        <img src="assets/images/flight-tire.png">
-                        <p>Seat Belt Extender</p>
-                        <a class="toggle-section collapsed collapsed" data-toggle="collapse" data-target="#seat-belt"
-                            aria-expanded="false" aria-controls="seat-belt"> <i class="fa" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="collapse multi-collapse mb-2" id="seat-belt">
-                        <div class="select_plan_check mt-2 mb-2">
-                            <ion-checkbox value="Yes" checked="false" (ionChange)="selectSeatBelt($event)"
-                                class="ml-4"></ion-checkbox>
-                            <ion-label class="ml-3">Select Seat belt Extender</ion-label>
+
+                    <div class="general_details">
+                            <div class="general_details_header accordion">
+                                <img src="assets/images/flight-tire.png">
+                                <p>Flight Seat Preference</p>
+                                <i class="fa" aria-hidden="true"></i>
+                            </div>
+                            <div class="panel">
+                                <div class="card card-body">
+                                    The Seat preference might be chargeable by the airline and will be notified prior to
+                                    confirming the ticket.
+                                </div>
+                                <div class="general_details_body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <input type="radio" class="mr-2" id="Flight1" value="Aisle"
+                                            formControlName="flightSeat_preferences" (change)="selectVisaType($event)">
+                                            <label for="Flight1">Aisle</label>
+                                        </div>
+                                        <div class="col-6">
+                                            <input type="radio" class="mr-2" id="Flight2" value="Middle"
+                                            formControlName="flightSeat_preferences" (change)="selectVisaType($event)">
+                                            <label for="Flight2">Middle</label>
+                                        </div>
+                                        <div class="col-6">
+                                            <input type="radio" class="mr-2" id="Flight3" value="Window"
+                                            formControlName="flightSeat_preferences" (change)="selectVisaType($event)">
+                                            <label for="Flight3">Window</label>
+                                        </div>
+                                        <div class="col-6">
+                                            <input type="radio" class="mr-2" id="Flight4" value="Legroom Seats"
+                                            formControlName="flightSeat_preferences" (change)="selectVisaType($event)">
+                                            <label for="Flight4">Legroom Seats</label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <ion-item>
+                                            <ion-label position="floating">Other</ion-label>
+                                            <ion-input type="text" (ionInput)="changeInputValue($event)" id="other-input">
+                                            </ion-input>
+                                        </ion-item>
+                                    </div>
+                                    <div *ngIf="submitted && f.flightSeat_preferences.errors" class="invalid-feedback">
+                                        <div *ngIf="f.flightSeat_preferences.errors.required">Choose one Flight Seat Preference
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card card-body">
-                            This option is requested to the airline by us but the confirmation can’t be given & you can
-                            always ask for one onboard without any pre-requests.
-                        </div>
-                    </div>
+
+                        <div class="general_details">
+                            <!-- <div class="toggle-section collapsed" data-toggle="collapse" data-target="#flight-meal" aria-expanded="false" aria-controls="flight-meal"> -->
+                                <div class="general_details_header accordion">
+                                    <img src="assets/images/flight-meal.png">
+                                    <p>In-Flight Meal</p>
+                                    <i class="fa" aria-hidden="true"></i>
+                                </div>
+                                <!-- </div> -->
+                                <div class="panel">
+                                    <ion-item>
+                                        <ion-label position="floating">Meal</ion-label>
+                                        <ion-select formControlName="in_flight_meal" multiple="true">
+                                            <ion-select-option value="Veg Hindu Meal">Veg Hindu Meal</ion-select-option>
+                                            <ion-select-option value="Veg Vegan">Veg Vegan</ion-select-option>
+                                            <ion-select-option value="Veg Jain">Veg Jain</ion-select-option>
+                                            <ion-select-option value="Veg Lacto-ovo meal">Veg Lacto-ovo meal
+                                            </ion-select-option>
+                                            <ion-select-option value="Veg Oriental">Veg Oriental</ion-select-option>
+                                            <ion-select-option value="Infant Meal">Infant Meal</ion-select-option>
+                                            <ion-select-option value="Child Meal">Child Meal</ion-select-option>
+                                            <ion-select-option value="Diabetic meal">Diabetic meal</ion-select-option>
+                                            <ion-select-option value="Fruit Platter">Fruit Platter</ion-select-option>
+                                            <ion-select-option value="Gluten Intolerant Meal">Gluten Intolerant Meal
+                                            </ion-select-option>
+                                            <ion-select-option value="Kosher Meal">Kosher Meal</ion-select-option>
+                                            <ion-select-option value="Hindu Non-veg">Hindu Non-veg</ion-select-option>
+                                        </ion-select>
+                                    </ion-item>
+                                    <div *ngIf="submitted && f.in_flight_meal.errors" class="invalid-feedback">
+                                        <div *ngIf="f.in_flight_meal.errors.required">Select Flight Meal</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="general_details">
+                                <!-- <div class="toggle-section collapsed" data-toggle="collapse" data-target="#air-line" aria-expanded="false" aria-controls="air-line"> -->
+                                    <div class="general_details_header accordion">
+                                        <img src="assets/images/jounry.png">
+                                        <p>Airline Preference</p>
+                                        <i class="fa" aria-hidden="true"></i>
+                                    </div>
+                                    <!-- </div> -->
+                                    <div class="panel">
+                                        <ion-item>
+                                            <ion-label position="floating">Airline Preference</ion-label>
+                                            <ion-input type="text" formControlName="airline_preference"></ion-input>
+                                        </ion-item>
+                                        <div *ngIf="submitted && f.airline_preference.errors" class="invalid-feedback">
+                                            <div *ngIf="f.airline_preference.errors.required">Airline Preference is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="general_details colapse-icon">
+                                    <!-- <div class="toggle-section collapsed" data-toggle="collapse" data-target="#seat-belt" aria-expanded="false" aria-controls="seat-belt"> -->
+                                        <div class="general_details_header accordion">
+                                            <img src="assets/images/flight-tire.png">
+                                            <p>Seat Belt Extender</p>
+                                            <i class="fa" aria-hidden="true"></i>
+                                        </div>
+                                        <!-- </div> -->
+                                        <div class="panel">
+                                            <div class="select_plan_check mt-2 mb-2">
+                                                <ion-checkbox value="Yes" checked="false" (ionChange)="selectSeatBelt($event)"
+                                                class="ml-4"></ion-checkbox>
+                                                <ion-label class="ml-3">Select Seat belt Extender</ion-label>
+                                            </div>
+                                            <div class="card card-body">
+                                                This option is requested to the airline by us but the confirmation can’t be given & you can
+                                                always ask for one onboard without any pre-requests.
+                                            </div>
+                                        </div>
 
                     <!-- <div class="general_details_body">
                         <div class="row">
@@ -282,19 +311,20 @@
                 </div>
 
                 <div class="general_details">
-                    <div class="general_details_header">
-                        <img src="assets/images/wheelchair.png">
-                        <p>Wheel Chair Assistance</p>
-                        <a class="toggle-section collapsed collapsed" data-toggle="collapse" data-target="#wheel-chair"
-                        aria-expanded="false" aria-controls="wheel-chair"> <i class="fa" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="collapse multi-collapse" id="wheel-chair">
-                        <div class="select_plan_check mt-2 mb-2 pb-3">
-                            <ion-checkbox value="Yes" checked="false" (ionChange)="selectWheelChair($event)"
-                                class="ml-4"></ion-checkbox>
-                            <ion-label class="ml-3">Select Wheel Chair Assistance</ion-label>
+                    <!-- <div class="toggle-section collapsed" data-toggle="collapse" data-target="#wheel-chair" aria-expanded="false" aria-controls="wheel-chair"> -->
+                        <div class="general_details_header accordion">
+                            <img src="assets/images/wheelchair.png">
+                            <p>Wheel Chair Assistance</p>
+                            <i class="fa" aria-hidden="true"></i>
                         </div>
-                    </div>
+                        <!-- </div> -->
+                        <div class="panel">
+                            <div class="select_plan_check mt-2 mb-2 pb-3">
+                                <ion-checkbox value="Yes" checked="false" (ionChange)="selectWheelChair($event)"
+                                class="ml-4"></ion-checkbox>
+                                <ion-label class="ml-3">Select Wheel Chair Assistance</ion-label>
+                            </div>
+                        </div>
                     <!-- <div class="general_details_body">
 
                         <div class="row">
@@ -325,12 +355,14 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-            </div>
-            <div class="next_btn" *ngIf="formUrl.length">
-                <button type="submit" (click)="nextForm(airTickitForm.value)">Next<i
-                        class="fas fa-arrow-right"></i></button>
-            </div>
-        </form>
     </div>
+    <div class="next_btn" *ngIf="formUrl.length">
+        <button type="submit" (click)="nextForm(airTickitForm.value)">Next<i
+            class="fas fa-arrow-right"></i></button>
+        </div>
+    </form>
+</div>
 </ion-content>

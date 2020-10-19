@@ -61,7 +61,25 @@ export class TransferInquiryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getNextYear()
+    this.getNextYear();;
+    this.createAccordion();
+  }
+
+  createAccordion(){
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        } 
+      });
+    }
   }
 
   get f() { return this.transferForm.controls; }
@@ -69,114 +87,114 @@ export class TransferInquiryComponent implements OnInit {
   /**
    * get Form url for next form
    */
-  getFormUrl() {
-    this.formUrl = JSON.parse(localStorage.getItem('formId'));
-    // this.formUrl.splice(0, 1);
-    // localStorage.setItem('formId', JSON.stringify(this.formUrl));
-    // console.log(this.formUrl);
-  }
+   getFormUrl() {
+     this.formUrl = JSON.parse(localStorage.getItem('formId'));
+     // this.formUrl.splice(0, 1);
+     // localStorage.setItem('formId', JSON.stringify(this.formUrl));
+     // console.log(this.formUrl);
+   }
 
   /**
    * Get next year for datepicker
    */
-  getNextYear() {
-    this.nextYear = this.curruntDate.split("-")[0];
-    this.nextYear = this.nextYear++;
-    this.nextYear = this.nextYear + +2;
-  }
+   getNextYear() {
+     this.nextYear = this.curruntDate.split("-")[0];
+     this.nextYear = this.nextYear++;
+     this.nextYear = this.nextYear + +2;
+   }
 
   /**
    * open next form
    * @param {Object} data 
    */
-  nextForm(data) {
-    console.log(data)
-    this.submitted = true;
+   nextForm(data) {
+     console.log(data)
+     this.submitted = true;
 
-    data.from_date = data.from_date.split("T")[0];
-    // const fd = data.from_date[1].split('.')
-    // data.from_date = data.from_date[0] + ' ' + fd[0];
+     data.from_date = data.from_date.split("T")[0];
+     // const fd = data.from_date[1].split('.')
+     // data.from_date = data.from_date[0] + ' ' + fd[0];
 
-    data.to_date = data.to_date.split("T")[0];
-    // const fd1 = data.to_date[1].split('.')
-    // data.to_date = data.to_date[0] + ' ' + fd1[0];
+     data.to_date = data.to_date.split("T")[0];
+     // const fd1 = data.to_date[1].split('.')
+     // data.to_date = data.to_date[0] + ' ' + fd1[0];
 
-    if (this.transferForm.invalid) {
-      return
-    }
-    this.checkLocalStorageData();
-    this.storeFormData(data);
-    console.log(data)
-    this.route.navigate(['/home/' + this.formUrl[0]])
-  }
+     if (this.transferForm.invalid) {
+       return
+     }
+     this.checkLocalStorageData();
+     this.storeFormData(data);
+     console.log(data)
+     this.route.navigate(['/home/' + this.formUrl[0]])
+   }
 
-  // Store form data
-  storeFormData(data) {
-    const obj = {
-      "transfer": data
-    }
-    this._tripService.storeFormData(obj);
-  }
+   // Store form data
+   storeFormData(data) {
+     const obj = {
+       "transfer": data
+     }
+     this._tripService.storeFormData(obj);
+   }
 
   /**
    * Get Air Checkbox value
    * @param {Object} e 
    */
-  selectAir(e) {
-    if (!this.airArray.includes(e.detail.value)) {
-      this.airArray.push(e.detail.value);
-    } else {
-      var index = this.airArray.indexOf(e.detail.value);
-      this.airArray.splice(index, 1);
-    }
-    console.log(this.airArray);
-    this.transferForm.controls.air.setValue(this.airArray);
-  }
+   selectAir(e) {
+     if (!this.airArray.includes(e.detail.value)) {
+       this.airArray.push(e.detail.value);
+     } else {
+       var index = this.airArray.indexOf(e.detail.value);
+       this.airArray.splice(index, 1);
+     }
+     console.log(this.airArray);
+     this.transferForm.controls.air.setValue(this.airArray);
+   }
 
   /**
    * Get Transfer type Checkbox value
    * @param {Object} e 
    */
-  selectTransferType(e) {
-    if (!this.transferType.includes(e.detail.value)) {
-      this.transferType.push(e.detail.value);
-    } else {
-      var index = this.transferType.indexOf(e.detail.value);
-      this.transferType.splice(index, 1);
-    }
-    console.log(this.transferType);
-    this.transferForm.controls.transfer_type.setValue(this.transferType);
-  }
+   selectTransferType(e) {
+     if (!this.transferType.includes(e.detail.value)) {
+       this.transferType.push(e.detail.value);
+     } else {
+       var index = this.transferType.indexOf(e.detail.value);
+       this.transferType.splice(index, 1);
+     }
+     console.log(this.transferType);
+     this.transferForm.controls.transfer_type.setValue(this.transferType);
+   }
 
   /**
    * Check and store data in local storage
    */
-  checkLocalStorageData() {
-    this.formUrl = JSON.parse(localStorage.getItem('formId'));
-    if (this.formUrl[0] == 'transfers') {
-      this.formUrl.splice(0, 1);
-      localStorage.setItem('formId', JSON.stringify(this.formUrl));
-    }
-    console.log("local storage form data", JSON.parse(localStorage.getItem('form_data')));
-    const localStorageFormData = JSON.parse(localStorage.getItem('form_data'))
-    let index;
-    if (localStorageFormData.length) {
-      let result;
-      localStorageFormData.some((o, i) => {
-        console.log(i, o);
-        if (o.transfer) {
-          result = true
-          index = i;
-        }
-      })
-      console.log("result====>", result, index);
-      if (result) {
-        localStorageFormData.splice(index, 1)
-      }
-      console.log("index of transfer in localstorage", localStorageFormData);
-      // if (localStorageFormData.length) {
-      localStorage.setItem('form_data', JSON.stringify(localStorageFormData))
-      // }
-    }
-  }
-}
+   checkLocalStorageData() {
+     this.formUrl = JSON.parse(localStorage.getItem('formId'));
+     if (this.formUrl[0] == 'transfers') {
+       this.formUrl.splice(0, 1);
+       localStorage.setItem('formId', JSON.stringify(this.formUrl));
+     }
+     console.log("local storage form data", JSON.parse(localStorage.getItem('form_data')));
+     const localStorageFormData = JSON.parse(localStorage.getItem('form_data'))
+     let index;
+     if (localStorageFormData.length) {
+       let result;
+       localStorageFormData.some((o, i) => {
+         console.log(i, o);
+         if (o.transfer) {
+           result = true
+           index = i;
+         }
+       })
+       console.log("result====>", result, index);
+       if (result) {
+         localStorageFormData.splice(index, 1)
+       }
+       console.log("index of transfer in localstorage", localStorageFormData);
+       // if (localStorageFormData.length) {
+         localStorage.setItem('form_data', JSON.stringify(localStorageFormData))
+         // }
+       }
+     }
+   }

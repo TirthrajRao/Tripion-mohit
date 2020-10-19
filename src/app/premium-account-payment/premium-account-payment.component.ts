@@ -30,8 +30,11 @@ export class PremiumAccountPaymentComponent implements OnInit {
         this.type = this.router.getCurrentNavigation().extras.state.type;
         this.noOfPlan = this.router.getCurrentNavigation().extras.state.noOfPlan;
         this.destinationFormData = this.router.getCurrentNavigation().extras.state.formData;
+
+
+        console.log("this.destinationFormData is the -=========>", this.destinationFormData);
         this.destinationId = this.router.getCurrentNavigation().extras.state.destinationId;
-        this.destinationFormData = JSON.parse(this.destinationFormData)
+        this.destinationFormData = JSON.parse(localStorage.getItem('form_data'))
         console.log("in payment page", this.amount, this.type, this.destinationFormData)
         localStorage.setItem('form_data', JSON.stringify(this.destinationFormData))
       }
@@ -70,19 +73,25 @@ export class PremiumAccountPaymentComponent implements OnInit {
         console.log(err);
         localStorage.removeItem('form_data');
         localStorage.removeItem('selectedFormCategory');
-      })
+      })  
     } else {
-      const data = {
-        'other-details': this.destinationFormData
-      }
-      const array = [];
-      array.push(this.destinationFormData)
-      obj = {
-        id: this.currentUser.id,
-        destination_id: this.destinationId,
-        form_data: JSON.stringify(array)
-      }
-      console.log(obj);
+      // const data = {
+        // 'other-details': JSON.parse(localStorage.getItem('form_data'))
+      // }
+      // const array = [];
+      // array.push(this.destinationFormData);
+
+      // const formData = new FormData();
+      // formData.append('id', this.currentUser.id);
+      // formData.append('place_name', JSON.parse(localStorage.getItem('place_name')));
+      // formData.append('form_data', localStorage.getItem('form_data'));
+
+      // obj = {
+      //   id: this.currentUser.id,
+      //   destination_id: this.destinationId,
+      //   form_data: localStorage.getItem('form_data')
+      // }
+      // console.log(obj);
 
       const formData = new FormData();
       formData.append('form_data', this.destinationFormData);
@@ -98,8 +107,8 @@ export class PremiumAccountPaymentComponent implements OnInit {
 
       this.loading = true;
       this.isDisable = true;
-      this._tripService.addDestination(formData).subscribe((res) => {
-        console.log("addDestination from res", res);
+      this._tripService.addDestinationInquiry(formData).subscribe((res: any) => {
+        console.log("res", res);
         this.loading = false;
         this.isDisable = false;
         this.appComponent.sucessAlert("We got your money!!", "WoW")

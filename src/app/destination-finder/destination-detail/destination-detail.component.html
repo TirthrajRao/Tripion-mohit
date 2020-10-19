@@ -1,43 +1,77 @@
 <ion-header>
-  <app-header [cname]="'Details'"></app-header>
+  <app-header [cname]="'Destination Details'"></app-header>
 </ion-header>
 
 <ion-content padding="ion-padding">
   <div class="product-detail-content">
+    <div class="container">
+      <div class="mt-3">
+        <h5 class="font-wieght-bold">Explore {{placeTitle}}</h5>
+      </div>
 
-    <ion-slides pager="true" *ngIf="images.length">
-      <ion-slide class="image-slide" *ngFor="let img of images">
-        <img [src]="img.image_url" alt="img" onerror="this.src = 'assets/images/fallback.png'" class="img-fluid">
-      </ion-slide>
-    </ion-slides>
-    
+      <div class="row mt-3">
+
+        <div class="col-9">
+          <h6 class="mt-3">{{placeTitle}}</h6>
+        </div>
+        <div class="col-3">
+        <ion-icon name="arrow-round-back" id="prev" class="prev" style="font-size: 20px; margin-top: 16px;" (click)="slidePrev()" ></ion-icon>
+          <ion-icon name="arrow-round-forward" id="next" class="next" style="font-size: 20px; margin-top: 16px;" [ngClass]="!isArraw ? nextactive : previnactive" (click)="slideNext()"></ion-icon>
+        </div>
+
+        <ion-slides class="image-slider mt-4" #mySlider>
+          <ion-slide class="image-slide" *ngFor="let img of images;">
+            <img [src]="img.image_url" alt="img">
+            <p>{{placeTitle}}</p>
+          </ion-slide>
+        </ion-slides>
+
+
+        <div class="col-3 mt-3 pl-0" *ngFor="let img of images">
+          <div class="placeImages">
+            <img [src]="img.image_url" alt="img">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <div class="product-detail" *ngFor="let detail of Destinationdetails; let i = index;">
-      <h2>{{detail.name}}</h2>
-        <ion-grid class="p-0 mt-3">
-         <ion-row class="p-0">
-          <ion-col *ngFor="let tag of detail.tags" size="auto">
-            <h6>{{tag}}</h6>
+    <hr>
+      <h5 class="mt-3">Filter By tag</h5>
+
+      <ion-grid class="mt-3 p-0">
+        <ion-row>
+          <ion-col size="auto" class="destination-tags" *ngFor="let tag of detail.tags;">
+            {{tag}}
           </ion-col>
         </ion-row>
       </ion-grid>
-    <div [innerHtml]="[detail.content]" class="mt-3"></div>
-    <a (click)="sendUsInquiry()" class="mt-3">Send us Inquiry</a>
-  </div>
-</div>
 
+      <hr>
+      <h5 class="mt-3">Description</h5>
+      <div [innerHtml]="[detail.content]" class="mt-3"></div>
 
-
-
-<div *ngIf="loading">
-  <div id="loader-wrapper">
-    <div class="heartbeatloader">
-      <ion-img class="svgdraw" src="assets/images/loader.gif"></ion-img>
+      <div>
+        <hr>
+        <h5 class="mt-3">Package</h5>
+        <div class="package">
+        <p>{{days}}<span>Days</span> /{{night}}<span> Night</span></p>
+        </div>
+      </div>
+      <a (click)="sendUsInquiry()" class="mt-4">Destination Inquiry <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
-</div>
-<div *ngIf="!loading && !details" class="no_folder">
-  <span class="text-white text-center no-request">We will Working,<br>Will revert soon!!</span>
-</div>
+  
+
+  <div *ngIf="loading">
+    <div id="loader-wrapper">
+      <div class="heartbeatloader">
+        <ion-img class="svgdraw" src="assets/images/loader.gif"></ion-img>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!loading && !details" class="no_folder">
+    <span class="text-white text-center no-request">We will Working,<br>Will revert soon!!</span>
+  </div>
 </ion-content>
-
-

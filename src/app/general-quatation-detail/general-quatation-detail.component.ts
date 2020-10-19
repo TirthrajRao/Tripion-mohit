@@ -6,7 +6,8 @@ import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer/ng
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { AppComponent } from '../app.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
+
 declare const $: any;
 
 @Component({
@@ -18,8 +19,8 @@ export class GeneralQuatationDetailComponent implements OnInit {
 	currentUser = JSON.parse(localStorage.getItem('currentUser'));
 	quotations: any = [];
 	loading: Boolean = false;
-   quotationId:any;
 	fileTransfer: FileTransferObject = this.transfer.create();
+	quotationId: any;
 
 	constructor(
 		public _tripService: TripService,
@@ -29,46 +30,47 @@ export class GeneralQuatationDetailComponent implements OnInit {
 		private file: File,
 		private fileOpener: FileOpener,
 		public appComponent: AppComponent,
-      public route: ActivatedRoute,
-      public _router: Router
-      ) { 
-      this.route.params.subscribe((param) => {
-         this.quotationId = param.id
-      }); 
-   }
+		public _router: Router,
+		public route: ActivatedRoute,
 
-   ngOnInit() {
+		) { 
+		this.route.params.subscribe((param) => {
+			this.quotationId = param.id
+		});
 
-      this.getQuotation();
-      $('.quotation').on('click', 'img', (e) => {
-         console.log("ee", e.target.attributes.src.value)
-         const imgSrc = e.target.attributes.src.value;
-         console.log("img src", imgSrc);
-         var tmp = imgSrc.split('/');
-         console.log("tmp ", tmp[tmp.length - 1].split('.')[1])
-         const name = tmp[tmp.length - 1].match(/(.*)\.[\w]+$/)[1];
-         const ext = tmp[tmp.length - 1].split('.')[1]
-         console.log("image name=====>", name, ext)
-         this.photoViewer.show(imgSrc);
+	}
 
-         this.downloadImage(imgSrc, name, 'image/' + ext, ext)
-      })
-   }
+	ngOnInit() {
 
- /**
+		this.getSingleQuotation();
+		$('.quotation').on('click', 'img', (e) => {
+			console.log("ee", e.target.attributes.src.value)
+			const imgSrc = e.target.attributes.src.value;
+			console.log("img src", imgSrc);
+			var tmp = imgSrc.split('/');
+			console.log("tmp ", tmp[tmp.length - 1].split('.')[1])
+			const name = tmp[tmp.length - 1].match(/(.*)\.[\w]+$/)[1];
+			const ext = tmp[tmp.length - 1].split('.')[1]
+			console.log("image name=====>", name, ext)
+			this.photoViewer.show(imgSrc);
+
+			this.downloadImage(imgSrc, name, 'image/' + ext, ext)
+		})
+	}
+
+  /**
  * Get Quotation
  */
- getQuotation() {
+ getSingleQuotation() {
  	this.loading = true;
  	const obj = {
  		id: this.currentUser.id,
-      quotation_id: this.quotationId
+ 		quotation_id: this.quotationId 
  	}
- 	this._tripService.getSingleQuotation(obj).subscribe((res: any) => {
+ 	this._tripService.getSingleQuotations(obj).subscribe((res: any) => {
  		console.log(res);
- 		this.quotations[0] = res.data;
-       console.log("the single quotation is ====>", this.quotations);
  		this.loading = false;
+ 		this.quotations[0] = res.data;
  	}, (err) => {
  		console.log(err);
  		this.appComponent.errorAlert(err.error.message);
@@ -76,8 +78,13 @@ export class GeneralQuatationDetailComponent implements OnInit {
  	})
  }
 
-   /**
-   * Download Image
+ getSingleQuotationDetail(id, value){
+ 	console.log('the id and value of getSingleQuotationDetail =====>', id, value);
+ 	this._router.navigate(['/home/general-quatation-detail/' + id])
+ }
+
+  /**
+   * Doenload Image
    */
    downloadImage(url, name, mimeType, ext) {
    	console.log("===enter====", url, name, mimeType)
