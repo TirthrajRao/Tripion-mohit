@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NavController, Slides } from 'ionic-angular';
 import { IonSlides} from '@ionic/angular';
 declare const $: any;
 

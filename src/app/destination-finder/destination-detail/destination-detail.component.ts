@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TripService } from '../../services/trip.service';
 import { AppComponent } from '../../app.component';
-import { NavController, Slides } from 'ionic-angular';
 import { IonSlides} from '@ionic/angular';
 declare const $: any;
 

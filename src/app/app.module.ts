@@ -24,6 +24,7 @@ import { Media } from '@ionic-native/media/ngx';
 import { MediaCapture } from '@ionic-native/media-capture/ngx';
 // import Vue from 'vue';
 // import Ionic from '@ionic/vue';
+// "@ionic/app-scripts": "^3.2.4", jsut for reference MehulBhatt45
 
 
 // import { SafePipe } from './safe.pipe';
