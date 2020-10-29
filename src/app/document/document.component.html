@@ -3,10 +3,10 @@
 </ion-header>
 
 <ion-content>
-    <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content refreshingSpinner="circular" pullingIcon="null">
         </ion-refresher-content>
-    </ion-refresher> -->
+    </ion-refresher>
     <div class="document_content image_preview" *ngIf="allImage.length">
         <img [src]="allImage[0].image_url" onError="src = 'assets/images/placeholder.png'" *ngIf="!previewImag.length">
         <ion-slides [options]="slideOpts" *ngIf="previewImag.length" pager="true">

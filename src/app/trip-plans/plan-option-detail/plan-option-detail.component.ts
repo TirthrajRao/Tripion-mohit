@@ -289,7 +289,7 @@ export class PlanOptionDetailComponent implements OnInit {
     console.log(this.pdfObj);
 
     console.log("download pdf");
-    // if (this.plt.is('android')) {
+    if (this.plt.is('android')) {
       console.log("in if");
       this.pdfObj.getBuffer((buffer) => {
         var blob = new Blob([buffer], { type: 'application/pdf' });
@@ -301,12 +301,12 @@ export class PlanOptionDetailComponent implements OnInit {
           this.fileOpener.open(fileEntry.nativeURL, 'application/pdf');
         })
       });
-    // } else {
-    //   console.log("in else");
-    //   this.loading = false;
-    //   this.isDisable = false;
-    //   this.pdfObj.download();
-    // }
+    } else {
+      console.log("in else");
+      this.loading = false;
+      this.isDisable = false;
+      this.pdfObj.download();
+    }
 
   }
 

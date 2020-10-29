@@ -30,6 +30,35 @@ $green: #2FE57C;
     }
 }
 
+.create_folder {
+    position: fixed;
+    bottom: 90px;
+    right: 35px;
+    border-radius: 5px;
+    padding: 8px 0px;
+    background-color: #ffffff;
+    transition: 5s;
+    @media (max-height: 600px) {
+        padding: 5px 0px;
+    }
+    .single_folder {
+        padding: 5px 6px;
+        cursor: pointer;
+        @media (max-height: 600px) {
+            padding: 3px 5px;
+        }
+        @media (max-height: 600px) {
+            padding: 1px 5px;
+        }
+        a {
+            color: #707070;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+    }
+}
+
 .folder_detail {
     width: 100%;
     padding: 18px;

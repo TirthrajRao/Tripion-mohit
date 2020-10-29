@@ -183,11 +183,11 @@ export class AppComponent {
     console.log("in sucessAlert", msg)
     $('.success_alert_box').fadeIn().addClass('animate');
     $('.success_alert_box').click(function () {
-      $(this).hide().removeClass('animate');
+      $('.success_alert_box').fadeOut().removeClass('animate');
     });
-    $('.success_alert_box .alert_box_content').click(function (event) {
-      event.stopPropagation();
-    });
+    // $('.success_alert_box .alert_box_content').click(function (event) {
+    //   event.stopPropagation();
+    // });
   }
 
   /** 
@@ -198,10 +198,10 @@ export class AppComponent {
     this.errMessage = message
     $('.error_alert_box').fadeIn().addClass('animate');
     $('.error_alert_box').click(function () {
-      $(this).hide().removeClass('animate');
+      $('.error_alert_box').fadeOut().removeClass('animate');
     });
-    $(' .error_alert_box .alert_box_content').click(function (event) {
-      event.stopPropagation();
-    });
+    // $(' .error_alert_box .alert_box_content').click(function (event) {
+    //   event.stopPropagation();
+    // });
   }
 }

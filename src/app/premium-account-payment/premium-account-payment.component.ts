@@ -64,7 +64,7 @@ export class PremiumAccountPaymentComponent implements OnInit {
         console.log("inquiry form res", res);
         localStorage.removeItem('form_data');
         localStorage.removeItem('selectedFormCategory');
-        this.appComponent.sucessAlert("We got your money!!", "WoW")
+        this.appComponent.sucessAlert("Transection successful!!", "WoW")
         this.router.navigate(['/home']);
       }, (err) => {
         this.appComponent.errorAlert(err.error.message);
@@ -111,7 +111,7 @@ export class PremiumAccountPaymentComponent implements OnInit {
         console.log("res", res);
         this.loading = false;
         this.isDisable = false;
-        this.appComponent.sucessAlert("We got your money!!", "WoW")
+        this.appComponent.sucessAlert("Transection successful!!", "WoW")
         this.router.navigate(['/home']);
       }, (err) => {
         console.log(err);
@@ -126,7 +126,7 @@ export class PremiumAccountPaymentComponent implements OnInit {
       //     console.log("res", res);
       //     this.loading = false;
       //     this.isDisable = false;
-      //     this.appComponent.sucessAlert("We got your money!!", "WoW")
+      //     this.appComponent.sucessAlert("Transection successful!!", "WoW")
       //     this.router.navigate(['/home']);
       //   }, (err) => {
       //       this.appComponent.errorAlert(err.error.message);

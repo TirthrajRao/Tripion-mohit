@@ -14,6 +14,7 @@ declare const $: any;
 export class FolderImagesComponent implements OnInit {
   @Input('images') allImages;
   loading: Boolean = false;
+  isList = false;
   constructor(
     public _uploadService: UploadService,
     private photoViewer: PhotoViewer,

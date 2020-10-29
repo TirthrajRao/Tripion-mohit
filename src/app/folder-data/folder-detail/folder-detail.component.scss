@@ -1,25 +1,24 @@
 ion-refresher-content {
-    background-color: #0575E6;
+    background-color: #0575e6;
     --color: white !important;
 }
 .doc_details {
-    cursor       : pointer;
+    cursor: pointer;
     margin-bottom: 35px;
 
-    @media(max-height: 812px) {
+    @media (max-height: 812px) {
         margin-bottom: 22px;
     }
 
-    @media(max-height: 600px) {
+    @media (max-height: 600px) {
         margin-bottom: 16px;
     }
 
-
     .doc_img {
-        padding      : 20px 5px;
+        padding: 20px 5px;
         border-radius: 10px;
 
-        @media(max-height: 750px) {
+        @media (max-height: 750px) {
             padding: 15px 5px;
         }
 
@@ -28,15 +27,44 @@ ion-refresher-content {
         }
 
         p {
-            text-align : center;
+            text-align: center;
             font-weight: 600;
-            margin-top : 20px;
+            margin-top: 20px;
             line-height: 21px;
-            font-size  : 19px;
+            font-size: 19px;
 
-            @media(max-height: 750px) {
-             margin-top: 12px;
+            @media (max-height: 750px) {
+                margin-top: 12px;
             }
+        }
+    }
+}
+
+.create_folder {
+    position: fixed;
+    bottom: 90px;
+    right: 35px;
+    border-radius: 5px;
+    padding: 8px 0px;
+    background-color: #ffffff;
+    transition: 5s;
+    @media (max-height: 600px) {
+        padding: 5px 0px;
+    }
+    .single_folder {
+        padding: 5px 6px;
+        cursor: pointer;
+        @media (max-height: 600px) {
+            padding: 3px 5px;
+        }
+        @media (max-height: 600px) {
+            padding: 1px 5px;
+        }
+        a {
+            color: #707070;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
         }
     }
 }

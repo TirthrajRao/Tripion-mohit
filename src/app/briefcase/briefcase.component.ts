@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UploadService } from '../services/upload.service';
 import { AppComponent } from '../app.component';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 declare const $: any;
 @Component({
   selector: 'app-briefcase',
@@ -13,13 +14,22 @@ export class BriefcaseComponent implements OnInit {
   allFolder: any = [];
   lastImage;
   imageIcon = ["assets/images/green.png", "assets/images/y1.png", "assets/images/sky.png"];
-
+  createFolderForm: FormGroup;
+  submitted: Boolean = false;
+  isDisable: Boolean = false;
   constructor(
     public _uploadService: UploadService,
     public appComponent: AppComponent,
-  ) { }
+  ) {
+    this.createFolderForm = new FormGroup({
+      folder_name: new FormControl('', [Validators.required, Validators.pattern("^([a-zA-Z0-9][^*/><?\|:]*)$")])
+    })
+  }
+
+  get f() { return this.createFolderForm.controls }
 
   ngOnInit() {
+    this.openCreateFolderModal();
     this.getAllFolders();
   }
 
@@ -33,6 +43,55 @@ export class BriefcaseComponent implements OnInit {
     setTimeout(() => {
       event.target.complete();
     }, 2000);
+  }
+
+  // modal for create new folfer
+  openCreateFolderModal() {
+    $('#open-folder-brif').click(function () {
+      $('#folder-modal-brif').fadeIn();
+    });
+    $('#folder-modal-brif .modal_body').click(function (event) {
+      event.stopPropagation();
+    });
+    $('#folder-modal-brif').click(() => {
+      $('#folder-modal-brif').fadeOut();
+      this.createFolderForm.reset();
+      this.submitted = false;
+      console.log("formdata", this.createFolderForm.value)
+    });
+  }
+
+  /**
+   * Create Folder
+   * @param {object} data
+   */
+  createFolder(data) {
+    console.log("data", data)
+    this.submitted = true;
+    if (this.createFolderForm.invalid) {
+      return
+    }
+    this.isDisable = true;
+    this.loading = true;
+    console.log(data);
+    const obj = {
+      id: this.curruntUser.id,
+      folder_name: 'Other Docs/' + data.folder_name
+    }
+    this._uploadService.createFolder(obj).subscribe((res: any) => {
+      console.log(res);
+      this.isDisable = false;
+      this.loading = false;
+      this.createFolderForm.reset();
+      this.submitted = false;
+      $('#folder-modal-brif').fadeOut();
+      this.getAllFolders();
+    }, (err) => {
+      console.log(err);
+      this.appComponent.errorAlert(err.error.message);
+      this.isDisable = false;
+      this.loading = false;
+    })
   }
 
 

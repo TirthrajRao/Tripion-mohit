@@ -3,10 +3,10 @@
 </ion-header>
 
 <ion-content>
-    <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content refreshingSpinner="circular" pullingIcon="null">
         </ion-refresher-content>
-    </ion-refresher> -->
+    </ion-refresher>
     <div class="plan_option_content" *ngIf="planDetail">
         <div class="card plan_option_heading plan-detail-content w-100 " id="plan-detailssss">
             <h6 [innerHtml]="planDetail.plan_name"></h6>
@@ -15,24 +15,25 @@
             </h3>
             <div class="plan_images" *ngIf="planDetail.images.length">
                 <div class="plan_images_slide" *ngFor="let img of planDetail.images">
-                    <img [src]="img.image_url" onError="src = 'assets/images/placeholder.png'"  (click)="downloadPdf(img.image_url,img.image_name,img.mime_type)">
+                    <img [src]="img.image_url" onError="src = 'assets/images/placeholder.png'"
+                        (click)="downloadPdf(img.image_url,img.image_name,img.mime_type)">
                 </div>
             </div>
             <div class="plans_details">
                 <span class="font-weight-bold ml-2">Description :</span>
-                <div class="content" [innerHtml]="planDetail.plan_description" ></div>
+                <div class="content" [innerHtml]="planDetail.plan_description"></div>
                 <span class="font-weight-bold ml-2"> Included :</span>
-                <div class="content" [innerHtml]="planDetail.inclueded" ></div>
+                <div class="content" [innerHtml]="planDetail.inclueded"></div>
                 <span class="font-weight-bold ml-2">Excluded :</span>
-                <div class="content" [innerHtml]="planDetail.excluded" ></div>
+                <div class="content" [innerHtml]="planDetail.excluded"></div>
                 <span class="font-weight-bold ml-2">Estimate :</span>
                 <div class="content" [innerHtml]="planDetail.estimate"></div>
             </div>
         </div>
-        <div class="next_btn">
+        <!-- <div class="next_btn">
             <button (click)="createPdf()" class="btn mb-2" [disabled]="isDisable">Download Pdf</button>
-            <!-- <button (click)="downloadPlanPdf()" class="btn">Download</button> -->
-        </div>
+            <button (click)="downloadPlanPdf()" class="btn">Download</button>
+        </div> -->
     </div>
     <div *ngIf="loading">
         <div id="loader-wrapper">

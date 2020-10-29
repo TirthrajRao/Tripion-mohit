@@ -5,10 +5,10 @@
     <app-header [cname]="'Plans'"></app-header>
 </ion-header>
 <ion-content>
-    <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content refreshingSpinner="circular" pullingIcon="null">
         </ion-refresher-content>
-    </ion-refresher> -->
+    </ion-refresher>
     <div class="all_content" *ngIf="allPlans.length">
         <form [formGroup]="sendPlanForm">
             <div *ngFor="let plan of allPlans; let i= index">

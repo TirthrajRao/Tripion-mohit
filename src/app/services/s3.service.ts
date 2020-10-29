@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { File } from '@ionic-native/file/ngx';
-// import { Awskey } from '../env'
+import { Awskey } from '../env'
 import * as AWS from 'aws-sdk';
 
 @Injectable({
@@ -39,8 +39,8 @@ export class S3Service {
     let responseData = []
     console.log("file", file, "encoding", encoding)
     return new Promise((resolve, reject) => {
-      // AWS.config.accessKeyId = Awskey.accessKeyId;
-      // AWS.config.secretAccessKey = Awskey.secretAccessKey;
+      AWS.config.accessKeyId = Awskey.accessKeyId;
+      AWS.config.secretAccessKey = Awskey.secretAccessKey;
       AWS.config.region = 'us-east-2';
       AWS.config.signatureVersion = 'v4';
       let s3 = new AWS.S3();

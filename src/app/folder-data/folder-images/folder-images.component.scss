@@ -38,10 +38,10 @@
     margin-right: -5px !important;
     .image-view {
         img {
-            height: 120px;
-            width: 100%;
-            object-fit: fill;
-            padding: 5px 5px !important;
+            // height: 120px;
+            // width: 100%;
+            // object-fit: fill;
+            // padding: 5px 5px !important;
             border-radius: 7px;
         }
     }
@@ -62,19 +62,23 @@
 }
 .file-view {
     img {
-        height: 93px;
-        border-bottom-right-radius: 0px !important;
-        border-bottom-left-radius: 0px !important;
+        // height: 93px;
+        // border-bottom-right-radius: 0px !important;
+        // border-bottom-left-radius: 0px !important;
     }
     p {
-        margin-left: 5px;
-        margin-top: -8px;
+        // margin-left: 5px;
+        // margin-top: -8px;
         padding: 4px 5px 0px 5px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         color: white;
         font-weight: 500;
+        margin-top: 3px;
+        font-size: 18px;
+        text-shadow: 1px 1px #000;
+        text-align: center;
         // background: white;
         // // width: 91.60%;
         // margin-left: 5px;

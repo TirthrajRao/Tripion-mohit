@@ -2,10 +2,10 @@
     <app-header [cname]="'Documents'"></app-header>
 </ion-header>
 <ion-content>
-    <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content refreshingSpinner="circular" pullingIcon="null">
         </ion-refresher-content>
-    </ion-refresher> -->
+    </ion-refresher>
     <div class="all_content" *ngIf="documentList.length">
         <div class="card image_folder_detail" *ngFor="let document of documentList">
             <div class="image_detail"

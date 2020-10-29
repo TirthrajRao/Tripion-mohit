@@ -2,7 +2,7 @@
     // padding: 0px 10px;   
     position: relative;
     z-index: 11;
-    margin-bottom: 5px;
+    margin-bottom: 10;
     .card {
         border: none;
         cursor: pointer;
@@ -11,7 +11,7 @@
             font-size: 17px;
             padding: 18px 15px;
             font-weight: 500;
-            border-bottom: 1px solid #C7CBD6;
+            // border-bottom: 1px solid #C7CBD6;
             @media(max-height: 750px) {
                 padding: 12px 10px;
             }

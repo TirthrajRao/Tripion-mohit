@@ -3,14 +3,12 @@
 </ion-header>
 
 <ion-content>
-    <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content refreshingSpinner="circular" pullingIcon="null">
         </ion-refresher-content>
-    </ion-refresher> -->
+    </ion-refresher>
     <div class="all_content" *ngIf="allDocument.length">
-        <div *ngIf="allDocument.length">
-            <app-folder-images [images]="allDocument"></app-folder-images>
-        </div>
+        <app-folder-images [images]="allDocument"></app-folder-images>
     </div>
     <div *ngIf="loading">
         <div *ngIf="loading">
@@ -23,5 +21,37 @@
     </div>
     <div *ngIf="!loading && !allDocument.length">
         <span class="text-white text-center no-request">Empty folder</span>
+    </div>
+    <div class="add_button" id="open-folder-folder-detail">
+        <a>
+            <img src="assets/images/plus.png">
+        </a>
+    </div>
+
+
+    <div class="modal_content_with_overlay" id="folder-modal-folder-detail" style="display: none;">
+        <div class="modal_body">
+            <div class="modal_header">
+                <p class="text-center">Folder Title</p>
+            </div>
+            <div class="modal_content">
+                <form [formGroup]="createFolderForm">
+                    <div>
+                        <ion-item>
+                            <ion-label position="floating">Title</ion-label>
+                            <ion-input type="text" class="pt-2" formControlName="folder_name"></ion-input>
+                        </ion-item>
+                        <div *ngIf="submitted && f.folder_name.errors" class="invalid-feedback">
+                            <div *ngIf="f.folder_name.errors.required">Folder Name is required</div>
+                            <div *ngIf="f.folder_name.errors.pattern">Folder Name is not valid</div>
+                        </div>
+                    </div>
+                    <div class="make_folder">
+                        <button type="submit" class="btn" (click)="createFolder(createFolderForm.value)"
+                            [disabled]="isDisable"><i class="fas fa-plus"></i>Add Folder</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </ion-content>

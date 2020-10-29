@@ -3,10 +3,10 @@
 </ion-header>
 
 <ion-content>
-    <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content refreshingSpinner="circular" pullingIcon="null">
         </ion-refresher-content>
-    </ion-refresher> -->
+    </ion-refresher>
     <div class="benefits_content" *ngIf="FFPResponse.length">
         <div *ngFor="let ffp of FFPResponse; let i = index">
             <div class="country_name w-100" (click)="getDetails(ffp,i)" *ngIf="ffp">

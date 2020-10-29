@@ -1,8 +1,14 @@
-<div class="row main-image-view">
-    <div class="col-4 pr-0 pl-0" *ngFor="let img of allImages;let i = index">
+<div class="row m-0 justify-content-end">
+    <ion-buttons slot="end">
+        <ion-button fill="clear" (click)="isList = false"><ion-icon style="color: #fff;" slot="icon-only" name="grid"></ion-icon></ion-button>
+        <ion-button fill="clear" (click)="isList = true"><ion-icon style="color: #fff;" slot="icon-only" name="list"></ion-icon></ion-button>
+    </ion-buttons>
+</div>
+<div class="row main-image-view" [hidden]="isList">
+    <div class="col-6 my-2" *ngFor="let img of allImages;let i = index">
         <div *ngIf="img.image_extension == 'png' || img.image_extension == 'jpg' || img.image_extension == 'jpeg'">
             <div class="image-view" (press)="longPress(i)">
-                <img [src]="img.image_url || 'assets/images/placeholder.png'" (click)="previewImage(img.image_url)"
+                <img class="img-fluid" [src]="img.image_url || 'assets/images/placeholder.png'" (click)="previewImage(img.image_url)"
                     onError="src = 'assets/images/placeholder.png'">
             </div>
             <i class="fa fa-times-circle icon-{{i}}" (click)="removeImage(img,i,'image')"></i>
@@ -10,13 +16,11 @@
         <div *ngIf="img.image_extension != 'png' && img.image_extension != 'jpg' && img.image_extension != 'jpeg'"
             (press)="longPress(i)">
             <div class="image-view file-view" (click)="previewDocument(img.image_url)">
-                <img src="assets/images/pdf.png" *ngIf="img.image_extension == 'pdf'" style="height: 99px;">
-                <img src="assets/images/xls.png" *ngIf="img.image_extension == 'xlsx' || img.image_extension == 'xls'"
-                    style="height: 99px;">
-                <img src="assets/images/doc1.png"
-                    *ngIf="img.image_extension == 'doc' || img.image_extension == 'docx' || img.image_extension == 'odt'"
-                    style="height: 99px;">
-                <img src="assets/images/docs2.png" style="height: 99px;"
+                <img class="img-fluid" src="assets/images/pdf.png" *ngIf="img.image_extension == 'pdf'">
+                <img class="img-fluid" src="assets/images/xls.png" *ngIf="img.image_extension == 'xlsx' || img.image_extension == 'xls'">
+                <img class="img-fluid" src="assets/images/doc1.png"
+                    *ngIf="img.image_extension == 'doc' || img.image_extension == 'docx' || img.image_extension == 'odt'">
+                <img class="img-fluid" src="assets/images/docs2.png"
                     *ngIf="img.image_extension != 'png' && img.image_extension != 'jpg'  && img.image_extension != 'jpeg' && img.image_extension != 'xlsx' && img.image_extension != 'xls' && img.image_extension != 'pdf'&& img.image_extension != 'doc'&& img.image_extension != 'docx'&&  img.image_extension != 'odt'">
                 <p>{{img.image_name}}</p>
             </div>
@@ -24,6 +28,31 @@
         </div>
     </div>
 </div>
+
+<ion-list [hidden]="!isList">
+    <ion-item-sliding *ngFor="let img of allImages;let i = index">
+        <ion-item
+            (click)="img.image_extension == 'png' || img.image_extension == 'jpg' || img.image_extension == 'jpeg' ? previewImage(img.image_url) : previewDocument(img.image_url)">
+            <ion-thumbnail slot="start">
+                <img [src]="img.image_url || 'assets/images/placeholder.png'"
+                    onError="src = 'assets/images/placeholder.png'"
+                    *ngIf="img.image_extension == 'png' || img.image_extension == 'jpg' || img.image_extension == 'jpeg'">
+                <img src="assets/images/pdf.png" *ngIf="img.image_extension == 'pdf'">
+                <img src="assets/images/xls.png" *ngIf="img.image_extension == 'xlsx' || img.image_extension == 'xls'">
+                <img src="assets/images/doc1.png"
+                    *ngIf="img.image_extension == 'doc' || img.image_extension == 'docx' || img.image_extension == 'odt'">
+                <img src="assets/images/docs2.png"
+                    *ngIf="img.image_extension != 'png' && img.image_extension != 'jpg'  && img.image_extension != 'jpeg' && img.image_extension != 'xlsx' && img.image_extension != 'xls' && img.image_extension != 'pdf'&& img.image_extension != 'doc'&& img.image_extension != 'docx'&&  img.image_extension != 'odt'">
+            </ion-thumbnail>
+            <ion-label>{{img.image_name}}</ion-label>
+        </ion-item>
+        <ion-item-options side="end">
+            <ion-item-option
+                (click)="img.image_extension == 'png' || img.image_extension == 'jpg' || img.image_extension == 'jpeg' ? removeImage(img,i,'image') : removeImage(img,i,'file')">
+                Delete</ion-item-option>
+        </ion-item-options>
+    </ion-item-sliding>
+</ion-list>
 ​
 <div *ngIf="loading">
     <div id="loader-wrapper">
