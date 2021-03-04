@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { config } from '../config '
+import { config } from '../config'
 import { map, filter, pairwise } from 'rxjs/operators';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Router, NavigationExtras, RoutesRecognized } from '@angular/router';

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpEventType } from '@angular/common/http';
-import { config } from '../config ';
+import { config } from '../config';
 import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
