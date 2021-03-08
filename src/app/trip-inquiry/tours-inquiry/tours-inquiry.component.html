@@ -141,11 +141,11 @@
                 </div>
 
                 <div class="next_btn" *ngIf="formUrl.length">
-                    <button type="submit" (click)="nextForm(tourForm.value)">Next<i
+                    <button type="submit" class="bg_gradient_yello" (click)="nextForm(tourForm.value)">Next<i
                             class="fas fa-arrow-right"></i></button>
                 </div>
                 <div class="submit_btn" *ngIf="!formUrl.length">
-                    <button type="submit" routerLink='/home/home-page'><i class="fas fa-save"></i>Submit</button>
+                    <button type="submit" class="bg_gradient_yello" routerLink='/home/home-page'><i class="fas fa-save"></i>Submit</button>
                 </div>
             </div>
         </form>

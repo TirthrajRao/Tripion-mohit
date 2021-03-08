@@ -49,6 +49,10 @@ ion-refresher-content {
             font-weight: 600;
             text-decoration: none;
         }
+        &:hover,
+        &:focus{
+            background-color: #f8b853;
+        }
     }
 }
 .folder_detail {

@@ -4,7 +4,7 @@
         <ion-button fill="clear" (click)="isList = true"><ion-icon style="color: #fff;" slot="icon-only" name="list"></ion-icon></ion-button>
     </ion-buttons>
 </div>
-<div class="row main-image-view" [hidden]="isList">
+<div class="form-row main-image-view" [hidden]="isList">
     <div class="col-6 my-2" *ngFor="let img of allImages;let i = index">
         <div *ngIf="img.image_extension == 'png' || img.image_extension == 'jpg' || img.image_extension == 'jpeg'">
             <div class="image-view" (press)="longPress(i)">
@@ -29,10 +29,9 @@
     </div>
 </div>
 
-<ion-list [hidden]="!isList">
+<ion-list [hidden]="!isList" class="ion-no-padding">
     <ion-item-sliding *ngFor="let img of allImages;let i = index">
-        <ion-item
-            (click)="img.image_extension == 'png' || img.image_extension == 'jpg' || img.image_extension == 'jpeg' ? previewImage(img.image_url) : previewDocument(img.image_url)">
+        <ion-item lines="full" (click)="img.image_extension == 'png' || img.image_extension == 'jpg' || img.image_extension == 'jpeg' ? previewImage(img.image_url) : previewDocument(img.image_url)">
             <ion-thumbnail slot="start">
                 <img [src]="img.image_url || 'assets/images/placeholder.png'"
                     onError="src = 'assets/images/placeholder.png'"

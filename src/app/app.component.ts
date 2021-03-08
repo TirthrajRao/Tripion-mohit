@@ -45,7 +45,7 @@ export class AppComponent {
   ) {
 
     if (this._userService.currentUserValue) {
-      this.router.navigate(['/home']);
+      // this.router.navigate(['/home']);
     }
 
     //Exit app
@@ -74,7 +74,7 @@ export class AppComponent {
   menuRadius() {
     setTimeout(() => {
       document.querySelector('ion-menu').shadowRoot.querySelector('.menu-inner').setAttribute('style', 'border-radius:0px 30px 0px 0px; width: calc(100% - 45px);');
-    }, 2500);
+    }, 3000);
   }
 
   /**

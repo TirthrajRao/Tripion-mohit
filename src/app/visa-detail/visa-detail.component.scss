@@ -3,11 +3,8 @@ $blue: #021B79;
 $button_color: #003574;
 // ion header css start here
 ion-header ion-toolbar:first-child {
-    --background: #000 !important;
-    height: 80px;
     justify-content: center;
     align-items: center;
-    display: flex;
 }
 
 .header-md:after {
@@ -47,6 +44,10 @@ ion-content {
             --color: #fff;
             font-weight: 600;
         }
+    }
+    .visa_select_options {
+        border: 1px solid #F6D253;
+        border-radius: 8px;
     }
 }
 

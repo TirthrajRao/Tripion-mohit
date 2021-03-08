@@ -134,9 +134,10 @@
 
             </div>
             <div class="next_btn">
-                <button type="submit"
-                    (click)="otherDetailsForm.value.free_quotation =='Yes'?submitForm(otherDetailsForm.value):nextForm(otherDetailsForm.value)">{{otherDetailsForm.value.free_quotation =='Yes'?'Submit':'Next'}}<i
-                        *ngIf="otherDetailsForm.value.free_quotation !='Yes'" class="fas fa-arrow-right"></i></button>
+                <button type="submit" class="bg_gradient_yello" (click)="otherDetailsForm.value.free_quotation =='Yes'?submitForm(otherDetailsForm.value):nextForm(otherDetailsForm.value)">
+                    {{otherDetailsForm.value.free_quotation =='Yes'?'Submit':'Next'}}
+                    <i *ngIf="otherDetailsForm.value.free_quotation !='Yes'" class="fas fa-arrow-right"></i>
+                </button>
             </div>
 
         </form>

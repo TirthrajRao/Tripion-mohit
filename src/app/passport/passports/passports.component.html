@@ -91,7 +91,7 @@
                         <p>Pictures of the Passport</p>
                         <input type="file" class="form-control" id="file" formControlName="profile_image"
                             style="display: none;" (change)="selectFile($event)" multiple>
-                        <label class="text-center" for="file">
+                        <label class="text-center bg_gradient_yello" for="file">
                             <i class="far fa-copy"></i>
                             Select from Files
                         </label>
@@ -122,7 +122,7 @@
                         
                     </div>
                     <div class="make_folder">
-                        <button (click)="addPassport(addPassportForm.value)" class="btn" [disabled]="isDisable"><i
+                        <button (click)="addPassport(addPassportForm.value)" class="btn only_purple_shadow" [disabled]="isDisable"><i
                                 class="fas fa-plus"></i>Add
                             Passport</button>
                     </div>

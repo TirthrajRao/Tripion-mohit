@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="header_black">
     <app-header *ngIf="visaDetails" [cname]="visaDetails.country"></app-header>
 </ion-header>
 
@@ -7,12 +7,7 @@
         <form [formGroup]="editVisaForm">
             <div *ngIf="visaDetails">
                 <div class="all_visa_detail">
-                    <div class="mb-3">
-                        <!-- <ion-item>
-                            <ion-label position="floating">Country</ion-label>
-                            <ion-input type="text" formControlName="country" [(ngModel)]="visaDetails.country">
-                            </ion-input>
-                        </ion-item> -->
+                    <div class="visa_select_options p-2 mb-3">
                         <ion-item>
                             <ion-label position="floating">Country</ion-label>
                             <select id="myselection3" class="form-control w-100" formControlName="country" [(ngModel)]="visaDetails.country" class="visa-country">
@@ -24,7 +19,7 @@
                             <div *ngIf="f.country.errors.required">Country name is required</div>
                         </div>
                     </div>
-                    <div class="mb-3">
+                    <div class="visa_select_options p-2 mb-3">
                         <ion-item>
                             <ion-label position="floating">Date of Expiry</ion-label>
                             <ion-datetime displayFormat="MM/DD/YYYY" formControlName="doc_expiry_date" [(ngModel)]="visaDetails.doc_expiry_date" min="{{curruntDate}}" max="{{nextYear}}">
@@ -60,7 +55,7 @@
                     </div>
                 </div>
                 <div class="submit_btn">
-                    <button type="submit" (click)="editVisa(editVisaForm.value)" class="btn" [disabled]="isDisable"><i
+                    <button type="submit" (click)="editVisa(editVisaForm.value)" class="btn bg_gradient_yello" [disabled]="isDisable"><i
                             class="fas fa-save "></i>Save</button>
                 </div>
             </div>

@@ -296,12 +296,12 @@
                 </div>
             </div>
             <div class="next_btn" *ngIf="formUrl.length">
-                <button type="submit" (click)="nextForm(accomodationForm.value)">
+                <button class="bg_gradient_yello" type="submit" (click)="nextForm(accomodationForm.value)">
                     Next<i class="fas fa-arrow-right"></i>
                 </button>
             </div>
             <div class="submit_btn" *ngIf="!formUrl.length">
-                <button type="submit" routerLink="/home/home-page"><i class="fas fa-save"></i>Submit</button>
+                <button type="submit" class="bg_gradient_yello" routerLink="/home/home-page"><i class="fas fa-save"></i>Submit</button>
             </div>
         </form>
     </div>

@@ -141,7 +141,7 @@
                     <div class="select_files">
                         <input type="file" class="form-control" formControlName="profile_image" id="visafile"
                             style="display: none;" (change)="selectFile($event)" multiple>
-                        <label class="text-center" for="visafile">
+                        <label class="text-center bg_gradient_yello" for="visafile">
                             <i class="far fa-copy"></i>
                             Select from Files
                         </label>
@@ -173,7 +173,7 @@
                         </div>
                     </div>
                     <div class="make_folder">
-                        <button (click)="addVisa(addVisaForm.value)" class="btn" [disabled]="isDisable"><i
+                        <button (click)="addVisa(addVisaForm.value)" class="btn only_purple_shadow" [disabled]="isDisable"><i
                                 class="fas fa-plus"></i>Add Visa</button>
                     </div>
                 </div>

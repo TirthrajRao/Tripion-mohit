@@ -45,6 +45,20 @@ $button_color: #003574;
     font-style: normal;
 }
 
+.bg_gradient_yello {
+    background: rgb(221,148,75);
+    background: -moz-linear-gradient(75deg, rgba(221,148,75,1) 0%, rgba(255,232,85,1) 100%);
+    background: -webkit-linear-gradient(75deg, rgba(221,148,75,1) 0%, rgba(255,232,85,1) 100%);
+    background: linear-gradient(75deg, rgba(221,148,75,1) 0%, rgba(255,232,85,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#dd944b",endColorstr="#ffe855",GradientType=1);
+    box-shadow: 0 3px 8px 1px rgb(129 59 219 / 50%);
+    border: none;
+}
+
+.only_purple_shadow {
+    box-shadow: 0 3px 8px 1px rgb(129 59 219 / 50%) !important;
+}
+
 h1,
 h2,
 h3,
@@ -100,6 +114,10 @@ ion-header ion-toolbar:first-child {
     --background: #0575e6;
     height: 80px;
     display: flex;
+}
+
+ion-header.header_black ion-toolbar:first-child {
+    --background: #000 !important;
 }
 
 .header-md:after {
@@ -188,7 +206,7 @@ ion-content {
         border-bottom: 1px solid #c7cbd6;
         p {
             color: #000;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
         }
         i {
@@ -366,7 +384,7 @@ ion-content {
             text-align: center;
             margin-top: 25px;
             button {
-                width: 80%;
+                width: 100%;
                 outline: none;
                 font-size: 16px;
                 font-weight: 500;
@@ -398,8 +416,7 @@ ion-content {
             }
             label {
                 margin-top: 15px;
-                background: linear-gradient(#584bdd, #b755ff);
-                padding: 0px 10px;
+                padding: 3px 10px;
                 font-size: 16px;
                 line-height: 50px;
                 font-weight: 500;

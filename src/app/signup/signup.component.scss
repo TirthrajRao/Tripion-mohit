@@ -8,10 +8,6 @@ ion-content {
 .login_form_page {
     z-index: 11;
     padding: 10px;
-    height: 100%;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
     position: relative;
     margin: 15px 0px;
     &:after {
@@ -47,7 +43,6 @@ ion-content {
         font-weight: 500;
         width: 100%;
         border-radius: 5px;
-        // box-shadow: 1px 2px 6px rgba(119, 59, 219, 0.5);
         outline: none;
         position: relative;
         color: #fff;

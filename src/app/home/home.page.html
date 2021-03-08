@@ -2,18 +2,14 @@
     <div class="bg_home">
         <div class="main_background">
             <div class="top_part">
-                <div class="row" routerLink="/home/profile" (click)="closeMenu()">
-                    <div class="col-3 pl-4" *ngIf="currentUserData">
-                        <div class="profile_img">
-                            <img src="assets/images/user.png" *ngIf="!currentUserData.profile_pic" />
-                            <img [src]="currentUserData.profile_pic" *ngIf="currentUserData.profile_pic"
-                                onError="src = 'assets/images/placeholder.png'" />
-                        </div>
+                <div class="login_profile" routerLink="/home/profile" (click)="closeMenu()">
+                    <div class="profile_img" *ngIf="currentUserData">
+                        <img src="assets/images/user.png" *ngIf="!currentUserData.profile_pic" />
+                        <img [src]="currentUserData.profile_pic" *ngIf="currentUserData.profile_pic"
+                            onError="src = 'assets/images/user.png'" />
                     </div>
-                    <div class="col-9 pl-3">
-                        <div class="profile_detail text-white">
-                            <p *ngIf="currentUserData">{{currentUserData.first_name}} {{currentUserData.last_name}}</p>
-                        </div>
+                    <div class="profile_detail text-white" *ngIf="currentUserData">
+                        <p>{{currentUserData.first_name}} {{currentUserData.last_name}}</p>
                     </div>
                 </div>
             </div>
