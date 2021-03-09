@@ -17,7 +17,7 @@
                 </ion-row>
                 <div *ngIf="msg.message.sender_id == currentUser.id" class="send_msg d-flex justify-content-end mb-4">
                     <div class="user_msg"
-                        [ngStyle]="{'border-radius':msg.message.message_type == 'text' || msg.message.message_type == 'audio'?'181px 0px 181px 181px':''}">
+                        [ngStyle]="{'border-radius':msg.message.message_type == 'text' || msg.message.message_type == 'audio'?'10px':''}">
                         <p *ngIf="msg.message.message_type == 'text'">{{msg.message.msg}}</p>
                         <div *ngIf="msg.message.message_type == 'latlon'"
                             (click)="openMap(msg.message.msg.lat,msg.message.msg.lon,msg.message.msg.name)">
@@ -43,9 +43,7 @@
                         <div *ngIf="msg.message.message_type == 'file'" class="file-type"
                             (click)="downloadImage(msg.message.msg)">
                             <div *ngIf="!msg.message.msg.mimeType.includes('image')" class="holds-the-iframe">
-                                <iframe
-                                    [src]="'https://docs.google.com/viewerng/viewer?url=' + msg.message.msg.url +'&embedded=true' | safe:'resourceUrl'"
-                                    frameborder="0">
+                                <iframe [src]="'https://docs.google.com/viewerng/viewer?url=' + msg.message.msg.url +'&embedded=true' | safe:'resourceUrl'" frameborder="0">
                                 </iframe>
                                 <p>{{msg.message.msg.name}}</p>
                             </div>
@@ -55,7 +53,6 @@
                         </div>
 
                         <div *ngIf="msg.message.message_type == 'audio'">
-                       
                             <audio controls style="width: 67vw;">
                                 <source src="{{msg.message.msg.url}}" type="audio/mpeg">
                             </audio>
@@ -63,12 +60,11 @@
 
                         <div *ngIf="msg.message.message_type == 'ifram'">
                             <p [innerHtml]="msg.message.msg.location"></p>
+                            <div class="iframe_box" id="{{msg.key}}"></div>
                         </div>
-
-                        <small class="mr-1">{{ changeDateFormate(msg.message.date)}}</small>
+                        <small>{{ changeDateFormate(msg.message.date)}}</small>
                     </div>
                     <div class="user_profile">
-                        <!-- <ion-img src="../../assets/images/avatar1.png"></ion-img> -->
                         <ion-img [src]="currentUser.profile_pic || 'assets/images/avatar1.png'"
                             (ionError)="onErrorImage()"></ion-img>
                     </div>
@@ -104,11 +100,8 @@
                         </div>
                         <div *ngIf="msg.message.message_type == 'file'" class="file-type"
                             (click)="downloadImage(msg.message.msg)">
-
                             <div *ngIf="!msg.message.msg.mimeType.includes('image')" class="holds-the-iframe">
-                                <iframe
-                                    [src]="'https://docs.google.com/viewerng/viewer?url=' + msg.message.msg.url +'&embedded=true' | safe:'resourceUrl'"
-                                    frameborder="0">
+                                <iframe [src]="'https://docs.google.com/viewerng/viewer?url=' + msg.message.msg.url +'&embedded=true' | safe:'resourceUrl'" frameborder="0">
                                 </iframe>
                                 <p>{{msg.message.msg.name}}</p>
                             </div>
@@ -123,13 +116,12 @@
                         </div>
                         <div *ngIf="msg.message.message_type == 'ifram'">
                             <p>iframe</p>
-                            <div id="{{msg.key}}"></div>
+                            <div class="iframe_box" id="{{msg.key}}"></div>
                         </div>
                         <div *ngIf="msg.message.message_type == 'link'">
                             <p>link</p>
                             <div [innerHtml]="msg.message.msg.location"></div>
                         </div>
-                        <!-- <small>{{msg.message.date | date:'EEEE \',\' h:mm \'\ a'}}</small> -->
                         <small>{{ changeDateFormate(msg.message.date)}}</small>
 
                     </div>

@@ -43,7 +43,6 @@ $blue: #021b79;
         border-radius: 7px;
         background-color: #ffffff;
         .card_header {
-            border-bottom: 1px solid #c7cbd6;
             width: 100%;
             padding: 10px 12px;
             @media (max-height: 750px) {
@@ -143,8 +142,7 @@ $blue: #021b79;
         .card_footer {
             padding: 0px 25px 18px 25px;
             button {
-                border-radius: 30px;
-                // line-height: 46px;
+                border-radius: 7px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -155,9 +153,6 @@ $blue: #021b79;
                 width: 100%;
                 font-weight: 500;
                 outline: none;
-                background: -webkit-gradient(linear, left top, right top, from(#0575e6), to(#021b79));
-                background: linear-gradient(to right, #0575e6, #021b79);
-                // box-shadow: 2px 1px 3px rgba(129, 59, 219, 0.5);
                 i {
                     margin-right: 10px;
                     font-size: 25px;

@@ -51,9 +51,6 @@ ion-slides {
         width: 100%;
         font-weight: 500;
         outline: none;
-        background: -webkit-gradient(linear, left top, right top, from(#0575e6), to(#021b79));
-        background: linear-gradient(to right, #0575e6, #021b79);
-        // box-shadow: 2px 1px 3px rgba(129, 59, 219, 0.5);
         ion-img {
             margin-right: 15px;
             display: inline-block;
@@ -148,34 +145,30 @@ ion-slides {
     padding: 10px;
 }
 
-.single_img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 150px;
-    width: 100%;
-    padding: 3px;
+
+.single_img_div{
     position: relative;
-    p {
+    overflow: hidden;
+    width: 100%;
+    padding-top: 100%;
+    border-radius: 7px;
+    img{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+    }
+    /*p {
         white-space: nowrap;
         width: 85px;
         overflow: hidden;
         text-overflow: ellipsis;
         margin-left: 5px;
-    }
-}
-
-.single_img_div {
-    height: 130px;
-    object-fit: cover;
-}
-.backgroung-img {
-    // background:url('../../assets/images/imgloader.gif') center center no-repeat;
-    // background-size: 50px 50px;
-}
-.single_img_div img {
-    max-width: 100%;
-    min-width: 100%;
-    max-height: 100%;
-    min-height: 100%;
+    }*/
 }

@@ -1,9 +1,10 @@
-<ion-header>
+<ion-header class="home_page_header">
     <ion-toolbar>
         <ion-row>
             <ion-col size='10'>
-                <div class="home_text text-center">
-                    <span>Welcome to Blue Diamond Voyage</span>
+                <div class="home_text text-left">
+                    <!-- <span>Welcome to Trip Ion</span> -->
+                    <img src="assets/images/bdv_logo.png" alt="logo image">
                 </div>
             </ion-col>
             <ion-col size='2'>
@@ -12,30 +13,56 @@
                 </div>
             </ion-col>
         </ion-row>
+        <ion-row>
+            <ion-col size="6">
+                <div class="wether_image">
+                    <img src="assets/images/wether.png" alt="wether image">
+                    <p *ngIf="temperature " class="temprature-text">{{temperature}}°C</p>
+                </div>
+            </ion-col>
+            <ion-col size="6">
+                <div class="city_name">
+                    <img src="assets/images/time_zone.png" alt="time_zone icon">
+                    <p class="time-city" (click)="selectCity('time')" *ngIf="timeCity">
+                        {{timeCity}}
+                    </p>
+                    <small *ngIf="currentTime" class="time-txt">{{currentTime}}</small>
+                </div>
+            </ion-col>
+        </ion-row>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-        <ion-refresher-content refreshingSpinner="circular" pullingIcon="null">
-        </ion-refresher-content>
-    </ion-refresher>
-    <div class=" all_content">
-        <div class="wether w-100 ">
-            <div class="wether_image float-left ">
-                <ion-img src="assets/images/wether.png "></ion-img>
-                <div class="temprature-select">
-                    <p class="temp-city" (click)="selectCity('temperature')" *ngIf="tempratureCity">{{tempratureCity}}
-                    </p>                  
+    <ion-grid class="ion-no-padding">
+        <ion-row class="home_page_link_boxes">
+            <ion-col size="6" class="home_item">
+                <div class="image_box">
+                    <img src="assets/images/home_qi.png" alt="home image">
+                    <p>Quotation <br>Inquiry</p>
                 </div>
-                <span *ngIf="temperature " class="temprature-text">{{temperature}}°C
-                </span>
-            </div>
-            <div class="city_name float-right time-select">         
-                <p class="time-city" (click)="selectCity('time')" *ngIf="timeCity">{{timeCity}}</p>
-                <p *ngIf="currentTime" class="time-txt">{{currentTime}}</p>
-            </div>
-        </div>
+            </ion-col>
+            <ion-col size="6" class="home_item">
+                <div class="image_box">
+                    <img src="assets/images/home_ti.png" alt="home image">
+                    <p>Travel <br>Inquiry</p>
+                </div>
+            </ion-col>
+            <ion-col size="6" class="home_item">
+                <div class="image_box">
+                    <img src="assets/images/home_cc.png" alt="home image">
+                    <p>Currency <br>Converter</p>
+                </div>
+            </ion-col>
+            <ion-col size="6" class="home_item">
+                <div class="image_box">
+                    <img src="assets/images/home_df.png" alt="home image">
+                    <p>Destination <br>Finder</p>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <!-- <div class=" all_content">
         <div class="home_details" *ngIf="allTrips.length ">
             <div *ngFor="let trip of allTrips;let i = index">
                 <div class="card text-white mb-2 " (click)="getPlanOption(trip) ">
@@ -43,17 +70,16 @@
                         <p class="float-right">{{trip.status}}</p>
                         <p [innerHtml]="trip.inquiry_name " class="inquiry-title float-left mt-1"></p>
                     </div>
-                    <div class="card_content w-100 ">            
-                        <div class="country_details">                    
+                    <div class="card_content w-100 ">
+                        <div class="country_details">
                             <ul>
                                 <li *ngFor="let inquiry of trip.list_of_inquiry">{{inquiry}}</li>
                             </ul>
-                        </div>                     
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div *ngIf="!loading && !allTrips.length ">
             <span class="text-center no-inquiry ">No Inquiry yet</span>
         </div>
@@ -65,7 +91,6 @@
             </div>
         </div>
     </div>
-
     <div class="success_alert_box2" style="display: none;">
         <div class="alert_box_content">
             <div class="alert_box_text">
@@ -78,8 +103,7 @@
                 </div>
             </div>
         </div>
-    </div>
-
+    </div> -->
 </ion-content>
 
 <ion-footer>

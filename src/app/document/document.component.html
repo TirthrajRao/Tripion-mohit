@@ -16,8 +16,8 @@
         </ion-slides>
     </div>
     <div class="document_content">
-        <div class="row all-img m-0 " *ngIf="allImage.length">
-            <div class="col-4 img-icon p-0" *ngFor="let photo of allImage" style="cursor: pointer;"
+        <div class="form-row all-img m-0 " *ngIf="allImage.length">
+            <div class="col-4 img-icon mb-2" *ngFor="let photo of allImage" style="cursor: pointer;"
                 (click)="selectDocument(photo)">
                 <div class="single_img">
                     <div class="single_img_div backgroung-img"
@@ -62,12 +62,10 @@
     <div class="modal_content_with_overlay" id="folder-modal" style="display: none;">
         <div class="modal_body">
             <div class="modal_content">
-                <ion-item>
+                <ion-item lines="none">
                     <div class="single_folder" id="upload-documents">
                         <input type="file" #file style="display: none;" (change)="selectOtherFile($event)" multiple>
-                        <span (click)="file.click()" style="cursor: pointer;"><i class="fas fa-upload mr-2"></i>Upload
-                            New
-                            Document</span>
+                        <span (click)="file.click()" style="cursor: pointer;"><i class="fas fa-upload mr-2"></i>Upload New Document</span>
                     </div>
                 </ion-item>
                 <div class="upload_file_progress" *ngFor="let img of urls">
@@ -94,7 +92,7 @@
                     </div>
                 </div>
                 <div class="finish_button" *ngIf="urls.length">
-                    <button type="submit" class="btn" (click)="uploadDocument()" [disabled]="isDisable">
+                    <button type="submit" class="btn bg_gradient_yello" (click)="uploadDocument()" [disabled]="isDisable">
                         <ion-img src="assets/images/finish.png"></ion-img>
                         Add to gallery
                     </button>

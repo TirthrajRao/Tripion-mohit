@@ -35,7 +35,7 @@
                 </iframe>
             </div>
             <div class="card_footer w-100 mt-2">
-                <button type="submit" (click)="selectDocument()">
+                <button type="submit" (click)="selectDocument()" class="bg_gradient_yello">
                     <i class="fas fa-cloud-upload-alt"></i>
                     Upload Documents
                 </button>
@@ -78,7 +78,7 @@
                 </ul>
             </div>
             <div class="card_footer w-100">
-                <button type="submit" (click)="selectDocument()">
+                <button type="submit" (click)="selectDocument()" class="bg_gradient_yello">
                     <i class="fas fa-cloud-upload-alt"></i>
                     <span>Upload Documents</span>
                 </button>
@@ -110,7 +110,7 @@
                 <p class="total">Total:<span class="ml-4">₹ {{tripDetail.payment.total_amount}}</span></p>
             </div>
             <div class="card_footer w-100">
-                <button type="submit" (click)="payNow()">
+                <button type="submit" (click)="payNow()" class="bg_gradient_yello">
                     <i class="fas fa-paper-plane"></i>
                     Proceed to pay
                 </button>

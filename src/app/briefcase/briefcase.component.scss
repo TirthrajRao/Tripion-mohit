@@ -67,6 +67,7 @@ $green: #2FE57C;
     margin-bottom: 10px;
     position: relative;
     cursor: pointer;
+    outline: none !important;
     @media(max-height: 812px) {
         padding: 14px;
     }
