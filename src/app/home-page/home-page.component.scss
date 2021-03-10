@@ -16,10 +16,10 @@ ion-header.home_page_header ion-toolbar:first-child {
     box-shadow: 0 3px 8px 1px rgb(129 59 219 / 50%) !important;
     position: relative;
     .wether_image {
-        display: block;
+        display: table;
         margin: 10px auto 15px;
         position: relative;
-        width: 80%;
+        width: 140px;
         text-align: center;
         img {
             max-width: 80px;
@@ -39,7 +39,7 @@ ion-header.home_page_header ion-toolbar:first-child {
         margin: 10px auto 15px;
         position: relative;
         padding-left: 30px;
-        max-width: 80%;
+        max-width: 140px;
         img {
             max-width: 25px;
             position: absolute;
@@ -82,6 +82,7 @@ ion-header.home_page_header ion-toolbar:first-child {
     .home_text{
         padding: 10px 20px;
         display: flex;
+        justify-content: center;
         img {
             max-width: 180px;
         }
@@ -105,7 +106,7 @@ ion-content {
 
 
 .home_page_link_boxes {
-    padding: 30px 10px;
+    padding: 20px 10px;
     min-height: calc(100vh - 187px - 75px);
     margin: auto;
     display: flex;
@@ -118,7 +119,7 @@ ion-content {
         border-radius: 15px;
         overflow: hidden;
         box-shadow: 5px 10px 12px rgb(3 81 186 / 12%);
-        margin: 5px 0px;
+        margin: 5px;
         img {
             width: 100%;
         }
@@ -134,157 +135,16 @@ ion-content {
     }
 }
 
-.home_details {
-    padding: 0px 10px 25px;
-    .card {
-        background: linear-gradient($purple, $blue);
-        padding: 12px 15px 18px;
-        border: none;
-        border-radius: 5px;
-        min-height: 125px;
-        cursor: pointer;
-        @media (max-height: 600px) {
-            padding: 10px 15px 15px;
-            min-height: 115px;
-        }
-    }
-    .booking_details {
-        p {
-            font-size: 20px;
-            font-weight: 400;
-            // margin-top: 30px;
-            // margin-top: 15px;
-        }
-    }
-    .inquiry-title{
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 32px;
-    }
-    .country_details {
-        p {
-            font-size: 16px;
-            font-weight: 500;
-            line-height: 32px;
-        }
-        li {
-            color: #d9d9d9;
-            list-style: none;
-            font-size: 13px;
-            line-height: 20px;
-            position: relative;
-            margin-left: 20px;
-            &:after {
-                content: "";
-                width: 1px;
-                height: 100%;
-                background: #ffffff;
-                position: absolute;
-                left: -18px;
-                top: 10px;
-            }
-            &:before {
-                content: "";
-                width: 5px;
-                height: 5px;
-                border-radius: 50%;
-                background: #ffffff;
-                position: absolute;
-                left: -20px;
-                top: 7px;
-            }
-        }
-        :last-child {
-            &:after {
-                content: "";
-                width: 0px !important;
-                background: #ffffff;
-            }
-        }
-    }
-}
-
-.no-inquiry {
-    position: absolute;
-    left: 0;
-    right: 0;
-    font-size: 22px;
-}
-
 .footer_img {
     position: relative;
     text-align: center;
-}
-
-.num {
-    position: absolute;
-    top: -10px;
-    color: #fff;
-    background: #f44336;
-    border-radius: 50%;
-    height: 21px;
-    width: 21px;
-}
-
-.success_alert_box2 {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-    -ms-flex-align: center;
-    display: flex;
-    overflow: hidden;
-    z-index: 9999;
-}
-.alert_box_content {
-    background-color: #fff;
-    border-radius: 15px;
-    padding: 20px;
-    width: 280px;
-    position: relative;
-    margin: auto;
-    display: table;
-    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    transition: all 0.4s;
-    top: 100%;
-}
-
-.animate .alert_box_content {
-    top: 0;
-}
-.alert_box_image img {
-    height: 60px;
-    width: 60px;
-}
-
-.alert_box_text p {
-    margin: 15px;
-    color: #7f8dab;
-    font-size: 18px;
-    line-height: 24px;
-}
-.alert_box_text p span {
-    text-transform: uppercase;
-}
-
-.next_btn {
-    padding: 0;
-    button {
-        width: 30%;
-        padding: 10px 21px;
+    .num {
+        position: absolute;
+        top: -6px;
+        color: #fff;
+        background: #f44336;
+        border-radius: 50%;
+        height: 21px;
+        width: 21px;
     }
-}
-
-.city-name {
-    font-size: 19px;
-    font-weight: 600;
-    outline: none !important;
-    box-shadow: none;
-}
-.dropdown-toggle::after {
-    display: none !important;
 }

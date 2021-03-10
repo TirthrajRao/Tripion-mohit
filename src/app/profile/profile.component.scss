@@ -117,8 +117,6 @@ $button_color: #003574;
         width: 100%;
         font-weight: 600;
         outline: none;
-        background: $button_color;
-        box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.5);
         i {
             margin-right: 15px;
             font-size: 25px;
@@ -159,6 +157,8 @@ $button_color: #003574;
 }
 
 .reset-password-link {
+    display: inline-block;
+    width: 100%;
     a {
         font-size: 12px;
         font-weight: 500;

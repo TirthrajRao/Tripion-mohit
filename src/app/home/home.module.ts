@@ -59,6 +59,7 @@ import { FindDestinationComponent } from '../destination-finder/find-destination
 import { PreferenceDestinationComponent } from '../destination-finder/preference-destination/preference-destination.component';
 import { GeneralQuatationComponent } from '../general-quatation/general-quatation.component';
 import { GeneralQuatationDetailComponent } from '../general-quatation-detail/general-quatation-detail.component';
+import { TravelInquiryComponent } from '../travel-inquiry/travel-inquiry.component';
 
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { File } from '@ionic-native/file/ngx';
@@ -342,6 +343,10 @@ export class IonicGestureConfig extends HammerGestureConfig {
           {
             path:'preference-destination/:id',
             component:PreferenceDestinationComponent
+          },
+          {
+            path:'travel-inquiry',
+            component:TravelInquiryComponent
           }
         ]
       },
@@ -412,7 +417,8 @@ export class IonicGestureConfig extends HammerGestureConfig {
     GeneralQuatationComponent,
     GeneralQuatationDetailComponent,
     FindDestinationComponent,
-    PreferenceDestinationComponent
+    PreferenceDestinationComponent,
+    TravelInquiryComponent
   ],
   providers: [
     FileTransfer,

@@ -1,7 +1,9 @@
 <ion-header class="home_page_header">
     <ion-toolbar>
         <ion-row>
-            <ion-col size='10'>
+            <ion-col size='2'>
+            </ion-col>
+            <ion-col size='8'>
                 <div class="home_text text-left">
                     <!-- <span>Welcome to Trip Ion</span> -->
                     <img src="assets/images/bdv_logo.png" alt="logo image">
@@ -37,60 +39,31 @@
     <ion-grid class="ion-no-padding">
         <ion-row class="home_page_link_boxes">
             <ion-col size="6" class="home_item">
-                <div class="image_box">
+                <div class="image_box" routerLink='/home/general-quatation'>
                     <img src="assets/images/home_qi.png" alt="home image">
                     <p>Quotation <br>Inquiry</p>
                 </div>
             </ion-col>
             <ion-col size="6" class="home_item">
-                <div class="image_box">
+                <div class="image_box" routerLink='/home/travel-inquiry'>
                     <img src="assets/images/home_ti.png" alt="home image">
                     <p>Travel <br>Inquiry</p>
                 </div>
             </ion-col>
             <ion-col size="6" class="home_item">
-                <div class="image_box">
+                <div class="image_box" routerLink='/home/home-page'>
                     <img src="assets/images/home_cc.png" alt="home image">
                     <p>Currency <br>Converter</p>
                 </div>
             </ion-col>
             <ion-col size="6" class="home_item">
-                <div class="image_box">
+                <div class="image_box" routerLink='/home/find-your-destination'>
                     <img src="assets/images/home_df.png" alt="home image">
                     <p>Destination <br>Finder</p>
                 </div>
             </ion-col>
         </ion-row>
     </ion-grid>
-    <!-- <div class=" all_content">
-        <div class="home_details" *ngIf="allTrips.length ">
-            <div *ngFor="let trip of allTrips;let i = index">
-                <div class="card text-white mb-2 " (click)="getPlanOption(trip) ">
-                    <div class="booking_details">
-                        <p class="float-right">{{trip.status}}</p>
-                        <p [innerHtml]="trip.inquiry_name " class="inquiry-title float-left mt-1"></p>
-                    </div>
-                    <div class="card_content w-100 ">
-                        <div class="country_details">
-                            <ul>
-                                <li *ngFor="let inquiry of trip.list_of_inquiry">{{inquiry}}</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div *ngIf="!loading && !allTrips.length ">
-            <span class="text-center no-inquiry ">No Inquiry yet</span>
-        </div>
-    </div>
-    <div *ngIf="loading">
-        <div id="loader-wrapper ">
-            <div class="heartbeatloader ">
-                <ion-img class="svgdraw " src="assets/images/loader.gif "></ion-img>
-            </div>
-        </div>
-    </div>
     <div class="success_alert_box2" style="display: none;">
         <div class="alert_box_content">
             <div class="alert_box_text">
@@ -103,7 +76,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 </ion-content>
 
 <ion-footer>

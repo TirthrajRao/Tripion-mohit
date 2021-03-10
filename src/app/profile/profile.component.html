@@ -143,7 +143,7 @@
                         </ion-card-content>
                     </ion-card> -->
                     <div class="reset-password-link">
-                        <a class="float-right" id="reset-password" (click)="openRedetPswModal()">Reset Password</a>
+                        <a class="float-right only_purple_shadow" id="reset-password" (click)="openRedetPswModal()">Reset Password</a>
                     </div>
                 </div>
             </div>
@@ -193,7 +193,7 @@
                         </div>
                         <span id="message" [style.color]="match?'green':'red'" style="font-size: 13px;"></span>
                     </div>
-                    <button type="submit" class="edit_btn btn only_purple_shadow" (click)="resetPassWord(resetPswForm.value)" [disabled]="isDisable">Submit</button>
+                    <button type="submit" class="edit_btn btn bg_gradient_yello" (click)="resetPassWord(resetPswForm.value)" [disabled]="isDisable">Submit</button>
                 </form>
             </div>
         </div>
