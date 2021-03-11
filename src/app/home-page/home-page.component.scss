@@ -80,11 +80,12 @@ ion-header.home_page_header ion-toolbar:first-child {
         }
     }*/
     .home_text{
-        padding: 10px 20px;
+        padding: 10px;
         display: flex;
         justify-content: center;
         img {
-            max-width: 180px;
+            max-width: 100%;
+            width: 200px;
         }
     }
 }

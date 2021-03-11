@@ -60,6 +60,7 @@ import { PreferenceDestinationComponent } from '../destination-finder/preference
 import { GeneralQuatationComponent } from '../general-quatation/general-quatation.component';
 import { GeneralQuatationDetailComponent } from '../general-quatation-detail/general-quatation-detail.component';
 import { TravelInquiryComponent } from '../travel-inquiry/travel-inquiry.component';
+import { CurrencyConvertorComponent } from '../currency-convertor/currency-convertor.component';
 
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { File } from '@ionic-native/file/ngx';
@@ -82,6 +83,9 @@ import * as Hammer from 'hammerjs';
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { InnerFolderComponent } from '../folder-data/inner-folder/inner-folder.component';
 import { SelectCityComponent } from '../select-city/select-city.component';
+
+import { CurrencyConvertorService } from '../services/currency-convertor.service'
+
 
 import { MediaCapture } from '@ionic-native/media-capture/ngx';
 import { Media } from '@ionic-native/media/ngx';
@@ -347,6 +351,10 @@ export class IonicGestureConfig extends HammerGestureConfig {
           {
             path:'travel-inquiry',
             component:TravelInquiryComponent
+          },
+          {
+            path:'currency-convertor',
+            component:CurrencyConvertorComponent
           }
         ]
       },
@@ -418,7 +426,8 @@ export class IonicGestureConfig extends HammerGestureConfig {
     GeneralQuatationDetailComponent,
     FindDestinationComponent,
     PreferenceDestinationComponent,
-    TravelInquiryComponent
+    TravelInquiryComponent,
+    CurrencyConvertorComponent
   ],
   providers: [
     FileTransfer,
@@ -441,7 +450,8 @@ export class IonicGestureConfig extends HammerGestureConfig {
       useClass: IonicGestureConfig
     },
     MediaCapture,
-    Media
+    Media,
+    CurrencyConvertorService
   ],
   entryComponents: [
     ImageModalComponent

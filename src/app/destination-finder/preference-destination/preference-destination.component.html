@@ -3,12 +3,12 @@
 </ion-header>
 
 <ion-content class="bg-image">
-	<div class="container mt-4 pre_section">
+	<div class="container pt-4 pre_section">
 		<h4>{{preferenceTitle}}</h4>
-		<h6 class="mt-4">{{preference}}</h6>
+		<h6 class="pt-4">{{preference}}</h6>
 
 		<div *ngIf="isVibe">
-			<div class="row">
+			<div class="form-row">
 				<div class="col-4"  *ngFor="let pre of vibe; let i = index;" (click)="selectImage(pre, i)" [ngClass]="pre.status ? 'pre-active' : 'pre-inactive'">
 					<div class="pre_image" >
 						<img src="{{pre.image}}" class="preImage">
@@ -18,12 +18,12 @@
 				</div>
 			</div>
 			<div class="next_btn">
-				<button type="submit" (click)="nextForm('vibe', vibe)">Next<i class="fas fa-arrow-right"></i></button>
+				<button type="submit" class="bg_gradient_yello" (click)="nextForm('vibe', vibe)">Next<i class="fas fa-arrow-right"></i></button>
 			</div>
 		</div>
 
 		<div *ngIf="isTerrain">
-			<div class="row">
+			<div class="form-row">
 				<div class="col-4"  *ngFor="let pre of terrain; let i = index;" (click)="selectImage(pre, i)" [ngClass]="pre.status ? 'pre-active' : 'pre-inactive'">
 					<div class="pre_image">
 						<img src="{{pre.image}}" class="preImage">
@@ -33,12 +33,12 @@
 				</div>	
 			</div>
 			<div class="next_btn">
-				<button type="submit" (click)="nextForm('terrain', terrain)">Next<i class="fas fa-arrow-right"></i></button>
+				<button type="submit" class="bg_gradient_yello" (click)="nextForm('terrain', terrain)">Next<i class="fas fa-arrow-right"></i></button>
 			</div>
 		</div>
 		
 		<div *ngIf="isOccasion">
-			<div class="row">
+			<div class="form-row">
 				<div class="col-4"  *ngFor="let pre of occasion; let i = index;" (click)="selectImage(pre, i)" [ngClass]="pre.status ? 'pre-active' : 'pre-inactive'">
 					<div class="pre_image" >
 						<img src="{{pre.image}}" class="preImage">
@@ -48,12 +48,12 @@
 				</div>
 			</div>
 			<div class="next_btn">
-				<button type="submit" (click)="nextForm('occasion', occasion)">Next<i class="fas fa-arrow-right"></i></button>
+				<button type="submit" class="bg_gradient_yello" (click)="nextForm('occasion', occasion)">Next<i class="fas fa-arrow-right"></i></button>
 			</div>
 		</div>
 		
 		<div *ngIf="isIntrests">
-			<div class="row">
+			<div class="form-row">
 				<div class="col-4"  *ngFor="let pre of intrests; let i = index;" (click)="selectImage(pre, i)" [ngClass]="pre.status ? 'pre-active' : 'pre-inactive'">
 					<div class="pre_image">
 						<img src="{{pre.image}}" class="preImage">
@@ -63,12 +63,12 @@
 				</div>
 			</div>
 			<div class="next_btn">
-				<button type="submit" (click)="nextForm('interest', intrests)">Next<i class="fas fa-arrow-right"></i></button>
+				<button type="submit" class="bg_gradient_yello" (click)="nextForm('interest', intrests)">Next<i class="fas fa-arrow-right"></i></button>
 			</div>
 		</div>
 		
 		<div *ngIf="isClimate">
-			<div class="row">
+			<div class="form-row">
 				<div class="col-4"  *ngFor="let pre of climate; let i = index;" (click)="selectImage(pre, i)" [ngClass]="pre.status ? 'pre-active' : 'pre-inactive'">
 					<div class="pre_image">
 						<img src="{{pre.image}}" class="preImage">
@@ -78,11 +78,11 @@
 				</div>
 			</div>
 			<div class="next_btn">
-				<button type="submit" (click)="nextForm('climate', climate)">Next<i class="fas fa-arrow-right"></i></button>
+				<button type="submit" class="bg_gradient_yello" (click)="nextForm('climate', climate)">Next<i class="fas fa-arrow-right"></i></button>
 			</div>
 		</div>
 
-		<!-- <div class="row">
+		<!-- <div class="form-row">
 			<div class="col-12" *ngFor="let bigPre of bigPreference; let i = index;" (click)="selectBigImage(bigPre.id, i)" [ngClass]="bigPre.status ? 'pre-active' : 'pre-inactive'">
 				<div class="pre_image">
 					<img src="{{bigPre.image}}">
@@ -92,7 +92,7 @@
 			</div>
 		</div> -->
 		<!-- <div class="next_btn">
-			<button type="submit" (click)="nextForm()">Next<i class="fas fa-arrow-right"></i></button>
+			<button type="submit" class="bg_gradient_yello" (click)="nextForm()">Next<i class="fas fa-arrow-right"></i></button>
 		</div> -->
 	</div>
 </ion-content>

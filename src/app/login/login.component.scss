@@ -1,4 +1,14 @@
 // all css start here
+
+ion-content {
+    --background: #fff;
+    position: relative;
+    &:after {
+        content: "";
+        display: none;
+    }
+}
+
 ion-content {
     &:after {
         padding-bottom: 100vh !important;
@@ -10,17 +20,16 @@ ion-content {
 .login_form_page {
     z-index: 11;
     padding: 10px;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    background: url("../../assets/images/balckground1.png") center center no-repeat;
-    background-size: 100% 100%;
-    &:after {
-        content: " ";
-        position: absolute;
-        background: #003574;
+    background: url("../../assets/images/balckground1.png");
+    background-size: cover;
+    background-position: bottom center;
+    .login{
+        width: 100%;
     }
     .login_header {
         text-align: center;
@@ -30,24 +39,20 @@ ion-content {
         // margin-bottom: 25px;
     }
     .logo {
-        height: 57px;
+        height: auto;
         display: block;
         margin: auto;
-        width: 265px;
+        max-width: 100%;
+        width: 250px;
     }
 }
 
 .login_form {
-    width: 300px;
-    // background-color: #fff;
+    width: 100%;
     border-radius: 8px;
-    padding: 18px;
-    padding-top: 7px;
+    padding: 25px;
     margin: auto;
-    // box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
     .login_btn {
-        // background-color: #003574;
-        // box-shadow: 1px 2px 6px rgba(86, 84, 88, 0.5);
         background-color: #0461ce;
         padding: 0px 10px;
         font-size: 16px;
