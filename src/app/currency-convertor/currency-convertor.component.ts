@@ -62,8 +62,8 @@ export class CurrencyConvertorComponent implements OnInit {
     this.toValue = this.fromValue * parseFloat(this.resultRate);
   }
 
-  // calculateCurrencyTwo() {
-  //   this.fromValue = this.toValue / parseFloat(this.resultRate);
-  // }
+  calculateCurrencyTwo() {
+    this.fromValue = this.toValue / parseFloat(this.resultRate);
+  }
 
 }
