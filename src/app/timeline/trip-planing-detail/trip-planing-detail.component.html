@@ -33,13 +33,12 @@
                         <ion-card-content>
                             <div class="card_header w-100 d-inline-block ">
                                 <h3 class="float-left" [innerHtml]="timelineDayDetail.itinerary_title"></h3>
-                                <p class="float-right"><i
-                                        class="far fa-calendar-minus"></i>{{timelineDayDetail.itinerary_date}}</p>
+                                <p class="float-right"><i class="far fa-calendar-minus"></i>{{timelineDayDetail.itinerary_date}}</p>
                             </div>
                             <div class="card_body">
                                 <p class="mt-1" [innerHtml]="timelineDayDetail.itinerary_content"></p>
                             </div>
-                            <div *ngFor="let detail of timelineDayDetail.itinerary_details">
+                            <div class="single_plan" *ngFor="let detail of timelineDayDetail.itinerary_details">
                                 <div class="trip_drescription mt-3">
                                     <div class="trip_drescription_header">
                                         <i class="far fa-clock"></i>

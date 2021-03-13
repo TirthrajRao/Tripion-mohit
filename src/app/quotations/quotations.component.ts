@@ -7,6 +7,7 @@ import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer/ng
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { AppComponent } from '../app.component';
+import { Router} from '@angular/router';
 declare const $: any;
 
 @Component({
@@ -29,6 +30,7 @@ export class QuotationsComponent implements OnInit {
     private file: File,
     private fileOpener: FileOpener,
     public appComponent: AppComponent,
+    public _router: Router
   ) {
     this.route.params.subscribe((param) => {
       this.tripId = param.tripId;
@@ -79,6 +81,7 @@ export class QuotationsComponent implements OnInit {
       id: this.currentUser.id,
       inquiry_id: this.tripId
     }
+    console.log(obj);
     this._tripService.getQuotations(obj).subscribe((res: any) => {
       console.log(res);
       this.loading = false;
@@ -88,6 +91,11 @@ export class QuotationsComponent implements OnInit {
       this.appComponent.errorAlert(err.error.message);
       this.loading = false;
     })
+  }
+
+  getSingleQuotationDetail(id, value){
+    console.log('the id and value of getSingleQuotationDetail =====>', id, value);
+    this._router.navigate(['/home/general-quatation-detail/' + id])
   }
 
   /**

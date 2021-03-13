@@ -1,24 +1,16 @@
-.plan_option_content {
-    // padding: 0px 10px;   
+.plan_option_content { 
     position: relative;
     z-index: 11;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     .card {
         border: none;
         cursor: pointer;
+        border-radius: 7px;
         h6 {
             color: #434A5E;
             font-size: 17px;
-            padding: 18px 15px;
+            padding: 15px 20px;
             font-weight: 500;
-            border-bottom: 1px solid #C7CBD6;
-            @media(max-height: 750px) {
-                padding: 12px 10px;
-            }
-            @media(max-height: 600px) {
-                font-size: 16px;
-                padding: 10px 10px;
-            }
         }
         h3 {
             color: #434A5E;

@@ -55,11 +55,12 @@ ion-card {
             font-weight: 600;
             line-height: 10px;
             line-height: 22px;
-            width: 97%;
+            width: auto;
         }
         p {
             color: #3468d6;
             font-size: 10px;
+            margin: 5px 0px;
             i {
                 font-size: 14px;
                 margin-right: 5px;
@@ -68,12 +69,18 @@ ion-card {
         }
     }
     .card_body {
-        border-bottom: 1px solid #707070;
         p {
             color: #7f8dab;
             font-size: 13px;
             padding-bottom: 15px;
         }
+    }
+    .single_plan {
+        padding: 20px;
+        border: 2px solid #F8B853;
+        border-radius: 20px;
+        margin-top: 10px;
+        position: relative;
     }
 }
 

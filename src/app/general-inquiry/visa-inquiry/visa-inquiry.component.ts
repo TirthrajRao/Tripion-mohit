@@ -40,7 +40,7 @@ export class VisaInquiryComponent implements OnInit {
       previous_rejections_details: new FormControl(''),
       previous_rejections_country:new FormControl(''),
       international_travel: new FormControl('Yes'),
-      // international_travel_details: new FormControl(''),
+      international_travel_details: new FormControl(''),
       previous_travel_country: new FormControl(''),
       previous_travel_from_date: new FormControl(''),
       previous_travel_to_date: new FormControl(''),
