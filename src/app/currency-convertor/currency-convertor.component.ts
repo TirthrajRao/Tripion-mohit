@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { CurrencyConvertorService } from '../services/currency-convertor.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-currency-convertor',
@@ -22,7 +21,7 @@ export class CurrencyConvertorComponent implements OnInit {
   fromCurr: any = 'INR';
   toCurr: any = 'USD'; //LKR
 
-  constructor(public navCtrl: NavController, protected ccService: CurrencyConvertorService, public http: HttpClient) {
+  constructor(public navCtrl: NavController, protected ccService: CurrencyConvertorService) {
   }
   
   ngOnInit() {
@@ -62,8 +61,8 @@ export class CurrencyConvertorComponent implements OnInit {
     this.toValue = this.fromValue * parseFloat(this.resultRate);
   }
 
-  calculateCurrencyTwo() {
-    this.fromValue = this.toValue / parseFloat(this.resultRate);
-  }
+  // calculateCurrencyTwo() {
+  //   this.fromValue = this.toValue / parseFloat(this.resultRate);
+  // }
 
 }
