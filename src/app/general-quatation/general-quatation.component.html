@@ -6,7 +6,7 @@
   <div class="all_content" *ngIf="quotations.length">
       <div class="plan_option_content" *ngFor="let quotation of quotations" (click)="getSingleQuotationDetail(quotation.quotation_id, quotation)">
           <div class="card plan_option_heading w-100">
-              <h6>{{quotation.quotation_name}}</h6>
+              <h6 class="font-weight-bold p-3">{{quotation.quotation_name}}</h6>
           </div>
       </div>
   </div>

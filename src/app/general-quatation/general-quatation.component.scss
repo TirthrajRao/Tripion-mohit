@@ -1,16 +1,14 @@
-.plan_option_content { 
+.plan_option_content {
     position: relative;
     z-index: 11;
     margin-bottom: 10px;
     .card {
         border: none;
         cursor: pointer;
-        border-radius: 7px;
         h6 {
             color: #434A5E;
             font-size: 17px;
-            padding: 15px 20px;
-            font-weight: 500;
+            text-transform: capitalize;
         }
         h3 {
             color: #434A5E;

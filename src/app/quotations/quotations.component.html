@@ -8,10 +8,10 @@
     </ion-refresher>
     <div class="all_content" *ngIf="quotations.length">
         <div class="plan_option_content" *ngFor="let quotation of quotations">
-            <div class="card plan_option_heading w-100" (click)="getSingleQuotationDetail(quotation.quotation_id, quotation)">
-                <h6>{{quotation.quotation_name}}</h6>
-                <span class="font-weight-bold ml-2" *ngIf="quotation.quotation">Quotations :</span>
-                <div class="quotation-content p-3"  *ngIf="quotation.quotation">{{quotation.quotation}}</div>
+            <div class="card plan_option_heading  w-100 ">
+                <h6 class="font-weight-bold p-3">{{quotation.inquiry_name}}</h6>
+                <span class="font-weight-bold p-3" *ngIf="quotation.quotation">Quotation :</span>
+                <div class="quotation-content px-3 pb-3" [innerHtml]="quotation.quotation"  *ngIf="quotation.quotation"></div>
             </div>
         </div>
     </div>

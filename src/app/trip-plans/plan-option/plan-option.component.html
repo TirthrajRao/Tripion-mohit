@@ -132,19 +132,8 @@
         </div>
 
 
-
-        <div style="margin-top: 40%;"
-            *ngIf="!tripDetail.payment.payment_request.length && !tripDetail.requested_docs.length  && tripDetail.is_passport != 1 && !tripDetail.payment.payment_success.length ">
-            <span class="text-center text-white no-req">We are Working on it, <br>will revert soon!!</span>
-        </div>
-
-
         <div style="margin-top: 40%;"
             *ngIf="!tripDetail.payment.payment_request.length && !tripDetail.requested_docs.length && !tripDetail.plans.length && tripDetail.is_passport != 1 ">
-            <!-- <span class="text-center text-white no-request">No Data</span> -->
-            <div class="message-icon">
-                <img src="assets/images/safetravel.png">
-            </div>
             <div class="notification-text">
                 <span class="text-center no-request text-white"> We are working on it,<br>
                     will revert soon !!</span>

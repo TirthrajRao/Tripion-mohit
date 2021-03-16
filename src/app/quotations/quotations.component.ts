@@ -82,7 +82,7 @@ export class QuotationsComponent implements OnInit {
       inquiry_id: this.tripId
     }
     console.log(obj);
-    this._tripService.getQuotations(obj).subscribe((res: any) => {
+    this._tripService.getTripQuotation(obj).subscribe((res: any) => {
       console.log(res);
       this.loading = false;
       this.quotations = res.data;
@@ -93,9 +93,9 @@ export class QuotationsComponent implements OnInit {
     })
   }
 
-  getSingleQuotationDetail(id, value){
-    console.log('the id and value of getSingleQuotationDetail =====>', id, value);
-    this._router.navigate(['/home/general-quatation-detail/' + id])
+  getSingleQuotationDetail(obj){
+    console.log('the id and value of getSingleQuotationDetail =====>', obj.id, obj.value);
+    this._router.navigate(['/home/general-quatation-detail/' + obj.id])
   }
 
   /**

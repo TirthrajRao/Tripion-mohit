@@ -233,7 +233,15 @@ export class TripService {
   }
 
   /**
-   * Get General quotation
+   * Get Trip quotation
+   * @param {object} data 
+   */
+  getTripQuotation(data){
+    return this.http.post(config.baseApiUrl + 'get-quotation', data);
+  }
+
+  /**
+   * Get quotation details
    * @param {object} data 
    */
   getSingleQuotation(data){
